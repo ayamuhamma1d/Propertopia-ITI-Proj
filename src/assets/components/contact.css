@@ -1,0 +1,8 @@
+.bg__contact{
+    background-image: url(./../img/img.png);
+background-repeat: no-repeat;
+background-position: center;
+background-size: cover;
+}.layer{
+    background-image: url(./../img/Rectangle.png);  
+}
