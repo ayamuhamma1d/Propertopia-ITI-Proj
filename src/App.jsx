@@ -1,20 +1,11 @@
-
-
 import './App.css'
-import Footer from './assets/components/footer/Footers'
-import Navbar from './assets/components/navbar/Navbars'
-// import Contact from './assets/components/contact'
-
+import Footer from './assets/components/shared/footer/Footers'
+import Navbar from './assets/components/shared/navbar/Navbars';
 function App() {
-
-  return (
+ return (
     <>
-    
-<Navbar/>
-{/* <Contact/> */}
-    <Footer/>
-
-
+      <Navbar />
+      <Footer />
     </>
   )
 }

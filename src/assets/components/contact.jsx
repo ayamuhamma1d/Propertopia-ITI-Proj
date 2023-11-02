@@ -14,7 +14,8 @@ function Contact() {
         <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
           <div className="grid gap-10 lg:grid-cols-2">
             <div className="flex flex-col justify-center md:pr-8 xl:pr-0 lg:max-w-lg">
-              <div className="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-teal-accent-400"></div>
+              <div className="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-teal-accent-400">
+              </div>
               <div className="max-w-xl mb-6">
                 <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-white sm:text-4xl sm:leading-none">
                   Let us handle
@@ -27,27 +28,23 @@ function Contact() {
 
                 <p className="my-3 flex text-gray-300 items-center">
                   <span>
-                    {" "}
                     <FaMapMarkerAlt className="text-white" />
                   </span>
                   <span className="ms-3">
-                    {" "}
                     Jl. Pelajar Pejuang 123 Majalaya Bandung Indonesia
                   </span>
                 </p>
                 <p className="my-3 flex text-gray-300 items-center">
                   <span>
-                    {" "}
                     <BsTelephoneFill className="text-white" />
                   </span>
-                  <span className="ms-3"> 022-6545-2041</span>
+                  <span className="ms-3">022-6545-2041</span>
                 </p>
                 <p className="my-3 flex text-gray-300 items-center">
                   <span>
-                    {" "}
                     <BsFillEnvelopePaperFill className="text-white" />
                   </span>
-                  <span className="ms-3"> rumahimpian@gmail.com</span>
+                  <span className="ms-3">rumahimpian@gmail.com</span>
                 </p>
               </div>
               <div>
@@ -68,12 +65,13 @@ function Contact() {
               </div>
             </div>
             <div className="flex items-center justify-center bg-white flex-col rounded-md">
-              <h2 className="text-4xl font-bold my-10 text-green-600">Have a question..?</h2>
+              <h2 className="text-4xl font-bold my-10 text-green-600">
+                Have a question..?
+              </h2>
               <form className="flex max-w-md flex-col gap-4 w-full">
                 <div>
                   <TextInput
                     id="email1"
-                    href="mailto:aya676670@gmail.com"
                     type="email"
                     placeholder="Enter Your Email"
                     required

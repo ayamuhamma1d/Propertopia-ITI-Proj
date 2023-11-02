@@ -1,5 +1,5 @@
 'use client';
-import logo from './../../img/tree-house 1.svg'
+import logo from './../../../img/Group 1.png'
 import { Footer } from 'flowbite-react';
 import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from 'react-icons/bs';
 import React from 'react'

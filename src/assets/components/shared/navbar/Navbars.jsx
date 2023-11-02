@@ -1,11 +1,11 @@
 import React from 'react'
 'use client';
 import { Avatar, Dropdown, Navbar } from 'flowbite-react';
-import logo from './../../img/Group 1.png'
-import './nav.css'
+import logo from './../../../img/Group 1.png'
+import style from'./nav.module.css'
 function Navbars() {
   return (
-    <nav className='bg-nav text-white' >
+    <nav className={style.navbar} >
       <Navbar fluid className='px-4  mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 bg-transparent' >
         <Navbar.Brand href="https://flowbite-react.com">
           <img src={logo} className="mr-3 h-6 sm:h-7" alt="Flowbite React Logo" />
