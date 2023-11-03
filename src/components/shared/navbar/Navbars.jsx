@@ -1,7 +1,7 @@
 import React from 'react'
 'use client';
 import { Avatar, Dropdown, Navbar } from 'flowbite-react';
-import logo from './../../img/Group 1.png'
+import logo from './../../../assets/img/Group 1.png'
 import style from './nav.module.css'
 function Navbars() {
   return (

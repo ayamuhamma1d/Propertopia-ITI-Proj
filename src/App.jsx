@@ -1,11 +1,18 @@
 import './App.css'
-import Footer from './assets/shared/footer/Footers'
-import Navbar from './assets/shared/navbar/Navbars';
+import Footer from './components/shared/footer/Footers'
+import Navbar from './components/shared/navbar/Navbars';
+import { BrowserRouter,Route,Routes } from 'react-router-dom'
 function App() {
- return (
+  return (
     <>
-      <Navbar />
-      <Footer />
+      <BrowserRouter>
+        <Navbar />
+      
+        <Footer />
+      </BrowserRouter>
+      {/* <Routes>
+        <Route path='/' element={<Home/>}></Route>
+      </Routes> */}
     </>
   )
 }
