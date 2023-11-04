@@ -1,8 +1,11 @@
 import React from 'react'
+import logo from './../../../assets/img/dyoyLOp-800.jpg'
 
 const NotFoundPage = () => {
   return (
-    <div>NotFoundPage</div>
+    <div >
+      <img src={logo} className='w-full' alt="" />
+    </div>
   )
 }
 
