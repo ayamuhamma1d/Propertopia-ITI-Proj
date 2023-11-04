@@ -1,17 +1,14 @@
-import React from 'react'
-import Contact from'./../contact'
+import React from "react";
+import Contact from "./../contact";
+
+
 const Home = () => {
   return (
-
-      
-   
-
     <>
-    
-    <Contact/>
+  
+      <Contact />
     </>
+  );
+};
 
-  )
-}
-
-export default Home
+export default Home;
