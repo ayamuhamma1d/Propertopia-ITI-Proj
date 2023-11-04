@@ -2,3 +2,20 @@
  
     display: none !important;
 }
+.navbar{
+    background-color: #EAE0DA !important;
+    padding: 1rem 0;
+    text-align: center;
+    z-index: 10000;
+    
+}
+.btn{
+    background-color: #EAE0DA !important;
+    padding: 1rem 2rem;
+  margin-left: 1rem;
+}
+@media screen and (max-width: 768px){
+    .navbar{
+        display: none;
+    }
+}
