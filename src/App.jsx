@@ -13,7 +13,7 @@ import UnitForSale from './components/units/UnitForSale/UnitForSale'
 import Login from './components/authentication/login/Login'
 import SignUp from './components/authentication/signup/SignUp'
 import NotFoundPage from './components/shared/notFoundPage/NotFoundPage';
-// import Units from './components/units/Units';
+import Units from './components/units/Units';
 function App() {
   return (
     <>
@@ -22,7 +22,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />}></Route>
           <Route path='/about' element={<About />}></Route>
-          {/* <Route path='/units' element={<Units />}></Route> */}
+          <Route path='/units' element={<Units/>}></Route>
           <Route path='/units/unit-for-sale' element={<UnitForSale />}></Route>
           <Route path='/units/unit-for-rent' element={<UnitForRent />}></Route>
           <Route path='/maintenance' element={<Maintenance />}></Route>
