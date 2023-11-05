@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css?family=Coiny');
+a {
+    text-decoration: none;
+}
+.text-start {
+    display: flex !important;
+    align-items: flex-start !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+}
+.px-8 {
+    padding-left: 0rem !important;
+    padding-right: 0rem !important;
+}
+.hero__title {
+    text-align: left !important;
+}
+@media only screen and (max-width: 1024px) {
+    .hero__title {
+        margin-top: 3rem;
+    }
+}
+.hero__Button {
+    background-color: rgb(234 224 218 / var(--tw-bg-opacity));
+}
+.cloud-text {
+    font-family: 'Coiny', cursive;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: #000;
+    background-size: auto;
+    background-attachment: unset;
+    background-position: 52% 68%;
+    font-size: 50px;
+    animation: clouds-moving infinite 220s;
+    animation-fill-mode: forwards;
+    animation-play-state: running;
+    animation-timing-function: linear;
+    text-align: center;
+}
