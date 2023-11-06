@@ -1,9 +1,134 @@
 import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faShareNodes } from '@fortawesome/free-solid-svg-icons';
+import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { faBed } from '@fortawesome/free-solid-svg-icons';
+import { faBath } from '@fortawesome/free-solid-svg-icons';
+import { faHouse } from '@fortawesome/free-solid-svg-icons';
+import CardImg from './../../../assets/img/logo.png';
 
 const Card = () => {
   return (
-    <div>Card</div>
+    <div className='w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto  mb-10'>
+                <h2 class="font-bold text-3xl font-[Poppins] text-center mb-10">Recent </h2>
+
+    <div className="flex  gap-10">
+      
+    <div class="w-full max-w-sm  bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+        <div className='relative '>
+          <a href="#">
+            <img src={CardImg} alt="" />
+          </a>
+          <div className={`absolute top-2 left-3 bg-black p-2`}>
+            <p className="text-white">For Sale</p>
+          </div>
+
+        </div>
+        <div class="px-5 pb-5">
+
+          <div class="flex items-center justify-between mb-3 pt-3">
+            <a href="#" class=" font-medium">Villa</a>
+            <span class="text-xl font-bold  ">$599</span>
+          </div>
+
+          <div className='columns-3 border-b pb-2'>
+            <div className='pr-4'><p><FontAwesomeIcon icon={faBed} style={{ color: "#000000", }} />BedNum.</p></div>
+            <div className='pl-4'><p><FontAwesomeIcon icon={faBath} style={{ color: "#000000", }} />bathNum.</p></div>
+            <div className='pl-12'><p><FontAwesomeIcon icon={faHouse} />area</p></div>
+          </div>
+          <div class="flex items-center justify-between mt-2.5 mb-5">
+
+            <div><p><FontAwesomeIcon className='pr-1' icon={faLocationDot} />location</p></div>
+
+            <div >
+              <a href="" className='pr-3'>
+                <FontAwesomeIcon icon={faHeart} />
+              </a>
+              <a href="">
+                <FontAwesomeIcon icon={faShareNodes} style={{ color: "#080808", }} className='pe-2' />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+        <div className='relative '>
+          <a href="#">
+            <img src={CardImg} alt="" />
+          </a>
+          <div className={`absolute top-2 left-3 bg-black p-2`}>
+            <p className="text-white">For Sale</p>
+          </div>
+
+        </div>
+        <div class="px-5 pb-5">
+
+          <div class="flex items-center justify-between mb-3 pt-3">
+            <a href="#" class=" font-medium">Villa</a>
+            <span class="text-xl font-bold  ">$599</span>
+          </div>
+
+          <div className='columns-3 border-b pb-2'>
+            <div className='pr-4'><p><FontAwesomeIcon icon={faBed} style={{ color: "#000000", }} />BedNum.</p></div>
+            <div className='pl-4'><p><FontAwesomeIcon icon={faBath} style={{ color: "#000000", }} />bathNum.</p></div>
+            <div className='pl-12'><p><FontAwesomeIcon icon={faHouse} />area</p></div>
+          </div>
+          <div class="flex items-center justify-between mt-2.5 mb-5">
+
+            <div><p><FontAwesomeIcon className='pr-1' icon={faLocationDot} />location</p></div>
+
+            <div >
+              <a href="" className='pr-3'>
+                <FontAwesomeIcon icon={faHeart} />
+              </a>
+              <a href="">
+                <FontAwesomeIcon icon={faShareNodes} style={{ color: "#080808", }} className='pe-2' />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+        <div className='relative '>
+          <a href="#">
+            <img src={CardImg} alt="" />
+          </a>
+          <div className={`absolute top-2 left-3 bg-black p-2`}>
+            <p className="text-white">For Sale</p>
+          </div>
+
+        </div>
+        <div class="px-5 pb-5">
+
+          <div class="flex items-center justify-between mb-3 pt-3">
+            <a href="#" class=" font-medium">Villa</a>
+            <span class="text-xl font-bold  ">$599</span>
+          </div>
+
+          <div className='columns-3 border-b pb-2'>
+            <div className='pr-4'><p><FontAwesomeIcon icon={faBed} style={{ color: "#000000", }} />BedNum.</p></div>
+            <div className='pl-4'><p><FontAwesomeIcon icon={faBath} style={{ color: "#000000", }} />bathNum.</p></div>
+            <div className='pl-12'><p><FontAwesomeIcon icon={faHouse} />area</p></div>
+          </div>
+          <div class="flex items-center justify-between mt-2.5 mb-5">
+
+            <div><p><FontAwesomeIcon className='pr-1' icon={faLocationDot} />location</p></div>
+
+            <div >
+              <a href="" className='pr-3'>
+                <FontAwesomeIcon icon={faHeart} />
+              </a>
+              <a href="">
+                <FontAwesomeIcon icon={faShareNodes} style={{ color: "#080808", }} className='pe-2' />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
   )
 }
 
-export default Card
+export default Card;

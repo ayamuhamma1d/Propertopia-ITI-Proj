@@ -5,8 +5,8 @@ const Services = () => {
         <>
         <section>
             <div class="w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto mb-10 text-center">
-                <h2 class="font-bold text-3xl font-[Poppins]">Services</h2>
-                <div class="mt-10 flex flex-col space-x-0 space-y-5 md:flex-row md:space-x-5 md:space-y-0 space-x-5 ">
+                <h2 class="font-bold text-3xl font-[Poppins] mb-10 ">Services</h2>
+                <div class="flex flex-col gap-5 md:flex-row md:space-x-5 md:space-y-0 space-x-5 ">
 
                     <div class=" md:w-1/3 flex flex-col items-center p-6 space-y-4 rounded-lg border border-slate-200">
                         <img src={photo} alt="1" class="w-full" />
