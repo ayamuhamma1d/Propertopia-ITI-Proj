@@ -32,10 +32,10 @@ const Card = () => {
             <span class="text-xl font-bold  ">$599</span>
           </div>
 
-          <div className='columns-3 border-b pb-2'>
-            <div className='pr-4'><p><FontAwesomeIcon icon={faBed} style={{ color: "#000000", }} />BedNum.</p></div>
-            <div className='pl-4'><p><FontAwesomeIcon icon={faBath} style={{ color: "#000000", }} />bathNum.</p></div>
-            <div className='pl-12'><p><FontAwesomeIcon icon={faHouse} />area</p></div>
+          <div className='flex justify-between items-center border-b pb-2'>
+            <div ><p><FontAwesomeIcon icon={faBed} style={{ color: "#000000", }} className='me-2' />BedNum.</p></div>
+            <div ><p><FontAwesomeIcon icon={faBath} style={{ color: "#000000", }} className='me-2'/>bathNum.</p></div>
+            <div ><p><FontAwesomeIcon icon={faHouse} className='me-2'/>area</p></div>
           </div>
           <div class="flex items-center justify-between mt-2.5 mb-5">
 
@@ -52,7 +52,7 @@ const Card = () => {
           </div>
         </div>
       </div>
-      <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div class="w-full max-w-sm  bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <div className='relative '>
           <a href="#">
             <img src={CardImg} alt="" />
@@ -69,10 +69,10 @@ const Card = () => {
             <span class="text-xl font-bold  ">$599</span>
           </div>
 
-          <div className='columns-3 border-b pb-2'>
-            <div className='pr-4'><p><FontAwesomeIcon icon={faBed} style={{ color: "#000000", }} />BedNum.</p></div>
-            <div className='pl-4'><p><FontAwesomeIcon icon={faBath} style={{ color: "#000000", }} />bathNum.</p></div>
-            <div className='pl-12'><p><FontAwesomeIcon icon={faHouse} />area</p></div>
+          <div className='flex justify-between items-center border-b pb-2'>
+            <div ><p><FontAwesomeIcon icon={faBed} style={{ color: "#000000", }} className='me-2' />BedNum.</p></div>
+            <div ><p><FontAwesomeIcon icon={faBath} style={{ color: "#000000", }} className='me-2'/>bathNum.</p></div>
+            <div ><p><FontAwesomeIcon icon={faHouse} className='me-2'/>area</p></div>
           </div>
           <div class="flex items-center justify-between mt-2.5 mb-5">
 
@@ -89,7 +89,7 @@ const Card = () => {
           </div>
         </div>
       </div>
-      <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div class="w-full max-w-sm  bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <div className='relative '>
           <a href="#">
             <img src={CardImg} alt="" />
@@ -106,14 +106,14 @@ const Card = () => {
             <span class="text-xl font-bold  ">$599</span>
           </div>
 
-          <div className='columns-3 border-b pb-2'>
-            <div className='pr-4'><p><FontAwesomeIcon icon={faBed} style={{ color: "#000000", }} />BedNum.</p></div>
-            <div className='pl-4'><p><FontAwesomeIcon icon={faBath} style={{ color: "#000000", }} />bathNum.</p></div>
-            <div className='pl-12'><p><FontAwesomeIcon icon={faHouse} />area</p></div>
+          <div className='flex justify-between items-center border-b pb-2'>
+            <div ><p><FontAwesomeIcon icon={faBed} style={{ color: "#000000", }} className='me-2' />BedNum.</p></div>
+            <div ><p><FontAwesomeIcon icon={faBath} style={{ color: "#000000", }} className='me-2'/>bathNum.</p></div>
+            <div ><p><FontAwesomeIcon icon={faHouse} className='me-2'/>area</p></div>
           </div>
           <div class="flex items-center justify-between mt-2.5 mb-5">
 
-            <div><p><FontAwesomeIcon className='pr-1' icon={faLocationDot} />location</p></div>
+            <div><p><FontAwesomeIcon className='pr-1 ' icon={faLocationDot} />location</p></div>
 
             <div >
               <a href="" className='pr-3'>
@@ -126,6 +126,7 @@ const Card = () => {
           </div>
         </div>
       </div>
+   
     </div>
     </div>
   )
