@@ -9,7 +9,6 @@ const Home = () => {
   return (
     <>
       <Hero />
-      <Filter />
       <Card/>
       <Services />
       <Maintenance />
