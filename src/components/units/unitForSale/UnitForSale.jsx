@@ -28,7 +28,7 @@ const UnitForSale = () => {
   return (
     <div>
       <Filter />
-      <div className={`${style.header} font-[Poppins] text-left text-3xl w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto`}> For Rent </div>
+      <div className={`${style.header} font-[Poppins] text-left text-3xl w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto`}> For Sale </div>
       <div className=" flex flex-wrap justify-center">
         {cardData.map(card => (
           <div key={card.id} className="">
