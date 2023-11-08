@@ -16,7 +16,7 @@ const Maintenance = () => {
     <>
       <div className="bg-white">
         <div className="mx-auto max-w-2xl px-4 pt-16 sm:px-6 sm:pt-16 lg:max-w-7xl lg:px-8 w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5">
-          <h2 className="text-3xl font-bold text-start text-gray-900">
+          <h2 className="text-3xl text-start text-gray-900  font-[Poppins] text-left text-3xl w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto header_maintenance">
             Maintained
           </h2>
           <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-1 lg:grid-cols-2 xl:gap-x-8">
@@ -30,7 +30,7 @@ const Maintenance = () => {
                     />
                   </div>
                   <div className="mt-4 flex justify-between">
-                    <h3 className="text-lg  text-center	w-100 text-gray-700">
+                    <h3 className="text-lg   text-center	w-100 text-gray-700">
                       Before
                     </h3>
                   </div>
@@ -43,7 +43,7 @@ const Maintenance = () => {
                     />
                   </div>
                   <div className="mt-4 flex justify-between">
-                    <h3 className="text-lg  text-center	w-100 text-gray-700">
+                    <h3 className="text-lg   text-center	w-100 text-gray-700">
                       After
                     </h3>
                   </div>
@@ -66,7 +66,7 @@ const Maintenance = () => {
                     />
                   </div>
                   <div className="mt-4 flex justify-between">
-                    <h3 className="text-lg  text-center	w-100 text-gray-700">
+                    <h3 className="text-lg   text-center	w-100 text-gray-700">
                       Before
                     </h3>
                   </div>
@@ -79,7 +79,7 @@ const Maintenance = () => {
                     />
                   </div>
                   <div className="mt-4 flex justify-between">
-                    <h3 className="text-lg  text-center	w-100 text-gray-700">
+                    <h3 className="text-lg   text-center	w-100 text-gray-700">
                       After
                     </h3>
                   </div>
@@ -104,7 +104,7 @@ const Maintenance = () => {
                     />
                   </div>
                   <div className="mt-4 flex justify-between">
-                    <h3 className="text-lg  text-center	w-100 text-gray-700">
+                    <h3 className="text-lg   text-center	w-100 text-gray-700">
                       Before
                     </h3>
                   </div>
@@ -117,7 +117,7 @@ const Maintenance = () => {
                     />
                   </div>
                   <div className="mt-4 flex justify-between">
-                    <h3 className="text-lg  text-center	w-100 text-gray-700">
+                    <h3 className="text-lg   text-center	w-100 text-gray-700">
                       After
                     </h3>
                   </div>
@@ -140,7 +140,7 @@ const Maintenance = () => {
                     />
                   </div>
                   <div className="mt-4 flex justify-between">
-                    <h3 className="text-lg  text-center	w-100 text-gray-700">
+                    <h3 className="text-lg   text-center	w-100 text-gray-700">
                       Before
                     </h3>
                   </div>
@@ -153,7 +153,7 @@ const Maintenance = () => {
                     />
                   </div>
                   <div className="mt-4 flex justify-between">
-                    <h3 className="text-lg  text-center	w-100 text-gray-700">
+                    <h3 className="text-lg   text-center	w-100 text-gray-700">
                       After
                     </h3>
                   </div>
@@ -179,7 +179,7 @@ const Maintenance = () => {
       </div>
       <div className="bg-white ">
         <div className="mx-auto max-w-2xl px-4 pt-16 sm:px-6 sm:pt-16 lg:max-w-7xl lg:px-8 w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5">
-          <h2 className="text-3xl font-bold text-start text-gray-900">
+          <h2 className="text-3xl  text-start text-gray-900  text-gray-900  font-[Poppins] text-left text-3xl w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto header_maintenance">
             3D Design
           </h2>
           <div className="mt-2 grid grid-cols-1 gap-x-1 gap-y-2 sm:grid-cols-1 lg:grid-cols-2 xl:gap-x-1">
@@ -244,7 +244,7 @@ const Maintenance = () => {
           <div className="maintained_Button ">
             <button
               type="button"
-              className="rounded-md bg-[#eae0da] px-2.5 py-1.5 mt-16 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+              className="rounded-md mb-10 bg-[#eae0da] border-transparent px-2.5 py-1.5 mt-16 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
             >
               See more
             </button>
