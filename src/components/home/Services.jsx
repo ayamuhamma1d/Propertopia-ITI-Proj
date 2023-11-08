@@ -19,9 +19,9 @@ const Services = () => {
                 anywhere else
               </p>
               <div>
-                <a
+              <a
                   href="#"
-                  className="service__button__background__color inline-flex mb-5 hover:bg-beige hover:text-white items-center px-3 py-3 text-sm font-medium text-center text-black"
+                  className="inline-flex mb-5 hover:bg-beige hover:text-white items-center px-3 py-2 text-sm font-medium text-center text-black service__button__background__color"
                 >
                   Read more
                 </a>
