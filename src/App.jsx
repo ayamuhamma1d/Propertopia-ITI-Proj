@@ -22,7 +22,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />}></Route>
           <Route path='/about' element={<About />}></Route>
-          <Route path='/units' element={<Units/>}></Route>
+          <Route path='/units' element={<Units />}></Route>
           <Route path='/units/unit-for-sale' element={<UnitForSale />}></Route>
           <Route path='/units/unit-for-rent' element={<UnitForRent />}></Route>
           <Route path='/maintenance' element={<Maintenance />}></Route>
@@ -36,7 +36,6 @@ function App() {
         </Routes>
         <Footer />
       </BrowserRouter>
-
     </>
   )
 }
