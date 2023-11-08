@@ -1,22 +1,22 @@
-.Carousel img{
+.Carousel img {
     width: 40%;
 }
 
-.iframe{
+.iframe {
     border: none;
     width: 100%;
     height: 100%;
 }
 
 @media only screen and (max-width: 1024px) {
- 
-    .iframe_parent{
+
+    .iframe_parent {
         height: 800px;
     }
 }
 
-.maintained_Button{
+.maintained_Button {
     display: flex;
     justify-content: end;
-    
+
 }
