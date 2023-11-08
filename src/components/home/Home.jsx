@@ -5,6 +5,7 @@ import Services from "./Services";
 import Hero from "./Hero";
 import Card from "../shared/card/Card";
 import Filter from "../shared/filter/Filter";
+
 const Home = () => {
   return (
     <>
@@ -13,6 +14,8 @@ const Home = () => {
       <Services />
       <Maintenance />
       <Contact />
+      
+      
     </>
   );
 };
