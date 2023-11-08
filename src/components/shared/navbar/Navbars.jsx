@@ -35,6 +35,7 @@ function Navbars() {
           <div className=" uppercase font-[Poppins] lg:block hidden items-center lg:flex ">
             <NavLink to="./signup" >Sign up</NavLink>
             <NavLink to="./login" className={style.btn}>Login</NavLink>
+            <NavLink to="./login" className={`${style.btn} hidden`}>Logout</NavLink>
           </div>
           {/* Mobile */}
           <ul

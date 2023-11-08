@@ -6,15 +6,14 @@ import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { faBed } from '@fortawesome/free-solid-svg-icons';
 import { faBath } from '@fortawesome/free-solid-svg-icons';
 import { faHouse } from '@fortawesome/free-solid-svg-icons';
-import CardImg from './../../../assets/img/logo.png';
-
+import CardImg from"../../../assets/img/12.jpg"
+import CardImg1 from"../../../assets/img/13.jpg"
+import CardImg2 from"../../../assets/img/14.jpg"
 const Card = () => {
   return (
-    <div className='w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto  mb-10'>
-                <h2 class="font-bold text-3xl font-[Poppins] text-center mb-10">Recent </h2>
-
-    <div className="flex  gap-10">
-      
+    <div className='w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto  my-10'>
+    {/* <h2 class="font-bold text-3xl font-[Poppins] text-center mb-10">Recent </h2> */}
+    <div className="flex  gap-10 flex-wrap  justify-center items-center">
     <div class="w-full max-w-sm  bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <div className='relative '>
           <a href="#">
@@ -55,7 +54,7 @@ const Card = () => {
     <div class="w-full max-w-sm  bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <div className='relative '>
           <a href="#">
-            <img src={CardImg} alt="" />
+            <img src={CardImg1} alt="" />
           </a>
           <div className={`absolute top-2 left-3 bg-black p-2`}>
             <p className="text-white">For Sale</p>
@@ -92,7 +91,7 @@ const Card = () => {
     <div class="w-full max-w-sm  bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <div className='relative '>
           <a href="#">
-            <img src={CardImg} alt="" />
+            <img src={CardImg2} alt="" />
           </a>
           <div className={`absolute top-2 left-3 bg-black p-2`}>
             <p className="text-white">For Sale</p>
