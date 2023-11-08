@@ -1,5 +1,7 @@
-import React from 'react'
-import photoo from './../../../assets/img/beace5158805561.6392196298760.jpg';
+import React from 'react';
+import photoo from './../../../assets/img/Maintenance/gettyimages-1268557129-612x612.jpg'
+
+// import photoo from './../../../assets/img/beace5158805561.6392196298760.jpg';
 import dphoto from './../../../assets/img/Maintenance/gettyimages-1268557129-612x612.jpg';
 import aphoto from './../../../assets/img/Maintenance/gettyimages-961748068-612x612.jpg';
 
@@ -28,32 +30,7 @@ import { faElevator } from '@fortawesome/free-solid-svg-icons';
 import { faShieldHalved } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
 
-// import Carousel from "react-multi-carousel";
-// import "react-multi-carousel/lib/styles.css";
-
-
 const Details = () => {
-
-  // const responsive = {
-  //   desktop: {
-  //     breakpoint: { max: 3000, min: 1024 },
-  //     items: 3,
-  //   },
-  //   tablet: {
-  //     breakpoint: { max: 1024, min: 464 },
-  //     items: 2,
-  //   },
-  //   mobile: {
-  //     breakpoint: { max: 464, min: 0 },
-  //     items: 1,
-  //   },
-  // };
-  // const items = [{ url: photosellrent }, { url: photomaintance },
-  // { url: photosellrent }, { url: photomaintance }]
-
-  // const items = [{ url: photosellrent, style: style.firstgroup }, { url: photomaintance, style: style.secondgroup },
-  //   { url: photosellrent, style: style.secondgroup }, { url: photomaintance, style: style.secondgroup }]
-
   const imgs = [{ id: 0, value: aphoto },
   { id: 1, value: photoo, },
   { id: 2, value: dphoto, }]
@@ -67,27 +44,24 @@ const Details = () => {
     <>
       <section class='w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto'>
         <div>
-          <div class='flex' >
-            <div class=' col-xs-1 col-md-6'>
-              <div class="grid gap-4 p-5 me-3 ">
-                <div  >
-                  <img class="h-auto max-w-full rounded-lg" src={sliderData.value} alt="1" />
-                </div>
-                <div >
-                  <div class="grid grid-cols-3 gap-4"  >
-                    {imgs.map((data, i) =>
-                      <img class="h-auto max-w-full rounded-lg" key={data.id}
-                        src={data.value}
-                        onClick={() => handleClick(i)}
-                      />
-                    )}
-                  </div>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4" >
+            <div class="grid gap-4 p-5 me-3 ">
+              <div  >
+                <img class="h-auto max-w-full rounded-lg" src={sliderData.value} alt="1" />
+              </div>
+              <div >
+                <div class="grid grid-cols-3 gap-4"  >
+                  {imgs.map((data, i) =>
+                    <img class="h-auto max-w-full rounded-lg" key={data.id}
+                      src={data.value}
+                      onClick={() => handleClick(i)}
+                    />
+                  )}
                 </div>
               </div>
             </div>
 
-            <div class=' col-xs-1  col-md-6'>
-
+            <div >
               <div className='flex justify-between py-3'>
                 <div className='py-4 '>
                   <h1 class="font-bold text-2xl md:text-3xl text-slate-900 py-3">Apartment for sale in Badya
@@ -108,23 +82,26 @@ const Details = () => {
                   </a>
                 </div>
               </div>
+
+              <div className='py-3'>
+                <h1 class="font-bold text-xl text-slate-900  py-2">Description</h1>
+                <div class=" my-5 text-lg md:text-xl text-slate-900"
+                >For sale, the last villa, with installments over 8 years, in Hyde Park Compound, on 90th Street, next to AUC
+
+                  Land area: 700 m
+
+                  Building area: 537 m
+
+                  Down payment of 6,500,000 and installments over 8 years without interest
+
+                  For reservations and inquiries, WhatsApp or call 010200201</div>
+              </div>
+
             </div>
+
+
           </div>
 
-
-          <div className='py-3'>
-            <h1 class="font-bold text-xl text-slate-900  py-2">Description</h1>
-            <div class=" my-5 text-lg md:text-xl text-slate-900"
-            >For sale, the last villa, with installments over 8 years, in Hyde Park Compound, on 90th Street, next to AUC
-
-              Land area: 700 m
-
-              Building area: 537 m
-
-              Down payment of 6,500,000 and installments over 8 years without interest
-
-              For reservations and inquiries, WhatsApp or call 010200201</div>
-          </div>
 
           <div className="pb-3">
             <h2 class="font-bold text-xl text-slate-900  py-2">Property Information</h2>
@@ -211,10 +188,6 @@ const Details = () => {
       </section >
     </>)
 }
-
-
-
-
 
 
 export default Details
