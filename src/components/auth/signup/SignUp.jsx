@@ -69,7 +69,7 @@ const SignUp = () => {
         user.displayName = userName;
         userToken = user.accessToken;
 
-        window.location.href = "../../home";
+        window.location.href = "../../login";
       })
       .catch((error) => {
         const code = error.code;

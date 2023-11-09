@@ -25,7 +25,7 @@ const Login = () => {
       );
       const user = userCredential.user;
       userToken = user.accessToken;
-      window.location.href = "../../home/Home.jsx";
+      window.location.href = "../../home";
 
     } catch (error) {
       const errorCode = error.code;
