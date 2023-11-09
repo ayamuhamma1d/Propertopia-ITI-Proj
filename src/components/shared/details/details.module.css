@@ -1,24 +1,9 @@
-.iconscolor {
-    color: #a09a94;
-    margin-right: 30px;
-    font-size: 25px;
-}
 
 
-.cardcolor {
-    background-color: #EAE0DA;
-    padding: 10px;
-    font-size: 17px;
-    margin: 15px;
-}
-
-.iconfeature {
-    margin-right: 10px;
-}
-
-img {
+.img {
     width: 100%;
     display: block;
+    cursor: pointer;
 }
 
 .loancolor {

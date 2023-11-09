@@ -1,7 +1,6 @@
 import React from 'react';
 import './hero.css';
 import logo from './../../assets/img/logo.png';
-
 const Hero = () => {
   return (
     <section className="px-3 py-4  lg:py-10 bg-[#eae0da] mb-10">
