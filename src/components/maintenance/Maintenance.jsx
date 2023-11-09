@@ -185,7 +185,7 @@ const Maintenance = () => {
           <div className="mt-2 grid grid-cols-1 gap-x-1 gap-y-2 sm:grid-cols-1 lg:grid-cols-2 xl:gap-x-1">
             <div className="iframe_parent p-4">
               <iframe
-                src="https://planner5d.com/v?key=21c4cb615789a834c3e94a863141bc83&viewMode=2d"
+                src="https://planner5d.com/v?key=21c4cb615789a834c3e94a863141bc83&viewMode=3d"
                 className="iframe"
                 allowfullscreen
               ></iframe>
