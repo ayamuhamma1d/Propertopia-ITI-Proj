@@ -1,0 +1,35 @@
+.container {
+    width: 100%;
+}
+
+.bg_project {
+    background: #EAE0DA;
+}
+
+.full_height {
+    height: 100%;
+}
+
+
+
+.signin_img {
+    height: 80vh;
+    width: 100%;
+}
+
+
+.parent_card {
+    display: flex;
+    align-items: center;
+}
+
+.sign_in_parag {
+    max-width: 18rem;
+    font-size: 14px;
+
+}
+
+.signin_btn {
+    background-color: #EAE0DA !important;
+    color: black !important;
+}

@@ -11,8 +11,8 @@ import Service from './components/services/Service'
 import UnitForRent from './components/units/unitForRent/UnitForRent'
 import UnitForSale from './components/units/UnitForSale/UnitForSale'
 import Details from './components/shared/details/Details'
-import Login from './components/authentication/login/Login'
-import SignUp from './components/authentication/signup/SignUp'
+import Login from './components/auth/login/Login'
+import SignUp from './components/auth/signup/SignUp'
 import NotFoundPage from './components/shared/notFoundPage/NotFoundPage';
 import Units from './components/units/Units';
 function App() {

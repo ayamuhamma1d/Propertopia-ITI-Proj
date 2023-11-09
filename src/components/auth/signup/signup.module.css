@@ -1,0 +1,72 @@
+
+@media screen and (max-width:767px) {
+    .container {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .container form {
+      margin: 0;
+      width: 90%;
+      margin: auto;
+    }
+  
+    .full_height {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .parent_card {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+  
+    .bg_project {
+      padding: 0 !important;
+    }
+  
+    .form_h2 {
+      font-size: 0.8rem !important;
+      margin-bottom: 1rem !important;
+    }
+  
+    .sign_in_parag {
+      font-size: 0.7rem;
+    }
+  
+    .header_text {
+      text-align: center;
+      border-radius: 5px;
+      height: auto;
+    }
+  
+    .header_text h3,
+    .header_text p {
+      margin-bottom: 1rem;
+    }
+  }
+  
+  @media screen and (max-width:767px) {
+    .header_text p {
+      max-width: 80%;
+      margin: auto;
+      line-height: 1.4rem;
+  
+    }
+  
+  }
+  
+  @media screen and (min-width:568px) and (max-width:1016px) {
+    .parent_card {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+    }
+  
+    .header_text p {
+      font-size: 0.7rem;
+      line-height: 1.4rem;
+    }
+  
+  }
