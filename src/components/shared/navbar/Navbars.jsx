@@ -18,21 +18,21 @@ function Navbars() {
         setUserToken(null);
       }
     });
-  
+
     return () => {
       unsubscribe();
     };
   }, [userToken]);
 
-const logOut = async () => {
-  try {
-    await signOut(auth);
-    setUserToken(null);
-    console.log("User signed out successfully");
-  } catch (error) {
-    console.error("Error signing out:", error);
-  }
-};
+  const logOut = async () => {
+    try {
+      await signOut(auth);
+      setUserToken(null);
+      console.log("User signed out successfully");
+    } catch (error) {
+      console.error("Error signing out:", error);
+    }
+  };
   const [open, setOpen] = useState(false);
   return (
     <>
@@ -45,7 +45,7 @@ const logOut = async () => {
       <nav className="bg-white my-1">
         <div className="  flex item-center justify-between  w-full sm:max-w-full md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto ">
           <div className="z-50 lg:w-auto w-full flex justify-between items-center ">
-            <img src={logo} className="mr-3 h-24 " alt="Flowbite React Logo" />
+        <Link to=" "> <img src={logo} className="mr-3 h-24 " alt="Flowbite React Logo" /></Link>
             <div
               className="text-4xl cursor-pointer lg:hidden"
               onClick={() => setOpen(!open)}
@@ -77,6 +77,14 @@ const logOut = async () => {
               className={`${style.btn} ${userToken ? "hidden" : "block"}`}
             >
               Login
+            </NavLink>
+            <NavLink
+            to="./profile"
+              className={`${style.btn} ${
+                userToken != null ? "block" : "hidden"
+              }`}
+            >
+              Profile
             </NavLink>
             <NavLink
               onClick={logOut}

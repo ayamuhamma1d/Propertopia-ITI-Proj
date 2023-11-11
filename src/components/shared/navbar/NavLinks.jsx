@@ -41,6 +41,7 @@ const NavLinks = () => {
       name: "Service",
       path: "/service",
     },
+
   ];
   const [heading, setHeading] = useState("");
 
