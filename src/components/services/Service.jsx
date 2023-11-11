@@ -1,5 +1,4 @@
 import React from 'react'
-import Details from '../shared/details/Details';
 import photoo from './../../assets/img/Maintenance/gettyimages-961748068-612x612.jpg';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
