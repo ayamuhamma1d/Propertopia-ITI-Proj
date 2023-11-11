@@ -1,0 +1,46 @@
+
+
+.submit_btn:hover {
+  background-color: #bca37faf !important;
+}
+
+.error {
+  color: #fff;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #bca37f;
+  padding: 0 20px;
+  height: 96px;
+  border-radius: 25px;
+  margin-left: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .editProfile_container {
+    padding: 20px;
+    height: auto;
+    min-width: 100%;
+  }
+
+  .editProfile_content div input {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+  }
+
+  .editProfile_content div div {
+    font-size: 1.8rem;
+    height: 57px;
+    padding: 0 15px;
+  }
+
+  .submit_btn {
+    font-size: 1.2rem;
+  }
+
+  .error {
+    font-size: 1.2rem;
+    height: 76px;
+  }
+}

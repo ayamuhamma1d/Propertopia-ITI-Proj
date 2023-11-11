@@ -1,0 +1,36 @@
+.profile_container {
+  display: flex;
+  align-items: center;
+  margin-top: 45px;
+
+}
+
+.active_select {
+  background-color: #bca37f;
+  color: #fff;
+}
+
+.not_active_select {
+  font-size: 1rem;
+  color: #bca37f;
+}
+
+.profile_content {
+  width: 100%;
+  height: 95vh;
+}
+
+@media screen and (max-width: 739px) {
+  .profile_container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .active_select {
+    font-size: 1.2rem;
+  }
+  
+  .not_active_select {
+    font-size: 0.9rem;
+  }
+}

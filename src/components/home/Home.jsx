@@ -14,7 +14,7 @@ const Home = () => {
     <>
       <Hero />
       <div className=" flex flex-wrap justify-center">
-        {cardData.slice(0,1).map(card => (
+        {cardData.slice(0,3).map(card => (
           <div key={card.id} className="mb-10">
             <Card
               {...card}

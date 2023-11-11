@@ -39,17 +39,17 @@ const Details = () => {
 
   return (
     <>
-      <section class='w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto'>
+      <section className='w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto'>
         <div>
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 items-stretch" >
-            <div class="grid gap-4 p-5 me-3 ">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-stretch" >
+            <div className="grid gap-4 p-5 me-3 ">
               <div  >
-                <img class="h-auto max-w-full rounded-lg img" src={sliderData.value} alt="1" />
+                <img clasNames="h-auto max-w-full rounded-lg img" src={sliderData.value} alt="1" />
               </div>
               <div >
-                <div class="grid grid-cols-3 gap-4 cursor-pointer"  >
+                <div className="grid grid-cols-3 gap-4 cursor-pointer"  >
                   {imgs.map((data, i) =>
-                    <img class="h-auto max-w-full rounded-lg img" key={data.id}
+                    <img className="h-auto max-w-full rounded-lg img" key={data.id}
                       src={data.value}
                       onClick={() => handleClick(i)}
                     />
@@ -60,11 +60,11 @@ const Details = () => {
             <div >
               <div className='flex justify-between items-center'>
                 <div className=''>
-                  <h2 class="font-bold text-2xl md:text-3xl text-slate-950 font-[Poppins] py-3">Apartment for sale in Badya
+                  <h2 className="font-bold text-2xl md:text-3xl text-slate-950 font-[Poppins] py-3">Apartment for sale in Badya
                     with 2 bedrooms in 6th of October City by Palm Hills Developments</h2>
-                  <div class="my-5">
+                  <div className="my-5">
                     <FontAwesomeIcon className='me-3 text-beige' icon={faLocationDot} />
-                    <span class="text-md text-slate-700">Badya , 6th of October City, Egypt</span>
+                    <span className="text-md text-slate-700">Badya , 6th of October City, Egypt</span>
                   </div>
                   <h6 className=" text-xl text-slate-900"><span className="font-bold text-xl text-beige">EGP </span> 1,537,000</h6>
                 </div>
