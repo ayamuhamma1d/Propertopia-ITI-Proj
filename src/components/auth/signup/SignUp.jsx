@@ -1,13 +1,19 @@
 import { useEffect, useState } from "react";
 import { auth, provider } from "../firebase/Firebase";
-import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import {
+  signInWithPopup,
+  GoogleAuthProvider,
+  FacebookAuthProvider,
+} from "firebase/auth";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { Button, Label, TextInput } from "flowbite-react";
 import { FcGoogle } from "react-icons/fc";
+import { BsFacebook } from "react-icons/bs";
+import { Link } from "react-router-dom";
 import signImg from "../../../assets/img/signup.jpg";
 import style from "../Auth.module.css";
 import style_resp from "./signup.module.css";
-import { Link } from "react-router-dom";
+import styleLogin from "../login/login.module.css";
 
 const SignUp = () => {
   let userName, userEmail, userPass, userPhone;
@@ -15,12 +21,28 @@ const SignUp = () => {
   const [errorCode, setErrorCode] = useState("");
   let userToken;
 
+  const signInWithFacebook = async () => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const credential = FacebookAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      const user = result.user;
+      window.location.href = "../../Home";
+    } catch (error) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      const email = error.customData?.email;
+      const credential = FacebookAuthProvider.credentialFromError(error);
+    }
+  };
+
   const signInWithGoogle = async () => {
     try {
       const result = await signInWithPopup(auth, provider);
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       const user = result.user;
+      window.location.href = "../../Home";
     } catch (error) {
       const errorCode = error.code;
       const errorMessage = error.message;
@@ -69,7 +91,7 @@ const SignUp = () => {
         user.displayName = userName;
         userToken = user.accessToken;
 
-        window.location.href = "../../login";
+        window.location.href = "../../Home";
       })
       .catch((error) => {
         const code = error.code;
@@ -122,14 +144,25 @@ const SignUp = () => {
         </div>
 
         <div className={`col-span-2 basis-1/2 flex flex-col `}>
-          <div className="flex w-1/2 justify-center p-0  m-auto  my-10  ">
+          <div
+            className={`flex w-1/2 mx-auto justify-around mt-4  ${styleLogin.parent_btns}`}
+          >
             <Button
               onClick={signInWithGoogle}
               type="submit"
-              className={`${style.signin_btn} `}
+              className={`${style.signin_btn} ${styleLogin.customSigninBtn}   mb-8 me-2`}
             >
               <FcGoogle className="me-2" />
-              Sign in with Google
+              Google
+            </Button>
+
+            <Button
+              onClick={signInWithFacebook}
+              type="submit"
+              className={`${style.signin_btn}  mb-8 `}
+            >
+              <BsFacebook className="me-2" />
+              Facebook
             </Button>
           </div>
           <form
@@ -151,7 +184,6 @@ const SignUp = () => {
                 className="mb-2"
                 id="uname"
                 type="uname"
-                required
                 placeholder="robert langster"
               />
               <div>
@@ -160,7 +192,6 @@ const SignUp = () => {
               <TextInput
                 id="email1"
                 type="email"
-                required
                 placeholder="robert.langster@gmail.com"
               />
             </div>
@@ -204,7 +235,7 @@ const SignUp = () => {
             <p className="text-center">
               Have an account?{" "}
               <span className="font-bold">
-               <Link to="/login">login</Link>
+                <Link to="/login">login</Link>
               </span>
             </p>
           </form>

@@ -1,20 +1,51 @@
-import { Button, Label, TextInput } from "flowbite-react";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { auth,providerFb } from "../firebase/Firebase";
+import {
+  signInWithPopup,
+  signInWithEmailAndPassword,
+  FacebookAuthProvider,
+} from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
-import { auth } from "../firebase/Firebase";
+import { Button, Label, TextInput } from "flowbite-react";
+import { BsFacebook } from "react-icons/bs";
+import { FcGoogle } from "react-icons/fc";
 import signImg from "../../../assets/img/login.jpg";
 import style from "../Auth.module.css";
 import styleLogin from "./login.module.css";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { Link } from "react-router-dom";
 
 const Login = () => {
   let userEmail, userPass;
   let userToken;
-
-  const [signInWithGoogle] = useSignInWithGoogle(auth);
+  const navigate = useNavigate();
+  const [signInWithGoogle] = useSignInWithGoogle(auth,providerFb);
   const [errorMessage, setErrorMessage] = useState("");
   const [errorCode, setErrorCode] = useState("");
+
+  const signInWithFacebook = async () => {
+    try {
+      const result = await signInWithPopup(auth, providerFb);
+      const credential = FacebookAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      const user = result.user;
+      // window.location.href = "../../Home";
+    } catch (error) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      const email = error.customData?.email;
+      const credential = FacebookAuthProvider.credentialFromError(error);
+
+    }
+  };
+  const signInWithGoogleHandler = async () => {
+    try {
+      await signInWithGoogle();
+      navigate("/Home");
+    } catch (error) {
+      console.error("Error signing in with Google:", error);
+    }
+  };
 
   const signIn = async (email, password) => {
     try {
@@ -25,8 +56,7 @@ const Login = () => {
       );
       const user = userCredential.user;
       userToken = user.accessToken;
-      window.location.href = "../../home";
-
+      navigate("/Home");
     } catch (error) {
       const errorCode = error.code;
       const errorMessage = error.message;
@@ -39,18 +69,25 @@ const Login = () => {
     const userEmail = document.getElementById("email1").value;
     const userPass = document.getElementById("password1").value;
 
-    const emailPattern = /^[^\s@]+@(gmail|yahoo|hotmail)\.com$/;
-    let isValid = true;
+    if (userPass && userEmail) {
+      const emailPattern = /^[^\s@]+@(gmail|yahoo|hotmail)\.com$/;
+      let isValid = true;
 
-    if (!emailPattern.test(userEmail)) {
-      setErrorMessage("Please enter a valid email address.");
-      isValid = false;
-    }
+      if (!emailPattern.test(userEmail)) {
+        setErrorMessage("Please enter a valid email address.");
+        isValid = false;
+      }
 
-    if (isValid) {
-      await signIn(userEmail, userPass);
+      if (isValid) {
+        await signIn(userEmail, userPass);
+      }
+    } else {
+      // await signOut(auth);
+      userToken = null;
+      navigate("/Home");
     }
   };
+
   useEffect(() => {
     const messageArea = document.getElementById("message_area");
     if (messageArea) {
@@ -109,7 +146,6 @@ const Login = () => {
               <TextInput
                 id="email1"
                 type="email"
-                required
                 placeholder="robert.langster@gmail.com"
               />
             </div>
@@ -120,7 +156,6 @@ const Login = () => {
               <TextInput
                 id="password1"
                 type="password"
-                required
                 placeholder="********"
               />
             </div>
@@ -138,7 +173,7 @@ const Login = () => {
                 type="submit"
                 className={`${style.signin_btn} ${styleLogin.customSigninBtn}`}
               >
-                  <Link to="/signup">Signup</Link>
+                <Link to="/signup">Signup</Link>
               </Button>{" "}
             </div>
             <div
@@ -149,14 +184,28 @@ const Login = () => {
             >
               {errorMessage && <p>{errorMessage}</p>}
             </div>
-            <p className="text-center">Or login with</p>
-            <Button
-              onClick={() => signInWithGoogle()}
-              type="submit"
-              className={`${style.signin_btn} ${styleLogin.customSigninBtn} w-1/2 mx-auto mb-8`}
+            <div
+              className={`flex w-1/2 mx-auto justify-around  ${styleLogin.parent_btns}`}
             >
-              Google
-            </Button>
+              <Button
+                onClick={signInWithGoogleHandler}
+                type="submit"
+                className={`${style.signin_btn} ${styleLogin.customSigninBtn}   mb-8 me-2`}
+              >
+                <FcGoogle className="me-2" />
+                Google
+              </Button>
+
+              <Button
+                onClick={signInWithFacebook}
+                type="submit"
+                className={`${style.signin_btn}  mb-8 `}
+              >
+                <BsFacebook className="me-2" />
+                Facebook
+              </Button>
+            </div>
+
             <p className={`text-center ${styleLogin.polices_parag}`}>
               By signing in or creating an account, you agree with our{" "}
               <span className="text-blue-600">Terms & Conditions</span> and{" "}
