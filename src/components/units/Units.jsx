@@ -2,8 +2,9 @@ import Card from "./../shared/card/Card";
 import Filter from "../shared/filter/Filter";
 import Slider from "../shared/slider/Slider";
 import style from "./unit.module.css";
-
+import { data } from './../auth/firebase/Firebase' 
 const Units = () => {
+  console.log(data[0]);
   const cardData = [
     { id: 1, title: 'Villa', price: '$5000', bedNum: '3', bathNum: '4', area: '600', location: 'Alexandria', type: 'For Sale' },
     { id: 2, title: 'Apartment', price: '$3990', bedNum: '2', bathNum: '1', area: '250', location: 'Alexandria', type: 'For Sale' },
@@ -23,7 +24,7 @@ const Units = () => {
           Unit For Sale
         </h2>
         <div className=" flex flex-wrap justify-center">
-          {cardData.slice(0, 1).map(card => (
+          {cardData.slice(0, 3).map(card => (
             <div key={card.id} className="">
               <Card
                 {...card}
@@ -45,7 +46,7 @@ const Units = () => {
           Unit For Rent
         </h2>
         <div className=" flex flex-wrap justify-center">
-          {cards.slice(0, 1).map(card => (
+          {cards.slice(0, 3).map(card => (
             <div key={card.id} className="">
               <Card
                 {...card}

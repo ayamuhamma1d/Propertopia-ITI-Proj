@@ -1,20 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
-import { faShareNodes } from '@fortawesome/free-solid-svg-icons';
-import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
+import { faShareAlt } from '@fortawesome/free-solid-svg-icons';
+import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import { faBed } from '@fortawesome/free-solid-svg-icons';
 import { faBath } from '@fortawesome/free-solid-svg-icons';
-import { faHouse } from '@fortawesome/free-solid-svg-icons';
+import { faHome } from '@fortawesome/free-solid-svg-icons';
 import CardImg from "../../../assets/img/12.jpg";
 import CardImg1 from "../../../assets/img/13.jpg";
 import CardImg2 from "../../../assets/img/14.jpg";
 import { NavLink, Link } from "react-router-dom";
-const Card = ({ type, title }) => {
+
+
+const Card = ({ type, title,id }) => {
   const [isWishlist, setIsWishlist] = useState(false);
-  const addToWishlist = () => {
+  const addToWishlist = (id) => {
     setIsWishlist(!isWishlist);
+    console.log('====================================');
+    console.log(id);
+    console.log('====================================');
   };
+
+  useEffect(() => {
+    const storedWishlistItems = localStorage.getItem('wishlistItems');
+    if (storedWishlistItems) {
+      setIsWishlist(JSON.parse(storedWishlistItems));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('wishlistItems', JSON.stringify(isWishlist));
+  }, [isWishlist]);
 
   return (
     <div className='w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto mt-10'>
@@ -33,7 +50,7 @@ const Card = ({ type, title }) => {
               <a href="#" className="font-medium">
                 {title}
               </a>
-              <span className="text-xl font-bold  ">$599</span>
+              <span className="text-xl font-bold">$599</span>
             </div>
             <div className='flex justify-between items-center border-b pb-2'>
               <div>
@@ -50,7 +67,7 @@ const Card = ({ type, title }) => {
               </div>
               <div>
                 <p>
-                  <FontAwesomeIcon icon={faHouse} className='me-2' />
+                  <FontAwesomeIcon icon={faHome} className='me-2' />
                   area
                 </p>
               </div>
@@ -58,20 +75,20 @@ const Card = ({ type, title }) => {
             <div className="flex items-center justify-between mt-2.5 mb-5">
               <div>
                 <p>
-                  <FontAwesomeIcon className='pr-1' icon={faLocationDot} />
+                  <FontAwesomeIcon className='pr-1' icon={faMapMarkerAlt} />
                   location
                 </p>
               </div>
               <div>
                 <Link className='pr-3'>
                   <FontAwesomeIcon
-                    icon={isWishlist ? faHeart : faBed}
-                    onClick={addToWishlist}
+                    icon={isWishlist ? solidHeart : regularHeart}
+                    onClick={()=>{addToWishlist(id)}}
                   />
                 </Link>
                 <a href="">
                   <FontAwesomeIcon
-                    icon={faShareNodes}
+                    icon={faShareAlt}
                     style={{ color: "#080808" }}
                     className='pe-2'
                   />
