@@ -5,13 +5,13 @@
 
 .projectItem {
   position: relative;
-  margin-bottom: 350px;
+  margin-bottom: 200px;
 }
 
 .imgBackdrop {
   width: 100%;
   height: 800px;
-  background-image: url(/src/assets/img/49048260-583c-4945-a120-1df8c88e28ed.jpg);
+  background-image: url(/src/assets/img/bgphototest.jpeg);
   -webkit-background-size: cover;
   background-position: center center;
   background-size: cover;
@@ -19,10 +19,14 @@
 
 .content {
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 25%;
   width: 50%;
   height: 100%;
+}
+
+.mrSection {
+  margin-top: 25px;
 }
 
 @media only screen and (max-width: 1023px) {
@@ -43,14 +47,20 @@
   }
 }
 
-@media only screen and (min-width: 1024px) and (max-width: 1100px) {
+@media only screen and (min-width: 1024px) and (max-width: 1190px) {
   .projectItem {
-    margin-bottom: 250px;
+    margin-bottom: 120px;
   }
 }
 
-@media only screen and (min-width: 1101px)and (max-width: 1350px) {
+@media only screen and (min-width: 1191px)and (max-width: 1250px) {
   .projectItem {
-    margin-bottom: 300px;
+    margin-bottom: 150px;
   }
+}
+
+  @media only screen and (min-width: 1251px)and (max-width: 1300px) {
+    .projectItem {
+      margin-bottom: 180px;
+    }
 }
