@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { auth,providerFb } from "../firebase/Firebase";
+import { auth, provider } from "../firebase/Firebase";
 import {
   signInWithPopup,
   signInWithEmailAndPassword,
   FacebookAuthProvider,
 } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { Button, Label, TextInput } from "flowbite-react";
 import { BsFacebook } from "react-icons/bs";
@@ -18,30 +17,28 @@ import styleLogin from "./login.module.css";
 const Login = () => {
   let userEmail, userPass;
   let userToken;
-  const navigate = useNavigate();
-  const [signInWithGoogle] = useSignInWithGoogle(auth,providerFb);
+  const [signInWithGoogle] = useSignInWithGoogle(auth, provider);
   const [errorMessage, setErrorMessage] = useState("");
   const [errorCode, setErrorCode] = useState("");
 
   const signInWithFacebook = async () => {
     try {
-      const result = await signInWithPopup(auth, providerFb);
+      const result = await signInWithPopup(auth, provider);
       const credential = FacebookAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       const user = result.user;
-      // window.location.href = "../../Home";
+      window.location.href = "../../Home";
     } catch (error) {
       const errorCode = error.code;
       const errorMessage = error.message;
       const email = error.customData?.email;
       const credential = FacebookAuthProvider.credentialFromError(error);
-
     }
   };
   const signInWithGoogleHandler = async () => {
     try {
       await signInWithGoogle();
-      navigate("/Home");
+      window.location.href = "../../Home";
     } catch (error) {
       console.error("Error signing in with Google:", error);
     }
