@@ -120,7 +120,7 @@ const Payment = () => {
                             </div>
 
 
-                            <div className='flex '>
+                            <div className='flex mb-5'>
                                 <div className="me-2">
                                     <input type="text" placeholder="CVV" value={cvv} onChange={handleCvvChange}
                                         onFocus={() => setCvvTouched(true)}
@@ -157,8 +157,11 @@ const Payment = () => {
                                 </div>
 
                             </div>
+                            <button type="submit" className=" mt-3 w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded">
+                                Submit
+                            </button>
                         </form>
-                        <button type="submit"></button>
+
 
                     </div >
 
