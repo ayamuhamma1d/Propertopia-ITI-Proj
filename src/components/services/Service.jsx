@@ -1,5 +1,5 @@
 import React from 'react'
-import photoo from './../../assets/img/Maintenance/gettyimages-961748068-612x612.jpg';
+import photoo from './../../assets/img/13.jpg';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
@@ -9,11 +9,14 @@ import style from './service.module.css';
 const Service = () => {
   return (
     <>
-      < section>
+
         <div className={style.projectItem}>
           <div className={style.imgBackdrop}>
+            <div className="layer">
+              
+            </div>
           </div>
-          <div className={`${style.content} `}>
+            <div className={`${style.content} `}>
             <div className='mb-2 w-full'>
               <h2 className=" text-center  font-bold text-xl md:text-2xl text-slate-950 font-[Poppins] py-3 mb-5">Enter Your Payment Details</h2>
               <p className=" text-center text-xl text-slate-700 mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, explicabo dignissimos! Molestias quis deserunt autem.</p>
@@ -25,7 +28,7 @@ const Service = () => {
         </div>
 
         <div className=' mt-5 w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto' >
-          <div className= {`${style.mrSection} mx-auto grid grid-cols-1 lg:grid-cols-2  items-center bg-beige1 border border-gray-200 rounded-lg shadow 
+          <div className={`${style.mrSection} mx-auto grid grid-cols-1 lg:grid-cols-2  items-center bg-beige1 border border-gray-200 rounded-lg shadow 
           max-w-xl lg:max-w-5xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700`} >
             <div>
               <img className={`${style.img} h-auto max-w-full rounded-lg`} src={photoo} alt="1" />
@@ -48,7 +51,7 @@ const Service = () => {
             </div>
           </div>
 
-          <div className= {`${style.mrSection} mx-auto grid grid-cols-1 lg:grid-cols-2  items-center bg-beige1 border border-gray-200 rounded-lg shadow 
+          <div className={`${style.mrSection} mx-auto grid grid-cols-1 lg:grid-cols-2  items-center bg-beige1 border border-gray-200 rounded-lg shadow 
           max-w-xl lg:max-w-5xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700`} >
             <div>
               <img className={`${style.img} h-auto max-w-full rounded-lg`} src={photoo} alt="1" />
@@ -60,7 +63,7 @@ const Service = () => {
           </div>
 
         </div>
-        <div className= {`${style.mrSection} w-full  p-4 text-center  bg-beige1 border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700`}>
+        <div className={`${style.mrSection} w-full  p-4 text-center  bg-beige1 border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700`}>
           <h3 className="text-xl mb-7 md:text-3xl font-bold text-gray-900 dark:text-white">CONTACT CUSTOMER SERVICE</h3>
           <div className="items-center justify-center ">
             <a href="#" className=" m-2 sm:w-sm w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
@@ -78,7 +81,7 @@ const Service = () => {
           </div>
 
         </div>
-      </section >
+
     </>
   )
 }
