@@ -1,14 +1,14 @@
+
 import React from "react";
-import Before1 from "../../assets/img/Maintenancecomponent/before1.png";
-import Before2 from "../../assets/img/Maintenancecomponent/before2.png";
-import After1 from "../../assets/img/Maintenancecomponent/after1.png";
-import After2 from "../../assets/img/Maintenancecomponent/after2.png";
+import { Link } from "react-router-dom";
+
 import model1 from "../../assets/img/Maintenancecomponent/1.png";
 import model2 from "../../assets/img/Maintenancecomponent/2.png";
 import model3 from "../../assets/img/Maintenancecomponent/3.png";
 import model4 from "../../assets/img/Maintenancecomponent/4.png";
 import model5 from "../../assets/img/Maintenancecomponent/5.png";
 import model6 from "../../assets/img/Maintenancecomponent/6.png";
+import { data } from "../auth/firebase/Firebase";
 import "./maintenance.css";
 
 const Maintenance = () => {
@@ -20,32 +20,16 @@ const Maintenance = () => {
             Maintained
           </h2>
           <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-1 lg:grid-cols-2 xl:gap-x-8">
+            {data[2].map((item) => (
             <div className="after_before_bg bg-[#eae0da]">
-              <div className="after_before  p-4 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-1 lg:grid-cols-2 xl:gap-x-8  ">
-                <div className="group relative">
-                  <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none cursor-pointer lg:h-80">
+              <div className=" p-4  gap-x-6 gap-y-10 xl:gap-x-8  ">
+                <div className="group relative befor_after ">
+                  <div className="aspect-h-1  aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none cursor-pointer lg:h-80">
                     <img
-                      src={Before1}
-                      className="h-full w-full object-cover object-center mt-0  lg:h-full lg:w-full"
+                      src={item.img_url
+                      }
+                      className="h-full  w-full object-center mt-0  lg:h-full lg:w-full"
                     />
-                  </div>
-                  <div className="mt-4 flex justify-between">
-                    <h3 className="text-lg   text-center	w-100 text-gray-700">
-                      Before
-                    </h3>
-                  </div>
-                </div>
-                <div className="group relative">
-                  <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none cursor-pointer lg:h-80">
-                    <img
-                      src={After1}
-                      className="h-full w-full object-cover object-center mt-0  lg:h-full lg:w-full"
-                    />
-                  </div>
-                  <div className="mt-4 flex justify-between">
-                    <h3 className="text-lg   text-center	w-100 text-gray-700">
-                      After
-                    </h3>
                   </div>
                 </div>
               </div>
@@ -56,123 +40,14 @@ const Maintenance = () => {
                 fugit. Illum sunt magnam vero?
               </p>
             </div>
-            <div className="after_before_bg bg-[#eae0da]">
-              <div className="after_before  p-4 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-1 lg:grid-cols-2 xl:gap-x-8  ">
-                <div className="group relative">
-                  <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none cursor-pointer lg:h-80">
-                    <img
-                      src={Before2}
-                      className="h-full w-full object-cover object-center mt-0  lg:h-full lg:w-full"
-                    />
-                  </div>
-                  <div className="mt-4 flex justify-between">
-                    <h3 className="text-lg   text-center	w-100 text-gray-700">
-                      Before
-                    </h3>
-                  </div>
-                </div>
-                <div className="group relative">
-                  <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none cursor-pointer lg:h-80">
-                    <img
-                      src={After2}
-                      className="h-full w-full object-cover object-center mt-0  lg:h-full lg:w-full"
-                    />
-                  </div>
-                  <div className="mt-4 flex justify-between">
-                    <h3 className="text-lg   text-center	w-100 text-gray-700">
-                      After
-                    </h3>
-                  </div>
-                </div>
-              </div>
-              <p className="px-5 pb-3 text-start">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Consequuntur neque voluptas quam ipsam itaque fuga eos animi
-                quidem reprehenderit sequi omnis, enim corporis corrupti totam
-                fugit. Illum sunt magnam vero?
-              </p>
-            </div>
-          </div>
-          <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-1 lg:grid-cols-2 xl:gap-x-8">
-            <div className="after_before_bg bg-[#eae0da]">
-              <div className="after_before  p-4 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-1 lg:grid-cols-2 xl:gap-x-8  ">
-                <div className="group relative">
-                  <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none cursor-pointer lg:h-80">
-                    <img
-                      src={Before1}
-                      className="h-full w-full object-cover object-center mt-0  lg:h-full lg:w-full"
-                    />
-                  </div>
-                  <div className="mt-4 flex justify-between">
-                    <h3 className="text-lg   text-center	w-100 text-gray-700">
-                      Before
-                    </h3>
-                  </div>
-                </div>
-                <div className="group relative">
-                  <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none cursor-pointer lg:h-80">
-                    <img
-                      src={After1}
-                      className="h-full w-full object-cover object-center mt-0  lg:h-full lg:w-full"
-                    />
-                  </div>
-                  <div className="mt-4 flex justify-between">
-                    <h3 className="text-lg   text-center	w-100 text-gray-700">
-                      After
-                    </h3>
-                  </div>
-                </div>
-              </div>
-              <p className="px-5 pb-3 text-start">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Consequuntur neque voluptas quam ipsam itaque fuga eos animi
-                quidem reprehenderit sequi omnis, enim corporis corrupti totam
-                fugit. Illum sunt magnam vero?
-              </p>
-            </div>
-            <div className="after_before_bg bg-[#eae0da]">
-              <div className="after_before  p-4 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-1 lg:grid-cols-2 xl:gap-x-8  ">
-                <div className="group relative">
-                  <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none cursor-pointer lg:h-80">
-                    <img
-                      src={Before2}
-                      className="h-full w-full object-cover object-center mt-0  lg:h-full lg:w-full"
-                    />
-                  </div>
-                  <div className="mt-4 flex justify-between">
-                    <h3 className="text-lg   text-center	w-100 text-gray-700">
-                      Before
-                    </h3>
-                  </div>
-                </div>
-                <div className="group relative">
-                  <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none cursor-pointer lg:h-80">
-                    <img
-                      src={After2}
-                      className="h-full w-full object-cover object-center mt-0  lg:h-full lg:w-full"
-                    />
-                  </div>
-                  <div className="mt-4 flex justify-between">
-                    <h3 className="text-lg   text-center	w-100 text-gray-700">
-                      After
-                    </h3>
-                  </div>
-                </div>
-              </div>
-              <p className="px-5 pb-3 text-start">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Consequuntur neque voluptas quam ipsam itaque fuga eos animi
-                quidem reprehenderit sequi omnis, enim corporis corrupti totam
-                fugit. Illum sunt magnam vero?
-              </p>
-            </div>
+            ))}
           </div>
           <div className="maintained_Button  ">
             <button
               type="button"
               className="rounded-md bg-[#eae0da] px-2.5 py-1.5 mt-16 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
             >
-              See more
+              <Link to="/maintenance/finishes" className="Link"> See more</Link>
             </button>
           </div>
         </div>
@@ -246,7 +121,7 @@ const Maintenance = () => {
               type="button"
               className="rounded-md mb-10 bg-[#eae0da] border-transparent px-2.5 py-1.5 mt-16 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
             >
-              See more
+              <Link to="/maintenance/3d-max" className="Link"> See more</Link>
             </button>
           </div>
         </div>

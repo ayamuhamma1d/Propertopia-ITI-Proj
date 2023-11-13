@@ -1,14 +1,10 @@
 import React from 'react';
 import photoo from './../../../assets/img/Maintenance/gettyimages-1268557129-612x612.jpg'
-
-// import photoo from './../../../assets/img/beace5158805561.6392196298760.jpg';
 import dphoto from './../../../assets/img/Maintenance/gettyimages-1268557129-612x612.jpg';
 import aphoto from './../../../assets/img/Maintenance/gettyimages-961748068-612x612.jpg';
-
 import style from "./details.module.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { faShareNodes } from '@fortawesome/free-solid-svg-icons';
 import { faTreeCity } from '@fortawesome/free-solid-svg-icons';
 import { faBed } from '@fortawesome/free-solid-svg-icons';
@@ -27,19 +23,28 @@ import { faBuilding } from '@fortawesome/free-solid-svg-icons';
 import { faElevator } from '@fortawesome/free-solid-svg-icons';
 import { faShieldHalved } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
+import { NavLink, Link } from "react-router-dom";
+
+import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
 const Details = () => {
   const imgs = [{ id: 0, value: aphoto },
   { id: 1, value: photoo, },
   { id: 2, value: dphoto, }]
   const [sliderData, setSliderData] = useState(imgs[0])
-  const handleClick = (index) => {
+  const handleClick = () => {
     const slider = imgs[index];
     setSliderData(slider);
   }
+  const [isWishlist, setIsWishlist] = useState(false);
+  const addToWishlist = (index) => {
+    setIsWishlist(!isWishlist);
+
+  };
 
   return (
     <>
-      <section className='w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto'>
+      <section className='w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto my-10'>
         <div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-stretch" >
             <div className="grid gap-4 p-5 me-3 ">
@@ -69,12 +74,12 @@ const Details = () => {
                   <h6 className=" text-xl text-slate-900"><span className="font-bold text-xl text-beige">EGP </span> 1,537,000</h6>
                 </div>
                 <div className='flex justify-between align-items-center py-5' >
-                  <a className='p-3'>
-                    <FontAwesomeIcon icon={faHeart} />
-                  </a>
-                  <a className='p-3'>
+                  <Link className='p-3 cursor-pointer'>
+                    <FontAwesomeIcon   icon={isWishlist ? solidHeart : regularHeart} onClick={()=>{addToWishlist()}} />
+                  </Link>
+                  <Link className='p-3'>
                     <FontAwesomeIcon icon={faShareNodes} style={{ color: "#080808", }} className='pe-2' />
-                  </a>
+                  </Link>
                 </div>
               </div>
 
@@ -109,17 +114,11 @@ const Details = () => {
                     <FontAwesomeIcon className={`${style.iconscolor} me-2 text-beige`} icon={faStreetView} />
                     <span class="pe-2 ">View:</span>
                     <span className="text-gray-600">Main Street</span></li>
-                  <li className='flex py-1 items-center ' >
-                    <FontAwesomeIcon className={`${style.iconscolor} me-2 text-beige`} icon={faCircleCheck} />
-                    <span class="pe-2 ">Finish Type:</span>
-                    <span className="text-gray-600">Extra super lux</span></li>
+         
                 </ul>
 
                 <ul>
-                  <li className='flex py-1 items-center ' >
-                    <FontAwesomeIcon className={`${style.iconscolor} me-2 text-beige`} icon={faPerson} />
-                    <span class="pe-2 ">Ownership Primary: </span>
-                    <span className="text-gray-600">Primary</span> </li>
+                 
                   <li className='flex  py-1' >
                     <FontAwesomeIcon className={`${style.iconscolor} me-2 text-beige`} icon={faBath} />
                     <span class="pe-2 ">Bathrooms: </span>
@@ -141,37 +140,8 @@ const Details = () => {
             </div>
           </div>
 
-          <div className="pb-3 w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl mx-auto font-[Poppins] ">
-            <h2 class=" font-[Poppins] text-left font-bold text-2xl w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto  py-2 ">Features </h2>
-            <div className='text-lg font-bold font-bold grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 my-3 ms-5 '>
-              <div className=" bg-beige1 me-3 p-2 text-center mb-3 ">
-                <FontAwesomeIcon icon={faWater} className="text-beige me-2  bg-beige1" />
-                Water Meter</div>
-              <div className=" bg-beige1 me-3 p-2 text-center mb-3 ">
-                <FontAwesomeIcon icon={faBolt} className="text-beige me-2  bg-beige1" /> Electricity Meter</div>
-              <div className=" bg-beige1 me-3 p-2 text-center mb-3 ">
-                <FontAwesomeIcon icon={faSquareParking} className="text-beige me-2  bg-beige1" /> Covered parking</div>
-              <div className=" bg-beige1 me-3 p-2 text-center mb-3 ">
-                <FontAwesomeIcon icon={faBuilding} className="text-beige me-2  bg-beige1" />Balcony or Terrace</div>
-              <div className=" bg-beige1 me-3 p-2 text-center mb-3 ">
-                <FontAwesomeIcon icon={faElevator} className="text-beige me-2  bg-beige1" />Elevators </div>
-              <div className=" bg-beige1 me-3 p-2 text-center mb-3 ">
-                <FontAwesomeIcon icon={faShieldHalved} className="text-beige me-2  bg-beige1" /> Security Staff</div>
-            </div></div>
-
-          <div class=' pb-2 mb-5 ' >
-            <h2 class="font-[Poppins]  font-bold text-left text-2xl w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto  "> Payment Plans</h2>
-            <div class='grid grid-cols-1 md:grid-cols-2 text-center' >
-              <p class="text-sm text-slate-900 my-5" className={style.loancolor} >
-                <span >
-                  <span class="font-bold font-[Poppins] text-lg" >EGP 8,897 per month</span></span></p>
-              <p className={style.loancolor}>
-                <span class='text-lg font-bold font-[Poppins]'> TOTAL LOAN AMOUNT : </span>
-                <span class=" ">EGP 2,669,133</span>
-              </p>
-            </div>
-          </div>
-        </div >
+         </div>
+   
       </section >
     </>)
 }

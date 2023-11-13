@@ -1,6 +1,5 @@
 import React from 'react'
 import photoo from './../../assets/img/13.jpg';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
