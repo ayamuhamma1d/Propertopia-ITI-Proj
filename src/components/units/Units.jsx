@@ -23,7 +23,7 @@ const Units = () => {
           Unit For Sale
         </h2>
         <div className=" flex flex-wrap justify-center">
-          {cardData.slice(0, 1).map(card => (
+          {cardData.slice(0, 3).map(card => (
             <div key={card.id} className="">
               <Card
                 {...card}
@@ -45,7 +45,7 @@ const Units = () => {
           Unit For Rent
         </h2>
         <div className=" flex flex-wrap justify-center">
-          {cards.slice(0, 1).map(card => (
+          {cards.slice(0, 3).map(card => (
             <div key={card.id} className="">
               <Card
                 {...card}
