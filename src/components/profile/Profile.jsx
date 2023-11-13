@@ -13,7 +13,6 @@ const Profile = () => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         setUserName(user.displayName);
-        console.log(user);
       }
     });
 

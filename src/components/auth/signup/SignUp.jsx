@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { auth, provider, providerFb } from "../firebase/Firebase";
+import { updateProfile } from "firebase/auth";
+import { auth, db, provider, providerFb } from "../firebase/Firebase";
 import {
   signInWithPopup,
   GoogleAuthProvider,
@@ -14,6 +15,7 @@ import signImg from "../../../assets/img/signup.jpg";
 import style from "../Auth.module.css";
 import style_resp from "./signup.module.css";
 import styleLogin from "../login/login.module.css";
+import { collection, doc, setDoc } from "firebase/firestore";
 
 const SignUp = () => {
   let userName, userEmail, userPass, userPhone;
@@ -77,28 +79,34 @@ const SignUp = () => {
       sendUser();
     }
   };
-  const sendUser = async () => {
-    await createUserWithEmailAndPassword(
-      auth,
-      userEmail,
-      userPass,
-      userName,
-      userPhone
-    )
-      .then((userCredential) => {
-        const user = userCredential.user;
-        user.phoneNumber = userPhone;
-        user.displayName = userName;
-        userToken = user.accessToken;
 
-        window.location.href = "../../Home";
-      })
-      .catch((error) => {
-        const code = error.code;
-        const message = code.split("/")[1].replace(/-/g, " ");
-        setErrorCode(code);
-        setErrorMessage(message);
+  const sendUser = async () => {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        userEmail,
+        userPass
+      );
+      const user = userCredential.user;
+
+      const currentUser = auth.currentUser;
+      await updateProfile(currentUser, {
+        displayName: userName,
       });
+      await setDoc(doc(db, "users", user.uid), {
+        displayName: userName,
+        phoneNumber: userPhone,
+      });
+
+      window.location.href = "../../Home";
+    } catch (error) {
+      const code = error?.code || "unknown";
+      const message =
+        code.split("/")[1]?.replace(/-/g, " ") || "An unknown error occurred";
+      setErrorCode(code);
+      setErrorMessage(message);
+      console.log(error);
+    }
   };
 
   useEffect(() => {

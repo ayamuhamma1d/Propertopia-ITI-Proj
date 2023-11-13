@@ -6,28 +6,54 @@ import { faPhone } from "@fortawesome/free-solid-svg-icons";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import styles from "./userData.module.css";
 import { useEffect, useState } from "react";
-import { auth } from "../auth/firebase/Firebase";
+import { auth, db } from "../auth/firebase/Firebase";
+import { collection, getDocs } from "firebase/firestore";
 
 const UserData = () => {
   const [userName, setUserName] = useState(null);
   const [userEmail, setUserEmail] = useState(null);
   const [userPhone, setUserPhone] = useState(null);
-  const [userImage, setUserImage] = useState(null);
+
+  const getCollectionData = async () => {
+    try {
+      const querySnapshot = await getDocs(collection(db, "users"));
+
+      const collectionData = querySnapshot.docs.map((doc) => {
+        const data = doc.data();
+        if (data.displayName === userName) {
+          setUserPhone(data.phoneNumber);
+        }
+        const docId = doc.id;
+        return { docId, ...data };
+      });
+
+      return collectionData;
+    } catch (error) {
+      console.error("Error getting collection data: ", error);
+      throw error;
+    }
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await getCollectionData();
+    };
+
+    fetchData();
+  }, [userName]);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         setUserName(user.displayName);
         setUserEmail(user.email);
-        setUserPhone(user.phoneNumber);
-        setUserImage(user.photoURL);
       }
     });
 
     return () => {
       unsubscribe();
     };
-  }, [userEmail, userName, userPhone]);
+  }, []);
 
   return (
     <div
