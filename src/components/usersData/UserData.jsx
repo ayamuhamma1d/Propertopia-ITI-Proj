@@ -12,6 +12,7 @@ const UserData = () => {
   const [userName, setUserName] = useState(null);
   const [userEmail, setUserEmail] = useState(null);
   const [userPhone, setUserPhone] = useState(null);
+  const [userImage, setUserImage] = useState(null);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -19,7 +20,7 @@ const UserData = () => {
         setUserName(user.displayName);
         setUserEmail(user.email);
         setUserPhone(user.phoneNumber);
-        console.log(user);
+        setUserImage(user.photoURL);
       }
     });
 
@@ -28,54 +29,58 @@ const UserData = () => {
     };
   }, [userEmail, userName, userPhone]);
 
-  const dummyUserData = {
-    photo:
-      "https://cdn.vectorstock.com/i/preview-1x/08/19/gray-photo-placeholder-icon-design-ui-vector-35850819.jpg",
-  };
-
   return (
     <div
       className={` flex justify-between items-center px-10  border-beige flex-wrap`}
     >
       <div className=" w-full mb-10">
-        <img
-          src={dummyUserData.photo}
-          className={`${styles.user_photo} mb-10 shadow-xl `}
-        />
         <div className="flex flex-col gap-10">
-          <div className={`${styles.profile_left_content_ele} bg-white shadow`}>
-            <div className={styles.profile_left_content_ele_svg}>
-              <FontAwesomeIcon icon={faUser} />
+          {userName != null && (
+            <div
+              className={`${styles.profile_left_content_ele} bg-white shadow`}
+            >
+              <div className={styles.profile_left_content_ele_svg}>
+                <FontAwesomeIcon icon={faUser} />
+              </div>
+              <p>
+                <span className="ms-4 text-slate-700 font-[Poppins] ">
+                  {" "}
+                  {userName}
+                </span>
+              </p>
             </div>
-            <p>
-              <span className="ms-4 text-slate-700 font-[Poppins] ">
-                {" "}
-                {userName}
-              </span>
-            </p>
-          </div>
-          <div className={`${styles.profile_left_content_ele} bg-white shadow`}>
-            <div className={styles.profile_left_content_ele_svg}>
-              <FontAwesomeIcon icon={faEnvelope} />
+          )}
+          {userEmail != null && (
+            <div
+              className={`${styles.profile_left_content_ele} bg-white shadow`}
+            >
+              <div className={styles.profile_left_content_ele_svg}>
+                <FontAwesomeIcon icon={faEnvelope} />
+              </div>
+              <p>
+                <span className="ms-4 text-slate-700 font-[Poppins] ">
+                  {" "}
+                  {userEmail}
+                </span>
+              </p>
             </div>
-            <p>
-              <span className="ms-4 text-slate-700 font-[Poppins] ">
-                {" "}
-                {userEmail}
-              </span>
-            </p>
-          </div>
-          <div className={`${styles.profile_left_content_ele} bg-white shadow`}>
-            <div className={styles.profile_left_content_ele_svg}>
-              <FontAwesomeIcon icon={faPhone} />
+          )}
+
+          {userPhone != null && (
+            <div
+              className={`${styles.profile_left_content_ele} bg-white shadow`}
+            >
+              <div className={styles.profile_left_content_ele_svg}>
+                <FontAwesomeIcon icon={faPhone} />
+              </div>
+              <p>
+                <span className="ms-4 text-slate-700 font-[Poppins] ">
+                  {" "}
+                  {userPhone}
+                </span>
+              </p>
             </div>
-            <p>
-              <span className="ms-4 text-slate-700 font-[Poppins] ">
-                {" "}
-                {userPhone}
-              </span>
-            </p>
-          </div>
+          )}
         </div>
       </div>
       <div

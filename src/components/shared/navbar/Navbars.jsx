@@ -8,12 +8,18 @@ import { NavLink, Link } from "react-router-dom";
 import NavLinks from "./NavLinks";
 import { useEffect } from "react";
 function Navbars() {
+  const dummyUserData = {
+    photo:
+      "https://cdn.vectorstock.com/i/preview-1x/08/19/gray-photo-placeholder-icon-design-ui-vector-35850819.jpg",
+  };
   const [userToken, setUserToken] = useState(null);
+  const [userImage, setUserImage] = useState(null);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         setUserToken(user.accessToken);
+        setUserImage(user.photoURL);
       } else {
         setUserToken(null);
       }
@@ -28,7 +34,7 @@ function Navbars() {
     try {
       await signOut(auth);
       setUserToken(null);
-      console.log("User signed out successfully");
+      window.location.href = "../../Home";
     } catch (error) {
       console.error("Error signing out:", error);
     }
@@ -45,7 +51,14 @@ function Navbars() {
       <nav className="bg-white my-1">
         <div className="  flex item-center justify-between  w-full sm:max-w-full md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto ">
           <div className="z-50 lg:w-auto w-full flex justify-between items-center ">
-        <Link to=" "> <img src={logo} className="mr-3 h-24 " alt="Flowbite React Logo" /></Link>
+            <Link to=" ">
+              {" "}
+              <img
+                src={logo}
+                className="mr-3 h-24 "
+                alt="Flowbite React Logo"
+              />
+            </Link>
             <div
               className="text-4xl cursor-pointer lg:hidden"
               onClick={() => setOpen(!open)}
@@ -78,14 +91,7 @@ function Navbars() {
             >
               Login
             </NavLink>
-            <NavLink
-            to="./profile"
-              className={`${style.btn} ${
-                userToken != null ? "block" : "hidden"
-              }`}
-            >
-              Profile
-            </NavLink>
+
             <NavLink
               onClick={logOut}
               id="logout_btn"
@@ -94,6 +100,22 @@ function Navbars() {
               }`}
             >
               Logout
+            </NavLink>
+            <NavLink
+              to="./profile"
+              className={` ${userToken != null ? "block" : "hidden"}`}
+            >
+              {userImage != null ? (
+                <img
+                  src={userImage}
+                  className={`${style.user_photo} mb-10 shadow-xl `}
+                />
+              ) : (
+                <img
+                  src={dummyUserData.photo}
+                  className={`${style.user_photo} mb-10 shadow-xl `}
+                />
+              )}
             </NavLink>
           </div>
           {/* Mobile */}

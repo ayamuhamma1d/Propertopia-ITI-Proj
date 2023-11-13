@@ -7,13 +7,13 @@ import { Card, Typography, List, ListItem } from "@material-tailwind/react";
 import styles from "./profile.module.css";
 import { auth } from "../auth/firebase/Firebase";
 
-
 const Profile = () => {
   const [userName, setUserName] = useState("");
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         setUserName(user.displayName);
+        console.log(user);
       }
     });
 
@@ -96,15 +96,13 @@ const Profile = () => {
         {activeButton === "EditUserData" ? (
           // <EditUserData user={dummyUserData} />
           <EditUserData />
-
         ) : activeButton === "ChangePass" ? (
           <ChangePassword />
         ) : activeButton === "Wishlist" ? (
           <Wishlist />
         ) : (
           // <UserData user={dummyUserData} />
-          <UserData  />
-          
+          <UserData />
         )}
       </div>
     </div>
