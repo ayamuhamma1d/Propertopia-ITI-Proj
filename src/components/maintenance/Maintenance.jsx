@@ -1,5 +1,7 @@
 
 import React from "react";
+import { Link } from "react-router-dom";
+
 import model1 from "../../assets/img/Maintenancecomponent/1.png";
 import model2 from "../../assets/img/Maintenancecomponent/2.png";
 import model3 from "../../assets/img/Maintenancecomponent/3.png";
@@ -45,7 +47,7 @@ const Maintenance = () => {
               type="button"
               className="rounded-md bg-[#eae0da] px-2.5 py-1.5 mt-16 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
             >
-              See more
+              <Link to="/maintenance/finishes" className="Link"> See more</Link>
             </button>
           </div>
         </div>
@@ -119,7 +121,7 @@ const Maintenance = () => {
               type="button"
               className="rounded-md mb-10 bg-[#eae0da] border-transparent px-2.5 py-1.5 mt-16 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
             >
-              See more
+              <Link to="/maintenance/3d-max" className="Link"> See more</Link>
             </button>
           </div>
         </div>
