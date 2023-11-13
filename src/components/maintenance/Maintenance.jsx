@@ -1,9 +1,5 @@
 
 import React from "react";
-import Before1 from "../../assets/img/Maintenancecomponent/before1.png";
-import Before2 from "../../assets/img/Maintenancecomponent/before2.png";
-import After1 from "../../assets/img/Maintenancecomponent/after1.png";
-import After2 from "../../assets/img/Maintenancecomponent/after2.png";
 import model1 from "../../assets/img/Maintenancecomponent/1.png";
 import model2 from "../../assets/img/Maintenancecomponent/2.png";
 import model3 from "../../assets/img/Maintenancecomponent/3.png";
