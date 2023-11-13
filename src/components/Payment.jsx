@@ -1,83 +1,35 @@
+
 import './payment.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCreditCard } from '@fortawesome/free-solid-svg-icons';
-import React, { useState, useEffect } from 'react';
-
+import { useForm, Controller, useController } from 'react-hook-form';
 
 const Payment = () => {
 
-    const [cardNumber, setCardNumber] = useState('');
-    const [cardHolder, setCardHolder] = useState('');
-    const [cvv, setCvv] = useState('');
-    const [expiryMonth, setExpiryMonth] = useState('Month');
-    const [expiryYear, setExpiryYear] = useState('Year');
-    const [cardNumberError, setCardNumberError] = useState('');
-    const [cvvError, setCvvError] = useState('');
-    const [cardHolderError, setCardHolderError] = useState('');
-
-    const [cardNumberTouched, setCardNumberTouched] = useState(false);
-    const [cardHolderTouched, setCardHolderTouched] = useState(false);
-    const [cvvTouched, setCvvTouched] = useState(false);
-
-    const [years, setYears] = useState([]);
-
-
-    const handleCardNumberChange = (e) => {
-
-        const value = e.target.value.replace(/\D/g, '').slice(0, 16);
-        setCardNumber(value);
-        setCardNumberTouched(true);
-
-
-        if (!/^\d{16}$/.test(value)) {
-            setCardNumberError('must be a number and must be 16 digits.');
-        } else {
-            setCardNumberError('');
-        }
+    const { register, handleSubmit, control, formState: { errors } } = useForm();
+    const onFormSubmit = (data) => {
+        console.log(data)
     }
 
-    const handleCardHolderChange = (e) => {
-        setCardHolder(e.target.value);
-        setCardHolderTouched(true);
+    const ExpiryMonthController = useController({
+        control,
+        name: 'expiryMonth',
+        defaultValue: 'Month',
+        rules: { required: 'Expiry Month is required' },
 
-        if (!/^[a-zA-Z]+(\s[a-zA-Z]+)*$/.test(e.target.value)) {
-            setCardHolderError('Please do not enter any numbers or special characters and do not begin or end with space.');
-        } else {
-            setCardHolderError('');
-        }
-    };
+    });
 
-    const handleCvvChange = (e) => {
-        const value = e.target.value.replace(/\D/g, '').slice(0, 3);
-        setCvv(value);
-        setCvvTouched(true);
+    const ExpiryYearController = useController({
+        control,
+        name: 'expiryYear',
+        defaultValue: 'Year',
+        rules: { required: 'Expiry Year is required' },
 
-        if (!/^\d{3}$/.test(value)) {
-            setCvvError('must be a number and must be 3 digits.');
-        } else {
-            setCvvError('');
-        }
-    };
+    });
 
-    const handleExpiryMonthChange = (e) => {
-        setExpiryMonth(e.target.value);
-    };
+    const years = Array.from({ length: 12 }, (_, index) => new Date().getFullYear() + index);
+    const months = Array.from({ length: 12 }, (_, index) => index + 1);
 
-    const handleExpiryYearChange = (e) => {
-        setExpiryYear(e.target.value);
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-    };
-    const month = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-
-    useEffect(() => {
-        const startYear = new Date().getFullYear();
-        const yearOptions = Array.from({ length: 12 }, (_, index) => startYear + index);
-
-        setYears(yearOptions);
-    }, []);
     return (
         <>
 
@@ -88,66 +40,82 @@ const Payment = () => {
 
                         <h2 className=" text-center font-bold text-xl md:text-2xl text-slate-950 font-[Poppins] py-3">Enter Your Payment Details</h2>
 
-                        <form onSubmit={handleSubmit} className="bg-white shadow-2xl rounded px-10 pt-6 pb-8 mb-4">
+                        <form onSubmit={handleSubmit(onFormSubmit)} className="bg-white shadow-2xl rounded px-10 pt-6 pb-8 mb-4">
                             <div className="mb-5">
-                                <input type="text" value={cardNumber} onChange={handleCardNumberChange} onFocus={() => setCardNumberTouched(true)}
-                                    onBlur={() => setCardNumberTouched(true)}
+                                <input type="text" {...register('cardnumber', { required: true, pattern: /^\d{16}$/ })}
+
                                     className="shadow appearance-none border-gray-400 rounded w-full py-3 px-3 text-gray-700 leading-tight 
                                         focus:outline-none focus:shadow-outline placeholder-gray-400" id=""
                                     placeholder={`${<FontAwesomeIcon icon={faCreditCard} />} Card Number `}
+
                                 />
-                                {cardNumberTouched && !cardNumber && <p className="text-red-600">Card Number is required.</p>}
-                                {cardNumberError && <p className="text-red-600">{cardNumberError}</p>}
+                                {errors?.cardnumber?.type === 'required' &&
+                                    <p className="form-text text-red-600" >This field is required</p>}
+                                {errors?.cardnumber?.type === 'pattern' &&
+                                    <p className="form-text text-red-600"> must be a number and must be 16 digits</p>}
                             </div>
 
                             <div className="mb-5">
-                                <input type="text" placeholder="Card Holder" value={cardHolder} onChange={handleCardHolderChange}
-                                    onFocus={() => setCardHolderTouched(true)}
-                                    onBlur={() => setCardHolderTouched(true)}
+                                <input type="text" placeholder="Card Holder"  {...register('cardholder', { required: true, pattern: /^[a-zA-Z]+(\s[a-zA-Z]+)*$/ })}
                                     className="shadow appearance-none border-gray-400 rounded w-full py-3 px-3 text-gray-700 leading-tight
                                           focus:outline-none  focus:shadow-outline placeholder-gray-400" id="" />
-                                {cardHolderTouched && !cardHolder && <p className="text-red-600">Card Holder is required.</p>}
-                                {cardHolderError && <p className="text-red-600">{cardHolderError}</p>}
+                                {errors?.cardholder?.type === 'required' &&
+                                    <p className="form-text text-red-600" >This field is required</p>}
+                                {errors?.cardholder?.type === 'pattern' &&
+                                    <p className="form-text text-red-600"> Please do not enter any numbers or special characters and do not begin or end with space</p>}
+
                             </div>
 
                             <div className="mb-5">
-                                <select className=" appearance-none w-full bg-white border-gray-400 hover:border-gray-500 py-3 px-3 rounded shadow leading-tight
-                                         focus:outline-none focus:shadow-outline">
-                                    <option>Unites State</option>
-                                    <option>Option 2</option>
-                                    <option>Option 3</option>
-                                </select>
-                            </div>
 
+                                <Controller
+                                    name="unitType"
+                                    control={control}
+                                    defaultValue="For Sell"
+                                    render={({ field }) => (
+                                        <select
+                                            {...field}
+                                            className=" appearance-none w-full bg-white border-gray-400 hover:border-gray-500 py-3 px-3 rounded shadow leading-tight
+                                         focus:outline-none focus:shadow-outline"
+                                        >
+                                            <option >Unites State</option>
+                                            <option >j</option>
+                                        </select>
+                                    )}
+                                />
+
+                            </div>
 
                             <div className='flex mb-5'>
                                 <div className="me-2">
-                                    <input type="text" placeholder="CVV" value={cvv} onChange={handleCvvChange}
-                                        onFocus={() => setCvvTouched(true)}
-                                        onBlur={() => setCvvTouched(true)}
+                                    <input type="text" placeholder="CVV" {...register('cvv', { required: true, pattern: /^\d{3}$/ })}
                                         className="shadow appearance-none border-gray-400 rounded w-full py-3   text-gray-700 leading-tight 
                                         focus:outline-none 
                                             focus:shadow-outline placeholder-gray-400" id="" />
-                                    {cvvTouched && !cvv && <p className="text-red-600">cvv is required.</p>}
-                                    {cvvError && <p className="text-red-600">{cvvError}</p>}
-                                </div>
+                                    {errors?.cvv?.type === 'required' &&
+                                        <p className="form-text text-red-600" >This field is required</p>}
+                                    {errors?.cvv?.type === 'pattern' &&
+                                        <p className="form-text text-red-600"> must be a number and must be 3 digits</p>}
 
+                                </div>
                                 <div className="me-2">
-                                    <select value={expiryMonth} onChange={handleExpiryMonthChange}
-                                        className=" appearance-none w-full bg-white border-gray-400 hover:border-gray-500 py-3 px-1 rounded shadow leading-tight
-                                         focus:outline-none focus:shadow-outline text-gray-400">
-                                        <option>Expiry Month</option>
-                                        {month.map((data) =>
-                                            <option >{data}</option>
-                                        )}
+                                    <select {...ExpiryMonthController.field}
+                                        className={`appearance-none w-full bg-white border-gray-400 hover:border-gray-500 py-3 px-1 rounded shadow leading-tight
+                                        focus:outline-none focus:shadow-outline text-gray-400 ${errors.expiryMonth ? 'border-red-500' : ''}`}>
+                                        <option value="Month">Expiry Month</option>
+                                        {months.map((data) => (
+                                            <option key={data} value={data}>
+                                                {data}
+                                            </option>
+                                        ))}
                                     </select>
                                 </div>
 
                                 <div className="">
-                                    <select value={expiryYear} onChange={handleExpiryYearChange}
-                                        className=" appearance-none w-full bg-white border-gray-400 hover:border-gray-500 py-3 px-1 rounded shadow leading-tight
-                                         focus:outline-none focus:shadow-outline text-gray-400">
-                                        <option>Expiry Year</option>
+                                    <select {...ExpiryYearController.field}
+                                        className={`appearance-none w-full bg-white border-gray-400 hover:border-gray-500 py-3 px-1 rounded shadow leading-tight
+                                      focus:outline-none focus:shadow-outline text-gray-400 ${errors.expiryYear ? 'border-red-500' : ''}`}>
+                                        <option value="Year">Expiry Year</option>
                                         {years.map((year) => (
                                             <option key={year} value={year}>
                                                 {year}
