@@ -7,14 +7,13 @@ import { getFirestore } from "firebase/firestore";
 const firebaseConfig = {
   apiKey: "AIzaSyAc9QfpkdeoQlCJLlrLtxI7gH7jKghv50g",
   authDomain: "propertopi.firebaseapp.com",
-  databaseURL: "https://propertopi-default-rtdb.europe-west1.firebasedatabase.app",
+  databaseURL:
+    "https://propertopi-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "propertopi",
   storageBucket: "propertopi.appspot.com",
   messagingSenderId: "588141933109",
-  appId: "1:588141933109:web:a87ec8f09225b1c431b77c"
+  appId: "1:588141933109:web:a87ec8f09225b1c431b77c",
 };
-
-
 
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
@@ -27,5 +26,5 @@ const snapshot = await get(rootRef);
 
 export const data = snapshot.val();
 export const provider = new GoogleAuthProvider(app);
-export  const providerFb = new FacebookAuthProvider(app);
-export const db = getFirestore(app)
+export const providerFb = new FacebookAuthProvider(app);
+export const db = getFirestore(app);

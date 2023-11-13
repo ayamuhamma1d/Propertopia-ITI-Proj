@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { auth, provider } from "../firebase/Firebase";
+import { auth, provider, providerFb } from "../firebase/Firebase";
 import {
   signInWithPopup,
   GoogleAuthProvider,
@@ -23,7 +23,7 @@ const SignUp = () => {
 
   const signInWithFacebook = async () => {
     try {
-      const result = await signInWithPopup(auth, provider);
+      const result = await signInWithPopup(auth, providerFb);
       const credential = FacebookAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       const user = result.user;

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { auth, provider } from "../firebase/Firebase";
+import { auth, provider,providerFb } from "../firebase/Firebase";
 import {
   signInWithPopup,
   signInWithEmailAndPassword,
@@ -23,7 +23,7 @@ const Login = () => {
 
   const signInWithFacebook = async () => {
     try {
-      const result = await signInWithPopup(auth, provider);
+      const result = await signInWithPopup(auth, providerFb);
       const credential = FacebookAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       const user = result.user;
@@ -53,7 +53,7 @@ const Login = () => {
       );
       const user = userCredential.user;
       userToken = user.accessToken;
-      navigate("/Home");
+      window.location.href = "../../Home";
     } catch (error) {
       const errorCode = error.code;
       const errorMessage = error.message;
