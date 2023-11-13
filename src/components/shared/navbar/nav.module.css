@@ -1,21 +1,38 @@
 ::marker {
- 
+
     display: none !important;
 }
-.navbar{
+
+.navbar {
     background-color: #EAE0DA !important;
     padding: 1rem 0;
     text-align: center;
     z-index: 10000;
-    
+
 }
-.btn{
+
+.user_photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-top: 2rem;
+    margin-left: 1rem;
+    object-fit: cover;
+    border: 3px solid #bca37f;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.btn {
     background-color: #EAE0DA !important;
     padding: 1rem 2rem;
-  margin-left: 1rem;
+    margin-left: 1rem;
 }
-@media screen and (max-width: 768px){
-    .navbar{
+
+@media screen and (max-width: 768px) {
+    .navbar {
         display: none;
     }
 }
