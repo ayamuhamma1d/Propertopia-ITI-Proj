@@ -7,18 +7,17 @@ import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import { faBed } from '@fortawesome/free-solid-svg-icons';
 import { faBath } from '@fortawesome/free-solid-svg-icons';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
-import CardImg from "../../../assets/img/12.jpg";
-import CardImg1 from "../../../assets/img/13.jpg";
-import CardImg2 from "../../../assets/img/14.jpg";
+
 import { NavLink, Link } from "react-router-dom";
 
 
-const Card = ({area,price,purpose,type_of_unit,image_url,bathrooms,rooms
+const Card = ({area,price,purpose,type_of_unit,image_url,bathrooms,rooms,pricePerDay,id
 })=> {
 
   const [isWishlist, setIsWishlist] = useState(false);
-  const addToWishlist = () => {
+  const addToWishlist = (index) => {
     setIsWishlist(!isWishlist);
+        console.log(index);
 
   };
 
@@ -38,9 +37,9 @@ const Card = ({area,price,purpose,type_of_unit,image_url,bathrooms,rooms
       <div className="flex  gap-10 flex-wrap  justify-center items-center">
         <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
           <div className='relative '>
-            <a href="#">
+            <Link to={`details/${id}`}>
               <img src={image_url} alt="" />
-            </a>
+            </Link>
             <div className={`absolute top-2 left-3 bg-black p-2`}>
               <p className="text-white">For {purpose}</p>
             </div>
@@ -50,7 +49,7 @@ const Card = ({area,price,purpose,type_of_unit,image_url,bathrooms,rooms
               <a href="#" className="font-medium capitalize">
                 {type_of_unit}
               </a>
-              <span className="text-xl font-bold">${price}</span>
+              <span className="text-xl font-bold">${purpose=='sale'?price:pricePerDay}</span>
             </div>
             <div className='flex justify-between items-center border-b pb-2'>
               <div>
@@ -83,7 +82,7 @@ const Card = ({area,price,purpose,type_of_unit,image_url,bathrooms,rooms
                 <Link className='pr-3'>
                   <FontAwesomeIcon
                     icon={isWishlist ? solidHeart : regularHeart}
-                    onClick={()=>{addToWishlist()}}
+                    onClick={()=>{addToWishlist(id)}}
                   />
                 </Link>
                 <a href="">

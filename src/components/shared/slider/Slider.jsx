@@ -42,7 +42,7 @@ console.log(props[20].image_url);
       clickEvent: "sliderClick"
     },
     {
-      image: "https://picsum.photos/700/600",
+      image: props[20].image_url,
       title: "This is a third title 6",
       description: "This is a third description",
       clickEvent: "sliderClick"

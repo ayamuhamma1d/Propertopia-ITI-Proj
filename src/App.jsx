@@ -24,12 +24,15 @@ function App() {
         <Routes>
           <Route path='/' element={<Navigate to= '/home'/>}></Route>
           <Route path='/home' element={<Home />}></Route>
+          <Route path='/home/details/:id' element={<Details />}></Route>
           <Route path='/about' element={<About />}></Route>
           <Route path='/units' element={<Units />}></Route>
           <Route path='/units/unit-for-sale' element={<UnitForSale />}></Route>
-          <Route path='/units/unit-for-sale/:id' element={<Details />}></Route>
+          <Route path='/units/details/:id' element={<Details />}></Route>
           <Route path='/units/unit-for-rent' element={<UnitForRent />}></Route>
-          <Route path='/units/unit-for-rent/:id' element={<Details />}></Route>
+          <Route path='/units/details/:id' element={<Details />}></Route>
+          <Route path='/units/unit-for-sale/details/:id' element={<Details />}></Route>
+          <Route path='/units/unit-for-sale/details/:id' element={<Details />}></Route>
           <Route path='/maintenance' element={<Maintenance />}></Route>
           <Route path='/maintenance/finishes' element={<Finishes />}></Route>
           <Route path='/maintenance/3d-max' element={<Max3d />}></Route>
