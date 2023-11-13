@@ -13,12 +13,13 @@ import CardImg2 from "../../../assets/img/14.jpg";
 import { NavLink, Link } from "react-router-dom";
 
 
-const Card = ({ type, title,id }) => {
+const Card = ({area,price,purpose})=> {
+
   const [isWishlist, setIsWishlist] = useState(false);
-  const addToWishlist = (id) => {
+  const addToWishlist = () => {
     setIsWishlist(!isWishlist);
     console.log('====================================');
-    console.log(id);
+    console.log();
     console.log('====================================');
   };
 
@@ -42,15 +43,15 @@ const Card = ({ type, title,id }) => {
               <img src={CardImg} alt="" />
             </a>
             <div className={`absolute top-2 left-3 bg-black p-2`}>
-              <p className="text-white">{type}</p>
+              <p className="text-white">For {purpose}</p>
             </div>
           </div>
           <div className="px-5 pb-5">
             <div className="flex items-center justify-between mb-3 pt-3">
               <a href="#" className="font-medium">
-                {title}
+                {/* {title} */}
               </a>
-              <span className="text-xl font-bold">$599</span>
+              <span className="text-xl font-bold">${price}</span>
             </div>
             <div className='flex justify-between items-center border-b pb-2'>
               <div>
@@ -68,7 +69,7 @@ const Card = ({ type, title,id }) => {
               <div>
                 <p>
                   <FontAwesomeIcon icon={faHome} className='me-2' />
-                  area
+               {area}m
                 </p>
               </div>
             </div>
@@ -83,7 +84,7 @@ const Card = ({ type, title,id }) => {
                 <Link className='pr-3'>
                   <FontAwesomeIcon
                     icon={isWishlist ? solidHeart : regularHeart}
-                    onClick={()=>{addToWishlist(id)}}
+                    onClick={()=>{addToWishlist()}}
                   />
                 </Link>
                 <a href="">
