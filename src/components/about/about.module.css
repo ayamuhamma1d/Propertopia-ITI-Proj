@@ -1,0 +1,58 @@
+
+.imgAbsoule{
+    left: 94%;
+    top: 14%; 
+    object-fit: contain;
+  }
+  
+  
+  .Continer {
+    position: relative;
+  }
+  
+  
+  
+  .Continer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.192), rgb(0, 0, 0)), url(../../assets/img/HouseTwo.png);
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: 100% 100%;
+    background-size: cover;
+    z-index: 0;
+  
+  }
+  
+  .BgContent {
+    background-color: white;
+    z-index: 100;
+  }
+  
+  
+  @media screen and (max-width: 767px){
+    .imgAbsoule{
+      display: none;
+    }
+    .BgContent{
+      width: 80%;
+      margin:0 auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  
+    }
+    .BgContent p, .BgContent h2, .BgContent h3 {
+      width: 100%;
+      text-align: center;
+      }
+      .BtnContainer{
+        width: 100%;
+        text-align: center;
+      }
+  }
+    
+  
