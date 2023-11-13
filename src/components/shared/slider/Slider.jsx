@@ -5,7 +5,10 @@ import CardSlider2 from"../../../assets/img/2.jpg"
 import CardSlider from"../../../assets/img/3.jpg"
 import CardSlider4 from"../../../assets/img/4.jpg"
 import CardSlider5 from"../../../assets/img/5.jpg"
-const Slider = () => {
+const Slider = (props) => {
+
+console.log(props[20].image_url);
+
   const slides = [
     {
       image:CardSlider1,

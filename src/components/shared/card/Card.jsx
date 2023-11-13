@@ -13,14 +13,13 @@ import CardImg2 from "../../../assets/img/14.jpg";
 import { NavLink, Link } from "react-router-dom";
 
 
-const Card = ({area,price,purpose})=> {
+const Card = ({area,price,purpose,type_of_unit,image_url,bathrooms,rooms
+})=> {
 
   const [isWishlist, setIsWishlist] = useState(false);
   const addToWishlist = () => {
     setIsWishlist(!isWishlist);
-    console.log('====================================');
-    console.log();
-    console.log('====================================');
+
   };
 
   useEffect(() => {
@@ -40,7 +39,7 @@ const Card = ({area,price,purpose})=> {
         <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
           <div className='relative '>
             <a href="#">
-              <img src={CardImg} alt="" />
+              <img src={image_url} alt="" />
             </a>
             <div className={`absolute top-2 left-3 bg-black p-2`}>
               <p className="text-white">For {purpose}</p>
@@ -48,8 +47,8 @@ const Card = ({area,price,purpose})=> {
           </div>
           <div className="px-5 pb-5">
             <div className="flex items-center justify-between mb-3 pt-3">
-              <a href="#" className="font-medium">
-                {/* {title} */}
+              <a href="#" className="font-medium capitalize">
+                {type_of_unit}
               </a>
               <span className="text-xl font-bold">${price}</span>
             </div>
@@ -57,13 +56,13 @@ const Card = ({area,price,purpose})=> {
               <div>
                 <p>
                   <FontAwesomeIcon icon={faBed} style={{ color: "#000000" }} className='me-2' />
-                  BedNum.
+              {rooms}
                 </p>
               </div>
               <div>
                 <p>
                   <FontAwesomeIcon icon={faBath} style={{ color: "#000000" }} className='me-2' />
-                  bathNum.
+                 {bathrooms}
                 </p>
               </div>
               <div>
