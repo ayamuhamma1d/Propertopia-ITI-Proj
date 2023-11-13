@@ -25,11 +25,13 @@
   }
   
 
+
 @media only screen and (max-width: 1024px) {
 
     .iframe_parent {
         height: 800px;
     }
+  
 }
 
 .maintained_Button {
@@ -37,3 +39,4 @@
     justify-content: flex-end;
 
 }
+
