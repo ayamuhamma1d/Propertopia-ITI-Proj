@@ -5,11 +5,7 @@ import House from "../../assets/img/House.jpg"
 const About = () => {
   return (
     <div className="pt-10">
-     
- 
       <div className={`${styles.Continer} flex mb-20`}>
-     
-
       <div className={ `${styles.BgContent} relative  w-1/2  pl-20 pt-40 pb-40 mb-10 `}>
         <h3 className="text-xl  text-beige  mb-8 ">VIEW THE EXTRAORDINARY</h3>
         <h2 className="text-2xl mb-3 font-bold">Homes in Alexandria</h2>

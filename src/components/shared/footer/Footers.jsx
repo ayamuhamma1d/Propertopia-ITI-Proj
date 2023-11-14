@@ -7,7 +7,7 @@ import React from 'react'
 function Footers() {
   return (
     <Footer container  >
-      <div className="w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto">
+      <div className="w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto ">
         <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
           <div>
             <img className="mr-3 h-24 uppercase font-[Poppins]"
