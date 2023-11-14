@@ -96,6 +96,7 @@ const SignUp = () => {
       await setDoc(doc(db, "users", user.uid), {
         displayName: userName,
         phoneNumber: userPhone,
+        email: userEmail,
       });
 
       window.location.href = "../../Home";

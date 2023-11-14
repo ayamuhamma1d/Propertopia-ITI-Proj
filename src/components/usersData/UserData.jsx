@@ -20,7 +20,7 @@ const UserData = () => {
 
       const collectionData = querySnapshot.docs.map((doc) => {
         const data = doc.data();
-        if (data.displayName === userName) {
+        if (data.email === userEmail) {
           setUserPhone(data.phoneNumber);
         }
         const docId = doc.id;
