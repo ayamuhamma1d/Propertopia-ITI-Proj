@@ -1,5 +1,5 @@
 import { useForm, Controller } from "react-hook-form";
-import { sendEmailVerification, updateEmail, updateProfile } from "firebase/auth";
+import { updateProfile } from "firebase/auth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUser,
@@ -41,32 +41,32 @@ function EditProfile() {
       unsubscribe();
     };
   }, []);
+
   const onSubmit = async () => {
     try {
       const emailPattern = /^[^\s@]+@(gmail|yahoo|hotmail)\.com$/;
       const phoneNumberPattern = /^01[1025]\d{8}$/;
-  
+
       let isValid = true;
-  
+
       if (!emailPattern.test(userEmail)) {
         setErrorMessage("Please enter a valid email address.");
         isValid = false;
       }
-  
+
       if (!phoneNumberPattern.test(userPhone)) {
         setErrorMessage("Please enter a valid phone number");
         isValid = false;
       }
-  
+
       if (isValid) {
+        const currentUser = auth.currentUser;
+
         await updateProfile(auth.currentUser, {
           displayName: userName,
+          email: userEmail,
         });
-  
-        await updateEmail(auth.currentUser, userEmail);
 
-        await sendEmailVerification(auth.currentUser);
-  
         const collectionData = await getCollectionData();
         const user = collectionData.find(
           (data) => data.displayName === userName
@@ -75,64 +75,19 @@ function EditProfile() {
         if (user) {
           await updateDoc(doc(db, "users", user.docId), {
             phoneNumber: userPhone,
+            displayName: userName,
+            email: userEmail,
           });
         }
-
+        
         setUserPhone(userPhone);
         setUserEmail(userEmail);
       }
-  
 
-      // window.location.href = "../profile";
     } catch (error) {
       console.error(error);
     }
   };
-  // const onSubmit = async () => {
-  //   try {
-  //     const emailPattern = /^[^\s@]+@(gmail|yahoo|hotmail)\.com$/;
-  //     const phoneNumberPattern = /^01[1025]\d{8}$/;
-
-  //     let isValid = true;
-
-  //     if (!emailPattern.test(userEmail)) {
-  //       setErrorMessage("Please enter a valid email address.");
-  //       isValid = false;
-  //     }
-
-  //     if (!phoneNumberPattern.test(userPhone)) {
-  //       setErrorMessage("Please enter a valid phone number");
-  //       isValid = false;
-  //     }
-
-  //     if (isValid) {
-  //       const currentUser = auth.currentUser;
-
-  //       await updateProfile(auth.currentUser, {
-  //         displayName: userName,
-  //         email: userEmail,
-  //       });
-
-  //       const collectionData = await getCollectionData();
-  //       const user = collectionData.find(
-  //         (data) => data.displayName === userName
-  //       );
-
-  //       if (user) {
-  //         await updateDoc(doc(db, "users", user.docId), {
-  //           phoneNumber: userPhone,
-  //           displayName: userName,
-  //           email: userEmail,
-  //         });
-  //       }
-  //       setUserPhone(userPhone);
-  //       setUserEmail(userEmail);
-  //     }
-  //     window.location.href = "../profile";
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
 
   const getCollectionData = async () => {
     try {

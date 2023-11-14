@@ -109,22 +109,7 @@ const UserData = () => {
           )}
         </div>
       </div>
-      <div
-        className={`${styles.profile_left_content_ele} bg-white w-full py-3  border-beige1 border-solid  mb-10 justify-end`}
-      >
-        <p
-          className={`${styles.ele_svg} flex items-center text-2xl font-[Poppins]  mx-3 text-beige`}
-        >
-          <FontAwesomeIcon
-            icon={faHeart}
-            className="text-2xl me-3 text-beige"
-          />
-          Favorite Units :
-        </p>
-        {/* <span className={`${styles.addtocard_num} text-2xl text-gray-500`}>
-          {user.addToCard.length}
-        </span> */}
-      </div>
+
     </div>
   );
 };
