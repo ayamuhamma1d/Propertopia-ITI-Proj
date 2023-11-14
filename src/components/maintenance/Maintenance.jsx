@@ -20,7 +20,7 @@ const Maintenance = () => {
             Maintained
           </h2>
           <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-1 lg:grid-cols-2 xl:gap-x-8">
-            {data[2].map((item) => (
+            {data[2].slice(0,6).map((item) => (
             <div className="after_before_bg bg-[#eae0da]">
               <div className=" p-4  gap-x-6 gap-y-10 xl:gap-x-8  ">
                 <div className="group relative befor_after ">

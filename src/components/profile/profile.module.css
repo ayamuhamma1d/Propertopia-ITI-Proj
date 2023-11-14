@@ -1,8 +1,3 @@
-.profile_container {
-  display: flex;
-
-
-}
 
 .active_select {
   background-color: #bca37f;
@@ -16,21 +11,21 @@
 
 .profile_content {
   width: 100%;
-  height: auto;
+
+  
 
 }
+.links{
+  width: 25%;
+}
 
-@media screen and (max-width: 739px) {
-  .profile_container {
+@media screen and (max-width: 967px) {
+  .links{
+    width: 100%;
+    box-shadow: none !important;
+    margin-bottom: 3rem;
+  }
+  .profile{
     flex-direction: column;
-    align-items: stretch;
-  }
-  
-  .active_select {
-    font-size: 1.2rem;
-  }
-  
-  .not_active_select {
-    font-size: 0.9rem;
   }
 }

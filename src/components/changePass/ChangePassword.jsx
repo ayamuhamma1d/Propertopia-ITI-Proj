@@ -38,7 +38,7 @@ const ChangePassword = () => {
 
   return (
     <div className="w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto mb-10">
-           <h4 className="text-left mb-10 ms-2 text-2xl font-[Poppins]">Change Your password</h4>
+              <h5 className="text-left mb-10 ms-2 text-2xl capitalize">Change Your password</h5>
       <form onSubmit={handleSubmit(onSubmit)} className="gap-6">
         <div className="flex flex-col w-full">
           <div className="flex items-center justify-center mb-5">

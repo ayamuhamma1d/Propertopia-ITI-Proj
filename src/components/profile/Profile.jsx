@@ -6,7 +6,6 @@ import Wishlist from "./../wishlist/Wishlist";
 import { Card, Typography, List, ListItem } from "@material-tailwind/react";
 import styles from "./profile.module.css";
 import { auth } from "../auth/firebase/Firebase";
-
 const Profile = () => {
   const [userName, setUserName] = useState("");
   useEffect(() => {
@@ -15,14 +14,11 @@ const Profile = () => {
         setUserName(user.displayName);
       }
     });
-
     return () => {
       unsubscribe();
     };
   }, [userName]);
-
   const [activeButton, setActiveButton] = useState("UserData");
-
   const handleEditClickUserBtn = () => {
     setActiveButton("UserData");
   };
@@ -39,8 +35,8 @@ const Profile = () => {
   };
 
   return (
-    <div className={styles.profile_container}>
-      <Card className="h-[calc(100vh-2rem)] w-full max-w-[17rem] flex flex-col shadow-xl shadow-blue-gray-900/5 flex-col font-[Poppins] text-left text-3xl ">
+    <div className={`flex ${styles.profile}`}>
+      <Card className= {`shadow-xl shadow-blue-gray-900/5 me-3  font-[Poppins] text-left text-3xl ${styles.links}`} >
         <div className="mb-2">
           <Typography variant="h5" color="blue-gray">
             <span className="text-base md:text-base lg:text-lg xl:text-xl ">

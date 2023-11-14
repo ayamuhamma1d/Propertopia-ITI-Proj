@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-
-const NavLinks = () => {
+const NavLinks = ({setOpen}) => {
+  
   const links = [
     {
       name: "About us",
@@ -44,25 +44,26 @@ const NavLinks = () => {
 
   ];
   const [heading, setHeading] = useState("");
-
   const toggleSubMenu = (linkName) => {
+  
     if (heading === linkName) {
       setHeading("");
     } else {
       setHeading(linkName);
     }
   };
-
   return (
     <>
-      {links.map((link, index) => (
+    {links.map((link, index) => (
         <div key={index}>
           <li className="py-3 px-2  text-left hover:text-beige md:cursor-pointer group">
             <NavLink
               to={link.path}
               className="hover:text-beige flex justify-between items-center md:pr-0 pr-5 group"
               activeClassName="active"
-              onClick={() => toggleSubMenu(link.name)}
+              onClick={() => {
+                toggleSubMenu(link.name)              
+              }}
             >
               {link.name}
               {link.submenu && (
@@ -82,9 +83,9 @@ const NavLinks = () => {
             </NavLink>
             {link.submenu && (
               <div
-                className={`absolute top-28 md:${
+                className={`absolute top-16 lg:${
                   heading === link.name ? "block" : "hidden"
-                } hidden group-hover:md:block`}
+                } hidden group-hover:lg:block`}
               >
                 <div className="py-3">
                   <div className="w-4 h-4 left-3 absolute mt-1 bg-beige1 rotate-45 "></div>
@@ -100,6 +101,7 @@ const NavLinks = () => {
                           to={subLink.path}
                           activeClassName="active"
                           className="hover:text-beige"
+                      
                         >
                           {subLink.Head}
                         </NavLink>
@@ -114,18 +116,19 @@ const NavLinks = () => {
           {link.submenu && (
             <ul
               className={`${
-                heading === link.name ? "md:hidden" : "hidden"
+                heading === link.name ? "lg:hidden" : "hidden"
               }`}
             >
               {link.subLinks.map((subLink, subIndex) => (
                 <li
                   key={subIndex}
-                  className="text-sm  text-gray-800 my-2.5 "
+                  className="text-sm  text-gray-800 my-2.5  "
                 >
                   <NavLink
                     to={subLink.path}
                     activeClassName="active"
-                    className="hover:text-beige py-4 pl-7 font-semibold md:pr-0 pr-5"
+                    className="hover:text-beige py-4 pl-7 font-semibold md:pr-0 pr-6 "
+                 
                   >
                     {subLink.Head}
                   </NavLink>

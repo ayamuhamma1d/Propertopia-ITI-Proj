@@ -48,7 +48,7 @@ function Navbars() {
         {" "}
         <h5 className=" uppercase font-[Poppins] text-2xl  ">Propertopia</h5>
       </div>
-      <nav className="bg-white my-1">
+      <nav className={`bg-white my-1 ${style.nav}`}>
         <div className="  flex item-center justify-between  w-full sm:max-w-full md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto ">
           <div className="z-50 lg:w-auto w-full flex justify-between items-center ">
             <Link to=" ">
@@ -71,7 +71,7 @@ function Navbars() {
               <NavLink
                 to="./"
                 className="py-3 px-2 inline-block hover:text-beige"
-                activeClassName="active"
+                activeClassName="active"                
               >
                 Home{" "}
               </NavLink>
@@ -95,7 +95,7 @@ function Navbars() {
             <NavLink
               onClick={logOut}
               id="logout_btn"
-              className={`${style.btn} ${
+              className={`${style.btn} text-black ${
                 userToken != null ? "block" : "hidden"
               }`}
             >
@@ -120,16 +120,21 @@ function Navbars() {
           </div>
           {/* Mobile */}
           <ul
-            className={`lg:hidden absolute bg-white w-full h-full bottom-0 py-36 pl-4 duration-500 ${
-              open ? "left-0" : "left-[-100%]"
-            }`}
+            className={`lg:hidden absolute bg-white w-full h-fit pt-20  pl-4 duration-500 ${style.nav_sm} ${
+              open ? "left-0" : "left-[-100%]" 
+            }`} activeClassName="active"  
           >
-            <li>
-              <Link to="./" className="py-3 px-3 inline-block">
+          
+              <Link to="./" className="py-3 px-2 inline-block" activeClassName="active"  >
                 Home{" "}
               </Link>
-            </li>
-            <NavLinks />
+         
+            <NavLinks setOpen={setOpen} />
+           
+              <Link to="/profile" className="py-3 px-2 inline-block mb-5"  activeClassName="active" >
+                Profile
+              </Link>
+      
           </ul>
         </div>
       </nav>

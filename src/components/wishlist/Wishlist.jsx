@@ -24,7 +24,7 @@ const Wishlist = () => {
       });
       setWishlist(collectionData); 
     } catch (error) {
-      console.error("Error getting collection data: ", error);
+      return <p  className="bg-beige1 border border-beige text-beige px-4 py-3 text-xs rounded relative font-[Poppins]">{error}</p>
     }
   };
   useEffect(() => {
@@ -38,14 +38,13 @@ const Wishlist = () => {
       setWishlist((prevWishlist) =>
         prevWishlist.filter((card) => card.docId !== docId)
       );
-      console.log("Item removed from wishlist");
     } catch (error) {
-      console.error("Error removing item from wishlist: ", error);
+      return <p  className="bg-beige1 border border-beige text-beige px-4 py-3 text-xs rounded relative font-[Poppins]">{error}</p>
     }
   };
   return (
     <div className="w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto h-auto mb-10">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-1 justify-center">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3  xl:grid-cols-4 gap-1 justify-center">
         {wishlist.map((card) => (
           <div key={card.docId} className="mb-2">
             <Card {...card} removeFromWishlist={removeFromWishlist} />

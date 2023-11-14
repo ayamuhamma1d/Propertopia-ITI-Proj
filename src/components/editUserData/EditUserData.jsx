@@ -119,7 +119,7 @@ function EditProfile() {
 
   return (
     <div className="w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto mb-10">
-      <h5 className="text-left mb-10 ms-2 text-2xl">Edit Your Data</h5>
+      <h5 className="text-left mb-10 ms-2 text-2xl capitalize">Edit Your Data</h5>
       <form onSubmit={handleSubmit(onSubmit)} className="gap-6">
         <div className="flex flex-col w-full">
           <div className="flex items-center justify-center mb-5">
@@ -173,6 +173,7 @@ function EditProfile() {
               value={userPhone}
               onChange={(e) => setUserPhone(e.target.value)}
               className=" border-none w-full me-4 font-[Poppins] py-3 bg-white shadow rounded-e-2xl "
+              placeholder="Enter your Phone"
             />
             {errors.phone && (
               <div

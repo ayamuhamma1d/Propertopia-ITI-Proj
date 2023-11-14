@@ -17,4 +17,7 @@
         letter-spacing: 1px;
       }
       
-   
+   .active{
+    color: #BCA37F;
+    overflow: hidden;
+   }

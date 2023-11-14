@@ -10,13 +10,9 @@ import { faHome } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import { auth, db } from './../../auth/firebase/Firebase';
 import {
-  collection,
-  addDoc,
   deleteDoc,
   doc,
   getDoc,
-  query,
-  where,
   setDoc,} from 'firebase/firestore';
 const Card = ({
   area,
@@ -92,13 +88,22 @@ const Card = ({
       }
     }
   };
-
   const handleShare = () => {
     if (navigator.share) {
+      const propertyDetails = `
+        Property Details:
+        Type: ${type_of_unit}
+        Purpose: ${purpose}
+        Rooms: ${rooms}
+        Bathrooms: ${bathrooms}
+        Area: ${area}m
+        Price: ${purpose === 'sale' ? '$' + price.toLocaleString() : '$' + pricePerDay.toLocaleString()}
+      `;
+  
       navigator
         .share({
           title: 'Check out this property',
-          text: 'I found this amazing property and thought you might be interested!',
+          text: 'I found this amazing property and thought you might be interested!\n\n' + propertyDetails,
           url: window.location.href,
         })
         .then(() => console.log('Shared successfully'))
@@ -107,13 +112,12 @@ const Card = ({
       console.log('Web Share API not supported');
     }
   };
-
   return (
     <div className='w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto mt-10'>
       <div className="flex  gap-10 flex-wrap  justify-center items-center">
         <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
           <div className='relative '>
-            <Link to={`details/${id}`}>
+            <Link to={`/details/${id}`}>
               <img src={image_url} alt="" />
             </Link>
             <div className={`absolute top-2 left-3 bg-black p-2`}>
@@ -122,7 +126,7 @@ const Card = ({
           </div>
           <div className="px-5 pb-5">
             <div className="flex items-center justify-between mb-3 pt-3">
-              <Link className="font-medium capitalize">
+              <Link className="font-medium capitalize font-[Poppins] ">
                 {type_of_unit}
               </Link>
               <span className="text-xl font-bold font-[Poppins]">${purpose === 'sale' ? price.toLocaleString() : pricePerDay.toLocaleString()}</span>
@@ -141,13 +145,12 @@ const Card = ({
                 </p>
               </div>
               <div>
-                <p>
+                <p  className=' font-[Poppins]'>
                   <FontAwesomeIcon icon={faHome} className='me-2 font-[Poppins]' />
                   {area}m
                 </p>
               </div>
             </div>
-
             <div className="flex items-center justify-between mt-2.5 mb-5">
               <div>
                 <p>
@@ -177,5 +180,4 @@ const Card = ({
     </div>
   );
 };
-
 export default Card;

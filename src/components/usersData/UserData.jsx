@@ -1,14 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faPhone } from "@fortawesome/free-solid-svg-icons";
-import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import styles from "./userData.module.css";
 import { useEffect, useState } from "react";
 import { auth, db } from "../auth/firebase/Firebase";
 import { collection, getDocs } from "firebase/firestore";
-
 const UserData = () => {
   const [userName, setUserName] = useState(null);
   const [userEmail, setUserEmail] = useState(null);
@@ -57,15 +54,16 @@ const UserData = () => {
 
   return (
     <div
-      className={` flex justify-between items-center px-10  border-beige flex-wrap`}
+      className=" flex justify-between items-center px-10  border-beige flex-wrap"
     >
+      <h5 className="text-left mb-10 ms-2 text-2xl font-[Poppins] capitalize ">Your Information</h5>
       <div className=" w-full mb-10">
         <div className="flex flex-col gap-10">
           {userName != null && (
             <div
-              className={`${styles.profile_left_content_ele} bg-white shadow`}
+              className={`flex border-none w-full font-[Poppins] items-center me-4 focus:border-beige   rounded-2xl bg-white shadow`}
             >
-              <div className={styles.profile_left_content_ele_svg}>
+              <div className="bg-beige py-3 rounded-s-2xl  px-5 text-white">
                 <FontAwesomeIcon icon={faUser} />
               </div>
               <p>
@@ -78,9 +76,9 @@ const UserData = () => {
           )}
           {userEmail != null && (
             <div
-              className={`${styles.profile_left_content_ele} bg-white shadow`}
+              className={`flex border-none w-full font-[Poppins]  items-center me-4 focus:border-beige   rounded-2xl bg-white shadow`}
             >
-              <div className={styles.profile_left_content_ele_svg}>
+              <div className="bg-beige py-3 rounded-s-2xl  px-5 text-white">
                 <FontAwesomeIcon icon={faEnvelope} />
               </div>
               <p>
@@ -94,9 +92,9 @@ const UserData = () => {
 
           {userPhone != null && (
             <div
-              className={`${styles.profile_left_content_ele} bg-white shadow`}
+              className={`flex border-none w-full font-[Poppins] py-3 me-4 focus:border-beige   rounded-2xl bg-white shadow`}
             >
-              <div className={styles.profile_left_content_ele_svg}>
+              <div className="bg-beige py-3 rounded-s-2xl  px-5 text-white">
                 <FontAwesomeIcon icon={faPhone} />
               </div>
               <p>
