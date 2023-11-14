@@ -1,9 +1,21 @@
 import React from "react";
+import { useForm } from "react-hook-form";
 import { Button, TextInput } from "flowbite-react";
 import "./contact.css";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
 function Contact() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+    // Handle form submission logic here
+  };
+
   return (
     <section className="bg__contact ">
       <div className="layer">
@@ -45,24 +57,35 @@ function Contact() {
                   </span>
                   <span className="ms-3">Aya676670@gmail.com</span>
                 </p>
-
               </div>
-       
             </div>
             <div className="flex items-center justify-center bg-white flex-col rounded-md">
               <h2 className="text-4xl font-bold my-5 font-[Poppins] text-beige">Have a question..?</h2>
-              <form className="flex max-w-md flex-col gap-4 w-full">
+              <form className="flex max-w-md flex-col gap-4 w-full" onSubmit={handleSubmit(onSubmit)}>
                 <div>
                   <TextInput
                     id="email1"
-                    href="mailto:aya676670@gmail.com"
+                    {...register("email", {
+                      required: "Email is required",
+                      pattern: {
+                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                        message: "Invalid email address",
+                      },
+                    })}
                     type="email"
                     placeholder="Enter Your Email"
-                    required
                   />
+                  {errors.email && <p className="text-beige font-[Poppins]">{errors.email.message}</p>}
                 </div>
                 <div>
-                  <TextInput id="large" type="text" sizing="lg" />
+                  <TextInput
+                    id="large"
+                    type="text"
+                    sizing="lg"
+                    {...register("message", { required: "Message is required" })}
+                    placeholder="Enter Your Message"
+                  />
+                  {errors.message && <p className="text-beige font-[Poppins]">{errors.message.message}</p>}
                 </div>
                 <button
                   type="submit"

@@ -1,17 +1,17 @@
-import React from 'react'
+import React from 'react';
 import ReactCardSlider from "react-card-slider-component";
-import CardSlider1 from"../../../assets/img/1.jpg"
-import CardSlider2 from"../../../assets/img/2.jpg"
-import CardSlider from"../../../assets/img/3.jpg"
-import CardSlider4 from"../../../assets/img/4.jpg"
-import CardSlider5 from"../../../assets/img/5.jpg"
-const Slider = (props) => {
+import CardSlider1 from "../../../assets/img/1.jpg";
+import CardSlider2 from "../../../assets/img/2.jpg";
+import CardSlider from "../../../assets/img/3.jpg";
+import CardSlider4 from "../../../assets/img/4.jpg";
+import CardSlider5 from "../../../assets/img/5.jpg";
 
-console.log(props[20].image_url);
+const Slider = (props) => {
+  console.log(props[20].image_url);
 
   const slides = [
     {
-      image:CardSlider1,
+      image: CardSlider1,
       title: "This is a title 1",
       description: "Villa",
       clickEvent: "sliderClick"
@@ -19,8 +19,7 @@ console.log(props[20].image_url);
     {
       image: CardSlider,
       title: "This is a second title 2",
-      description: "Flat"
-    ,
+      description: "Flat",
       clickEvent: "sliderClick"
     },
     {
@@ -36,7 +35,7 @@ console.log(props[20].image_url);
       clickEvent: "sliderClick"
     },
     {
-      image:  CardSlider5,
+      image: CardSlider5,
       title: "This is a third title 5",
       description: "This is a third description",
       clickEvent: "sliderClick"
@@ -90,14 +89,12 @@ console.log(props[20].image_url);
       clickEvent: "sliderClick"
     }
   ];
-  return (
-    <>
-     <div className="w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto py-10">
-     <ReactCardSlider slides={slides} />
-     </div>
-    </>
-  );
 
+  return (
+    <div className="w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto py-10">
+      <ReactCardSlider slides={slides} autoplay scroll />
+    </div>
+  );
 }
 
-export default Slider
+export default Slider;

@@ -3,6 +3,7 @@ import Filter from "../shared/filter/Filter";
 import Slider from "../shared/slider/Slider";
 import style from "./unit.module.css";
 import { data } from './../auth/firebase/Firebase' 
+import { Link } from "react-router-dom";
 const Units = () => {
 
   const salesData=data[0];
@@ -26,7 +27,7 @@ const Units = () => {
           ))}
         </div>
         <div className="card-see-more-button flex w-full sm:max-w-xl md.max-w-full lg:max-w-screen-xl md:px-5 mx-auto mt-10 ">
-          <button className="btn-see-more mb-10  bg-black py-2 px-3 text-white">See More</button>
+          <Link className="btn-see-more mb-10  bg-black py-2 px-3 text-white">See More</Link>
         </div>
       </div>
       <div className="">
@@ -48,7 +49,7 @@ const Units = () => {
           ))}
         </div>
         <div className="card-see-more-button flex w-full sm:max-w-xl md.max-w-full lg:max-w-screen-xl md:px-5 mx-auto mt-10 ">
-          <button className="btn-see-more  mb-10  bg-black py-2 px-3 text-white">See More</button>
+          <Link className="btn-see-more  mb-10  bg-black py-2 px-3 text-white">See More</Link>
         </div>
 
       </div>

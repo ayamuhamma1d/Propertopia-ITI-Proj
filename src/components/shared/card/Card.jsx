@@ -17,9 +17,7 @@ import {
   getDoc,
   query,
   where,
-  setDoc,
-} from 'firebase/firestore';
-
+  setDoc,} from 'firebase/firestore';
 const Card = ({
   area,
   price,
@@ -56,8 +54,7 @@ const Card = ({
       setIsWishlist(false);
     }
   };
-
-  const addToWishlist = async (itemId) => {
+   const addToWishlist = async (itemId) => {
     const user = auth.currentUser;
     if (user) {
       const customId = itemId.toString();
@@ -66,10 +63,9 @@ const Card = ({
         try {
           await deleteDoc(docRef);
           setIsWishlist(false);
-          removeFromWishlist(customId); // Remove the card from the wishlist
-          console.log('Item removed from wishlist');
+          removeFromWishlist(customId); 
         } catch (error) {
-          console.error('Error removing item from wishlist: ', error);
+          return <p  className="bg-beige1 border border-beige text-beige px-4 py-3 text-xs rounded relative font-[Poppins]">{error}</p>
         }
       } else {
         try {
@@ -91,7 +87,7 @@ const Card = ({
           setIsWishlist(true);
           console.log('Item added to wishlist');
         } catch (error) {
-          console.error('Error adding item to wishlist: ', error);
+          return <p  className="bg-beige1 border border-beige text-beige px-4 py-3 text-xs rounded relative font-[Poppins]">{error}</p>
         }
       }
     }
@@ -121,15 +117,15 @@ const Card = ({
               <img src={image_url} alt="" />
             </Link>
             <div className={`absolute top-2 left-3 bg-black p-2`}>
-              <p className="text-white">For {purpose}</p>
+              <p className="text-white font-[Poppins]">For {purpose}</p>
             </div>
           </div>
           <div className="px-5 pb-5">
             <div className="flex items-center justify-between mb-3 pt-3">
-              <a href="#" className="font-medium capitalize">
+              <Link className="font-medium capitalize">
                 {type_of_unit}
-              </a>
-              <span className="text-xl font-bold">${purpose === 'sale' ? price : pricePerDay}</span>
+              </Link>
+              <span className="text-xl font-bold font-[Poppins]">${purpose === 'sale' ? price.toLocaleString() : pricePerDay.toLocaleString()}</span>
               </div>
             <div className='flex justify-between items-center border-b pb-2'>
               <div>
@@ -146,7 +142,7 @@ const Card = ({
               </div>
               <div>
                 <p>
-                  <FontAwesomeIcon icon={faHome} className='me-2' />
+                  <FontAwesomeIcon icon={faHome} className='me-2 font-[Poppins]' />
                   {area}m
                 </p>
               </div>
@@ -155,7 +151,7 @@ const Card = ({
             <div className="flex items-center justify-between mt-2.5 mb-5">
               <div>
                 <p>
-                  <FontAwesomeIcon className='pr-1' icon={faMapMarkerAlt} />
+                  <FontAwesomeIcon className='pr-1 font-[Poppins]' icon={faMapMarkerAlt} />
                   location
                 </p>
               </div>
@@ -166,7 +162,7 @@ const Card = ({
                     onClick={() => addToWishlist(id)}
                   />
                 </Link>
-                <Link href="" onClick={handleShare}>
+                <Link  onClick={handleShare}>
                   <FontAwesomeIcon
                     icon={faShareAlt}
                     style={{ color: "#080808" }}
