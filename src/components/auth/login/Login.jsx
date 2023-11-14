@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { auth, provider,providerFb } from "../firebase/Firebase";
+import { auth, provider, providerFb } from "../firebase/Firebase";
 import {
   signInWithPopup,
   signInWithEmailAndPassword,

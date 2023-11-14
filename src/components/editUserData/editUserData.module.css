@@ -16,7 +16,10 @@
   border-radius: 25px;
   margin-left: 10px;
 }
+.errorArea{
+  background-color: #bca37f;
 
+  }
 @media screen and (max-width: 768px) {
   .editProfile_container {
     padding: 20px;
@@ -43,4 +46,5 @@
     font-size: 1.2rem;
     height: 76px;
   }
+
 }
