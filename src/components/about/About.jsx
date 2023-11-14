@@ -19,7 +19,7 @@ const About = () => {
          reliable partner in achieving your real estate dreams, not only in Alexandria but also beyond!
         </p>
         <div className={styles.BtnContainer}>
-        <Link className={` bg-beige  p-3 mt-6 items-center`}>
+        <Link to='/home' className={` bg-beige  p-3 mt-6 items-center`}>
           <span className="text-white font-[Poppins]">View Our Properties</span>
         </Link>
 
