@@ -1,7 +1,7 @@
 import React from "react";
-import photoo from "./../../assets/img/sale.jpg";
+import photoo from "./../../assets/img/istockphoto-587782652-612x612.jpg";
 import maintenance from "./../../assets/img/main.jpg";
-import model from "./../../assets/img/model.jpg";
+import model from "./../../assets/img/3d-rendering-exterior-modern-house-with-good-design.jpg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -11,12 +11,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faPhone } from "@fortawesome/free-solid-svg-icons";
 import logo from "../../assets/img/logo.png";
+import logo1 from "../../assets/img/19.jpeg";
 import style from "./service.module.css";
+import dphoto from '../../../src/assets/img/Maintenance1/1 (7).jpg';
+import { Link } from "react-router-dom";
 
 const Service = () => {
   return (
     <>
-      <div className={`${style.parentt} w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto `}>
+      <div className={`${style.parentt} w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto mb-16`}>
         <Swiper
           spaceBetween={30}
           centeredSlides={true}
@@ -30,124 +33,124 @@ const Service = () => {
           }}
           navigation={true}
           modules={[Autoplay, Pagination, Navigation]}
->
+        >
           <SwiperSlide className="flex justify-center items-center" >
-              <h2 className="text-start text-sm lg:text-2xl w-5/12		 ">
-                Explore a diverse collection of properties and find your perfect
-                match on our user-friendly real estate site.
-              </h2>
+            <h2 className="text-start text-sm lg:text-2xl w-5/12		 ">
+              Explore a diverse collection of properties and find your perfect
+              match on our user-friendly real estate site.
+            </h2>
             <img src={logo} alt="" className="w-6/12  " />
           </SwiperSlide>
-            <SwiperSlide>
+          <SwiperSlide>
+            <img src={logo1} alt="" className="w-6/12 m-auto " />
+          </SwiperSlide>
+          <SwiperSlide>
             <img src={logo} alt="" className="w-6/12 m-auto " />
           </SwiperSlide>
           <SwiperSlide>
-            <img src={logo} alt="" className="w-6/12 m-auto "  />
+            <img src={logo} alt="" className="w-6/12 m-auto " />
           </SwiperSlide>
           <SwiperSlide>
-            <img src={logo} alt=""  className="w-6/12 m-auto "  />
+            <img src={logo} alt="" className="w-6/12 m-auto " />
           </SwiperSlide>
-          <SwiperSlide>
-            <img src={logo} alt="" className="w-6/12 m-auto "  />
-          </SwiperSlide>  
         </Swiper>
       </div>
 
 
       <div className="  mt-5 w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto">
         <div
-          className={`${style.mrSection} mx-auto grid grid-cols-1 lg:grid-cols-2  items-center bg-beige1 border border-gray-200 rounded-lg shadow 
-          max-w-xl lg:max-w-full	 hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700`}
+          className={`${style.mrSection} mx-auto grid grid-cols-1 lg:grid-cols-2  items-center 
+          max-w-xl lg:max-w-full	 dark:bg-gray-800  mb-16`}
         >
           <div>
             <img
-              className={`${style.img} h-96 max-w-full rounded-lg`}
+              className={`${style.img}  max-w-full `}
               src={photoo}
               alt="1"
             />
           </div>
           <div className="p-4 w-11/12 m-auto ">
-            <h5 className="mb-5 text-start  text-4xl font-bold tracking-tight text-gray-900 dark:text-white">
-              Buy
+            <h5 className="mb-5 text-start  text-3xl  capitalize font-bold tracking-tight text-beige dark:text-white">
+              Buy& sell
             </h5>
-            <p className=" font-normal text-base		 text-start text-gray-700 dark:text-gray-400">
-            Discover an extensive selection of properties available for purchase on our , cutting-edge real estate website, offering a user-friendly interface, advanced search options, detailed property listings, and expert guidance to facilitate your buying journey and help you find your dream home effortlessly With a guarantee of getting the best offers available.
+            <p className=" font-normal text-base font-[Poppins]	 text-start text-gray-700 dark:text-gray-400">
+              Discover an extensive selection of properties available for purchase on our , cutting-edge real estate website, offering a user-friendly interface, advanced search options, detailed property listings, and expert guidance to facilitate your buying journey and help you find your dream home effortlessly With a guarantee of getting the best offers available.
             </p>
           </div>
         </div>
 
         <div
-          className={`${style.mrSection} "row  mx-auto grid grid-cols-1 lg:grid-cols-2  items-center bg-beige1 border border-gray-200 rounded-lg shadow 
-          max-w-xl lg:max-w-full hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700`}
+          className={`${style.mrSection} "row  mx-auto grid grid-cols-1 lg:grid-cols-2  items-center bg-slate-50   
+          max-w-xl lg:max-w-full    mb-16`}
         >
           <div className={`${style.contentOrder} w-11/12 m-auto" p-4`}>
-            <h5 className="mb-5 text-start text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
-            MAINTENANCE
-                        </h5>
-            <p className=" font-normal text-start text-gray-700 dark:text-gray-400">
-            Using our extensive experience in maintenance, we provide comprehensive property maintenance services that include preventive and repair maintenance. our dedicated team conducts regular maintenance and updates on our real estate website, keeping it running smoothly and providing an exceptional user experience for our valued visitors and clients.
+            <h5 className="mb-5 text-start text-3xl font-bold tracking-tight text-beige  dark:text-white capitalize ">
+              Maintenance
+            </h5>
+            <p className=" font-normal text-start font-[Poppins] text-gray-700 dark:text-gray-400">
+              Using our extensive experience in maintenance, we provide comprehensive property maintenance services that include preventive and repair maintenance. our dedicated team conducts regular maintenance and updates on our real estate website, keeping it running smoothly and providing an exceptional user experience for our valued visitors and clients.
             </p>
           </div>
           <div className={style.photoOrder}>
             <img
-              className={`${style.img} h-96 max-w-full rounded-lg`}
-              src={maintenance}
+              className={`${style.img} h-96 max-w-full `}
+              src={dphoto}
               alt="1"
             />
           </div>
         </div>
 
         <div
-          className={`${style.mrSection} mx-auto grid grid-cols-1 lg:grid-cols-2  items-center bg-beige1 border border-gray-200 rounded-lg shadow 
-          max-w-xl lg:max-w-full hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700`}
+          className={`${style.mrSection} mx-auto grid grid-cols-1 lg:grid-cols-2  items-center 
+          max-w-xl lg:max-w-full	 dark:bg-gray-800 mb-16`}
         >
           <div>
             <img
-              className={`${style.img} h-96 max-w-full rounded-lg`}
+              className={`${style.img} h-96 max-w-full `}
               src={model}
               alt="1"
             />
           </div>
           <div className="p-4  w-11/12 m-auto">
-            <h5 className="mb-5 text-start  text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
+            <h5 className="mb-5 text-start  text-3xl font-bold tracking-tight text-beige dark:text-white">
               3D MODEL
             </h5>
-            <p className=" font-normal  	 text-start text-gray-700 dark:text-gray-400">
-            Experience the next level of immersive visualization with our state-of-the-art 3D design feature on our real estate website, allowing you to explore properties in stunning detail, walk through virtual tours, and gain a realistic sense of space and aesthetics, bringing your dream home to life before your eyes.
+            <p className=" font-normal  font-[Poppins]	 text-start text-gray-700 dark:text-gray-400">
+              Experience the next level of immersive visualization with our state-of-the-art 3D design feature on our real estate website, allowing you to explore properties in stunning detail, walk through virtual tours, and gain a realistic sense of space and aesthetics, bringing your dream home to life before your eyes.
             </p>
           </div>
         </div>
-        
+
       </div>
       <div
-        className={`${style.mrSection} w-full  p-4 text-center  bg-beige1 border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700`}
+        className={`${style.mrSection} w-full bg-zinc-50  p-4 text-center   rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700 `}
       >
-        <h3 className="text-xl mb-7 md:text-3xl font-bold text-gray-900 dark:text-white">
-          CONTACT CUSTOMER SERVICE
+        <h3 className="text-xl mb-7 md:text-3xl font-bold  font-[Poppins] dark:text-white">
+          Contact customer service
         </h3>
         <div className="items-center justify-center ">
-          <a
-            href="#"
-            className=" m-2 sm:w-sm w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700"
+          <Link
+
+            className=" m-2 sm:w-sm w-auto bg-beige1  hover:bg-black py-4  text-black  inline-flex items-center justify-center px-6 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700"
           >
-            <FontAwesomeIcon className="mr-3 w-7 h-7" icon={faEnvelope} />
+            <FontAwesomeIcon className="mr-3 w-7 " icon={faEnvelope} />
             <div>
               <div className="-mt-1 font-sans text-sm font-semibold">
                 service@gmail.com
               </div>
             </div>
-          </a>
-          <a
-            href="#"
-            className="m-2 bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700"
+          </Link>
+          <Link
+
+            className=" m-2 sm:w-sm w-auto bg-beige1  hover:bg-black py-4  text-black  inline-flex items-center justify-center px-6 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700"
           >
-            <FontAwesomeIcon className="mr-3 w-7 h-7" icon={faPhone} />
+            <FontAwesomeIcon className="mr-3 w-7 " icon={faPhone} />
             <div>
               <div className="-mt-1 font-sans text-sm font-semibold">
                 +0123456789
               </div>
             </div>
-          </a>
+          </Link>
         </div>
       </div>
     </>

@@ -3,6 +3,7 @@ import './services.css';
 import dphoto from '../../../src/assets/img/Maintenance1/1 (2).jpg';
 import photosellrent from '../../../src/assets/img/Maintenance1/1 (12).jpg';
 import photo3d from '../../../src/assets/img/3dservivephoto-removebg-preview.png';
+import { Link } from 'react-router-dom';
 
 const Services = () => {
   return (
@@ -18,12 +19,12 @@ const Services = () => {
               Discover your ideal home with our immersive photo experience and extensive listings. Explore unique properties you won't find anywhere else, whether you're looking to rent for flexibility or buy for lasting ownership. Your dream home awaits—explore, choose, and make it yours.
               </p>
               <div>
-              <a
-                  href="#"
+              <Link to="/service"
+                 
                   className="inline-flex mb-5 hover:bg-beige hover:text-white items-center px-3 py-2 text-sm font-medium text-center text-black service__button__background__color"
                 >
                   Read more
-                </a>
+                </Link>
               </div>
             </div>
             <div className="md:w-1/3 flex flex-col items-center  space-y-4 rounded-lg border border-slate-200">
@@ -32,12 +33,12 @@ const Services = () => {
               <p className="my-8 leading-5 text-sm text-sm text-slate-700">
               Transform your living with our dedicated maintenance services. We go beyond real estate, ensuring your home stays impeccable. Our team offers top-notch upkeep, repairs, and enhancements for a worry-free lifestyle. Enjoy peace of mind with our exclusive maintenance solutions, ensuring your home is meticulously cared for.              </p>
               <div>
-                <a
-                  href="#"
+                <Link to="/service"
+                 
                   className="inline-flex mb-5 hover:bg-beige hover:text-white items-center px-3 py-2 text-sm font-medium text-center text-black service__button__background__color"
                 >
                   Read more
-                </a>
+                </Link>
               </div>
             </div>
             <div className="md:w-1/3 flex flex-col items-center  space-y-4 rounded-lg border border-slate-200">
@@ -46,12 +47,12 @@ const Services = () => {
               <p className="my-8 leading-5 text-sm text-sm text-slate-700">
               Transform your property showcase with our cutting-edge 3D services. Our expert team creates immersive virtual tours that go beyond static images, captivating potential buyers or renters. Elevate your listings and stand out in the market with our exclusive 3D offerings                   </p>
               <div>
-                <a
-                  href="#"
+                <Link to="/service"
+                 
                   className="inline-flex mb-5 hover:bg-beige hover:text-white items-center px-3 py-2 text-sm font-medium text-center text-black service__button__background__color"
                 >
                   Read more
-                </a>
+                </Link>
               </div>
             </div>
           </div>
