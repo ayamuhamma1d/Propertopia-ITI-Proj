@@ -79,8 +79,9 @@ const Login = () => {
         await signIn(userEmail, userPass);
       }
     } else {
+      // await signOut(auth);
       userToken = null;
-      window.location.href = "../../Home";
+      navigate("/Home");
     }
   };
 
@@ -149,34 +150,24 @@ const Login = () => {
               <div className=" block">
                 <Label htmlFor="password1" value="Password" />
               </div>
-              <TextInput
-                id="password1"
-                type="password"
-                placeholder="********"
-              />
+              <TextInput id="password1" type="password" placeholder="****" />
             </div>
             <div
-              className={`flex w-1/2 mx-auto justify-around  ${styleLogin.parent_btns}`}
+              className={`flex w-1/2 mx-auto justify-around   ${styleLogin.parent_btns} `}
             >
               <Button
                 type="submit"
-                className={`bg-white text-dark ${styleLogin.customButton}`}
+                className={`bg-white text-dark ${styleLogin.customButton} `}
               >
                 Login
               </Button>
               <Button
                 type="submit"
-                className={` ${style.signin_btn} ${styleLogin.customSigninBtn}`}
+                className={`${style.signin_btn} ${styleLogin.customSigninBtn} `}
               >
                 <Link to="/signup">Signup</Link>
               </Button>{" "}
             </div>
-            <Button
-              type="submit"
-              className={`  m-auto ${style.signin_btn} ${styleLogin.customSigninBtn}`}
-            >
-              <Link to="/resetPass">Reset Password</Link>
-            </Button>{" "}
             <div
               className={` bg-red-500 text-white font-bold p-2 text-center ${
                 errorMessage ? "block" : "hidden"
@@ -186,12 +177,12 @@ const Login = () => {
               {errorMessage && <p>{errorMessage}</p>}
             </div>
             <div
-              className={`flex w-1/2 mx-auto justify-around  ${styleLogin.parent_btns}`}
+              className={`flex  w-1/2 mx-auto justify-around  ${styleLogin.parent_btns}`}
             >
               <Button
                 onClick={signInWithGoogleHandler}
                 type="submit"
-                className={`${style.signin_btn} ${styleLogin.customSigninBtn}   mb-8 me-2`}
+                className={`${style.signin_btn} ${styleLogin.customSigninBtn}   mb-2 me-2`}
               >
                 <FcGoogle className="me-2" />
                 Google
@@ -200,12 +191,18 @@ const Login = () => {
               <Button
                 onClick={signInWithFacebook}
                 type="submit"
-                className={`${style.signin_btn}  mb-8 `}
+                className={`${style.signin_btn}  mb-2`}
               >
                 <BsFacebook className="me-2" />
                 Facebook
               </Button>
             </div>
+            <Button
+              type="submit"
+              className={` m-auto ${style.signin_btn} ${styleLogin.customSigninBtn} pt-0`}
+            >
+              <Link to="/resetPass">Reset Password</Link>
+            </Button>{" "}
             <p className={`text-center ${styleLogin.polices_parag}`}>
               By signing in or creating an account, you agree with our{" "}
               <span className="text-blue-600">Terms & Conditions</span> and{" "}
