@@ -16,6 +16,7 @@ import SignUp from './components/auth/signup/SignUp'
 import NotFoundPage from './components/shared/notFoundPage/NotFoundPage';
 import Units from './components/units/Units';
 import Profile from "./components/profile/Profile"
+import ResetPass from './components/auth/resetPass/resetPass';
 function App() {
   return (
     <>
@@ -37,6 +38,7 @@ function App() {
           <Route path='/Login' element={<Login />}></Route>
           <Route path='/SignUp' element={<SignUp />}></Route>
           <Route path='/profile' element={<Profile />}></Route>
+          <Route path='/resetPass' element={<ResetPass/>}></Route>
           <Route path='*' element={<NotFoundPage />}></Route>
         </Routes>
         <Footer />

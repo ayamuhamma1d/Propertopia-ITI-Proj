@@ -19,7 +19,7 @@ import {
   setDoc,
   updateDoc,
 } from "firebase/firestore";
-import { Link } from "react-router-dom";
+
 
 function EditProfile() {
   const [userName, setUserName] = useState("");

@@ -1,8 +1,11 @@
+import { sendPasswordResetEmail, updatePassword } from "firebase/auth";
 import { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import styles from "./changePassword.module.css";
+import { auth } from "../auth/firebase/Firebase";
+import { useEffect } from "react";
 
 const ChangePassword = () => {
   const { handleSubmit, control, watch, setError, formState } = useForm();
@@ -10,9 +13,47 @@ const ChangePassword = () => {
   const [showOldPassword, setShowOldPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [message, setMessage] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setUserEmail(user.email);
+      }
+    });
+    return () => {
+      unsubscribe();
+    };
+  }, [userEmail]);
+
+  const getASecureRandomPassword = (data) => {
+    return data.newPassword;
+  };
 
   const onSubmit = (data) => {
+    const user = auth.currentUser;
+    const newPassword = getASecureRandomPassword(data);
+
+    updatePassword(user, newPassword)
+      .then(() => {
+        window.location.href = "./Home";
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
     console.log(data);
+  };
+
+  const verifyByEmail = () => {
+    sendPasswordResetEmail(auth, userEmail)
+      .then(() => {
+        setMessage("Password reset email sent!");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
   };
 
   const passwordMatch = (value) => {
@@ -38,11 +79,16 @@ const ChangePassword = () => {
 
   return (
     <div className="w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto mb-10">
-              <h5 className="text-left mb-10 ms-2 text-2xl capitalize">Change Your password</h5>
-      <form onSubmit={handleSubmit(onSubmit)} className="gap-6">
+      <h5 className="text-left mb-10 ms-2 text-2xl capitalize">
+        Change Your password
+      </h5>
+      <form className="gap-6">
         <div className="flex flex-col w-full">
           <div className="flex items-center justify-center mb-5">
-            <div onClick={() => togglePasswordVisibility("oldPassword")} className="bg-beige py-3 rounded-s-2xl px-5 text-white"> 
+            <div
+              onClick={() => togglePasswordVisibility("oldPassword")}
+              className="bg-beige py-3 rounded-s-2xl px-5 text-white"
+            >
               {showOldPassword ? (
                 <FontAwesomeIcon icon={faEye} />
               ) : (
@@ -63,14 +109,19 @@ const ChangePassword = () => {
                     className="border-none w-full font-[Poppins] py-3 me-4 focus:border-beige bg-white shadow rounded-e-2xl"
                   />
                   {errors.oldPassword && (
-                    <p className="bg-beige1 border border-beige text-beige px-4 py-3 text-xs rounded relative">{errors.oldPassword.message}</p>
+                    <p className="bg-beige1 border border-beige text-beige px-4 py-3 text-xs rounded relative">
+                      {errors.oldPassword.message}
+                    </p>
                   )}
                 </>
               )}
             />
           </div>
-          <div  className="flex items-center justify-center mb-5">
-            <div onClick={() => togglePasswordVisibility("newPassword")} className="bg-beige py-3 rounded-s-2xl px-5 text-white">
+          <div className="flex items-center justify-center mb-5">
+            <div
+              onClick={() => togglePasswordVisibility("newPassword")}
+              className="bg-beige py-3 rounded-s-2xl px-5 text-white"
+            >
               {showNewPassword ? (
                 <FontAwesomeIcon icon={faEye} />
               ) : (
@@ -91,14 +142,19 @@ const ChangePassword = () => {
                     className="border-none w-full font-[Poppins] py-3 me-4 focus:border-beige bg-white shadow rounded-e-2xl"
                   />
                   {errors.newPassword && (
-                    <p className="bg-beige1 border border-beige text-beige px-4 py-3 text-xs rounded relative">{errors.newPassword.message}</p>
+                    <p className="bg-beige1 border border-beige text-beige px-4 py-3 text-xs rounded relative">
+                      {errors.newPassword.message}
+                    </p>
                   )}
                 </>
               )}
             />
           </div>
-          <div  className="flex items-center justify-center mb-5">
-            <div onClick={() => togglePasswordVisibility("confirmPassword")} className="bg-beige py-3 rounded-s-2xl px-5 text-white">
+          <div className="flex items-center justify-center mb-5">
+            <div
+              onClick={() => togglePasswordVisibility("confirmPassword")}
+              className="bg-beige py-3 rounded-s-2xl px-5 text-white"
+            >
               {showConfirmPassword ? (
                 <FontAwesomeIcon icon={faEye} />
               ) : (
@@ -131,12 +187,32 @@ const ChangePassword = () => {
             />
           </div>
         </div>
-        <button
-          type="submit"
-          className={` text-white bg-beige font-semibold py-2 px-4 rounded-3xl shadow-lg text-lg font-[Poppins] w-48 `}
+        <div className={`flex justify-around ${styles.form_btns}`}>
+          <button
+            onClick={handleSubmit(onSubmit)}
+            type="submit"
+            className={`${styles.confirm_btn} text-white bg-beige font-semibold py-2 px-4 rounded-3xl shadow-lg text-lg font-[Poppins] w-48 `}
+          >
+            Confirm
+          </button>
+          <button
+            onClick={handleSubmit(verifyByEmail)}
+            type="submit"
+            className={` text-white bg-beige font-semibold py-2 px-4 rounded-3xl shadow-lg text-lg font-[Poppins] w-48 `}
+          >
+            Change via Email
+          </button>
+        </div>
+        <div
+          className={` ${
+            styles.message
+          } my-3 text-white font-bold p-2 text-center ${
+            message ? "block" : "hidden"
+          }`}
+          id="message"
         >
-          Confirm
-        </button>
+          {message && <p>{message}</p>}
+        </div>
       </form>
     </div>
   );

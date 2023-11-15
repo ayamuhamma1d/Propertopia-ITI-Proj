@@ -79,9 +79,8 @@ const Login = () => {
         await signIn(userEmail, userPass);
       }
     } else {
-      // await signOut(auth);
       userToken = null;
-      navigate("/Home");
+      window.location.href = "../../Home";
     }
   };
 
@@ -156,7 +155,6 @@ const Login = () => {
                 placeholder="********"
               />
             </div>
-
             <div
               className={`flex w-1/2 mx-auto justify-around  ${styleLogin.parent_btns}`}
             >
@@ -168,11 +166,17 @@ const Login = () => {
               </Button>
               <Button
                 type="submit"
-                className={`${style.signin_btn} ${styleLogin.customSigninBtn}`}
+                className={` ${style.signin_btn} ${styleLogin.customSigninBtn}`}
               >
                 <Link to="/signup">Signup</Link>
               </Button>{" "}
             </div>
+            <Button
+              type="submit"
+              className={`  m-auto ${style.signin_btn} ${styleLogin.customSigninBtn}`}
+            >
+              <Link to="/resetPass">Reset Password</Link>
+            </Button>{" "}
             <div
               className={` bg-red-500 text-white font-bold p-2 text-center ${
                 errorMessage ? "block" : "hidden"
@@ -202,7 +206,6 @@ const Login = () => {
                 Facebook
               </Button>
             </div>
-
             <p className={`text-center ${styleLogin.polices_parag}`}>
               By signing in or creating an account, you agree with our{" "}
               <span className="text-blue-600">Terms & Conditions</span> and{" "}
