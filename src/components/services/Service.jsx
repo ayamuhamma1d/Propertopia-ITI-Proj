@@ -51,7 +51,8 @@ const Service = () => {
         </Swiper>
       </div>
 
-      <div className=" mt-5 w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto">
+
+      <div className="  mt-5 w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto">
         <div
           className={`${style.mrSection} mx-auto grid grid-cols-1 lg:grid-cols-2  items-center bg-beige1 border border-gray-200 rounded-lg shadow 
           max-w-xl lg:max-w-5xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700`}

@@ -40,3 +40,14 @@
 
 }
 
+
+.swiper-button-prev, .swiper-button-next {
+
+    color:#eae0da !important;
+  }
+  
+  
+  .swiper-pagination-bullet-active {
+    background:#bca37f !important;
+ 
+}  
