@@ -57,7 +57,11 @@ const Login = () => {
     } catch (error) {
       const errorCode = error.code;
       const errorMessage = error.message;
-      setErrorMessage(errorMessage);
+      if (errorMessage == "Firebase: Error (auth/invalid-login-credentials).") {
+        setErrorMessage("Your email or pass  is wrong");
+      } else {
+        setErrorMessage(errorMessage);
+      }
     }
   };
 
@@ -67,7 +71,7 @@ const Login = () => {
     const userPass = document.getElementById("password1").value;
 
     if (userPass && userEmail) {
-      const emailPattern = /^[^\s@]+@(gmail|yahoo|hotmail)\.com$/;
+      const emailPattern = /^[^\s@]+@(gmail|yahoo|hotmail|outlook)\.com$/;
       let isValid = true;
 
       if (!emailPattern.test(userEmail)) {
@@ -79,9 +83,7 @@ const Login = () => {
         await signIn(userEmail, userPass);
       }
     } else {
-      // await signOut(auth);
       userToken = null;
-      navigate("/Home");
     }
   };
 
@@ -150,7 +152,11 @@ const Login = () => {
               <div className=" block">
                 <Label htmlFor="password1" value="Password" />
               </div>
-              <TextInput id="password1" type="password" placeholder="****" />
+              <TextInput
+                id="password1"
+                type="password"
+                placeholder="********"
+              />
             </div>
             <div
               className={`flex w-1/2 mx-auto justify-around   ${styleLogin.parent_btns} `}

@@ -1,4 +1,9 @@
-import { sendPasswordResetEmail, updatePassword } from "firebase/auth";
+import {
+  sendPasswordResetEmail,
+  updatePassword,
+  reauthenticateWithCredential,
+  EmailAuthProvider,
+} from "firebase/auth";
 import { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -15,6 +20,7 @@ const ChangePassword = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [message, setMessage] = useState("");
   const [userEmail, setUserEmail] = useState("");
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
@@ -30,19 +36,27 @@ const ChangePassword = () => {
     return data.newPassword;
   };
 
-  const onSubmit = (data) => {
-    const user = auth.currentUser;
-    const newPassword = getASecureRandomPassword(data);
+  const promptForCredentials = (newPassword) => {
+    return EmailAuthProvider.credential(userEmail, newPassword);
+  };
 
-    updatePassword(user, newPassword)
-      .then(() => {
-        window.location.href = "./Home";
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  const onSubmit = async (data) => {
+    try {
+      const user = auth.currentUser;
+      const newPassword = getASecureRandomPassword(data);
+      const credential = promptForCredentials(newPassword);
+      await reauthenticateWithCredential(user, credential);
+      await updatePassword(user, newPassword);
 
-    console.log(data);
+      window.location.href = "./Home";
+    } catch (error) {
+      console.error("Error changing password:", error);
+      if(error=="FirebaseError: Firebase: Error (auth/invalid-login-credentials)."){
+        user.accessToken=""
+      window.location.href = "./login";
+
+      }
+    }
   };
 
   const verifyByEmail = () => {

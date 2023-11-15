@@ -50,6 +50,7 @@ const Details = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
 
+
   return (
     <>
       <section className='w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto my-10'>
@@ -106,7 +107,7 @@ const Details = () => {
                         partialVisibilityGutter: 30,
                       },
                     }}
-                    showDots
+                    showDots={false}
                     sliderClass=""
                     slidesToSlide={1}
                     swipeable
@@ -141,7 +142,7 @@ const Details = () => {
                     <FontAwesomeIcon className='me-3 text-beige' icon={faLocationDot} />
                     <span className="text-md text-slate-700"> Egypt</span>
                   </div>
-                  <h6 className=" text-xl text-slate-900"><span className="font-bold text-xl text-beige">EGP </span> {detailsData.price || detailsData.meter_price}</h6>
+                  <h6 className=" text-xl text-slate-900"><span className="font-bold text-xl text-beige">$ </span> {detailsData.price || detailsData.meter_price}</h6>
                 </div>
                 <div className='flex justify-between align-items-center py-5' >
                   <Link className='p-3 cursor-pointer'>
@@ -214,9 +215,32 @@ const Details = () => {
             </div>
           </div>
 
+          <div className=' mx-auto my-5'>
+
+            {detailsData.id === 3 && <div>
+              <h3 className="font-bold text-xl md:text-2xl text-slate-950 font-[Poppins] py-3  ">3D</h3>
+              <iframe src="https://planner5d.com/editor?key=093fb2f06d0ccbd531de60a7d7222289" className={`${style.height3d} w-full`} allowfullscreen></iframe>
+
+            </div>}
+            {detailsData.id === 4 && <div>
+              <h3 className="font-bold text-xl md:text-2xl text-slate-950 font-[Poppins] py-3  ">3D</h3>
+              <iframe src="https://planner5d.com/editor?key=becf956aea668bfd36df52605c6cb79a" className={`${style.height3d} w-full`} allowfullscreen></iframe>
+
+            </div>}
+            {detailsData.id === 5 && <div>
+              <h3 className="font-bold text-xl md:text-2xl text-slate-950 font-[Poppins] py-3  ">3D</h3>
+              <iframe src="https://planner5d.com/editor?key=399c726a995e05c7b7d9bc181a1469c9" className={`${style.height3d} w-full `} allowfullscreen></iframe>
+
+            </div>}
+          </div>
         </div>
 
       </section >
+
+
+
+
+
     </>)
 }
 
