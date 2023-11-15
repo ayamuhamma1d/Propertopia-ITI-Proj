@@ -1,5 +1,7 @@
 import React from "react";
-import photoo from "./../../assets/img/13.jpg";
+import photoo from "./../../assets/img/sale.jpg";
+import maintenance from "./../../assets/img/main.jpg";
+import model from "./../../assets/img/model.jpg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -55,51 +57,41 @@ const Service = () => {
       <div className="  mt-5 w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto">
         <div
           className={`${style.mrSection} mx-auto grid grid-cols-1 lg:grid-cols-2  items-center bg-beige1 border border-gray-200 rounded-lg shadow 
-          max-w-xl lg:max-w-5xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700`}
+          max-w-xl lg:max-w-full	 hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700`}
         >
           <div>
             <img
-              className={`${style.img} h-auto max-w-full rounded-lg`}
+              className={`${style.img} h-96 max-w-full rounded-lg`}
               src={photoo}
               alt="1"
             />
           </div>
-          <div className="p-4 ">
-            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              Noteworthy technology acquisitions 2021
+          <div className="p-4 w-11/12 m-auto ">
+            <h5 className="mb-5 text-start  text-4xl font-bold tracking-tight text-gray-900 dark:text-white">
+              Buy
             </h5>
-            <p className=" font-normal text-gray-700 dark:text-gray-400">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio
-              repudiandae facere quibusdam enim cupiditate quidem similique nisi
-              fugit, explicabo ipsam id rem accusamus sunt beatae nemo quas
-              error sit quod ipsa repellat laborum quo hic facilis. Soluta ex
-              perspiciatis explicabo esse, atque cupiditate eius cumque nulla
-              sed, dicta dolor expedita?
+            <p className=" font-normal text-base		 text-start text-gray-700 dark:text-gray-400">
+            Discover an extensive selection of properties available for purchase on our , cutting-edge real estate website, offering a user-friendly interface, advanced search options, detailed property listings, and expert guidance to facilitate your buying journey and help you find your dream home effortlessly With a guarantee of getting the best offers available.
             </p>
           </div>
         </div>
 
         <div
           className={`${style.mrSection} "row  mx-auto grid grid-cols-1 lg:grid-cols-2  items-center bg-beige1 border border-gray-200 rounded-lg shadow 
-          max-w-xl lg:max-w-5xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700`}
+          max-w-xl lg:max-w-full hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700`}
         >
-          <div className={`${style.contentOrder} p-4`}>
-            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              Noteworthy technology acquisitions 2021
-            </h5>
-            <p className=" font-normal text-gray-700 dark:text-gray-400">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio
-              repudiandae facere quibusdam enim cupiditate quidem similique nisi
-              fugit, explicabo ipsam id rem accusamus sunt beatae nemo quas
-              error sit quod ipsa repellat laborum quo hic facilis. Soluta ex
-              perspiciatis explicabo esse, atque cupiditate eius cumque nulla
-              sed, dicta dolor expedita?
+          <div className={`${style.contentOrder} w-11/12 m-auto" p-4`}>
+            <h5 className="mb-5 text-start text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
+            MAINTENANCE
+                        </h5>
+            <p className=" font-normal text-start text-gray-700 dark:text-gray-400">
+            Using our extensive experience in maintenance, we provide comprehensive property maintenance services that include preventive and repair maintenance. our dedicated team conducts regular maintenance and updates on our real estate website, keeping it running smoothly and providing an exceptional user experience for our valued visitors and clients.
             </p>
           </div>
           <div className={style.photoOrder}>
             <img
-              className={`${style.img} h-auto max-w-full rounded-lg`}
-              src={photoo}
+              className={`${style.img} h-96 max-w-full rounded-lg`}
+              src={maintenance}
               alt="1"
             />
           </div>
@@ -107,29 +99,25 @@ const Service = () => {
 
         <div
           className={`${style.mrSection} mx-auto grid grid-cols-1 lg:grid-cols-2  items-center bg-beige1 border border-gray-200 rounded-lg shadow 
-          max-w-xl lg:max-w-5xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700`}
+          max-w-xl lg:max-w-full hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700`}
         >
           <div>
             <img
-              className={`${style.img} h-auto max-w-full rounded-lg`}
-              src={photoo}
+              className={`${style.img} h-96 max-w-full rounded-lg`}
+              src={model}
               alt="1"
             />
           </div>
-          <div className="p-4 ">
-            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              Noteworthy technology acquisitions 2021
+          <div className="p-4  w-11/12 m-auto">
+            <h5 className="mb-5 text-start  text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
+              3D MODEL
             </h5>
-            <p className=" font-normal text-gray-700 dark:text-gray-400">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio
-              repudiandae facere quibusdam enim cupiditate quidem similique nisi
-              fugit, explicabo ipsam id rem accusamus sunt beatae nemo quas
-              error sit quod ipsa repellat laborum quo hic facilis. Soluta ex
-              perspiciatis explicabo esse, atque cupiditate eius cumque nulla
-              sed, dicta dolor expedita?
+            <p className=" font-normal  	 text-start text-gray-700 dark:text-gray-400">
+            Experience the next level of immersive visualization with our state-of-the-art 3D design feature on our real estate website, allowing you to explore properties in stunning detail, walk through virtual tours, and gain a realistic sense of space and aesthetics, bringing your dream home to life before your eyes.
             </p>
           </div>
         </div>
+        
       </div>
       <div
         className={`${style.mrSection} w-full  p-4 text-center  bg-beige1 border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700`}
