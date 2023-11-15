@@ -80,7 +80,7 @@ const Service = () => {
         </div>
 
         <div
-          className={`${style.mrSection} "row  mx-auto grid grid-cols-1 lg:grid-cols-2  items-center bg-slate-50   
+          className={`${style.mrSection} "row  mx-auto grid grid-cols-1 lg:grid-cols-2  items-center bg-zinc-50    
           max-w-xl lg:max-w-full    mb-16`}
         >
           <div className={`${style.contentOrder} w-11/12 m-auto" p-4`}>
