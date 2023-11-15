@@ -45,24 +45,24 @@ const Payment = () => {
                                 <input type="text" {...register('cardnumber', { required: true, pattern: /^\d{16}$/ })}
 
                                     className="shadow appearance-none border-gray-400 rounded w-full py-3 px-3 text-gray-700 leading-tight 
-                                        focus:outline-none focus:shadow-outline placeholder-gray-400" id=""
-                                    placeholder={`${<FontAwesomeIcon icon={faCreditCard} />} Card Number `}
+                                        focus:outline-none focus:shadow-outline placeholder-gray-400 focus:ring-beige dark:focus:ring-beige ring-beige" id=""
+                                        placeholder="Card Number" 
 
                                 />
                                 {errors?.cardnumber?.type === 'required' &&
-                                    <p className="form-text text-red-600" >This field is required</p>}
+                                    <p className="form-text text-beige" >This field is required</p>}
                                 {errors?.cardnumber?.type === 'pattern' &&
-                                    <p className="form-text text-red-600"> must be a number and must be 16 digits</p>}
+                                    <p className="form-text text-beige"> must be a number and must be 16 digits</p>}
                             </div>
 
                             <div className="mb-5">
                                 <input type="text" placeholder="Card Holder"  {...register('cardholder', { required: true, pattern: /^[a-zA-Z]+(\s[a-zA-Z]+)*$/ })}
                                     className="shadow appearance-none border-gray-400 rounded w-full py-3 px-3 text-gray-700 leading-tight
-                                          focus:outline-none  focus:shadow-outline placeholder-gray-400" id="" />
+                                          focus:outline-none  focus:shadow-outline placeholder-gray-400 focus:ring-beige dark:focus:ring-beige ring-beige" id="" />
                                 {errors?.cardholder?.type === 'required' &&
-                                    <p className="form-text text-red-600" >This field is required</p>}
+                                    <p className="form-text text-beige" >This field is required</p>}
                                 {errors?.cardholder?.type === 'pattern' &&
-                                    <p className="form-text text-red-600"> Please do not enter any numbers or special characters and do not begin or end with space</p>}
+                                    <p className="form-text text-beige"> Please do not enter any numbers or special characters and do not begin or end with space</p>}
 
                             </div>
 
@@ -76,10 +76,10 @@ const Payment = () => {
                                         <select
                                             {...field}
                                             className=" appearance-none w-full bg-white border-gray-400 hover:border-gray-500 py-3 px-3 rounded shadow leading-tight
-                                         focus:outline-none focus:shadow-outline"
+                                         focus:outline-none focus:shadow-outline focus:ring-beige dark:focus:ring-beige ring-beige"
                                         >
                                             <option >Unites State</option>
-                                            <option >j</option>
+                                            <option >Egypt</option>
                                         </select>
                                     )}
                                 />
@@ -90,18 +90,18 @@ const Payment = () => {
                                 <div className="me-2">
                                     <input type="text" placeholder="CVV" {...register('cvv', { required: true, pattern: /^\d{3}$/ })}
                                         className="shadow appearance-none border-gray-400 rounded w-full py-3   text-gray-700 leading-tight 
-                                        focus:outline-none 
+                                        focus:outline-none focus:ring-beige dark:focus:ring-beige ring-beige
                                             focus:shadow-outline placeholder-gray-400" id="" />
                                     {errors?.cvv?.type === 'required' &&
-                                        <p className="form-text text-red-600" >This field is required</p>}
+                                        <p className="form-text text-beige" >This field is required</p>}
                                     {errors?.cvv?.type === 'pattern' &&
-                                        <p className="form-text text-red-600"> must be a number and must be 3 digits</p>}
+                                        <p className="form-text text-beige"> must be a number and must be 3 digits</p>}
 
                                 </div>
                                 <div className="me-2">
                                     <select {...ExpiryMonthController.field}
                                         className={`appearance-none w-full bg-white border-gray-400 hover:border-gray-500 py-3 px-1 rounded shadow leading-tight
-                                        focus:outline-none focus:shadow-outline text-gray-400 ${errors.expiryMonth ? 'border-red-500' : ''}`}>
+                                        focus:outline-none focus:shadow-outline text-gray-400 ${errors.expiryMonth ? 'border-beige' : ''}`}>
                                         <option value="Month">Expiry Month</option>
                                         {months.map((data) => (
                                             <option key={data} value={data}>
@@ -114,7 +114,7 @@ const Payment = () => {
                                 <div className="">
                                     <select {...ExpiryYearController.field}
                                         className={`appearance-none w-full bg-white border-gray-400 hover:border-gray-500 py-3 px-1 rounded shadow leading-tight
-                                      focus:outline-none focus:shadow-outline text-gray-400 ${errors.expiryYear ? 'border-red-500' : ''}`}>
+                                      focus:outline-none focus:shadow-outline text-gray-400 ${errors.expiryYear ? 'border-beige' : ''}`}>
                                         <option value="Year">Expiry Year</option>
                                         {years.map((year) => (
                                             <option key={year} value={year}>
@@ -125,7 +125,7 @@ const Payment = () => {
                                 </div>
 
                             </div>
-                            <button type="submit" className=" mt-3 w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded">
+                            <button type="submit" className=" mt-3 w-full bg-beige hover:bg-beige1 hover:text-black text-white font-bold py-3 px-4 rounded">
                                 Submit
                             </button>
                         </form>
@@ -141,12 +141,12 @@ const Payment = () => {
                             <div className=" flex ">
                                 <div className="flex items-center pl-4  rounded dark:border-gray-700 me-5">
                                     <input id="bordered-radio-1" type="radio" value="" name="bordered-radio"
-                                        className="w-4 h-4 text-black bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                        className="w-4 h-4 text-black bg-gray-100 border-gray-300 focus:ring-beige dark:focus:ring-beige dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                                     <label for="bordered-radio-1" className="  w-full py-4 ml-2 text-lg font-medium text-gray-900 dark:text-gray-300">Annual</label>
                                 </div>
                                 <div className=" ml-5 flex items-center pl-4  rounded dark:border-gray-700">
                                     <input checked id="bordered-radio-2" type="radio" value="" name="bordered-radio"
-                                        className="w-4 h-4 text-black bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                        className="w-4 h-4 text-black bg-gray-100 border-gray-300 focus:ring-beige dark:focus:ring-beige dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                                     <label for="bordered-radio-2" className=" text-lg w-full py-4 ml-2  font-medium text-gray-900 dark:text-gray-300">Monthly</label>
                                 </div>
                             </div>
@@ -172,7 +172,7 @@ const Payment = () => {
                             <p className=" text-lg font-medium">Subtotal</p>
                             <p className="text-lg font-medium">$144</p>
                         </div>
-                        <button className=" w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded">
+                        <button className=" w-full bg-beige hover:bg-beige1 hover:text-black text-white font-bold py-3 px-4 rounded">
                             Next:Review
                         </button>
 

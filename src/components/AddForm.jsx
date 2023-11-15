@@ -17,72 +17,71 @@ const AddForm = () => {
     return (
         <>
             <section className='w-full sm:max-w-xl md:max-w-full  lg:max-w-screen-xl md:px-5 mx-auto'>
-                <div className=" w-full  lg:w-1/2 bg-beige1 shadow-2xl mx-auto p-5">
-                    <h2 className=" text-center font-bold text-xl md:text-3xl text-beige font-[Poppins] py-3">Add Units</h2>
-                    <p className="w-2/3 text-slate-700 mx-auto text-xl text-center">You can list your unit on our websits for sale or lease just fill this form
+                <div className=" w-full  lg:w-4/6 bg-beige1 shadow-2xl mx-auto p-5">
+                    <h5 className=" text-center font-bold text-xl md:text-3xl text-beige font-[Poppins] py-3">Add Units</h5>
+                    <p className=" text-slate-600 mx-auto text-xl text-center font-[Poppins] ">You can list your unit on our websits for sale or lease just fill this form
                     </p>
                     <form onSubmit={handleSubmit(onFormSubmit)} className="  rounded px-10 pt-6 pb-8 mb-4">
                         <div className="mb-5">
                             <input type="text" {...register('fullname', { required: true })}
-                                className=" border-0 border-b-2 rounded w-full py-3 px-3 text-gray-700 leading-tight 
+                                className="font-[Poppins] border-0 border-b-4 shadow border-beige rounded-md w-full py-3 px-3 text-gray-700 
                         placeholder-gray-400" id="" placeholder="Full Name"
                             />
                             {errors?.fullname?.type === 'required' &&
-                                <p className="form-text text-red-600" >This field is required</p>}
+                                <p className="form-text text-beige" >This field is required</p>}
                         </div>
                         
                         <div className="mb-5">
                             <input type="email" {...register('email', { required: true, pattern: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/ })}
-                                className=" border-0 border-b-2 rounded w-full py-3 px-3 text-gray-700 leading-tight 
-                         placeholder-gray-400" id="" placeholder="E-mail"
+                                className="font-[Poppins] border-0 border-b-4 shadow border-beige rounded-md w-full py-3 px-3 text-gray-700 
+                                placeholder-gray-400" id="" placeholder="E-mail"
                             />
                             {errors?.email?.type === 'required' &&
-                                <p className="form-text text-red-600">This field is required</p>}
+                                <p className="form-text text-beige">This field is required</p>}
                             {errors?.email?.type === 'pattern' &&
-                                <p className="form-text text-red-600">Email is invalid</p>}
+                                <p className="form-text text-beige">Email is invalid</p>}
                         </div>
-                        <div className="mb-5 flex  ">
-                            <label className="bg-black p-3 rounded text-white">+20</label>
+                        <div className="mb-5 flex   ">
+                            <label className="bg-beige p-3 rounded-s-md  font-[Poppins] shadow text-white">+20</label>
                             <input type="tel" {...register('phone', { required: true, pattern: /^(10|11|12|14|15|16|17|18|19)[0-9]{8}$/ })}
-                                className=" border-0 border-b-2 rounded w-full py-3 px-3 text-gray-700 leading-tight me-1
-                        placeholder-gray-400" id="" placeholder="Phone"
+                                className="font-[Poppins] border-0 border-b-4  w-full shadow border-beige rounded-e-md py-3 px-3 text-gray-700 
+                                placeholder-gray-400" id="" placeholder="Phone"
                             />
                             {errors?.phone?.type === 'required' &&
-                                <p className="form-text text-red-600">This field is required</p>}
+                                <p className="form-text text-beige">This field is required</p>}
                             {errors?.phone?.type === 'pattern' &&
-                                <p className="form-text text-red-600">Phone must be formatted as 1234578910</p>}
+                                <p className="form-text text-beige">Phone must be formatted as 1234578910</p>}
                         </div>
                         <div className="mb-5">
                             <input type="text" {...register('unitaddress', { required: true })}
-                                className=" border-0 border-b-2 rounded w-full py-3 px-3 text-gray-700 leading-tight 
-                        placeholder-gray-400" id="" placeholder="Unit Address"
+                                className=" font-[Poppins] border-0 border-b-4 shadow border-beige rounded-md w-full py-3 px-3 text-gray-700 
+                                placeholder-gray-400" id="" placeholder="Unit Address"
                             />
                             {errors?.unitaddress?.type === 'required' &&
-                                <p className="form-text text-red-600" >This field is required</p>}
+                                <p className="form-text text-beige" >This field is required</p>}
                         </div>
                         <div className="mb-5">
                             <input type="text" {...register('description', { required: true })}
-                                className=" border-0 border-b-2 rounded w-full py-3 px-3 text-gray-700 leading-tight 
-                         placeholder-gray-400" id="" placeholder="Unit Description"
+                                className="font-[Poppins] border-0 border-b-4 shadow border-beige rounded-md w-full py-3 px-3 text-gray-700 
+                                placeholder-gray-400" id="" placeholder="Unit Description"
                             />
                             {errors?.description?.type === 'required' &&
-                                <p className="form-text text-red-600" >This field is required</p>}
+                                <p className="form-text text-beige" >This field is required</p>}
                         </div>
                         <div className="mb-5">
                             <input type="text" {...register('price', { required: true ,pattern: /^[0-9]*$/})}
-                                className=" border-0 border-b-2 rounded w-full py-3 px-3 text-gray-700 leading-tight 
-                         placeholder-gray-400" id="" placeholder="Expected Price"
+                                className="font-[Poppins] border-0 border-b-4 shadow border-beige rounded-md w-full py-3 px-3 text-gray-700 
+                                placeholder-gray-400" id="" placeholder="Expected Price"
                             />
                        
                             {errors?.price?.type === 'required' &&
-                                <p className="form-text text-red-600" >This field is required</p>}
+                                <p className="form-text text-beige font-[Poppins]" >This field is required</p>}
                                 {errors?.price?.type === 'pattern' &&
-                                <p className="form-text text-red-600">Please enter numbers only </p>}
+                                <p className="form-text text-beige font-[Poppins]">Please enter numbers only </p>}
                         </div>
 
                         <div className=' mb-5'>
-                            <div className="w-1/3 flex me-5">
-                                <label className="me-5 text-slate-700">Unit Type</label>
+                            <div className=" me-5">
                                 <Controller
                                     name="unitType"
                                     control={control}
@@ -90,7 +89,7 @@ const AddForm = () => {
                                     render={({ field }) => (
                                         <select
                                             {...field}
-                                            className="appearance-none bg-white border-0 border-b-2 hover:border-gray-500 py-3 px-1 rounded shadow leading-tight text-gray-400"
+                                            className="appearance-none bg-white   border-0 border-b-2 border-0 border-b-4 shadow border-beige hover:border-beige py-3 rounded-md w-1/2 shadow leading-tight text-beige "
                                         >
                                             <option value="For Sell">For Sell</option>
                                             <option value="For Rent">For Rent</option>
@@ -101,9 +100,9 @@ const AddForm = () => {
                             </div>
 
 
-                            <div className=" my-3">
+                            <div className=" my-3 flex items-center">
 
-                                <label htmlFor="files" className="block text-gray-700">
+                                <label htmlFor="files" className="block text-gray-700 font-[Poppins] me-3">
                                     Upload your units photos
                                 </label>
                                 {fields.map((file, index) => (
@@ -117,17 +116,17 @@ const AddForm = () => {
                                                 <input
                                                     {...field}
                                                     type="file"
-                                                    className="border-gray-300 focus:border-indigo-500 my-1 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md"
+                                                    className="border-gray-300 focus:border-beige my-1 focus:ring  rounded-md"
                                                 />
                                             )}
                                         />
-                                        <button type="button"  onClick={() => remove(index)}>
+                                        <button type="button" className='me-5'  onClick={() => remove(index)}>
                                             Remove
                                         </button>
                                     </div>
                                 ))}
                                 <button type="button"  onClick={() => append('')}>
-                                    Add File
+                                +
                                 </button>
 
                             </div>
@@ -135,7 +134,7 @@ const AddForm = () => {
                         </div>
 
 
-                        <button type="submit" style={{ background: "#c5bbb5 " }} className=" mt-3 w-full bg-white shadow-2xl  text-white font-bold py-3 px-4 rounded">
+                        <button type="submit"  className=" mt-3 w-full shadow-2xl  text-white font-bold py-3 px-4 rounded bg-beige">
                             Submit
                         </button>
                     </form>

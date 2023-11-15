@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 const About = () => {
   return (
     <div className="pt-10 w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto">
-      <div className={`${styles.Continer} flex mb-20`}>
-      <div className={ `${styles.BgContent} relative  w-1/2  pl-20 pt-40 pb-40 mb-10 `}>
+      <div className={`${styles.Continer} flex mb-20 items-center`}>
+      <div className={ `${styles.BgContent} relative  w-1/2 pt-40 pb-40 mb-10 ps-7 `}>
         <h5 className="text-xl  text-beige  mb-5 text-left">VIEW THE EXTRAORDINARY</h5>
         <h2 className="text-2xl mb-3 font-bold font-[Poppins] ">Homes in Alexandria</h2>
         <p className="text-sm lg:w-5/6 font-[Poppins] mb-8">

@@ -14,7 +14,7 @@ const Units = () => {
         <h2 className={`${style.header} font-[Poppins] text-left text-3xl w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto`}>
           Unit For Sale
         </h2>
-        <div className=" flex flex-wrap justify-center">
+        <div className={` flex  justify-center items-center ${style.card}`}>
           {salesData.slice(0, 3).map(card => (
             <div key={card.id} className="">
               <Card
@@ -36,7 +36,7 @@ const Units = () => {
         <h2 className={`${style.header} font-[Poppins] text-left text-3xl w-full sm:max-w-xl md.max-w-full lg:max-w-screen-xl md:px-5 mx-auto mt-10`}>
           Unit For Rent
         </h2>
-        <div className=" flex flex-wrap justify-center">
+        <div className={` flex  justify-center items-center ${style.card}`}>
           {rentData.slice(3, 6).map(card => (
             <div key={card.id} className="">
               <Card

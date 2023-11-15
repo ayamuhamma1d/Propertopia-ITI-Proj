@@ -5,13 +5,14 @@ import Services from "./Services";
 import Hero from "./Hero";
 import Card from "../shared/card/Card";
 import { data } from './../auth/firebase/Firebase' 
+import style from "./home.module.css"
 const Home = () => {
   const salesData=data[0];
 
   return (
     <>
       <Hero />
-      <div className=" flex flex-wrap justify-center">
+      <div className={` flex  justify-center items-center ${style.card}`}>
         {salesData.slice(0, 3).map(card => (
           <div key={card.id} className="mb-10">
             <Card
