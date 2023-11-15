@@ -18,7 +18,7 @@ const Maintenance = (props) => {
     },
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 4, // Display 4 items in desktop view
+      items: 4, 
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
@@ -51,6 +51,8 @@ const Maintenance = (props) => {
         deviceType={props.deviceType}
         dotListClass="custom-dot-list-style"
         itemClass="carousel-item-padding-40-px"
+        autoPlay={true} 
+        autoPlaySpeed={500} 
       >
         {images.map((img, index) => (
           <div key={index}>
