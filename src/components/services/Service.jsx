@@ -131,7 +131,7 @@ const Service = () => {
         <div className="items-center justify-center ">
           <Link
 
-            className=" m-2 sm:w-sm w-auto bg-beige1  hover:bg-black py-4  text-black  inline-flex items-center justify-center px-6 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700"
+            className=" m-2 sm:w-sm w-auto bg-beige1  hover:bg-black py-4 hover:text-white text-black  inline-flex items-center justify-center px-6 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700"
           >
             <FontAwesomeIcon className="mr-3 w-7 " icon={faEnvelope} />
             <div>
@@ -142,7 +142,7 @@ const Service = () => {
           </Link>
           <Link
 
-            className=" m-2 sm:w-sm w-auto bg-beige1  hover:bg-black py-4  text-black  inline-flex items-center justify-center px-6 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700"
+            className=" m-2 sm:w-sm w-auto bg-beige1  hover:bg-black py-4  hover:text-white  text-black  inline-flex items-center justify-center px-6 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700"
           >
             <FontAwesomeIcon className="mr-3 w-7 " icon={faPhone} />
             <div>
