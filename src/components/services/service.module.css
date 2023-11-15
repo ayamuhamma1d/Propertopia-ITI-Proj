@@ -84,3 +84,29 @@
       margin-bottom: 180px;
     }
 }
+
+.parentt{
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #000;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  height: 60%;
+}
+
+.swiper {
+  width: 100%;
+  height: 60%;
+}
+
+
+
+.content{
+  width: 40%;
+}
+.swiper-slide img {
+  width: 50% ;
+  object-fit: cover; 
+}
+

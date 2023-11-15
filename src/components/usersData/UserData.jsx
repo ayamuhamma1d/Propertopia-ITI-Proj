@@ -44,6 +44,7 @@ const UserData = () => {
       if (user) {
         setUserName(user.displayName);
         setUserEmail(user.email);
+        
       }
     });
 

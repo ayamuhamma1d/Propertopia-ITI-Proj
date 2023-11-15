@@ -19,6 +19,7 @@ import {
   setDoc,
   updateDoc,
 } from "firebase/firestore";
+import { Link } from "react-router-dom";
 
 function EditProfile() {
   const [userName, setUserName] = useState("");
@@ -28,66 +29,6 @@ function EditProfile() {
   const [data, setData] = useState("");
   const { handleSubmit, formState } = useForm();
   const { errors } = formState;
-
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user) {
-        setUserName(user.displayName);
-        setUserEmail(user.email);
-      }
-    });
-
-    return () => {
-      unsubscribe();
-    };
-  }, []);
-
-  const onSubmit = async () => {
-    try {
-      const emailPattern = /^[^\s@]+@(gmail|yahoo|hotmail)\.com$/;
-      const phoneNumberPattern = /^01[1025]\d{8}$/;
-
-      let isValid = true;
-
-      if (!emailPattern.test(userEmail)) {
-        setErrorMessage("Please enter a valid email address.");
-        isValid = false;
-      }
-
-      if (!phoneNumberPattern.test(userPhone)) {
-        setErrorMessage("Please enter a valid phone number");
-        isValid = false;
-      }
-
-      if (isValid) {
-        const currentUser = auth.currentUser;
-
-        await updateProfile(auth.currentUser, {
-          displayName: userName,
-          email: userEmail,
-        });
-
-        const collectionData = await getCollectionData();
-        const user = collectionData.find(
-          (data) => data.displayName === userName
-        );
-
-        if (user) {
-          await updateDoc(doc(db, "users", user.docId), {
-            phoneNumber: userPhone,
-            displayName: userName,
-            email: userEmail,
-          });
-        }
-        
-        setUserPhone(userPhone);
-        setUserEmail(userEmail);
-      }
-
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
   const getCollectionData = async () => {
     try {
@@ -117,9 +58,64 @@ function EditProfile() {
     fetchData();
   }, [userName]);
 
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setUserName(user.displayName);
+        setUserEmail(user.email);
+      }
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+  const onSubmit = async () => {
+    try {
+      const emailPattern = /^[^\s@]+@(gmail|yahoo|hotmail|outlook)\.com$/;
+      const phoneNumberPattern = /^01[1025]\d{8}$/;
+
+      let isValid = true;
+
+      if (!emailPattern.test(userEmail)) {
+        setErrorMessage("Please enter a valid email address.");
+        isValid = false;
+      }
+
+      if (!phoneNumberPattern.test(userPhone)) {
+        setErrorMessage("Please enter a valid phone number");
+        isValid = false;
+      }
+
+      if (isValid) {
+        const currentUser = auth.currentUser;
+        await updateProfile(auth.currentUser, {
+          displayName: userName,
+          email: userEmail,
+        });
+
+        const collectionData = await getCollectionData();
+        const user = collectionData.find((data) => data.email === userEmail);
+
+        if (user) {
+          await updateDoc(doc(db, "users", user.docId), {
+            displayName: userName,
+            phoneNumber: userPhone,
+          });
+
+          setUserPhone(userPhone);
+          setUserName(userName);
+          window.location.href = "./profile";
+        }
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div className="w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto mb-10">
-      <h5 className="text-left mb-10 ms-2 text-2xl capitalize">Edit Your Data</h5>
+      <h5 className="text-left mb-10 ms-2 text-2xl">Edit Your Data</h5>
       <form onSubmit={handleSubmit(onSubmit)} className="gap-6">
         <div className="flex flex-col w-full">
           <div className="flex items-center justify-center mb-5">
@@ -148,6 +144,7 @@ function EditProfile() {
               <FontAwesomeIcon icon={faEnvelope} />
             </div>
             <input
+              readOnly
               type="text"
               value={userEmail}
               onChange={(e) => setUserEmail(e.target.value)}
@@ -164,35 +161,38 @@ function EditProfile() {
               </div>
             )}
           </div>
-          <div className="flex items-center justify-center mb-5">
-            <div className="bg-beige py-3 rounded-s-2xl  px-5 text-white">
-              <FontAwesomeIcon icon={faPhone} />
-            </div>
-            <input
-              type="text"
-              value={userPhone}
-              onChange={(e) => setUserPhone(e.target.value)}
-              className=" border-none w-full me-4 font-[Poppins] py-3 bg-white shadow rounded-e-2xl "
-              placeholder="Enter your Phone"
-            />
-            {errors.phone && (
-              <div
-                className="bg-beige1 border border-beige text-beige px-4 py-3 text-xs rounded relative"
-                role="alert"
-              >
-                <span className="block sm:inline font-bold">
-                  {errors.phone.message}
-                </span>
+          {userPhone && (
+            <div className="flex items-center justify-center mb-5">
+              <div className="bg-beige py-3 rounded-s-2xl  px-5 text-white">
+                <FontAwesomeIcon icon={faPhone} />
               </div>
-            )}
-          </div>
+              <input
+                type="text"
+                value={userPhone}
+                onChange={(e) => setUserPhone(e.target.value)}
+                className=" border-none w-full me-4 font-[Poppins] py-3 bg-white shadow rounded-e-2xl "
+              />
+              {errors.phone && (
+                <div
+                  className="bg-beige1 border border-beige text-beige px-4 py-3 text-xs rounded relative"
+                  role="alert"
+                >
+                  <span className="block sm:inline font-bold">
+                    {errors.phone.message}
+                  </span>
+                </div>
+              )}
+            </div>
+          )}
         </div>
+
         <button
           type="submit"
           className={` text-white bg-beige font-semibold py-2 px-4 rounded-3xl shadow-lg text-lg font-[Poppins] w-48`}
         >
           Save Changes
         </button>
+
         <div
           className={` ${
             styles.errorArea
