@@ -10,7 +10,9 @@ const itemsPerPage = 9;
 const UnitForRent = () => {
   const rentData = data[1];
   const [currentPage, setCurrentPage] = useState(1);
-
+    console.log('====================================');
+    console.log(data[1]);
+    console.log('====================================');
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;

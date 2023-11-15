@@ -24,7 +24,7 @@ const Card = ({
   rooms,
   pricePerDay,
   id,
-  removeFromWishlist,
+  removeFromWishlist,location
 }) => {
   const [isWishlist, setIsWishlist] = useState(false);
 
@@ -155,7 +155,7 @@ const Card = ({
               <div>
                 <p>
                   <FontAwesomeIcon className='pr-1 font-[Poppins]' icon={faMapMarkerAlt} />
-                  location
+                  {location.split(' ').slice(0,3).join('_')}
                 </p>
               </div>
               <div>
