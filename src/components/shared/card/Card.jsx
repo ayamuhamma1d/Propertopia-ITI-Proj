@@ -117,7 +117,7 @@ const Card = ({
       <div className="flex  gap-10 flex-wrap  justify-center items-center">
         <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
           <div className='relative '>
-            <Link to={`/details/${id}`}>
+            <Link to={`/details/${id}/${purpose}`}>
               <img src={image_url} alt="" />
             </Link>
             <div className={`absolute top-2 left-3 bg-black p-2`}>
