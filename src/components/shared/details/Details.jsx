@@ -27,12 +27,11 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
+import { useEffect } from 'react';
+import { auth, db } from '../../auth/firebase/Firebase';
+import { deleteDoc, doc, getDoc, setDoc } from 'firebase/firestore';
 const Details = () => {
   const [isWishlist, setIsWishlist] = useState(false);
-  const addToWishlist = (index) => {
-    setIsWishlist(!isWishlist);
-
-  };
   const { id, purpose } = useParams();
   let details;
 
@@ -44,12 +43,91 @@ const Details = () => {
     details = data[0];
   };
   const detailsData = details[id - 1];
-
-
   const [bigPhoto, setBigPhoto] = useState(detailsData.image_url);
   const [currentIndex, setCurrentIndex] = useState(0);
-
-
+  useEffect(() => {
+    checkWishlistItem(detailsData.id);
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        checkWishlistItem(detailsData.id);
+      }
+    });
+    return () => {
+      unsubscribe();
+    };
+  }, [detailsData.id]);
+  const checkWishlistItem = async (itemId) => {
+    const user = auth.currentUser;
+    if (user) {
+      const docRef = doc(db, user.uid, itemId.toString());
+      const docSnapshot = await getDoc(docRef);
+      setIsWishlist(docSnapshot.exists());
+    } else {
+      setIsWishlist(false);
+    }
+  };
+  const addToWishlist = async (itemId) => {
+    const user = auth.currentUser;
+    if (user) {
+      const customId = itemId.toString();
+      const docRef = doc(db, user.uid, customId);
+      if (isWishlist) {
+        try {
+          await deleteDoc(docRef);
+          setIsWishlist(false);
+          removeFromWishlist(customId);
+        } catch (error) {
+          return <p className="bg-beige1 border border-beige text-beige px-4 py-3 text-xs rounded relative font-[Poppins]">{error}</p>;
+        }
+      } else {
+        try {
+          const wishlistItem = {
+            id: itemId,
+            image_url: detailsData.image_url,
+            area: detailsData.area,
+            purpose: detailsData.purpose,
+            type_of_unit: detailsData.type_of_unit,
+            bathrooms: detailsData.bathrooms,
+            rooms: detailsData.rooms,
+          };
+          if (detailsData.purpose === 'sale') {
+            wishlistItem.price = detailsData.price;
+          } else if (detailsData.purpose === 'rent') {
+            wishlistItem.pricePerDay = detailsData.pricePerDay;
+          }
+          await setDoc(docRef, wishlistItem);
+          setIsWishlist(true);
+          console.log('Item added to wishlist');
+        } catch (error) {
+          return <p className="bg-beige1 border border-beige text-beige px-4 py-3 text-xs rounded relative font-[Poppins]">{error}</p>;
+        }
+      }
+    }
+  };
+  const handleShare = () => {
+    if (navigator.share) {
+      const propertyDetails = `
+        Property Details:
+        Type: ${type_of_unit}
+        Purpose: ${purpose}
+        Rooms: ${rooms}
+        Bathrooms: ${bathrooms}
+        Area: ${area}m
+        Price: ${purpose === 'sale' ? '$' + price.toLocaleString() : '$' + pricePerDay.toLocaleString()}
+      `;
+  
+      navigator
+        .share({
+          title: 'Check out this property',
+          text: 'I found this amazing property and thought you might be interested!\n\n' + propertyDetails,
+          url: window.location.href,
+        })
+        .then(() => console.log('Shared successfully'))
+        .catch((error) => console.error('Error sharing:', error));
+    } else {
+      console.log('Web Share API not supported');
+    }
+  };
 
   return (
     <>
@@ -142,11 +220,11 @@ const Details = () => {
                     <FontAwesomeIcon className='me-3 text-beige' icon={faLocationDot} />
                     <span className="text-md text-slate-700"> {detailsData.location}</span>
                   </div>
-                  <h6 className=" text-xl text-slate-900"><span className="font-bold text-xl text-beige">$ </span> {detailsData.price || detailsData.meter_price}</h6>
+                  <h6 className=" text-xl text-slate-900"><span className="font-bold text-xl text-beige">$ </span> {detailsData.price.toLocaleString() || detailsData.meter_price.toLocaleString()}</h6>
                 </div>
                 <div className='flex justify-between align-items-center py-5' >
                   <Link className='p-3 cursor-pointer'>
-                    <FontAwesomeIcon icon={isWishlist ? solidHeart : regularHeart} onClick={() => { addToWishlist() }} />
+                    <FontAwesomeIcon icon={isWishlist ? solidHeart : regularHeart} onClick={() => { addToWishlist(detailsData.id) }} />
                   </Link>
                   <Link className='p-3'>
                     <FontAwesomeIcon icon={faShareNodes} style={{ color: "#080808", }} className='pe-2' />
@@ -155,8 +233,8 @@ const Details = () => {
               </div>
 
               <div >
-                <h2 className="font-bold text-xl text-beige pt-3">Description :</h2>
-                <p className=" my-5  text-slate-700"
+                <h2 className="font-bold text-xl text-beige pt-3 ">Description :</h2>
+                <p className=" mb-8 mt-2  text-slate-700"
                 >
                   {` For ${detailsData.purpose} : Experience comfort in this charming ${detailsData.rooms} -bedroom apartment located on the 
                   ${detailsData.floor} floor with a delightful view of the main street. This property offers ${detailsData.bathrooms} bathroom,
@@ -216,8 +294,8 @@ const Details = () => {
           </div>
 
           <div className=' mx-auto my-5'>
-              <h3 className="font-bold text-xl md:text-2xl text-slate-950 font-[Poppins] py-3  ">3D</h3>
-              <iframe src={detailsData.iframe} className={`${style.height3d} w-full`} ></iframe>
+            <h3 className="font-bold text-xl md:text-2xl text-slate-950 font-[Poppins] py-3  ">3D</h3>
+            <iframe src={detailsData.iframe} className={`${style.height3d} w-full`} ></iframe>
           </div>
         </div>
 

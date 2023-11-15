@@ -9,6 +9,7 @@ import { faBath } from '@fortawesome/free-solid-svg-icons';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import { auth, db } from './../../auth/firebase/Firebase';
+import style from"./card.module.css"
 import {
   deleteDoc,
   doc,
@@ -153,9 +154,9 @@ const Card = ({
             </div>
             <div className="flex items-center justify-between mt-2.5 mb-5">
               <div>
-                <p>
+                <p className="">
                   <FontAwesomeIcon className='pr-1 font-[Poppins]' icon={faMapMarkerAlt} />
-                  {location.split(' ').slice(0,3).join('_')}
+                {location}
                 </p>
               </div>
               <div>
