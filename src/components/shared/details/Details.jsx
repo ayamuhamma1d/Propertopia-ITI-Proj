@@ -25,18 +25,14 @@ import { useParams } from 'react-router-dom';
 import { data } from './../../auth/firebase/Firebase';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-
-
 import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
-
 const Details = () => {
   const [isWishlist, setIsWishlist] = useState(false);
   const addToWishlist = (index) => {
     setIsWishlist(!isWishlist);
 
   };
-console.log(data)
   const { id, purpose } = useParams();
   let details;
 
@@ -140,7 +136,7 @@ console.log(data)
             <div >
               <div className='flex justify-between items-center'>
                 <div className=''>
-                  <h2 className="font-bold text-2xl md:text-3xl text-slate-950 font-[Poppins] py-3">{detailsData.type_of_unit}</h2>
+                  <h2 className="font-bold text-2xl md:text-3xl text-slate-950 font-[Poppins] py-3  capitalize">{detailsData.type_of_unit}</h2>
                   <div className="my-5">
                     <FontAwesomeIcon className='me-3 text-beige' icon={faLocationDot} />
                     <span className="text-md text-slate-700"> Egypt</span>
