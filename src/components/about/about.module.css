@@ -18,7 +18,7 @@
 
 .BgContent {
   background-color: white;
-  z-index         : 100;
+
 }
 
 
@@ -28,9 +28,9 @@
   }
 
   .BgContent {
-    width        : 100%;
-    padding: 0 25px;
- 
+    width        : 60% !important;
+    padding: 0 1rem 3rem 1rem !important;
+  
 
   }
 

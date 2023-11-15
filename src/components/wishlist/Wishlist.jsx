@@ -44,7 +44,7 @@ const Wishlist = () => {
   };
   return (
     <div className="w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto h-auto mb-10">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3  xl:grid-cols-4 gap-1 justify-center">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3  xl:grid-cols-4  justify-center">
         {wishlist.map((card) => (
           <div key={card.docId} className="mb-2">
             <Card {...card} removeFromWishlist={removeFromWishlist} />

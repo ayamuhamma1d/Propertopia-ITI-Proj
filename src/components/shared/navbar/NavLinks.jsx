@@ -20,6 +20,10 @@ const NavLinks = ({setOpen}) => {
           Head: "Unit for rent",
           path: "/units/unit-for-rent",
         },
+        {
+          Head: "Add Unit",
+          path: "/addUnit",
+        },
       ],
     },
     {

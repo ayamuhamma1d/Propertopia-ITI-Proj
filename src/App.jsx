@@ -17,6 +17,7 @@ import NotFoundPage from './components/shared/notFoundPage/NotFoundPage';
 import Units from './components/units/Units';
 import Profile from "./components/profile/Profile"
 import ResetPass from './components/auth/resetPass/resetPass';
+import AddUnit from './components/addUnit/addUnit';
 function App() {
   return (
     <>
@@ -25,7 +26,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Navigate to= '/home'/>}></Route>
           <Route path='/home' element={<Home />}></Route>
-          <Route path='/details/:id' element={<Details />}></Route>
+          <Route path='/details/:id/:purpose' element={<Details />}></Route>
           <Route path='/about' element={<About />}></Route>
           <Route path='/units' element={<Units />}></Route>
           <Route path='/units/unit-for-sale' element={<UnitForSale />}></Route>
@@ -39,6 +40,7 @@ function App() {
           <Route path='/SignUp' element={<SignUp />}></Route>
           <Route path='/profile' element={<Profile />}></Route>
           <Route path='/resetPass' element={<ResetPass/>}></Route>
+          <Route path='/addUnit' element={<AddUnit />}></Route>
           <Route path='*' element={<NotFoundPage />}></Route>
         </Routes>
         <Footer />

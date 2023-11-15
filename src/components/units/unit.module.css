@@ -7,7 +7,7 @@
     font-variation-settings: "wght" 311;
     margin-bottom: 0.8rem;
     outline: none;
-    text-align: center;
+    text-align: left !important;
   }
 
   .header:hover {
@@ -15,3 +15,11 @@
     letter-spacing: 1px;
   }
   
+  @media screen and (max-width: 768px) {
+    .card{
+        flex-wrap: wrap !important;
+    }
+    .header{
+      text-align: center !important;
+    }
+}
