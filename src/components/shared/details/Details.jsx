@@ -298,6 +298,7 @@ const Details = () => {
             <iframe src={detailsData.iframe} className={`${style.height3d} w-full`} ></iframe>
           </div>
         </div>
+       
 
       </section >
 
