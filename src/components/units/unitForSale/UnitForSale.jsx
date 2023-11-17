@@ -12,12 +12,13 @@ const UnitForSale = () => {
   const [price, setPrice] = useState(0);
   const [floorArea, setFloorArea] = useState("");
   const [bedrooms, setBedrooms] = useState("");
-  
-  const itemsPerPage = 9;
 
+  const [searchInput, setSearchInput] = useState('');
+
+
+  const itemsPerPage = 9;
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-
   const currentItems = salesData.slice(startIndex, endIndex);
 
   const handlePageChange = (pageNumber) => {
@@ -25,12 +26,12 @@ const UnitForSale = () => {
     window.scrollTo(0, 0); 
   };
 
-  
+
   const handleFilterChange = (e) => {
     setDropDownFilter(e.target.value);
   };
 
- 
+
 
   const handleFilterPrice = (e) => {
     setPrice(parseInt(e.target.value, 10) || 0);
@@ -52,19 +53,27 @@ const UnitForSale = () => {
   };
 
 
-  const filteredData = currentItems.filter(
-    (x) =>
-      x.type_of_unit.includes(dropDownFilter) &&
-      (price === 0 || x.price <= price) &&
-      (floorArea === "" ||
-        (floorArea.includes("-") &&
-          x.area >= parseInt(floorArea.split("-")[0], 10) &&
-          x.area <= parseInt(floorArea.split("-")[1], 10)) ||
-        x.area === parseInt(floorArea, 10)) &&
-      (bedrooms === "" || x.rooms === parseInt(bedrooms, 10))
-  );
 
+  const filteredData = salesData.filter((x) => {
+    const typeMatch = x.type_of_unit.includes(dropDownFilter);
+    const priceMatch = price === 0 || x.price <= price;
+    const floorAreaMatch =
+      floorArea === "" ||
+      (floorArea.includes("-") &&
+        x.area >= parseInt(floorArea.split("-")[0], 10) &&
+        x.area <= parseInt(floorArea.split("-")[1], 10)) ||
+      x.area === parseInt(floorArea, 10);
+    const bedroomsMatch = bedrooms === "" || x.rooms === parseInt(bedrooms, 10);
+    const searchMatch =
+      x.type_of_unit.toLowerCase().includes(searchInput.toLowerCase()) ||
+      x.price.toString().includes(searchInput);
 
+    return typeMatch && priceMatch && floorAreaMatch && bedroomsMatch && searchMatch;
+  });
+  const displayItems = searchInput || price || floorArea || dropDownFilter || bedrooms ? filteredData : currentItems
+  const hasActiveFilters = !!dropDownFilter || !!price || !!floorArea || !!bedrooms;
+  const hasSearchInput = !!searchInput;
+  const hasActiveFiltersOrSearch = hasActiveFilters || hasSearchInput;
 
   return (
     <div>
@@ -81,11 +90,15 @@ const UnitForSale = () => {
                 <path d="M15.8898 15.0493L11.8588 11.0182C11.7869 10.9463 11.6932 10.9088 11.5932 10.9088H11.2713C12.3431 9.74952 12.9994 8.20272 12.9994 6.49968C12.9994 2.90923 10.0901 0 6.49968 0C2.90923 0 0 2.90923 0 6.49968C0 10.0901 2.90923 12.9994 6.49968 12.9994C8.20272 12.9994 9.74952 12.3431 10.9088 11.2744V11.5932C10.9088 11.6932 10.9495 11.7869 11.0182 11.8588L15.0493 15.8898C15.1961 16.0367 15.4336 16.0367 15.5805 15.8898L15.8898 15.5805C16.0367 15.4336 16.0367 15.1961 15.8898 15.0493ZM6.49968 11.9994C3.45921 11.9994 0.999951 9.54016 0.999951 6.49968C0.999951 3.45921 3.45921 0.999951 6.49968 0.999951C9.54016 0.999951 11.9994 3.45921 11.9994 6.49968C11.9994 9.54016 9.54016 11.9994 6.49968 11.9994Z"></path>
               </svg>
             </div>
+
             <input
               type="text"
               placeholder="Search by listing, location, bedroom number..."
+              value={searchInput}
+              onChange={(e) => setSearchInput(e.target.value)}
               className="px-9 py-3 w-full rounded-md bg-transparent text-black border-beige1 focus:border-beige focus:bg-white focus:ring-0 text-sm "
             />
+
           </div>
           <div className="flex items-center justify-between mt-4">
             <p className="font-medium">Filters</p>
@@ -108,7 +121,7 @@ const UnitForSale = () => {
               </select>
               <select
                 onChange={handleFilterPrice}
-               
+
                 value={price.toString()}
                 className="px-4 py-3 w-full rounded-md bg-beige1 border-transparent focus:border-beige focus:bg-white focus:ring-0 text-sm"
               >
@@ -145,7 +158,7 @@ const UnitForSale = () => {
       </div>
       <div className={`${style.header} font-[Poppins] text-left text-3xl w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto`}> For Sale </div>
       <div className=" flex flex-wrap justify-center">
-        {filteredData.map(card => (
+        {displayItems.map(card => (
           <div key={card.id} className="">
             <Card
               {...card}
@@ -153,7 +166,9 @@ const UnitForSale = () => {
           </div>
         ))}
       </div>
-      <Pagination currentPage={currentPage} totalPages={Math.ceil(salesData.length / itemsPerPage)} onPageChange={handlePageChange} />
+       {!hasActiveFiltersOrSearch && (
+        <Pagination currentPage={currentPage} totalPages={Math.ceil(salesData.length / itemsPerPage)} onPageChange={handlePageChange} />
+      )}
     </div>
 
   );
