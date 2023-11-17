@@ -1,18 +1,19 @@
-import React, { useState } from 'react';
-import Card from '../../shared/card/Card';
-import Pagination from '../../shared/pagination/Pagination';
+import React, { useState } from "react";
+import Card from "../../shared/card/Card";
+import Pagination from "../../shared/pagination/Pagination";
 import Filter from "../../shared/filter/Filter";
 import style from "./../unit.module.css";
-import { data } from './../../auth/firebase/Firebase';
+import { data } from "./../../auth/firebase/Firebase";
 
 const itemsPerPage = 9;
 
 const UnitForRent = () => {
   const rentData = data[1];
   const [currentPage, setCurrentPage] = useState(1);
-    console.log('====================================');
-    console.log(data[1]);
-    console.log('====================================');
+  const [dropDownFilter, setDropDownFilter] = useState("");
+  const [price, setPrice] = useState(0);
+  const [floorArea, setFloorArea] = useState("");
+  const [bedrooms, setBedrooms] = useState("");
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
@@ -21,26 +22,144 @@ const UnitForRent = () => {
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
-    window.scrollTo(0, 0); 
+    window.scrollTo(0, 0);
   };
+
+  const handleFilterChange = (e) => {
+    setDropDownFilter(e.target.value);
+  };
+
+  // const handleFilterPrice = (e) => {
+  //   setPrice(e.target.value);
+  // };
+
+  const handleFilterPrice = (e) => {
+    setPrice(parseInt(e.target.value, 10) || 0);
+  };
+
+  const handleFilterFloorArea = (e) => {
+    setFloorArea(e.target.value);
+  };
+
+  const handleFilterBedrooms = (e) => {
+    setBedrooms(e.target.value);
+  };
+
+  const filteredData = currentItems.filter(
+    (x) =>
+      x.type_of_unit.includes(dropDownFilter) &&
+      (price === 0 || x.pricePerDay <= price) &&
+      // (floorArea === "" || x.area === parseInt(floorArea, 10))
+      (floorArea === "" ||
+        (floorArea.includes("-") &&
+          x.area >= parseInt(floorArea.split("-")[0], 10) &&
+          x.area <= parseInt(floorArea.split("-")[1], 10)) ||
+        x.area === parseInt(floorArea, 10)) &&
+      (bedrooms === "" || x.rooms === parseInt(bedrooms, 10))
+  );
+  console.log(price);
+
+  console.log(filteredData);
 
   return (
     <div>
-      <Filter />
-      <div className={`${style.header} font-[Poppins] text-left text-3xl w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto`}> For Rent </div>
+      {/* <Filter /> */}
+      <div className="flex justify-center items-center w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto  my-10 ">
+        <div className="w-full  shadow p-5 rounded-lg bg-white ">
+          <div className="relative">
+            <div className="absolute flex items-center ml-2 h-full">
+              <svg
+                className="w-4 h-4 fill-current text-beige"
+                viewBox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M15.8898 15.0493L11.8588 11.0182C11.7869 10.9463 11.6932 10.9088 11.5932 10.9088H11.2713C12.3431 9.74952 12.9994 8.20272 12.9994 6.49968C12.9994 2.90923 10.0901 0 6.49968 0C2.90923 0 0 2.90923 0 6.49968C0 10.0901 2.90923 12.9994 6.49968 12.9994C8.20272 12.9994 9.74952 12.3431 10.9088 11.2744V11.5932C10.9088 11.6932 10.9495 11.7869 11.0182 11.8588L15.0493 15.8898C15.1961 16.0367 15.4336 16.0367 15.5805 15.8898L15.8898 15.5805C16.0367 15.4336 16.0367 15.1961 15.8898 15.0493ZM6.49968 11.9994C3.45921 11.9994 0.999951 9.54016 0.999951 6.49968C0.999951 3.45921 3.45921 0.999951 6.49968 0.999951C9.54016 0.999951 11.9994 3.45921 11.9994 6.49968C11.9994 9.54016 9.54016 11.9994 6.49968 11.9994Z"></path>
+              </svg>
+            </div>
+            <input
+              type="text"
+              placeholder="Search by listing, location, bedroom number..."
+              className="px-9 py-3 w-full rounded-md bg-transparent text-black border-beige1 focus:border-beige focus:bg-white focus:ring-0 text-sm "
+            />
+          </div>
+          <div className="flex items-center justify-between mt-4">
+            <p className="font-medium">Filters</p>
+            <button className="px-4 py-2 bg-beige1 text-black hover:bg-beige hover:text-white text-sm font-medium rounded-md">
+              Reset Filter
+            </button>
+          </div>
+          <div>
+            <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
+              <select
+                onChange={handleFilterChange}
+                value={dropDownFilter}
+                className="px-4 py-3 w-full rounded-md bg-beige1 text-black border-transparent focus:border-beige focus:bg-white focus:ring-0 text-sm"
+              >
+                <option value="">Home Type</option>
+                <option value="villa">Villa</option>
+                <option value="apartment">Appartment</option>
+                <option value="studio">Studio</option>
+                <option value="duplex">duplex</option>
+              </select>
+              <select
+                onChange={handleFilterPrice}
+                // value={price}
+                value={price.toString()}
+                className="px-4 py-3 w-full rounded-md bg-beige1 border-transparent focus:border-beige focus:bg-white focus:ring-0 text-sm"
+              >
+                <option value="0"> Price</option>
+                <option value="5000">EGP up to 5000</option>
+                <option value="10000">EGP up to 10000</option>
+                <option value="100000">EGP up to 10000</option>
+              </select>
+              <select
+                onChange={handleFilterFloorArea}
+                value={floorArea}
+                className="px-4 py-3 w-full rounded-md bg-beige1 border-transparent focus:border-beige focus:bg-white focus:ring-0 text-sm"
+              >
+                <option value="">Floor Area</option>
+                <option value="0-200"> up to 200 sq.ft</option>
+                <option value="201-400"> 200 - 400 sq.ft</option>
+                <option value="401-600"> 400 - 600 sq.ft</option>
+              </select>
+              <select
+                onChange={handleFilterBedrooms}
+                value={bedrooms}
+                className="px-4 py-3 w-full rounded-md bg-beige1 border-transparent focus:border-beige focus:bg-white focus:ring-0 text-sm"
+              >
+                <option value="">Bedrooms</option>
+                <option value="1">1 bedroom</option>
+                <option value="2">2 bedrooms</option>
+                <option value="3">3 bedrooms</option>
+                <option value="4">4 bedrooms</option>
+                <option value="5">5 bedrooms</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        className={`${style.header} font-[Poppins] text-left text-3xl w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto`}
+      >
+        {" "}
+        For Rent{" "}
+      </div>
       <div className="flex flex-wrap justify-center">
-        {currentItems.map((card) => (
+        {filteredData.map((card) => (
           <div key={card.id}>
             <Card {...card} />
           </div>
         ))}
       </div>
-      <Pagination currentPage={currentPage} totalPages={Math.ceil(rentData.length / itemsPerPage)} onPageChange={handlePageChange} />
+      <Pagination
+        currentPage={currentPage}
+        totalPages={Math.ceil(rentData.length / itemsPerPage)}
+        onPageChange={handlePageChange}
+      />
     </div>
   );
 };
 
 export default UnitForRent;
-
-
-
