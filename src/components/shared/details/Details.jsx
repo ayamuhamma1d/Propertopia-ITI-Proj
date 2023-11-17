@@ -1,47 +1,46 @@
-import React from 'react';
+import React from "react";
 import style from "./details.module.css";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
-import { faShareNodes } from '@fortawesome/free-solid-svg-icons';
-import { faTreeCity } from '@fortawesome/free-solid-svg-icons';
-import { faBed } from '@fortawesome/free-solid-svg-icons';
-import { faHouseCircleCheck } from '@fortawesome/free-solid-svg-icons';
-import { faStreetView } from '@fortawesome/free-solid-svg-icons';
-import { faSackDollar } from '@fortawesome/free-solid-svg-icons';
-import { faMaximize } from '@fortawesome/free-solid-svg-icons';
-import { faBath } from '@fortawesome/free-solid-svg-icons';
-import { faPerson } from '@fortawesome/free-solid-svg-icons';
-import { faCity } from '@fortawesome/free-solid-svg-icons';
-import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
-import { faWater } from '@fortawesome/free-solid-svg-icons';
-import { faBolt } from '@fortawesome/free-solid-svg-icons';
-import { faSquareParking } from '@fortawesome/free-solid-svg-icons';
-import { faBuilding } from '@fortawesome/free-solid-svg-icons';
-import { faElevator } from '@fortawesome/free-solid-svg-icons';
-import { faShieldHalved } from '@fortawesome/free-solid-svg-icons';
-import { useState } from 'react';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import { faShareNodes } from "@fortawesome/free-solid-svg-icons";
+import { faTreeCity } from "@fortawesome/free-solid-svg-icons";
+import { faBed } from "@fortawesome/free-solid-svg-icons";
+import { faHouseCircleCheck } from "@fortawesome/free-solid-svg-icons";
+import { faStreetView } from "@fortawesome/free-solid-svg-icons";
+import { faSackDollar } from "@fortawesome/free-solid-svg-icons";
+import { faMaximize } from "@fortawesome/free-solid-svg-icons";
+import { faBath } from "@fortawesome/free-solid-svg-icons";
+import { faPerson } from "@fortawesome/free-solid-svg-icons";
+import { faCity } from "@fortawesome/free-solid-svg-icons";
+import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
+import { faWater } from "@fortawesome/free-solid-svg-icons";
+import { faBolt } from "@fortawesome/free-solid-svg-icons";
+import { faSquareParking } from "@fortawesome/free-solid-svg-icons";
+import { faBuilding } from "@fortawesome/free-solid-svg-icons";
+import { faElevator } from "@fortawesome/free-solid-svg-icons";
+import { faShieldHalved } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
-import { useParams } from 'react-router-dom';
-import { data } from './../../auth/firebase/Firebase';
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
-import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
-import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
-import { useEffect } from 'react';
-import { auth, db } from '../../auth/firebase/Firebase';
-import { deleteDoc, doc, getDoc, setDoc } from 'firebase/firestore';
+import { useParams } from "react-router-dom";
+import { data } from "./../../auth/firebase/Firebase";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons";
+import { faHeart as regularHeart } from "@fortawesome/free-regular-svg-icons";
+import { useEffect } from "react";
+import { auth, db } from "../../auth/firebase/Firebase";
+import { deleteDoc, doc, getDoc, setDoc } from "firebase/firestore";
 const Details = () => {
   const [isWishlist, setIsWishlist] = useState(false);
   const { id, purpose } = useParams();
   let details;
 
-  if (purpose == 'rent') {
+  if (purpose == "rent") {
     details = data[1];
-
-  }
-  else {
+    console.log(data[1]);
+  } else {
     details = data[0];
-  };
+  }
   const detailsData = details[id - 1];
   const [bigPhoto, setBigPhoto] = useState(detailsData.image_url);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -77,7 +76,11 @@ const Details = () => {
           setIsWishlist(false);
           removeFromWishlist(customId);
         } catch (error) {
-          return <p className="bg-beige1 border border-beige text-beige px-4 py-3 text-xs rounded relative font-[Poppins]">{error}</p>;
+          return (
+            <p className="bg-beige1 border border-beige text-beige px-4 py-3 text-xs rounded relative font-[Poppins]">
+              {error}
+            </p>
+          );
         }
       } else {
         try {
@@ -90,16 +93,20 @@ const Details = () => {
             bathrooms: detailsData.bathrooms,
             rooms: detailsData.rooms,
           };
-          if (detailsData.purpose === 'sale') {
+          if (detailsData.purpose === "sale") {
             wishlistItem.price = detailsData.price;
-          } else if (detailsData.purpose === 'rent') {
+          } else if (detailsData.purpose === "rent") {
             wishlistItem.pricePerDay = detailsData.pricePerDay;
           }
           await setDoc(docRef, wishlistItem);
           setIsWishlist(true);
-          console.log('Item added to wishlist');
+          console.log("Item added to wishlist");
         } catch (error) {
-          return <p className="bg-beige1 border border-beige text-beige px-4 py-3 text-xs rounded relative font-[Poppins]">{error}</p>;
+          return (
+            <p className="bg-beige1 border border-beige text-beige px-4 py-3 text-xs rounded relative font-[Poppins]">
+              {error}
+            </p>
+          );
         }
       }
     }
@@ -113,39 +120,43 @@ const Details = () => {
         Rooms: ${rooms}
         Bathrooms: ${bathrooms}
         Area: ${area}m
-        Price: ${purpose === 'sale' ? '$' + price.toLocaleString() : '$' + pricePerDay.toLocaleString()}
+        Price: ${
+          purpose === "sale"
+            ? "$" + price.toLocaleString()
+            : "$" + pricePerDay.toLocaleString()
+        }
       `;
-  
+
       navigator
         .share({
-          title: 'Check out this property',
-          text: 'I found this amazing property and thought you might be interested!\n\n' + propertyDetails,
+          title: "Check out this property",
+          text:
+            "I found this amazing property and thought you might be interested!\n\n" +
+            propertyDetails,
           url: window.location.href,
         })
-        .then(() => console.log('Shared successfully'))
-        .catch((error) => console.error('Error sharing:', error));
+        .then(() => console.log("Shared successfully"))
+        .catch((error) => console.error("Error sharing:", error));
     } else {
-      console.log('Web Share API not supported');
+      console.log("Web Share API not supported");
     }
   };
 
   return (
     <>
-      <section className='w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto my-10'>
+      <section className="w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto my-10">
         <div>
-          <div className="grid grid-cols-1 lg:grid-cols-2  gap-4 items-stretch" >
+          <div className="grid grid-cols-1 lg:grid-cols-2  gap-4 items-stretch">
             <div className="grid gap-4 p-5 me-3 ">
-
-              <div  >
+              <div>
                 <img
                   className={`${style.img} h-auto max-w-full rounded-lg`}
                   src={bigPhoto}
-                  alt='BigPhoto'
+                  alt="BigPhoto"
                 />
-
               </div>
-              <div >
-                <div className="grid "  >
+              <div>
+                <div className="grid ">
                   <Carousel
                     additionalTransfrom={0}
                     arrows
@@ -189,9 +200,8 @@ const Details = () => {
                     sliderClass=""
                     slidesToSlide={1}
                     swipeable
-
                   >
-                    <div className="grid grid-cols-4 gap-4 cursor-pointer" >
+                    <div className="grid grid-cols-4 gap-4 cursor-pointer">
                       {detailsData.images.map((img, i) => (
                         <img
                           class={`${style.img}h-auto max-w-full rounded-lg `}
@@ -203,121 +213,165 @@ const Details = () => {
                           }}
                         />
                       ))}
-
                     </div>
                   </Carousel>
-
                 </div>
-
               </div>
-
             </div>
-            <div >
-              <div className='flex justify-between items-center'>
-                <div className=''>
-                  <h2 className="font-bold text-2xl md:text-3xl text-slate-950 font-[Poppins] py-3  capitalize">{detailsData.type_of_unit}</h2>
+            <div>
+              <div className="flex justify-between items-center">
+                <div className="">
+                  <h2 className="font-bold text-2xl md:text-3xl text-slate-950 font-[Poppins] py-3  capitalize">
+                    {detailsData.type_of_unit}
+                  </h2>
                   <div className="my-5">
-                    <FontAwesomeIcon className='me-3 text-beige' icon={faLocationDot} />
-                    <span className="text-md text-slate-700"> {detailsData.location}</span>
+                    <FontAwesomeIcon
+                      className="me-3 text-beige"
+                      icon={faLocationDot}
+                    />
+                    <span className="text-md text-slate-700">
+                      {" "}
+                      {detailsData.location}
+                    </span>
                   </div>
-                  <h6 className=" text-xl text-slate-900"><span className="font-bold text-xl text-beige">$ </span> {details.purpose=='sale'?detailsData.price.toLocaleString() : detailsData.meter_price.toLocaleString()}</h6>
+                  <h6 className=" text-xl text-slate-900">
+                    <span className="font-bold text-xl text-beige">$ </span>{" "}
+                    {details.purpose == "sale"
+                      ? detailsData.price.toLocaleString()
+                      : detailsData.meter_price.toLocaleString()}
+                  </h6>
                 </div>
-                <div className='flex justify-between align-items-center py-5' >
-                  <Link className='p-3 cursor-pointer'>
-                    <FontAwesomeIcon icon={isWishlist ? solidHeart : regularHeart} onClick={() => { addToWishlist(detailsData.id) }} />
+                <div className="flex justify-between align-items-center py-5">
+                  <Link className="p-3 cursor-pointer">
+                    <FontAwesomeIcon
+                      icon={isWishlist ? solidHeart : regularHeart}
+                      onClick={() => {
+                        addToWishlist(detailsData.id);
+                      }}
+                    />
                   </Link>
-                  <Link className='p-3'>
-                    <FontAwesomeIcon icon={faShareNodes} style={{ color: "#080808", }} className='pe-2' />
+                  <Link className="p-3">
+                    <FontAwesomeIcon
+                      icon={faShareNodes}
+                      style={{ color: "#080808" }}
+                      className="pe-2"
+                    />
                   </Link>
                 </div>
               </div>
 
-              <div >
-                <h2 className="font-bold text-xl text-beige pt-3 ">Description :</h2>
-                <p className=" mb-8 mt-2  text-slate-700"
-                >
+              <div>
+                <h2 className="font-bold text-xl text-beige pt-3 ">
+                  Description :
+                </h2>
+                <p className=" mb-8 mt-2  text-slate-700">
                   {` For ${detailsData.purpose} : Experience comfort in this charming ${detailsData.rooms} -bedroom apartment located on the 
                   ${detailsData.floor} floor with a delightful view of the main street. This property offers ${detailsData.bathrooms} bathroom,
                    a generous size of ${detailsData.area} square meters, and the convenience of cash or installment payment options.
                     Don't miss the chance to make this ${detailsData.type_of_unit} your new home.
                    For inquiries and to schedule a viewing, contact us via WhatsApp or call.`}
-
                 </p>
               </div>
-              <div class='grid grid-cols-1 text-lg md:grid-cols-2 font-[Poppins]'>
-                <ul >
-                  <li className='flex py-1 items-center ' >
-                    <FontAwesomeIcon className={`${style.iconscolor} me-2 text-beige`} icon={faCity} />
+              <div class="grid grid-cols-1 text-lg md:grid-cols-2 font-[Poppins]">
+                <ul>
+                  <li className="flex py-1 items-center ">
+                    <FontAwesomeIcon
+                      className={`${style.iconscolor} me-2 text-beige`}
+                      icon={faCity}
+                    />
                     <span class="pe-2 ">Type:</span>
-                    <span className="text-gray-600">{detailsData.type_of_unit}</span> </li>
-                  <li className='flex py-1 items-center ' >
-                    <FontAwesomeIcon className={`${style.iconscolor} me-2 text-beige`} icon={faBed} />
+                    <span className="text-gray-600">
+                      {detailsData.type_of_unit}
+                    </span>{" "}
+                  </li>
+                  <li className="flex py-1 items-center ">
+                    <FontAwesomeIcon
+                      className={`${style.iconscolor} me-2 text-beige`}
+                      icon={faBed}
+                    />
                     <span class="pe-2 ">Bedrooms:</span>
-                    <span className="text-gray-600">{detailsData.rooms}</span></li>
-                  <li className='flex py-1 items-center ' >
-                    <FontAwesomeIcon className={`${style.iconscolor} me-2 text-beige`} icon={faHouseCircleCheck} />
+                    <span className="text-gray-600">{detailsData.rooms}</span>
+                  </li>
+                  <li className="flex py-1 items-center ">
+                    <FontAwesomeIcon
+                      className={`${style.iconscolor} me-2 text-beige`}
+                      icon={faHouseCircleCheck}
+                    />
                     <span class="pe-2 ">Purpose:</span>
-                    <span className="text-gray-600">{`For ${detailsData.purpose}`}</span> </li>
-                  <li className='flex  py-1' >
-                    <FontAwesomeIcon className={`${style.iconscolor} me-2 text-beige`} icon={faStreetView} />
+                    <span className="text-gray-600">{`For ${detailsData.purpose}`}</span>{" "}
+                  </li>
+                  <li className="flex  py-1">
+                    <FontAwesomeIcon
+                      className={`${style.iconscolor} me-2 text-beige`}
+                      icon={faStreetView}
+                    />
                     <span class="pe-2 ">View:</span>
-                    <span className="text-gray-600">Main Street</span></li>
-
+                    <span className="text-gray-600">Main Street</span>
+                  </li>
                 </ul>
 
                 <ul>
-
-                  <li className='flex  py-1' >
-                    <FontAwesomeIcon className={`${style.iconscolor} me-2 text-beige`} icon={faBath} />
+                  <li className="flex  py-1">
+                    <FontAwesomeIcon
+                      className={`${style.iconscolor} me-2 text-beige`}
+                      icon={faBath}
+                    />
                     <span class="pe-2 ">Bathrooms: </span>
-                    <span className="text-gray-600">{detailsData.bathrooms}</span></li>
-                  <li className='flex py-1 items-center ' >
-                    <FontAwesomeIcon className={`${style.iconscolor} me-2 text-beige`} icon={faMaximize} />
+                    <span className="text-gray-600">
+                      {detailsData.bathrooms}
+                    </span>
+                  </li>
+                  <li className="flex py-1 items-center ">
+                    <FontAwesomeIcon
+                      className={`${style.iconscolor} me-2 text-beige`}
+                      icon={faMaximize}
+                    />
                     <span class="pe-2 ">Property size: </span>
-                    <span className="text-gray-600">{detailsData.area}</span></li>
-                  <li className='flex py-1 items-center' >
-                    <FontAwesomeIcon className={`${style.iconscolor} me-2 text-beige`} icon={faTreeCity} />
+                    <span className="text-gray-600">{detailsData.area}</span>
+                  </li>
+                  <li className="flex py-1 items-center">
+                    <FontAwesomeIcon
+                      className={`${style.iconscolor} me-2 text-beige`}
+                      icon={faTreeCity}
+                    />
                     <span class="pe-2 ">Floor: </span>
-                    {detailsData.type_of_unit == 'villa' ? (
+                    {detailsData.type_of_unit == "villa" ? (
                       <span className="text-gray-600">0</span>
                     ) : (
                       <span className="text-gray-600">{detailsData.floor}</span>
                     )}
                   </li>
-                  <li className='flex py-1 items-center ' >
-                    <FontAwesomeIcon className={`${style.iconscolor} me-2 text-beige`} icon={faSackDollar} />
+                  <li className="flex py-1 items-center ">
+                    <FontAwesomeIcon
+                      className={`${style.iconscolor} me-2 text-beige`}
+                      icon={faSackDollar}
+                    />
                     <span class=" pe-2 ">Payment : </span>
-                    <span className="text-gray-600">Cash or Installments</span></li>
+                    <span className="text-gray-600">Cash or Installments</span>
+                  </li>
                 </ul>
               </div>
             </div>
           </div>
 
-          <div className=' mx-auto my-5'>
-            <h3 className="font-bold text-xl md:text-2xl text-slate-950 font-[Poppins] py-3  ">3D</h3>
-            <iframe src={detailsData.iframe} className={`${style.height3d} w-full`} ></iframe>
+          <div className=" mx-auto my-5">
+            <h3 className="font-bold text-xl md:text-2xl text-slate-950 font-[Poppins] py-3  ">
+              3D
+            </h3>
+            <iframe
+              src={detailsData.iframe}
+              className={`${style.height3d} w-full`}
+            ></iframe>
           </div>
         </div>
-       
 
-      </section >
+        <iframe
+  src={detailsData.map_iframe}
+  className={`${style.height3d} w-full`}
+/>
+      </section>
+    </>
+  );
+};
 
-
-
-
-
-    </>)
-}
-
-
-export default Details
-
-
-
-
-
-
-
-
-
-
+export default Details;
