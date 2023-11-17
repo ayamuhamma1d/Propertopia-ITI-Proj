@@ -220,7 +220,7 @@ const Details = () => {
                     <FontAwesomeIcon className='me-3 text-beige' icon={faLocationDot} />
                     <span className="text-md text-slate-700"> {detailsData.location}</span>
                   </div>
-                  <h6 className=" text-xl text-slate-900"><span className="font-bold text-xl text-beige">$ </span> {detailsData.price.toLocaleString() || detailsData.meter_price.toLocaleString()}</h6>
+                  <h6 className=" text-xl text-slate-900"><span className="font-bold text-xl text-beige">$ </span> {details.purpose=='sale'?detailsData.price.toLocaleString() : detailsData.meter_price.toLocaleString()}</h6>
                 </div>
                 <div className='flex justify-between align-items-center py-5' >
                   <Link className='p-3 cursor-pointer'>
