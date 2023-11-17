@@ -37,7 +37,6 @@ const Details = () => {
 
   if (purpose == "rent") {
     details = data[1];
-    console.log(data[1]);
   } else {
     details = data[0];
   }

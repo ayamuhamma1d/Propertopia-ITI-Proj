@@ -51,3 +51,26 @@
     background:#bca37f !important;
  
 }  
+
+.Sall_boot{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+#boot_button {
+    background-color: #0F3789;
+    padding: 4px 14px;
+    border-radius: 8px;
+    outline: none;
+    margin-top: 20px;
+    
+}
+
+
+#boot_button #Link{
+    color: #fff;
+    text-decoration: none;
+    }
