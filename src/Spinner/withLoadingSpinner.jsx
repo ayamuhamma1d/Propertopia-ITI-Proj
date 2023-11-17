@@ -11,13 +11,8 @@ const withLoadingSpinner = (WrappedComponent, firebase) => {
         try {
           setLoading(true);
 
-          // Fetch data from Firebase
           const firebaseData = await data.fetchData();
-
-          // Collect all image, video, and iframe URLs
           const allUrls = [];
-
-          // Handle local assets
           const assetsContext = require.context(
             "../../src/assets/",
             false,
@@ -31,23 +26,18 @@ const withLoadingSpinner = (WrappedComponent, firebase) => {
             return path;
           });
 
-          // Handle image and video URLs from Firebase
           const firebaseFiles = Object.values(firebaseData).map((item) => {
             if (item.type === "image" || item.type === "video") {
               allUrls.push(item.url);
             }
             return item.url;
           });
-
-          // Handle iframe URLs from Firebase
           const firebaseIframes = Object.values(firebaseData).map((item) => {
             if (item.type === "iframe") {
               allUrls.push(item.src);
             }
             return item.src;
           });
-
-          // Load all URLs
           const filePromises = allUrls.map((url) => {
             return new Promise((resolve, reject) => {
               if (url.endsWith(".png") || url.endsWith(".jpg") || url.endsWith(".jpeg") || url.endsWith(".gif")) {
@@ -61,19 +51,17 @@ const withLoadingSpinner = (WrappedComponent, firebase) => {
                 video.onerror = reject;
                 video.src = url;
                 document.body.appendChild(video);
-              } else if (url.endsWith(".html")) { // Assuming iframe URLs end with .html
+              } else if (url.endsWith(".html")) { 
                 const iframe = document.createElement("iframe");
                 iframe.onload = resolve;
                 iframe.onerror = reject;
                 iframe.src = url;
                 document.body.appendChild(iframe);
               } else {
-                resolve(); // Skip non-supported URLs
+                resolve();
               }
             });
           });
-
-          // Wait for all promises to resolve
           await Promise.all([...filePromises]);
 
         } catch (error) {
@@ -98,19 +86,16 @@ const withLoadingSpinner = (WrappedComponent, firebase) => {
       const observer = new IntersectionObserver(handleIntersection, {
         root: null,
         rootMargin: "0px",
-        threshold: 0.1, // Adjust this threshold as needed
+        threshold: 0.1,
       });
 
-      // Select all images in the document
       const images = document.querySelectorAll("img");
 
-      // Observe each image
       images.forEach((img) => {
         observer.observe(img);
       });
 
       return () => {
-        // Cleanup: disconnect the observer when the component unmounts
         observer.disconnect();
       };
     }, []);
