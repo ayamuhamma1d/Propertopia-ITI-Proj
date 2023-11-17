@@ -56,7 +56,6 @@ const UnitForSale = () => {
     (x) =>
       x.type_of_unit.includes(dropDownFilter) &&
       (price === 0 || x.price <= price) &&
-      // (floorArea === "" || x.area === parseInt(floorArea, 10))
       (floorArea === "" ||
         (floorArea.includes("-") &&
           x.area >= parseInt(floorArea.split("-")[0], 10) &&
@@ -65,7 +64,7 @@ const UnitForSale = () => {
       (bedrooms === "" || x.rooms === parseInt(bedrooms, 10))
   );
 
-console.log(data);
+
 
   return (
     <div>

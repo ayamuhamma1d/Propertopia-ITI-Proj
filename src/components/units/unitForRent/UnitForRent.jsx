@@ -16,8 +16,11 @@ const UnitForRent = () => {
   const [bedrooms, setBedrooms] = useState("");
   const [searchText, setSearchText] = useState("");
 
+
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
+ 
+
 
   const currentItems = rentData.slice(startIndex, endIndex);
 
@@ -30,11 +33,14 @@ const UnitForRent = () => {
     setDropDownFilter(e.target.value);
   };
 
+
+
   const resetFilters = () => {
     setDropDownFilter("");
     setPrice(0);
     setFloorArea("");
     setBedrooms("");
+ 
   };
 
   const handleFilterPrice = (e) => {
@@ -58,9 +64,16 @@ const UnitForRent = () => {
 
 
 
+
   const filteredData = currentItems.filter((x) => {
     const isTypeMatch = x.type_of_unit.includes(dropDownFilter);
-    const isPriceMatch = price === 0 || (x.price && x.price.toLowerCase().includes(searchText.toLowerCase()));
+    const isPriceMatch =
+  price === 0 ||
+  (price === 5000 && parseInt(x.pricePerDay, 10) <= 5000) ||
+  (price === 10000 && parseInt(x.pricePerDay, 10) > 5000 && parseInt(x.pricePerDay, 10) <= 10000) ||
+  (price === 100000 && parseInt(x.pricePerDay, 10) > 10000 && parseInt(x.pricePerDay, 10) <= 100000);
+
+  
     const isAreaMatch = floorArea === "" ||
       (floorArea.includes("-") &&
         x.area >= parseInt(floorArea.split("-")[0], 10) &&
@@ -130,7 +143,7 @@ const UnitForRent = () => {
                 <option value="0"> Price</option>
                 <option value="5000">EGP up to 5000</option>
                 <option value="10000">EGP up to 10000</option>
-                <option value="100000">EGP up to 10000</option>
+                <option value="100000">EGP up to 100000</option>
               </select>
               <select
                 onChange={handleFilterFloorArea}
@@ -172,6 +185,9 @@ const UnitForRent = () => {
           </div>
         ))}
       </div>
+
+   
+
       <Pagination
         currentPage={currentPage}
         totalPages={Math.ceil(rentData.length / itemsPerPage)}
