@@ -1,23 +1,26 @@
-import './App.css'
-import Footer from './components/shared/footer/Footers'
-import Navbar from './components/shared/navbar/Navbars';
+import React from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import Home from './components/home/Home'
-import Maintenance from './components/maintenance/Maintenance'
-import Finishes from './components/maintenance/finishes/Finishes'
-import Max3d from './components/maintenance/max3d/Max3d'
-import About from './components/about/About'
-import Service from './components/services/Service'
-import UnitForRent from './components/units/unitForRent/UnitForRent'
-import UnitForSale from './components/units/UnitForSale/UnitForSale'
-import Details from './components/shared/details/Details'
-import Login from './components/auth/login/Login'
-import SignUp from './components/auth/signup/SignUp'
+import Footer from './components/shared/footer/Footers';
+import Navbar from './components/shared/navbar/Navbars';
+import Home from './components/home/Home';
+import Maintenance from './components/maintenance/Maintenance';
+import Finishes from './components/maintenance/finishes/Finishes';
+import Max3d from './components/maintenance/max3d/Max3d';
+import About from './components/about/About';
+import Service from './components/services/Service';
+import UnitForRent from './components/units/unitForRent/UnitForRent';
+import UnitForSale from './components/units/UnitForSale/UnitForSale';
+import Details from './components/shared/details/Details';
+import Login from './components/auth/login/Login';
+import SignUp from './components/auth/signup/SignUp';
 import NotFoundPage from './components/shared/notFoundPage/NotFoundPage';
 import Units from './components/units/Units';
-import Profile from "./components/profile/Profile"
+import Profile from "./components/profile/Profile";
 import ResetPass from './components/auth/resetPass/resetPass';
 import AddUnit from './components/addUnit/addUnit';
+import axios from 'axios';
+import withLoadingSpinner from './Spinner/withLoadingSpinner';
+
 function App() {
   return (
     <>
@@ -49,4 +52,4 @@ function App() {
   )
 }
 
-export default App
+export default withLoadingSpinner(App, axios);

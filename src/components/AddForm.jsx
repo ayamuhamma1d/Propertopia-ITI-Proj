@@ -116,6 +116,7 @@ const AddForm = () => {
                                                 <input
                                                     {...field}
                                                     type="file"
+                                                    multiple
                                                     className="border-gray-300 focus:border-beige my-1 focus:ring  rounded-md"
                                                 />
                                             )}
