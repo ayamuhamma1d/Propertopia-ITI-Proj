@@ -55,5 +55,4 @@ function App() {
   )
 }
 
-// export default App
 export default withLoadingSpinner(App, axios);

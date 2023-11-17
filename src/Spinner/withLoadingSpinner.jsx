@@ -10,8 +10,6 @@ const withLoadingSpinner = (WrappedComponent, firebase) => {
       const fetchData = async () => {
         try {
           setLoading(true);
-
-          // Assuming fetchData is a method of the data object
           const firebaseData = await data.fetchData();
 
           const assetsContext = require.context(
@@ -59,9 +57,8 @@ const withLoadingSpinner = (WrappedComponent, firebase) => {
             });
           });
 
-          // Add a minimum delay to ensure the spinner is visible
           const delayPromise = new Promise((resolve) => {
-            setTimeout(resolve, 100); // Adjust the delay duration as needed
+            setTimeout(resolve, 100);
           });
 
           await Promise.all([firebaseData, ...filePromises, delayPromise]);
