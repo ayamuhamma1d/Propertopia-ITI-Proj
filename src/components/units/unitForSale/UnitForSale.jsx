@@ -44,6 +44,14 @@ const UnitForSale = () => {
     setBedrooms(e.target.value);
   };
 
+  const resetFilters = () => {
+    setDropDownFilter("");
+    setPrice(0);
+    setFloorArea("");
+    setBedrooms("");
+  };
+
+
   const filteredData = currentItems.filter(
     (x) =>
       x.type_of_unit.includes(dropDownFilter) &&
@@ -82,7 +90,7 @@ console.log(data);
           </div>
           <div className="flex items-center justify-between mt-4">
             <p className="font-medium">Filters</p>
-            <button className="px-4 py-2 bg-beige1 text-black hover:bg-beige hover:text-white text-sm font-medium rounded-md">
+            <button onClick={resetFilters} className="px-4 py-2 bg-beige1 text-black hover:bg-beige hover:text-white text-sm font-medium rounded-md">
               Reset Filter
             </button>
           </div>

@@ -14,6 +14,7 @@ const UnitForRent = () => {
   const [price, setPrice] = useState(0);
   const [floorArea, setFloorArea] = useState("");
   const [bedrooms, setBedrooms] = useState("");
+  const [searchText, setSearchText] = useState("");
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
@@ -29,9 +30,12 @@ const UnitForRent = () => {
     setDropDownFilter(e.target.value);
   };
 
-  // const handleFilterPrice = (e) => {
-  //   setPrice(e.target.value);
-  // };
+  const resetFilters = () => {
+    setDropDownFilter("");
+    setPrice(0);
+    setFloorArea("");
+    setBedrooms("");
+  };
 
   const handleFilterPrice = (e) => {
     setPrice(parseInt(e.target.value, 10) || 0);
@@ -45,25 +49,39 @@ const UnitForRent = () => {
     setBedrooms(e.target.value);
   };
 
-  const filteredData = currentItems.filter(
-    (x) =>
-      x.type_of_unit.includes(dropDownFilter) &&
-      (price === 0 || x.pricePerDay <= price) &&
-      // (floorArea === "" || x.area === parseInt(floorArea, 10))
-      (floorArea === "" ||
-        (floorArea.includes("-") &&
-          x.area >= parseInt(floorArea.split("-")[0], 10) &&
-          x.area <= parseInt(floorArea.split("-")[1], 10)) ||
-        x.area === parseInt(floorArea, 10)) &&
-      (bedrooms === "" || x.rooms === parseInt(bedrooms, 10))
-  );
-  console.log(price);
+ 
 
-  console.log(filteredData);
+  const handleSearchChange = (e) => {
+    const searchTextWithoutSpaces = e.target.value.trim(); 
+    setSearchText(searchTextWithoutSpaces);
+  };
+
+
+
+  const filteredData = currentItems.filter((x) => {
+    const isTypeMatch = x.type_of_unit.includes(dropDownFilter);
+    const isPriceMatch = price === 0 || (x.price && x.price.toLowerCase().includes(searchText.toLowerCase()));
+    const isAreaMatch = floorArea === "" ||
+      (floorArea.includes("-") &&
+        x.area >= parseInt(floorArea.split("-")[0], 10) &&
+        x.area <= parseInt(floorArea.split("-")[1], 10)) ||
+      x.area === parseInt(floorArea, 10);
+    const isBedroomsMatch = bedrooms === "" || (x.rooms && x.rooms === parseInt(bedrooms, 10));
+
+    const isSearchMatch = searchText === "" ||
+  ['price', 'rooms', 'area', 'type_of_unit'].some(field =>
+    x[field] && x[field].toString().toLowerCase().includes(searchText.toLowerCase())
+  );
+
+  
+    return isTypeMatch && isPriceMatch && isAreaMatch && isBedroomsMatch && isSearchMatch;
+  });
+  
+
 
   return (
     <div>
-      {/* <Filter /> */}
+   
       <div className="flex justify-center items-center w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto  my-10 ">
         <div className="w-full  shadow p-5 rounded-lg bg-white ">
           <div className="relative">
@@ -81,11 +99,13 @@ const UnitForRent = () => {
               type="text"
               placeholder="Search by listing, location, bedroom number..."
               className="px-9 py-3 w-full rounded-md bg-transparent text-black border-beige1 focus:border-beige focus:bg-white focus:ring-0 text-sm "
+               value={searchText}
+          onChange={handleSearchChange}
             />
           </div>
           <div className="flex items-center justify-between mt-4">
             <p className="font-medium">Filters</p>
-            <button className="px-4 py-2 bg-beige1 text-black hover:bg-beige hover:text-white text-sm font-medium rounded-md">
+            <button  onClick={resetFilters} className="px-4 py-2 bg-beige1 text-black hover:bg-beige hover:text-white text-sm font-medium rounded-md">
               Reset Filter
             </button>
           </div>
@@ -104,7 +124,6 @@ const UnitForRent = () => {
               </select>
               <select
                 onChange={handleFilterPrice}
-                // value={price}
                 value={price.toString()}
                 className="px-4 py-3 w-full rounded-md bg-beige1 border-transparent focus:border-beige focus:bg-white focus:ring-0 text-sm"
               >
