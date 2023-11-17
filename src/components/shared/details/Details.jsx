@@ -254,6 +254,7 @@ const Details = () => {
                       icon={faShareNodes}
                       style={{ color: "#080808" }}
                       className="pe-2"
+                      onAbort={handleShare}
                     />
                   </Link>
                 </div>

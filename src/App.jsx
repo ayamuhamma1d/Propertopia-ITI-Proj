@@ -3,18 +3,9 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import Footer from './components/shared/footer/Footers';
 import Navbar from './components/shared/navbar/Navbars';
 import Home from './components/home/Home';
-import Maintenance from './components/maintenance/Maintenance';
-import Finishes from './components/maintenance/finishes/Finishes';
-import Max3d from './components/maintenance/max3d/Max3d';
-import About from './components/about/About';
-import Service from './components/services/Service';
-import UnitForRent from './components/units/unitForRent/UnitForRent';
-import UnitForSale from './components/units/UnitForSale/UnitForSale';
-import Details from './components/shared/details/Details';
 import Login from './components/auth/login/Login';
 import SignUp from './components/auth/signup/SignUp';
 import NotFoundPage from './components/shared/notFoundPage/NotFoundPage';
-import Units from './components/units/Units';
 import Profile from "./components/profile/Profile";
 import ResetPass from './components/auth/resetPass/resetPass';
 import AddUnit from './components/addUnit/addUnit';
@@ -24,7 +15,16 @@ import ChatBot from "react-simple-chatbot";
 import { ThemeProvider } from "styled-components";
 import { Link } from "react-router-dom";
 import Form from "./components/shared/chatform/Form"
-
+import  LoadingSpinner from "./Spinner/LoadingSpinner";
+const LazyRent=React.lazy(()=>import('./components/units/unitForRent/UnitForRent'));
+const LazySale=React.lazy(()=>import('./components/units/UnitForSale/UnitForSale'));
+const LazyDetails=React.lazy(()=>import('./components/shared/details/Details'));
+const LazyMaintenance=React.lazy(()=>import('./components/maintenance/Maintenance'));
+const LazyFinishes=React.lazy(()=>import('./components/maintenance/finishes/Finishes'));
+const LazyMax3d=React.lazy(()=>import('./components/maintenance/max3d/Max3d'));
+const LazyUnits=React.lazy(()=>import('./components/units/Units'));
+const LazyService=React.lazy(()=>import('./components/services/Service'));
+const LazyAbout=React.lazy(()=>import('./components/about/About'));
 const steps = [
   {
     id: "0",
@@ -322,6 +322,7 @@ const theme = {
 };
 
 const config = {
+  botAvatar:"",
   floating: true,
 };
 function App() {
@@ -332,16 +333,15 @@ function App() {
         <Routes>
           <Route path='/' element={<Navigate to= '/home'/>}></Route>
           <Route path='/home' element={<Home />}></Route>
-          <Route path='/details/:id/:purpose' element={<Details />}></Route>
-          <Route path='/about' element={<About />}></Route>
-          <Route path='/units' element={<Units />}></Route>
-          <Route path='/units/unit-for-sale' element={<UnitForSale />}></Route>
-          <Route path='/units/unit-for-rent' element={<UnitForRent />}></Route>
-          <Route path='/maintenance' element={<Maintenance />}></Route>
-          <Route path='/maintenance/finishes' element={<Finishes />}></Route>
-          <Route path='/maintenance/3d-max' element={<Max3d />}></Route>
-          <Route path='/service' element={<Service />}></Route>
-          <Route path='/maintenance' element={<Maintenance />}></Route>
+          <Route path='/details/:id/:purpose' element={<React.Suspense fallback={<LoadingSpinner/>}><LazyDetails /></React.Suspense>}></Route>
+          <Route path='/about' element={<React.Suspense fallback={<LoadingSpinner/>}><LazyAbout /></React.Suspense>}></Route>
+          <Route path='/units'  element={<React.Suspense fallback={<LoadingSpinner/>}><LazyUnits /></React.Suspense>}></Route>
+          <Route path='/units/unit-for-sale' element={<React.Suspense fallback={<LoadingSpinner/>}><LazySale /></React.Suspense>}></Route>
+          <Route path='/units/unit-for-rent' element={<React.Suspense fallback={<LoadingSpinner/>}><LazyRent /></React.Suspense>}></Route>
+          <Route path='/maintenance' element={<React.Suspense fallback={<LoadingSpinner/>}><LazyMaintenance /></React.Suspense>}></Route>
+          <Route path='/maintenance/finishes' element={<React.Suspense fallback={<LoadingSpinner/>}><LazyFinishes /></React.Suspense>}></Route>
+          <Route path='/maintenance/3d-max' element={<React.Suspense fallback={<LoadingSpinner/>}><LazyMax3d /></React.Suspense>}></Route>
+          <Route path='/service' element={<React.Suspense fallback={<LoadingSpinner/>}><LazyService /></React.Suspense>}></Route>
           <Route path='/Login' element={<Login />}></Route>
           <Route path='/SignUp' element={<SignUp />}></Route>
           <Route path='/profile' element={<Profile />}></Route>
