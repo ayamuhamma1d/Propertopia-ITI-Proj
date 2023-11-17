@@ -1,11 +1,17 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
-import 'flowbite';
+import React from 'react';
+import App from './App';
+import axios from 'axios';
+ import "./index.css";
+import ReactDOM from "react-dom/client";
+ import "flowbite";
+import withLoadingSpinner from './Spinner/withLoadingSpinner';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+const AppWithLoadingSpinner = withLoadingSpinner(App, axios);
+
+const rootElement = document.getElementById('root');
+
+ReactDOM.createRoot(rootElement).render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+    <AppWithLoadingSpinner />
+  </React.StrictMode>
+);

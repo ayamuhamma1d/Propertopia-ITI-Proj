@@ -18,9 +18,15 @@ import Units from './components/units/Units';
 import Profile from "./components/profile/Profile"
 import ResetPass from './components/auth/resetPass/resetPass';
 import AddUnit from './components/addUnit/addUnit';
+
+import axios from 'axios';
+import withLoadingSpinner from './Spinner/withLoadingSpinner';
+
+
 function App() {
   return (
     <>
+
       <BrowserRouter>
         <Navbar />
         <Routes>
@@ -49,4 +55,5 @@ function App() {
   )
 }
 
-export default App
+// export default App
+export default withLoadingSpinner(App, axios);
