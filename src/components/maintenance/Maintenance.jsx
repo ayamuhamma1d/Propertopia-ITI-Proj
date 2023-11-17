@@ -1,7 +1,6 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-
 import model1 from "../../assets/img/Maintenancecomponent/1.png";
 import model2 from "../../assets/img/Maintenancecomponent/2.png";
 import model3 from "../../assets/img/Maintenancecomponent/3.png";
@@ -126,6 +125,7 @@ const Maintenance = () => {
           </div>
         </div>
       </div>
+     
     </>
   );
 };
