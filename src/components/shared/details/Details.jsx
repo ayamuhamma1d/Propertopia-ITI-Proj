@@ -37,7 +37,6 @@ const Details = () => {
 
   if (purpose == "rent") {
     details = data[1];
-    console.log(data[1]);
   } else {
     details = data[0];
   }
@@ -255,6 +254,7 @@ const Details = () => {
                       icon={faShareNodes}
                       style={{ color: "#080808" }}
                       className="pe-2"
+                      onAbort={handleShare}
                     />
                   </Link>
                 </div>
