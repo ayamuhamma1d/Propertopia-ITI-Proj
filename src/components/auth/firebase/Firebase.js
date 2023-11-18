@@ -3,6 +3,7 @@ import { getDatabase, ref, get } from "firebase/database";
 import { FacebookAuthProvider, getAuth } from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAc9QfpkdeoQlCJLlrLtxI7gH7jKghv50g",
@@ -28,3 +29,4 @@ export const data = snapshot.val();
 export const provider = new GoogleAuthProvider(app);
 export const providerFb = new FacebookAuthProvider(app);
 export const db = getFirestore(app);
+export const storage = getStorage(app);
