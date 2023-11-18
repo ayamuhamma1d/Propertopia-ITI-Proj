@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const Filter = () => {
+const Filter = ({ onSearchInputChange }) => {
+
   return (
     <>
       <div className="flex justify-center items-center w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto  my-10 ">
@@ -19,7 +20,8 @@ const Filter = () => {
             <input
               type="text"
               placeholder="Search by listing, location, bedroom number..."
-              className="px-9 py-3 w-full rounded-md bg-transparent text-black border-beige1 focus:border-beige focus:bg-white focus:ring-0 text-sm "
+              className="px-9 py-3 w-full rounded-md bg-transparent text-black border-beige1 focus:border-beige focus:bg-white focus:ring-0 text-sm"
+              onChange={(e) => onSearchInputChange(e.target.value)}
             />
           </div>
           <div className="flex items-center justify-between mt-4">
