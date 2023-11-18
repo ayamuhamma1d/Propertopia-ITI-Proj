@@ -314,9 +314,9 @@ const theme = {
   background: "#ffffff",
   headerBgColor: "#bca37f",
   headerFontSize: "20px",
-  botBubbleColor: "#0F3789",
+  botBubbleColor: "#EAE0DA",
   headerFontColor: "white",
-  botFontColor: "white",
+  botFontColor: "#000",
   userBubbleColor: "#ffffff",
   userFontColor: "black",
 };
