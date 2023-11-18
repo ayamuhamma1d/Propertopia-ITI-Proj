@@ -12,6 +12,8 @@ const UnitForSale = () => {
   const [price, setPrice] = useState(0);
   const [floorArea, setFloorArea] = useState("");
   const [bedrooms, setBedrooms] = useState("");
+  //location state added 
+  // const [location , setLocation] = useState("");
 
   const [searchInput, setSearchInput] = useState('');
 
@@ -31,11 +33,21 @@ const UnitForSale = () => {
     setDropDownFilter(e.target.value);
   };
 
+  //handleLocation added 
+  // const handleFilterLocation = (e) => {
+  //   setLocation(e.target.value);
+  // };
+
 
 
   const handleFilterPrice = (e) => {
-    setPrice(parseInt(e.target.value, 10) || 0);
+    const selectedPrice = parseInt(e.target.value, 10) || 0;
+    setPrice(selectedPrice);
   };
+
+  // const handleFilterPrice = (e) => {
+  //   setPrice(parseInt(e.target.value, 10) || 0);
+  // };
 
   const handleFilterFloorArea = (e) => {
     setFloorArea(e.target.value);
@@ -61,7 +73,15 @@ const UnitForSale = () => {
 
   const filteredData = salesData.filter((x) => {
     const typeMatch = x.type_of_unit.includes(dropDownFilter);
-    const priceMatch = price === 0 || x.price <= price;
+
+    const priceMatch =
+    price === 0 ||
+    (price === 2000000 && x.price <= 2000000) ||
+    (price === 4000000 && x.price > 2000000 && x.price <= 4000000) ||
+    (price === 10000000 && x.price > 4000000);
+
+    // const priceMatch = price === 0 || x.price <= price;
+    
     const floorAreaMatch =
       floorArea === "" ||
       (floorArea.includes("-") &&
@@ -72,11 +92,12 @@ const UnitForSale = () => {
     const searchMatch =
       x.type_of_unit.toLowerCase().includes(searchInput.toLowerCase()) ||
       x.price.toString().includes(searchInput);
+      // const typeLocation = x.type_of_unit.includes(location ); //const typeLocation added 
 
-    return typeMatch && priceMatch && floorAreaMatch && bedroomsMatch && searchMatch;
+    return typeMatch && priceMatch && floorAreaMatch && bedroomsMatch && searchMatch //&& typeLocation;
   });
   
-  const displayItems = searchInput || price || floorArea || dropDownFilter || bedrooms ? filteredData : currentItems
+  const displayItems = searchInput || price || floorArea || dropDownFilter || bedrooms || location ? filteredData : currentItems //location added
   const hasActiveFilters = !!dropDownFilter || !!price || !!floorArea || !!bedrooms;
   const hasSearchInput = !!searchInput;
   const hasActiveFiltersOrSearch = hasActiveFilters || hasSearchInput;
@@ -128,13 +149,13 @@ const UnitForSale = () => {
               <select
                 onChange={handleFilterPrice}
 
-                value={price.toString()}
+                value={price}
                 className="px-4 py-3 w-full rounded-md bg-beige1 border-transparent focus:border-beige focus:bg-white focus:ring-0 text-sm"
               >
                 <option value="0"> Price</option>
                 <option value="2000000">EGP up to 2000000</option>
-                <option value="4000000">EGP up to 4000000</option>
-                <option value="10000000">EGP up to 10000000</option>
+                <option value="4000000">EGP 2000000 - 4000000</option>
+                <option value="10000000">EGP 4000000 - 10000000</option>
               </select>
               <select
                 onChange={handleFilterFloorArea}
@@ -158,6 +179,17 @@ const UnitForSale = () => {
                 <option value="4">4 bedrooms</option>
                 <option value="5">5 bedrooms</option>
               </select>
+              {/* <select
+                onChange={handleFilterLocation}
+                value={location}
+                className="px-4 py-3 w-full rounded-md bg-beige1 text-black border-transparent focus:border-beige focus:bg-white focus:ring-0 text-sm"
+              >
+                <option value="">location </option>
+                <option value="">Alexndria</option>
+                <option value="">Alexandria</option>
+                <option value="">Alexandria</option>
+                <option value="">Alexandria</option>
+              </select> */}
             </div>
           </div>
         </div>
