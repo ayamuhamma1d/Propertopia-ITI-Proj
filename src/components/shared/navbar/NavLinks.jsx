@@ -1,7 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-const NavLinks = ({setOpen}) => {
-  
+import { auth } from "../../auth/firebase/Firebase";
+
+const NavLinks = ({ setOpen }) => {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((authUser) => {
+      setUser(authUser);
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
   const links = [
     {
       name: "About us",
@@ -23,6 +36,7 @@ const NavLinks = ({setOpen}) => {
         {
           Head: "Add Unit",
           path: "/addUnit",
+          hidden: !user,
         },
       ],
     },
@@ -45,28 +59,29 @@ const NavLinks = ({setOpen}) => {
       name: "Service",
       path: "/service",
     },
-
   ];
+
   const [heading, setHeading] = useState("");
+
   const toggleSubMenu = (linkName) => {
-  
     if (heading === linkName) {
       setHeading("");
     } else {
       setHeading(linkName);
     }
   };
+
   return (
     <>
-    {links.map((link, index) => (
+      {links.map((link, index) => (
         <div key={index}>
-          <li className="py-3 px-2  text-left hover:text-beige md:cursor-pointer group">
+          <li className="py-3 px-2 text-left hover:text-beige md:cursor-pointer group">
             <NavLink
               to={link.path}
               className="hover:text-beige flex justify-between items-center md:pr-0 pr-5 group"
               activeClassName="active"
               onClick={() => {
-                toggleSubMenu(link.name)              
+                toggleSubMenu(link.name);
               }}
             >
               {link.name}
@@ -80,7 +95,7 @@ const NavLinks = ({setOpen}) => {
                 </span>
               )}
               {link.submenu && (
-                <span className="text-xl md:mt-1 md:ml-2  md:block hidden group-hover:rotate-180 ">
+                <span className="text-xl md:mt-1 md:ml-2 md:block hidden group-hover:rotate-180 ">
                   <ion-icon name="chevron-down"></ion-icon>
                 </span>
               )}
@@ -99,16 +114,17 @@ const NavLinks = ({setOpen}) => {
                     {link.subLinks.map((subLink, subIndex) => (
                       <li
                         key={subIndex}
-                        className="text-sm  text-gray-800 my-2.5 "
+                        className="text-sm text-gray-800 my-2.5 "
                       >
-                        <NavLink
-                          to={subLink.path}
-                          activeClassName="active"
-                          className="hover:text-beige"
-                      
-                        >
-                          {subLink.Head}
-                        </NavLink>
+                        {!subLink.hidden && (
+                          <NavLink
+                            to={subLink.path}
+                            activeClassName="active"
+                            className="hover:text-beige"
+                          >
+                            {subLink.Head}
+                          </NavLink>
+                        )}
                       </li>
                     ))}
                   </ul>
@@ -122,20 +138,22 @@ const NavLinks = ({setOpen}) => {
               className={`${
                 heading === link.name ? "lg:hidden" : "hidden"
               }`}
+       
             >
               {link.subLinks.map((subLink, subIndex) => (
                 <li
                   key={subIndex}
-                  className="text-sm  text-gray-800 my-2.5  "
+                  className="text-sm text-gray-800 my-2.5  "
                 >
-                  <NavLink
-                    to={subLink.path}
-                    activeClassName="active"
-                    className="hover:text-beige py-4 pl-7 font-semibold md:pr-0 pr-6 "
-                 
-                  >
-                    {subLink.Head}
-                  </NavLink>
+                  {!subLink.hidden && (
+                    <NavLink
+                      to={subLink.path}
+                      activeClassName="active"
+                      className="hover:text-beige py-4 pl-7 font-semibold md:pr-0 pr-6 "
+                    >
+                      {subLink.Head}
+                    </NavLink>
+                  )}
                 </li>
               ))}
             </ul>

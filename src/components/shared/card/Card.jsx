@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
@@ -9,12 +9,13 @@ import { faBath } from '@fortawesome/free-solid-svg-icons';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import { auth, db } from './../../auth/firebase/Firebase';
-import style from"./card.module.css"
 import {
   deleteDoc,
   doc,
   getDoc,
-  setDoc,} from 'firebase/firestore';
+  setDoc,
+} from 'firebase/firestore';
+
 const Card = ({
   area,
   price,
@@ -25,10 +26,11 @@ const Card = ({
   rooms,
   pricePerDay,
   id,
-  removeFromWishlist,location
+  removeFromWishlist,
+  location
 }) => {
   const [isWishlist, setIsWishlist] = useState(false);
-
+  const [showLoginPopup, setShowLoginPopup] = useState(false);
   useEffect(() => {
     checkWishlistItem(id);
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -40,7 +42,6 @@ const Card = ({
       unsubscribe();
     };
   }, [id]);
-
   const checkWishlistItem = async (itemId) => {
     const user = auth.currentUser;
     if (user) {
@@ -51,41 +52,43 @@ const Card = ({
       setIsWishlist(false);
     }
   };
-   const addToWishlist = async (itemId) => {
+  const addToWishlist = async (itemId) => {
     const user = auth.currentUser;
-    if (user) {
-      const customId = itemId.toString();
-      const docRef = doc(db, user.uid, customId);
-      if (isWishlist) {
-        try {
-          await deleteDoc(docRef);
-          setIsWishlist(false);
-          removeFromWishlist(customId); 
-        } catch (error) {
-          return <p  className="bg-beige1 border border-beige text-beige px-4 py-3 text-xs rounded relative font-[Poppins]">{error}</p>
+    if (!user) {
+      setShowLoginPopup(true);
+      return;
+    }
+    const customId = itemId.toString();
+    const docRef = doc(db, user.uid, customId);
+    if (isWishlist) {
+      try {
+        await deleteDoc(docRef);
+        setIsWishlist(false);
+        removeFromWishlist(customId);
+      } catch (error) {
+        console.error('Error removing item from wishlist:', error);
+      }
+    } else {
+      try {
+        const wishlistItem = {
+          id: itemId,
+          image_url: image_url,
+          area: area,
+          purpose: purpose,
+          type_of_unit: type_of_unit,
+          bathrooms: bathrooms,
+          rooms: rooms,
+        };
+        if (purpose === 'sale') {
+          wishlistItem.price = price;
+        } else if (purpose === 'rent') {
+          wishlistItem.pricePerDay = pricePerDay;
         }
-      } else {
-        try {
-          const wishlistItem = {
-            id: itemId,
-            image_url: image_url,
-            area: area,
-            purpose: purpose,
-            type_of_unit: type_of_unit,
-            bathrooms: bathrooms,
-            rooms: rooms,
-          };
-          if (purpose === 'sale') {
-            wishlistItem.price = price;
-          } else if (purpose === 'rent') {
-            wishlistItem.pricePerDay = pricePerDay;
-          }
-          await setDoc(docRef, wishlistItem);
-          setIsWishlist(true);
-          console.log('Item added to wishlist');
-        } catch (error) {
-          return <p  className="bg-beige1 border border-beige text-beige px-4 py-3 text-xs rounded relative font-[Poppins]">{error}</p>
-        }
+        await setDoc(docRef, wishlistItem);
+        setIsWishlist(true);
+        console.log('Item added to wishlist');
+      } catch (error) {
+        console.error('Error adding item to wishlist:', error);
       }
     }
   };
@@ -100,7 +103,6 @@ const Card = ({
         Area: ${area}m
         Price: ${purpose === 'sale' ? '$' + price.toLocaleString() : '$' + pricePerDay.toLocaleString()}
       `;
-  
       navigator
         .share({
           title: 'Check out this property',
@@ -112,6 +114,9 @@ const Card = ({
     } else {
       console.log('Web Share API not supported');
     }
+  };
+  const handleLoginPopupClose = () => {
+    setShowLoginPopup(false);
   };
   return (
     <div className='w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto mt-10'>
@@ -131,7 +136,7 @@ const Card = ({
                 {type_of_unit}
               </Link>
               <span className="text-xl font-bold font-[Poppins]">${purpose === 'sale' ? price.toLocaleString() : pricePerDay.toLocaleString()}</span>
-              </div>
+            </div>
             <div className='flex justify-between items-center border-b pb-2'>
               <div>
                 <p>
@@ -156,29 +161,50 @@ const Card = ({
               <div>
                 <p className="">
                   <FontAwesomeIcon className='pr-1 font-[Poppins]' icon={faMapMarkerAlt} />
-                {location}
+                  {location}
                 </p>
               </div>
               <div>
-                <Link className='pr-3'>
+                {auth.currentUser ? (
+                  <>
+                    <Link className='pr-3'>
+                      <FontAwesomeIcon
+                        icon={isWishlist ? solidHeart : regularHeart}
+                        onClick={() => addToWishlist(id)}
+                      />
+                    </Link>
+                    <Link onClick={handleShare}>
+                      <FontAwesomeIcon
+                        icon={faShareAlt}
+                        style={{ color: "#080808" }}
+                        className='pe-2'
+                      />
+                    </Link>
+                  </>
+                ) : (
+                  <p onClick={() => setShowLoginPopup(true)}>  <Link className='pr-3'>
                   <FontAwesomeIcon
                     icon={isWishlist ? solidHeart : regularHeart}
-                    onClick={() => addToWishlist(id)}
+                
                   />
-                </Link>
-                <Link  onClick={handleShare}>
-                  <FontAwesomeIcon
-                    icon={faShareAlt}
-                    style={{ color: "#080808" }}
-                    className='pe-2'
-                  />
-                </Link>
+                </Link></p>
+                )}
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      {showLoginPopup && (
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
+          <div className="bg-white p-8 rounded-lg">
+            <p>Please log in to add to wishlist</p>
+            <button onClick={handleLoginPopupClose}>Close</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
+
 export default Card;

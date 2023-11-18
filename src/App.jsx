@@ -322,7 +322,7 @@ const theme = {
 };
 
 const config = {
-  botAvatar:"",
+ 
   floating: true,
 };
 function App() {
