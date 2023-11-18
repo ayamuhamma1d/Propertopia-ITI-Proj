@@ -20,7 +20,6 @@ import {
   updateDoc,
 } from "firebase/firestore";
 
-
 function EditProfile() {
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");

@@ -44,7 +44,6 @@ const UserData = () => {
       if (user) {
         setUserName(user.displayName);
         setUserEmail(user.email);
-        
       }
     });
 
@@ -54,10 +53,10 @@ const UserData = () => {
   }, []);
 
   return (
-    <div
-      className=" flex justify-between items-center px-10  border-beige flex-wrap"
-    >
-      <h5 className="text-left mb-10 ms-2 text-2xl font-[Poppins] capitalize ">Your Information</h5>
+    <div className=" flex justify-between items-center px-10  border-beige flex-wrap">
+      <h5 className="text-left mb-10 ms-2 text-2xl font-[Poppins] capitalize ">
+        Your Information
+      </h5>
       <div className=" w-full mb-10">
         <div className="flex flex-col gap-10">
           {userName != null && (
@@ -108,7 +107,6 @@ const UserData = () => {
           )}
         </div>
       </div>
-
     </div>
   );
 };
