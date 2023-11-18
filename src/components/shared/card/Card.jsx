@@ -118,6 +118,7 @@ const Card = ({
   const handleLoginPopupClose = () => {
     setShowLoginPopup(false);
   };
+
   return (
     <div className='w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto mt-10'>
       <div className="flex  gap-10 flex-wrap  justify-center items-center">
@@ -151,7 +152,7 @@ const Card = ({
                 </p>
               </div>
               <div>
-                <p  className=' font-[Poppins]'>
+                <p className=' font-[Poppins]'>
                   <FontAwesomeIcon icon={faHome} className='me-2 font-[Poppins]' />
                   {area}m
                 </p>
@@ -177,17 +178,29 @@ const Card = ({
                       <FontAwesomeIcon
                         icon={faShareAlt}
                         style={{ color: "#080808" }}
-                        className='pe-2'
+                        className='pe-2 cursor-pointer'
                       />
                     </Link>
                   </>
                 ) : (
-                  <p onClick={() => setShowLoginPopup(true)}>  <Link className='pr-3'>
-                  <FontAwesomeIcon
-                    icon={isWishlist ? solidHeart : regularHeart}
-                
-                  />
-                </Link></p>
+                  <div className='flex' >
+                    <p onClick={() => setShowLoginPopup(true)}>
+                      <Link className='pr-3'>
+                        <FontAwesomeIcon
+                          icon={isWishlist ? solidHeart : regularHeart}
+                        />
+                      </Link>
+
+                    </p>
+                    <Link onClick={handleShare}>
+                      <FontAwesomeIcon
+                        icon={faShareAlt}
+                        style={{ color: "#080808" }}
+                        className='pe-2 cursor-pointer'
+                      />
+                    </Link>
+
+                  </div>
                 )}
               </div>
             </div>
@@ -196,10 +209,19 @@ const Card = ({
       </div>
 
       {showLoginPopup && (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
-          <div className="bg-white p-8 rounded-lg">
-            <p>Please log in to add to wishlist</p>
-            <button onClick={handleLoginPopupClose}>Close</button>
+        <div className={`fixed inset-0  bg-gray-600 bg-opacity-50 flex justify-center items-center`}>
+          <div className="bg-white p-8 rounded-lg max-w-md w-full">
+            <p className='font-[Poppins] mb-5 text-center '>
+              Please log in to add to your wishlist.
+            </p>
+            <div className="flex justify-center items-center mt-5">
+              <Link to="/login" className="bg-beige1 mr-5 font-[Poppins] px-6 py-2 rounded-md ">
+                Log In
+              </Link>
+              <button className="bg-red-800 mr-5 text-white font-[Poppins]  px-6 py-2 rounded-md " onClick={handleLoginPopupClose}>
+                Close
+              </button>
+            </div>
           </div>
         </div>
       )}
