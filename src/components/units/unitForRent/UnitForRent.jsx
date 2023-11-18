@@ -19,7 +19,7 @@ const UnitForRent = () => {
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
- 
+
 
 
   const currentItems = rentData.slice(startIndex, endIndex);
@@ -40,7 +40,7 @@ const UnitForRent = () => {
     setPrice(0);
     setFloorArea("");
     setBedrooms("");
- 
+
   };
 
   const handleFilterPrice = (e) => {
@@ -55,25 +55,25 @@ const UnitForRent = () => {
     setBedrooms(e.target.value);
   };
 
- 
+
 
   const handleSearchChange = (e) => {
-    const searchTextWithoutSpaces = e.target.value.trim(); 
+    const searchTextWithoutSpaces = e.target.value.trim();
     setSearchText(searchTextWithoutSpaces);
   };
 
 
 
 
-  const filteredData = currentItems.filter((x) => {
+  const filteredData = rentData.filter((x) => {
     const isTypeMatch = x.type_of_unit.includes(dropDownFilter);
     const isPriceMatch =
-  price === 0 ||
-  (price === 5000 && parseInt(x.pricePerDay, 10) <= 5000) ||
-  (price === 10000 && parseInt(x.pricePerDay, 10) > 5000 && parseInt(x.pricePerDay, 10) <= 10000) ||
-  (price === 100000 && parseInt(x.pricePerDay, 10) > 10000 && parseInt(x.pricePerDay, 10) <= 100000);
+      price === 0 ||
+      (price === 5000 && parseInt(x.pricePerDay, 10) <= 5000) ||
+      (price === 10000 && parseInt(x.pricePerDay, 10) > 5000 && parseInt(x.pricePerDay, 10) <= 10000) ||
+      (price === 100000 && parseInt(x.pricePerDay, 10) > 10000 && parseInt(x.pricePerDay, 10) <= 100000);
 
-  
+
     const isAreaMatch = floorArea === "" ||
       (floorArea.includes("-") &&
         x.area >= parseInt(floorArea.split("-")[0], 10) &&
@@ -81,20 +81,28 @@ const UnitForRent = () => {
       x.area === parseInt(floorArea, 10);
     const isBedroomsMatch = bedrooms === "" || (x.rooms && x.rooms === parseInt(bedrooms, 10));
 
-    const isSearchMatch = searchText === "" ||
-  ['price', 'rooms', 'area', 'type_of_unit'].some(field =>
-    x[field] && x[field].toString().toLowerCase().includes(searchText.toLowerCase())
-  );
 
-  
+    // const isSearchMatch = searchText === "" ||
+    //   ['price', 'rooms', 'area', 'type_of_unit'].some(field =>
+    //     x[field] && x[field].toString().toLowerCase().includes(searchText.toLowerCase())
+    //   );
+
+    const isSearchMatch =
+      x.type_of_unit.toLowerCase().includes(searchText.toLowerCase()) ||
+      x.pricePerDay.toString().includes(searchText);
+
     return isTypeMatch && isPriceMatch && isAreaMatch && isBedroomsMatch && isSearchMatch;
   });
+
+
+  const displayItems = searchText || price || floorArea || dropDownFilter || bedrooms ? filteredData : currentItems
+  const hasActiveFilters = !!dropDownFilter || !!price || !!floorArea || !!bedrooms;
+  const hasSearchInput = !!searchText;
+  const hasActiveFiltersOrSearch = hasActiveFilters || hasSearchInput;
   
-
-
   return (
     <div>
-   
+
       <div className="flex justify-center items-center w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto  my-10 ">
         <div className="w-full  shadow p-5 rounded-lg bg-white ">
           <div className="relative">
@@ -112,13 +120,13 @@ const UnitForRent = () => {
               type="text"
               placeholder="Search by listing, location, bedroom number..."
               className="px-9 py-3 w-full rounded-md bg-transparent text-black border-beige1 focus:border-beige focus:bg-white focus:ring-0 text-sm "
-               value={searchText}
-          onChange={handleSearchChange}
+              value={searchText}
+              onChange={handleSearchChange}
             />
           </div>
           <div className="flex items-center justify-between mt-4">
             <p className="font-medium">Filters</p>
-            <button  onClick={resetFilters} className="px-4 py-2 bg-beige1 text-black hover:bg-beige hover:text-white text-sm font-medium rounded-md">
+            <button onClick={resetFilters} className="px-4 py-2 bg-beige1 text-black hover:bg-beige hover:text-white text-sm font-medium rounded-md">
               Reset Filter
             </button>
           </div>
@@ -179,20 +187,16 @@ const UnitForRent = () => {
         For Rent{" "}
       </div>
       <div className="flex flex-wrap justify-center">
-        {filteredData.map((card) => (
+        {displayItems.map((card) => (
           <div key={card.id}>
             <Card {...card} />
           </div>
         ))}
       </div>
 
-   
-
-      <Pagination
-        currentPage={currentPage}
-        totalPages={Math.ceil(rentData.length / itemsPerPage)}
-        onPageChange={handlePageChange}
-      />
+      {!hasActiveFiltersOrSearch && (
+        <Pagination currentPage={currentPage} totalPages={Math.ceil(rentData.length / itemsPerPage)} onPageChange={handlePageChange} />
+      )}
     </div>
   );
 };

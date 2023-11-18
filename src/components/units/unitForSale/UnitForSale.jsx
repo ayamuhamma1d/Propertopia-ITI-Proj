@@ -52,6 +52,11 @@ const UnitForSale = () => {
     setBedrooms("");
   };
 
+  const handleSearchChange = (e) => {
+    const searchTextWithoutSpaces = e.target.value.trim(); 
+    setSearchInput(searchTextWithoutSpaces);
+  };
+
 
 
   const filteredData = salesData.filter((x) => {
@@ -70,6 +75,7 @@ const UnitForSale = () => {
 
     return typeMatch && priceMatch && floorAreaMatch && bedroomsMatch && searchMatch;
   });
+  
   const displayItems = searchInput || price || floorArea || dropDownFilter || bedrooms ? filteredData : currentItems
   const hasActiveFilters = !!dropDownFilter || !!price || !!floorArea || !!bedrooms;
   const hasSearchInput = !!searchInput;
@@ -95,7 +101,7 @@ const UnitForSale = () => {
               type="text"
               placeholder="Search by listing, location, bedroom number..."
               value={searchInput}
-              onChange={(e) => setSearchInput(e.target.value)}
+              onChange={handleSearchChange}
               className="px-9 py-3 w-full rounded-md bg-transparent text-black border-beige1 focus:border-beige focus:bg-white focus:ring-0 text-sm "
             />
 
