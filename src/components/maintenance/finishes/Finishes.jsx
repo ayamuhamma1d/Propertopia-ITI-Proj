@@ -3,6 +3,7 @@ import React from 'react'
 
 import After1 from "../../../assets/img/Maintenancecomponent/after1.png";
 import Before1 from "../../../assets/img/Maintenancecomponent/before1.png";
+import { data } from "../../auth/firebase/Firebase";
 import video from "../../../assets/video/Modern Bedroom In A Luxury Villa Stock Video - Download Video Clip Now - Real Estate, Home Interior, Residential Building - iStock.mp4";
 import "./finishes.css"
 
@@ -29,6 +30,9 @@ const features = [
   },
 
 ];
+
+const finishdata = data[0]
+
 
 const Finishes = () => {
   return (
@@ -77,7 +81,7 @@ const Finishes = () => {
                 <div class="finesh_card">
                     <figure>
                         <img
-                       src={After1}
+                       src={finishdata[0].images[0]}
                         alt="Preview"
                         />
                     </figure>
@@ -85,7 +89,7 @@ const Finishes = () => {
                 <div class="finesh_card">
                     <figure>
                         <img
-                       src={After1}
+                       src={finishdata[0].images[1]}
                         alt="Preview"
                         />
                     </figure>
@@ -93,7 +97,7 @@ const Finishes = () => {
                 <div class="finesh_card">
                     <figure>
                         <img
-                            src={After1}
+                            src={finishdata[0].images[2]}
                             alt="Preview"
                        />
                     </figure>
@@ -101,7 +105,7 @@ const Finishes = () => {
                 <div class="finesh_card">
                     <figure>
                         <img
-                        src={After1}
+                        src={finishdata[0].images[3]}
                         alt="Preview"
                         />
                     </figure>
@@ -109,7 +113,7 @@ const Finishes = () => {
                 <div class="finesh_card">
                     <figure>
                         <img
-                        src={After1}
+                        src={finishdata[1].images[0]}
                         alt="Preview"
                         />
                     </figure>
@@ -135,7 +139,7 @@ const Finishes = () => {
             <div class="finesh_card">
                     <figure>
                         <img
-                       src={After1}
+                       src={finishdata[1].images[1]}
                         alt="Preview"
                         />
                     </figure>
@@ -143,7 +147,7 @@ const Finishes = () => {
                 <div class="finesh_card">
                     <figure>
                         <img
-                       src={After1}
+                       src={finishdata[1].images[2]}
                         alt="Preview"
                         />
                     </figure>
@@ -151,7 +155,7 @@ const Finishes = () => {
                 <div class="finesh_card">
                     <figure>
                         <img
-                            src={After1}
+                            src={finishdata[1].images[3]}
                             alt="Preview"
                        />
                     </figure>
@@ -159,7 +163,7 @@ const Finishes = () => {
                 <div class="finesh_card">
                     <figure>
                         <img
-                        src={After1}
+                        src={finishdata[2].images[0]}
                         alt="Preview"
                         />
                     </figure>
@@ -167,7 +171,7 @@ const Finishes = () => {
                 <div class="finesh_card">
                     <figure>
                         <img
-                        src={After1}
+                        src={finishdata[2].images[1]}
                         alt="Preview"
                         />
                     </figure>
@@ -213,3 +217,4 @@ const Finishes = () => {
 }
 
 export default Finishes
+
