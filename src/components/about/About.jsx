@@ -8,18 +8,13 @@ const About = () => {
     <div className="pt-10 w-full font-serif sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto">
       <div className={`${styles.Continer} flex mb-20 items-center`}>
       <div className={ `${styles.BgContent} relative  w-1/2 pt-40 pb-40 mb-10 ps-7 `}>
-        <h2 className="text-2xl capitalize  font-serif text-beige  mb-5 text-left"> A Journey Ideal Real Estate Realm</h2>
-        <h3 className="text-2xl mb-3 font-bold  ">Homes in Alexandria</h3>
+        <h2 className="text-2xl capitalize font-bold  font-serif text-beige  mb-5 text-left"> A Journey Ideal Real Estate Realm</h2>
+        <h3 className="text-lg mb-3 font-bold  ">Propertopia: Your Oasis, Your Space, Anywhere!</h3>
         <p className="text-sm lg:w-5/6  mb-8 font-serif ">
-        Propertopia: Elevating the Alexandria real estate market with excellence! As a newcomer in the industry,
-         we are driven by passion and dedicated to delivering outstanding results. Our mission is to redefine
-          the experience of buying, selling, and investing in properties, ensuring that every step of your 
-          real estate journey is extraordinary. With a team of experts, we bring unparalleled knowledge,
-           personalized service, and a relentless commitment to your satisfaction. Trust Propertopia as your
-         reliable partner in achieving your real estate dreams, not only in Alexandria but also beyond!
+        Welcome to Your Real Estate Sanctuary! Elevate Your Journey with Our Comprehensive Services: Buy, Sell, Rent, and Maintain with Ease. Immerse Yourself in a Virtual Realty Adventure – Experience Your Future Home Through Stunning 3D Models. Uncover Seamless Scheduling and Availability Insights with Our Intelligent AI Chat Service, Your Personal Real Estate Concierge. Your Dream Space Awaits – Where Every Detail Matters, and Your Satisfaction is Our Commitment!
         </p>
         <div className={styles.BtnContainer}>
-        <Link to='/home' className={` bg-beige  p-3 mt-6 items-center`}>
+        <Link to='/units' className={` bg-beige  p-3 mt-6 items-center`}>
           <span className="text-white font-[Poppins]">View Our Properties</span>
         </Link>
 
