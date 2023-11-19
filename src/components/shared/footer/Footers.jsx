@@ -8,10 +8,10 @@ import { Link } from "react-router-dom";
 function Footers() {
   return (
     <Footer container  >
-      <div className="w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto ">
+      <div className="w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto font-serif">
         <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
           <div>
-            <img className="mr-3 h-24 uppercase font-[Poppins]"
+            <img className="mr-3 h-28 uppercase font-[Poppins]"
               href="https://flowbite.com"
               src={logo}
               alt="Flowbite Logo" 
@@ -19,7 +19,7 @@ function Footers() {
           </div>
           <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
             <div>
-              <Footer.Title title="about" c />
+              <Footer.Title title="about"/>
               <Footer.LinkGroup col>
                 <Link to="/about">About Us</Link>
                 <Link  to="/service">Contact Us</Link>

@@ -102,7 +102,7 @@ function Navbars() {
               className={`${style.btn} text-black ${userToken != null ? "block" : "hidden"
                 }`}
             >
-              Logout
+              Log out
             </NavLink>
             <NavLink
               to="./profile"

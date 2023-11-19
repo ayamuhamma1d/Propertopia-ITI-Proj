@@ -4,7 +4,7 @@ const Filter = ({ onSearchInputChange }) => {
 
   return (
     <>
-      <div className="flex justify-center items-center w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto  my-10 ">
+      <div className="flex justify-center items-center w-full font-serif sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto  my-10 ">
         <div className="w-full  shadow p-5 rounded-lg bg-white ">
           <div className="relative">
             <div className="absolute flex items-center ml-2 h-full">

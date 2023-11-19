@@ -74,7 +74,7 @@ const Service = () => {
               Buy& sell
             </h5>
             <p className=" font-normal text-base font-[Poppins]	 text-start text-gray-700 dark:text-gray-400">
-              Discover an extensive selection of properties available for purchase on our , cutting-edge real estate website, offering a user-friendly interface, advanced search options, detailed property listings, and expert guidance to facilitate your buying journey and help you find your dream home effortlessly With a guarantee of getting the best offers available.
+            Uncover Your Oasis: Immerse Yourself in a Visual Journey to Your Ideal Home. Unlock Unparalleled Properties, Tailored for Renting Flexibility or Forever Ownership. Your Dream Home Beckons—Dive In, Select, and Claim it as Yours. Elevate Your Living Experience with Every Click.
             </p>
           </div>
         </div>
@@ -88,8 +88,7 @@ const Service = () => {
               Maintenance
             </h5>
             <p className=" font-normal text-start font-[Poppins] text-gray-700 dark:text-gray-400">
-              Using our extensive experience in maintenance, we provide comprehensive property maintenance services that include preventive and repair maintenance. our dedicated team conducts regular maintenance and updates on our real estate website, keeping it running smoothly and providing an exceptional user experience for our valued visitors and clients.
-            </p>
+            Revitalize Your Space: Elevate Living with Our Exclusive Maintenance Magic. From Top-Notch Upkeep to Seamless Repairs, Experience Unparalleled Enhancements for a Truly Worry-Free Lifestyle. Find Serenity in our Dedicated Maintenance Unit – Where Your Home Receives Meticulous Care, Redefining Comfort and Convenience.            </p>
           </div>
           <div className={style.photoOrder}>
             <img
@@ -116,7 +115,7 @@ const Service = () => {
               3D MODEL
             </h5>
             <p className=" font-normal  font-[Poppins]	 text-start text-gray-700 dark:text-gray-400">
-              Experience the next level of immersive visualization with our state-of-the-art 3D design feature on our real estate website, allowing you to explore properties in stunning detail, walk through virtual tours, and gain a realistic sense of space and aesthetics, bringing your dream home to life before your eyes.
+            Revolutionize Your Showcase: Step into the Future with Our State-of-the-Art 3D Services. Immerse Your Audience in Captivating Virtual Tours, Beyond Ordinary Images. Whether Selling or Renting, Elevate Your Listings and Dominate the Market with Our Exclusive 3D Offerings. Redefine the Art of Presentation.
             </p>
           </div>
         </div>

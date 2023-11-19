@@ -31,7 +31,7 @@ const Maintenance = (props) => {
   const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9];
   return (
     <div className="w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto mb-10 text-center">
-       <h5 className="font-bold text-3xl font-serif capitalize mt-10 text-center">Maintenance</h5>
+       <h5 className="font-bold text-3xl font-serif capitalize  text-center">Maintenance</h5>
       <Carousel
         className="mt-10"
         swipeable={true}

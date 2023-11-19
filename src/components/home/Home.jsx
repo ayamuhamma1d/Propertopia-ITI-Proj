@@ -14,7 +14,7 @@ const Home = () => {
     <>
       <Hero />
       <div className='w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto mt-10'>
-        <h5 className="font-bold text-3xl font-serif capitalize mt-10 text-center">Units For Sale</h5>
+        <h5 className="font-bold text-3xl font-serif capitalize mt-10 pt-5 text-center">Units For Sale</h5>
       </div>
       <div className={` flex  justify-center items-center ${style.card}`}>
 
@@ -28,6 +28,9 @@ const Home = () => {
       </div>
       <Services />
       <Maintenance />
+      <div className='w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto mt-10'>
+        <h5 className="font-bold text-3xl font-serif capitalize mt-10 pt-5 text-center">Clients Feedback</h5>
+      </div>
       <Feedback />
       <Contact />
 

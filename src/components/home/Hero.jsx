@@ -12,7 +12,7 @@ const Hero = () => {
           </h1>
           <p className='text-lg  px-2 '>Illuminate Your Home Search with Unrivaled Brilliance.</p>
           <p className="mt-6 font-serif leading-8 text-gray-600  px-8">
-            Discover the home of your dreams with confidence, guided by our comprehensive features that ensure you receive the best offers available. Uncover a world of possibilities and let us redefine the way you find and acquire your ideal property. Welcome to a unique and captivating real estate experience, where every detail is crafted to make your journey extraordinary.          </p>
+            Discover the home of your dreams with confidence, guided by our comprehensive features that ensure you receive the best offers available. Uncover a world of possibilities and let us redefine the way you find and acquire your ideal property.       </p>
           <div className="mt-10 flex items-center justify-center gap-x-6">
             <Link
               to="/units"
