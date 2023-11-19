@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { useForm, useFieldArray, Controller } from "react-hook-form";
 import { auth, db, storage } from "./auth/firebase/Firebase";
-import { addDoc, collection, doc, getDocs, setDoc } from "firebase/firestore";
+import { addDoc, collection, getDocs } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { Textarea } from "flowbite-react";
 import styles from "./editUserData/editUserData.module.css";
+import style from "./AddForm.module.css";
 
 const AddForm = () => {
   const [imageUploads, setImageUploads] = useState([]);
@@ -13,7 +14,7 @@ const AddForm = () => {
   const [userEmail, setUserEmail] = useState("");
   const [userID, setUserID] = useState("");
   const [userPhone, setUserPhone] = useState("");
-  const [units, setUnits] = useState([]); 
+  const [units, setUnits] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
@@ -54,6 +55,7 @@ const AddForm = () => {
     handleSubmit,
     control,
     setValue,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -93,9 +95,26 @@ const AddForm = () => {
       }
 
       const uploadedUrls = await uploadFiles();
+      let documentDownloadURL;
 
       const user = auth.currentUser;
       const paymentCollectionRef = collection(db, "Payment");
+
+      if (data.document[0] && data.document[0].type.startsWith("image/")) {
+        const imageRef = ref(storage, `/UserImages/${data.document[0].name}`);
+        const imageSnapshot = await uploadBytes(imageRef, data.document[0]);
+        documentDownloadURL = await getDownloadURL(imageSnapshot.ref);
+      } else {
+        const documentRef = ref(
+          storage,
+          `/UserDocuments/${data.document[0].name}`
+        );
+        const documentSnapshot = await uploadBytes(
+          documentRef,
+          data.document[0]
+        );
+        documentDownloadURL = await getDownloadURL(documentSnapshot.ref);
+      }
 
       const newPaymentDocRef = await addDoc(paymentCollectionRef, {
         userID: userID,
@@ -111,17 +130,19 @@ const AddForm = () => {
         bedrooms: data.bedrooms,
         floor: data.floor,
         location: data.location,
+        user_document: documentDownloadURL,
       });
       setUnits((prevUnits) => [...prevUnits, newPaymentDocRef.id]);
 
       reset();
       setImageUploads([]);
       remove();
+      setUrls([]);
+      setErrorMessage("");
     } catch (error) {
       console.error("Error submitting form:", error);
     }
   };
-
   return (
     <>
       <section className="w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto">
@@ -129,14 +150,16 @@ const AddForm = () => {
           <h5 className="text-center font-bold text-xl md:text-3xl text-beige font-[Poppins] py-3">
             Add Units
           </h5>
-          <p className="text-slate-600 mx-auto text-lg text-center font-[Poppins]">
+          <p
+            className={`text-slate-600 mx-auto text-lg text-center font-[Poppins] ${style.parag}`}
+          >
             Unleash the power of 3D allure! Our fee, dancing between 3% to 5%
             per unit, covers stunning 3D models and targeted advertising for
             your property's spotlight moment.
           </p>
           <form
             onSubmit={handleSubmit(onFormSubmit)}
-            className="rounded px-10 pt-6 pb-8 mb-4"
+            className={`rounded px-10 pt-6 pb-8 mb-4 ${style.form}`}
           >
             <div className="mb-5">
               <input
@@ -295,7 +318,7 @@ const AddForm = () => {
                   render={({ field }) => (
                     <select
                       {...field}
-                      className="appearance-none bg-white   border-0 border-b-2 border-0 border-b-4 shadow border-beige hover:border-beige py-3 rounded-md w-1/2 shadow leading-tight text-beige "
+                      className="appearance-none bg-white  border-0 border-b-2 border-0 border-b-4 shadow border-beige hover:border-beige py-3 rounded-md w-1/2 shadow leading-tight text-beige "
                     >
                       <option value="For Sell">For Sell</option>
                       <option value="For Rent">For Rent</option>
@@ -334,6 +357,7 @@ const AddForm = () => {
                             {...field}
                             type="file"
                             id={`images${index}`}
+                            accept="image/*"
                             multiple
                             onChange={(event) => {
                               const filesArray = Array.from(
@@ -347,7 +371,7 @@ const AddForm = () => {
                       />
                       <label
                         htmlFor={`images${index}`}
-                        className="cursor-pointer border border-gray-300 bg-white rounded-md px-4 py-2 inline-block"
+                        className="cursor-pointer border border-gray-300 bg-beige text-white font-bold rounded-md px-4 py-2 inline-block"
                       >
                         Choose File
                       </label>
@@ -359,7 +383,7 @@ const AddForm = () => {
                     </span>
                     <button
                       type="button"
-                      className="border border-gray-300 bg-white rounded-md px-4 py-2"
+                      className="border border-gray-300  rounded-md px-4 py-2 bg-beige text-white font-bold"
                       onClick={() => remove(index)}
                     >
                       Remove
@@ -369,11 +393,39 @@ const AddForm = () => {
                 <button
                   type="button"
                   onClick={() => append({ files: [] })}
-                  className="border border-gray-300 bg-white rounded-md px-4 py-2"
+                  className="border border-gray-300  rounded-md px-4 py-2 bg-beige text-white font-bold"
                 >
                   Upload Images
                 </button>
               </div>
+            </div>
+            <div className="mb-5">
+              <label
+                htmlFor="document"
+                className="font-[Poppins]  font-bold text-lg block text-beige"
+              >
+                Upload Document for Verification
+              </label>
+              <input
+                type="file"
+                {...register("document", {
+                  required: "Please upload a document for verification.",
+                  validate: {
+                    isPdf: (file) =>
+                      (file && file[0] && file[0].type === "application/pdf") ||
+                      "Please upload a PDF document only.",
+                  },
+                })}
+                accept=".pdf"
+                className="font-[Poppins] bg-transparent rounded-md w-full py-2 px-3 text-gray-700"
+                id="document"
+              />
+
+              {errors?.document && (
+                <p className="form-text text-beige font-[Poppins]">
+                  {errors.document.message}
+                </p>
+              )}
             </div>
 
             <button
