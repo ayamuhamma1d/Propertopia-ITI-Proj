@@ -19,45 +19,50 @@
     color   : #BCA37F;
     overflow: hidden;
   }
+
   #boot_button {
     background-color: #d2c4a7;
-    padding: 10px 14px;
-    outline: none;
-    margin-top: 20px;
- 
-    
-}
+    padding         : 10px 14px;
+    outline         : none;
+    margin-top      : 20px;
 
 
-#boot_button #Link{
-    color: #fff;
+  }
+
+
+  #boot_button #Link {
+    color          : #fff;
     text-decoration: none;
-    }
+  }
+
+  .iCZala {
+    bottom : 20px !important;
+    right  : 26px !important;
+    width  : 346px !important;
+    height : 510px !important;
+    z-index: 999999999999 !important;
+
+
+  }
+
+  .efROPc {
+
+    margin-top: 8px !important;
+  }
+
+  .fHxDKS {
+
+    padding-left: 20px !important;
+  }
+
+  @media only screen and (max-width: 380px) {
     .iCZala {
       bottom: 20px !important;
-      right: 26px !important;
-      width: 346px !important;
-      height: 510px !important;
-      z-index: 999999999999 !important;
+      right : 26px !important;
+      width : 346px !important;
+      height: 462px !important;
 
- 
-  }
-  .efROPc {
-  
-    margin-top: 8px !important;
-}
-  .fHxDKS {
-   
-    padding-left: 20px !important;
-}
-    @media only screen and (max-width: 380px) {
-      .iCZala {
-        bottom: 20px !important;
-        right: 26px !important;
-        width: 346px !important;
-        height: 462px !important;
-   
     }
-  
-    
+
+
   }

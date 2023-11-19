@@ -10,7 +10,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { Button, Label, TextInput } from "flowbite-react";
 import { FcGoogle } from "react-icons/fc";
 import { BsFacebook } from "react-icons/bs";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import signImg from "../../../assets/img/signup.jpg";
 import style from "../Auth.module.css";
 import style_resp from "./signup.module.css";
@@ -21,7 +21,7 @@ const SignUp = () => {
   let userName, userEmail, userPass, userPhone;
   const [errorMessage, setErrorMessage] = useState("");
   const [errorCode, setErrorCode] = useState("");
-  const navigate=useNavigate();
+
   let userToken;
 
   const signInWithFacebook = async () => {
@@ -45,8 +45,8 @@ const SignUp = () => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       const user = result.user;
-      const navigate=useNavigate();
-      navigate("../../Home");
+    
+      window.location.href = "../../Home";
     } catch (error) {
       const errorCode = error.code;
       const errorMessage = error.message;

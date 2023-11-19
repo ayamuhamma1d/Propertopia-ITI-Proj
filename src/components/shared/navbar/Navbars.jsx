@@ -3,7 +3,7 @@ import { signOut } from "firebase/auth";
 import React, { useState } from "react";
 import logo from "./../../../assets/img/propertpoia-01.png";
 import style from "./nav.module.css";
-import { NavLink, Link, useNavigate } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import NavLinks from "./NavLinks";
 import { useEffect } from "react";
 import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons";
@@ -16,7 +16,7 @@ function Navbars() {
   };
   const [userToken, setUserToken] = useState(null);
   const [userImage, setUserImage] = useState(null);
-  const navigate = useNavigate();
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
@@ -36,8 +36,8 @@ function Navbars() {
     try {
       await signOut(auth);
       setUserToken(null);
+      window.location.href = "../../Home";
 
-      navigate("../../Home");
     } catch (error) {
       console.error("Error signing out:", error);
     }

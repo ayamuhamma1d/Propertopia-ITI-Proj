@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { auth, provider, providerFb } from "../firebase/Firebase";
 import {
@@ -53,9 +53,8 @@ const Login = () => {
       );
       const user = userCredential.user;
       userToken = user.accessToken;
-      // window.location.href = "../../Home";
-      const navigate=useNavigate();
-      navigate("../../Home");
+      window.location.href = "../../Home";
+     
 
     } catch (error) {
       const errorCode = error.code;
