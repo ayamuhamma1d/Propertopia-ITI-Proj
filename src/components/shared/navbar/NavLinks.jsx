@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { auth } from "../../auth/firebase/Firebase";
 
-const NavLinks = ({ setOpen }) => {
+const NavLinks = (props) => {
   const [user, setUser] = useState(null);
-
+ console.log(props.setOpen);
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
       setUser(authUser);
@@ -70,7 +70,10 @@ const NavLinks = ({ setOpen }) => {
       setHeading(linkName);
     }
   };
-
+  const handelOpen = (linkPath) => {
+    console.log(`Opening: ${linkPath}`);
+    setOpen(true);
+  };
   return (
     <>
       {links.map((link, index) => (
@@ -143,14 +146,16 @@ const NavLinks = ({ setOpen }) => {
               {link.subLinks.map((subLink, subIndex) => (
                 <li
                   key={subIndex}
-                  className="text-sm text-gray-800 my-2.5  "
+                  className="text-sm text-gray-800 my-2.5  "    
+                  onClick={handelOpen}
                 >
                   {!subLink.hidden && (
                     <NavLink
                       to={subLink.path}
                       activeClassName="active"
                       className="hover:text-beige py-4 pl-7 font-semibold md:pr-0 pr-6 "
-                    >
+                      onClick={() => handelOpen(subLink.path)}
+                      >
                       {subLink.Head}
                     </NavLink>
                   )}
