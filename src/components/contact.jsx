@@ -1,19 +1,16 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import {  TextInput } from "flowbite-react";
+import { TextInput } from "flowbite-react";
 import "./contact.css";
-
 function Contact() {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-
   const onSubmit = (data) => {
     console.log(data);
   };
-
   return (
     <section className="bg__contact mt-10">
       <div className="layer">
@@ -23,13 +20,13 @@ function Contact() {
               <div className="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-teal-accent-400">
               </div>
               <div className="max-w-xl mb-6">
-                <h6 className="max-w-lg mb-3  text-3xl font-bold font-serif  tracking-tight text-white sm:text-4xl sm:leading-none">
-                We are happy to have you
+                <h6 className="max-w-lg mb-3   font-bold font-serif  tracking-tight text-white sm:text-4xl text-3xl sm:leading-none">
+                  Welcome to our community of creativity and innovation!
                 </h6>
                 <p className="max-w-lg mb-3 		font-serif  text-lg  tracking-tight text-gray-300 sm:text-2xl sm:leading-10 ">
-                You can share your opinion or any suggestions with us                  
+                  You can share your opinion or any suggestions with us
                 </p>
-                
+
                 <p className="my-3 flex text-gray-300 items-center font-serif">
                   <span>
                     {" "}
