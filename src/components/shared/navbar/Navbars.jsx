@@ -40,6 +40,9 @@ function Navbars() {
     }
   };
   const [open, setOpen] = useState(false);
+  const handelOpen = () => {
+    setOpen(!open)
+  }
   return (
     <>
       <div
@@ -55,7 +58,7 @@ function Navbars() {
               {" "}
               <img
                 src={logo}
-                className=" h-24 "
+                className=" h-20 "
                 alt="Flowbite React Logo"
               />
             </Link>
@@ -66,19 +69,19 @@ function Navbars() {
               <ion-icon name={`${open ? "close" : "menu"}`}></ion-icon>
             </div>
           </div>
-          <ul className="lg:flex hidden ms-24  items-center gap-8 uppercase font-[Poppins] justify-center">
+          <ul className="lg:flex hidden ms-24  items-center gap-8 capitalize font-serif justify-center">
             <li>
               <NavLink
                 to="./"
                 className="py-3 px-2 inline-block hover:text-beige"
-                activeClassName="active"                
+                activeClassName="active"
               >
                 Home{" "}
               </NavLink>
             </li>
             <NavLinks />
           </ul>
-          <div className=" uppercase font-[Poppins] lg:block hidden items-center lg:flex ">
+          <div className="  capitalize font-serif lg:block hidden items-center lg:flex ">
             <NavLink
               to="./signup"
               className={`${userToken ? "hidden" : "block"}`}
@@ -89,15 +92,14 @@ function Navbars() {
               to="./login"
               className={`${style.btn} ${userToken ? "hidden" : "block"}`}
             >
-              Login
+              Log in
             </NavLink>
 
             <NavLink
               onClick={logOut}
               id="logout_btn"
-              className={`${style.btn} text-black ${
-                userToken != null ? "block" : "hidden"
-              }`}
+              className={`${style.btn} text-black ${userToken != null ? "block" : "hidden"
+                }`}
             >
               Logout
             </NavLink>
@@ -120,21 +122,20 @@ function Navbars() {
           </div>
           {/* Mobile */}
           <ul
-            className={`lg:hidden absolute bg-white w-full h-fit pt-20  pl-4 duration-500 ${style.nav_sm} ${
-              open ? "left-0" : "left-[-100%]" 
-            }`} activeClassName="active"  
+            className={`lg:hidden absolute bg-white w-full h-fit pt-20  pl-4 duration-500 ${style.nav_sm} ${open ? "left-0" : "left-[-100%]"
+              }`} activeClassName="active"
           >
-          
-              <Link to="./" className="py-4 px-2 inline-block" activeClassName="active"  >
-                Home{" "}
+            <li>
+              <Link to="./" className="py-4 px-2 inline-block" onClick={handelOpen}>
+                Home
               </Link>
-         
-            <NavLinks setOpen={setOpen} />
-           
-              <Link to="/profile" className="py-3 px-2 inline-block mb-5"  activeClassName="active" >
+            </li>
+            <NavLinks setOpen={open} />
+            <li>
+              <Link to="/profile" className="py-3 px-2 inline-block mb-5" onClick={handelOpen}>
                 Profile
               </Link>
-      
+            </li>
           </ul>
         </div>
       </nav>

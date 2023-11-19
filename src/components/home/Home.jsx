@@ -24,8 +24,9 @@ const Home = () => {
       </div>
       <Services />
       <Maintenance />
-      <Contact />
       <Feedback />
+      <Contact />
+   
     </>
   );
 };
