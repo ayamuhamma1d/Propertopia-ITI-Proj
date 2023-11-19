@@ -7,7 +7,6 @@ import video from "../../../assets/video/Modern Bedroom In A Luxury Villa Stock 
 import "./finishes.css"
 
 const features = [
-  { name: "Dimensions", description: "6.25 x 3.55 x 1.15" },
   {
     name: "Rooms",
     description:
@@ -28,11 +27,7 @@ const features = [
     description:
       "Cabinetry: The kitchen has installed cabinets, providing storage space for cookware, utensils, and food items. A kitchen sink is installed and connected to the plumbing system, Lighting: Adequate lighting is present in the kitchen, including overhead ",
   },
-  {
-    name: "balcony",
-    description:
-      " finished balcony typically has a flooring material that is suitable for outdoor use. Balconies are usually enclosed by railings for safety purposes. Balconies may have appropriate lighting fixtures to illuminate the space during the evening or nighttime.",
-  },
+
 ];
 
 const Finishes = () => {
@@ -70,49 +65,57 @@ const Finishes = () => {
               ))}
             </dl>
           </div>
-          <div className="grid grid-cols-2 grid-rows-2 gap-1 sm:gap-2 lg:gap-2">
+          <div className="grid grid-cols-2 grid-rows-2 gap-1 sm:gap-2 lg:gap-2  ">
             <div className="item">
               <video width="750" height="500" autoPlay controls muted>
                 <source src={video} type="video/mp4"  />
               </video>
             </div>
             <div className="item2">
-              <div class="finished_background">
-                <div class="finished_gallery">
-                  <div class="finished_card">
+            <div class="finesh_background">
+            <div class="finesh_gallery">
+                <div class="finesh_card">
                     <figure>
-                      <img src={After1} />
+                        <img
+                       src={After1}
+                        alt="Preview"
+                        />
                     </figure>
-                  </div>
-                  <div class="finished_card">
-                    <figure>
-                      <img src={Before1}  />
-                    </figure>
-                  </div>
-                  <div class="finished_card">
-                    <figure>
-                      <img src={After1}  />
-                    </figure>
-                  </div>
                 </div>
-                <div class="finished_gallery">
-                  <div class="finished_card">
+                <div class="finesh_card">
                     <figure>
-                      <img src={After1} />
+                        <img
+                       src={After1}
+                        alt="Preview"
+                        />
                     </figure>
-                  </div>
-                  <div class="finished_card">
-                    <figure>
-                      <img src={Before1} />
-                    </figure>
-                  </div>
-                  <div class="finished_card">
-                    <figure>
-                      <img src={After1}  />
-                    </figure>
-                  </div>
                 </div>
-              </div>
+                <div class="finesh_card">
+                    <figure>
+                        <img
+                            src={After1}
+                            alt="Preview"
+                       />
+                    </figure>
+                </div>
+                <div class="finesh_card">
+                    <figure>
+                        <img
+                        src={After1}
+                        alt="Preview"
+                        />
+                    </figure>
+                </div>
+                <div class="finesh_card">
+                    <figure>
+                        <img
+                        src={After1}
+                        alt="Preview"
+                        />
+                    </figure>
+                </div>
+            </div>            
+        </div>
             </div>
           </div>
         </div>
@@ -127,42 +130,50 @@ const Finishes = () => {
               </video>
             </div>
             <div className="item2">
-              <div class="finished_background">
-                <div class="finished_gallery">
-                  <div class="finished_card">
+            <div class="finesh_background">
+            <div class="finesh_gallery">
+            <div class="finesh_card">
                     <figure>
-                      <img src={After1}  />
+                        <img
+                       src={After1}
+                        alt="Preview"
+                        />
                     </figure>
-                  </div>
-                  <div class="finished_card">
-                    <figure>
-                      <img src={After1}  />
-                    </figure>
-                  </div>
-                  <div class="finished_card">
-                    <figure>
-                      <img src={Before1}  />
-                    </figure>
-                  </div>
                 </div>
-                <div class="finished_gallery">
-                  <div class="finished_card">
+                <div class="finesh_card">
                     <figure>
-                      <img src={Before1}  />
+                        <img
+                       src={After1}
+                        alt="Preview"
+                        />
                     </figure>
-                  </div>
-                  <div class="finished_card">
-                    <figure>
-                      <img src={After1}  />
-                    </figure>
-                  </div>
-                  <div class="finished_card">
-                    <figure>
-                      <img src={Before1} />
-                    </figure>
-                  </div>
                 </div>
-              </div>
+                <div class="finesh_card">
+                    <figure>
+                        <img
+                            src={After1}
+                            alt="Preview"
+                       />
+                    </figure>
+                </div>
+                <div class="finesh_card">
+                    <figure>
+                        <img
+                        src={After1}
+                        alt="Preview"
+                        />
+                    </figure>
+                </div>
+                <div class="finesh_card">
+                    <figure>
+                        <img
+                        src={After1}
+                        alt="Preview"
+                        />
+                    </figure>
+                </div>
+            </div>            
+        </div>
             </div>
           </div>
           <div>
