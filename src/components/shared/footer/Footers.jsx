@@ -1,8 +1,9 @@
 'use client';
-import logo from './../../../assets/img/palm-beach-travel-hotel-seabird-260nw-2161616503-removebg-preview.png'
+import logo from "./../../../assets/img/propertpoia-01.png";
 import { Footer } from 'flowbite-react';
 import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from 'react-icons/bs';
 import React from 'react'
+import { Link } from "react-router-dom";
 
 function Footers() {
   return (
@@ -20,22 +21,22 @@ function Footers() {
             <div>
               <Footer.Title title="about" c />
               <Footer.LinkGroup col>
-                <Footer.Link href="#">Flowbite</Footer.Link>
-                <Footer.Link href="#">Tailwind CSS</Footer.Link>
+                <Link to="/about">About Us</Link>
+                <Link  to="/service">Contact Us</Link>
               </Footer.LinkGroup>
             </div>
             <div>
               <Footer.Title title="Follow us" />
               <Footer.LinkGroup col>
-                <Footer.Link href="#">Github</Footer.Link>
-                <Footer.Link href="#">Discord</Footer.Link>
+                <Link to="/service">Contact</Link>
+                <Link to="/service">customer service</Link>
               </Footer.LinkGroup>
             </div>
             <div>
               <Footer.Title title="Legal" />
               <Footer.LinkGroup col>
-                <Footer.Link href="#">Privacy Policy</Footer.Link>
-                <Footer.Link href="#">Terms &amp; Conditions</Footer.Link>
+                <Link to="/" >Privacy Policy</Link>
+                <Link  to="/">Terms &amp; Conditions</Link>
               </Footer.LinkGroup>
             </div>
           </div>
@@ -44,11 +45,9 @@ function Footers() {
         <div className="w-full sm:flex sm:items-center sm:justify-between">
           <Footer.Copyright  by="Propertopia" year={2023} />
           <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
-            <Footer.Icon href="#" icon={BsFacebook} className=' hover:text-beige'/>
-            <Footer.Icon href="#" icon={BsInstagram} className=' hover:text-beige'/>
-            <Footer.Icon href="#" icon={BsTwitter}   className=' hover:text-beige'/>
-            <Footer.Icon href="#" icon={BsGithub}  className=' hover:text-beige' />
-            <Footer.Icon href="#" icon={BsDribbble}   className=' hover:text-beige'/>
+            <Footer.Icon href="https://www.facebook.com/" icon={BsFacebook} className=' hover:text-beige'/>
+            <Footer.Icon href="https://www.instagram.com/" icon={BsInstagram} className=' hover:text-beige'/>
+            <Footer.Icon href="https://twitter.com/?lang=ar" icon={BsTwitter}   className=' hover:text-beige'/>
           </div>
         </div>
       </div>

@@ -94,11 +94,6 @@ const Finishes = () => {
                       <img src={After1}  />
                     </figure>
                   </div>
-                  <div class="finished_card">
-                    <figure>
-                      <img src={Before1}  />
-                    </figure>
-                  </div>
                 </div>
                 <div class="finished_gallery">
                   <div class="finished_card">
@@ -114,11 +109,6 @@ const Finishes = () => {
                   <div class="finished_card">
                     <figure>
                       <img src={After1}  />
-                    </figure>
-                  </div>
-                  <div class="finished_card">
-                    <figure>
-                      <img src={Before1}  />
                     </figure>
                   </div>
                 </div>
@@ -146,11 +136,6 @@ const Finishes = () => {
                   </div>
                   <div class="finished_card">
                     <figure>
-                      <img src={Before1}  />
-                    </figure>
-                  </div>
-                  <div class="finished_card">
-                    <figure>
                       <img src={After1}  />
                     </figure>
                   </div>
@@ -161,11 +146,6 @@ const Finishes = () => {
                   </div>
                 </div>
                 <div class="finished_gallery">
-                  <div class="finished_card">
-                    <figure>
-                      <img src={After1}  />
-                    </figure>
-                  </div>
                   <div class="finished_card">
                     <figure>
                       <img src={Before1}  />

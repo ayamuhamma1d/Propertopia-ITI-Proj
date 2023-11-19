@@ -1,0 +1,16 @@
+.swiper-slide-prev{
+    background-color: #ffffff !important;
+
+}
+
+.swiper-slide-next{
+    background-color: #ffffff !important;
+
+
+}
+
+.swiper-pagination-bullet-active{
+    --swiper-theme-color: #bca37f !important;
+
+
+}

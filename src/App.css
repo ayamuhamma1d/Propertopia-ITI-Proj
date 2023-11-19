@@ -33,3 +33,25 @@
     color: #fff;
     text-decoration: none;
     }
+
+    .iCZala {
+      bottom: 20px !important;
+      right: 26px !important;
+      width: 346px !important;
+      height: 520px !important;
+ 
+  }
+
+
+    @media only screen and (max-width: 380px) {
+      .iCZala {
+        bottom: 20px !important;
+        right: 26px !important;
+        width: 346px !important;
+        height: 490px !important;
+   
+    }
+    
+  }
+
+ 

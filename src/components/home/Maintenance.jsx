@@ -46,7 +46,7 @@ const Maintenance = (props) => {
         infinite={true}
         keyBoardControl={true}
         customTransition="all 1s"
-        transitionDuration={500}
+        transitionDuration={2000}
         removeArrowOnDeviceType={["tablet", "mobile"]}
         deviceType={props.deviceType}
         dotListClass="custom-dot-list-style"

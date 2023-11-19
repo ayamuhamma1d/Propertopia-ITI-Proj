@@ -2,7 +2,7 @@ import { auth } from "../../auth/firebase/Firebase";
 import { signOut } from "firebase/auth";
 import React, { useState } from "react";
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
-import logo from "./../../../assets/img/palm-beach-travel-hotel-seabird-260nw-2161616503-removebg-preview.png";
+import logo from "./../../../assets/img/propertpoia-01.png";
 import style from "./nav.module.css";
 import { NavLink, Link } from "react-router-dom";
 import NavLinks from "./NavLinks";
@@ -50,12 +50,12 @@ function Navbars() {
       </div>
       <nav className={`bg-white my-1 ${style.nav}`}>
         <div className="  flex item-center justify-between  w-full sm:max-w-full md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto ">
-          <div className="z-50 lg:w-auto w-full flex justify-between items-center ">
+          <div className={`z-50 lg:w-auto w-full flex justify-between items-center ${style.navsm}  `}>
             <Link to=" ">
               {" "}
               <img
                 src={logo}
-                className="mr-3 h-24 "
+                className=" h-24 "
                 alt="Flowbite React Logo"
               />
             </Link>
@@ -125,7 +125,7 @@ function Navbars() {
             }`} activeClassName="active"  
           >
           
-              <Link to="./" className="py-3 px-2 inline-block" activeClassName="active"  >
+              <Link to="./" className="py-4 px-2 inline-block" activeClassName="active"  >
                 Home{" "}
               </Link>
          
