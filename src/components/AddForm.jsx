@@ -5,6 +5,9 @@ import { doc, setDoc } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 const AddForm = () => {
+  const [imageUploads, setImageUploads] = useState([]);
+  const [urls, setUrls] = useState([]);
+
   const {
     register,
     handleSubmit,
@@ -17,50 +20,47 @@ const AddForm = () => {
     name: "files",
   });
 
+  const uploadFiles = async () => {
+    try {
+      const uploadPromises = imageUploads
+        .slice(0, 5)
+        .map(async (fileData, index) => {
+          const imageRef = ref(storage, `/UnitImages/${fileData.name}`);
+          const snapshot = await uploadBytes(imageRef, fileData);
+          const downloadURL = await getDownloadURL(snapshot.ref);
+          return downloadURL;
+        });
+
+      const newUrls = await Promise.all(uploadPromises);
+      setUrls(newUrls.filter((url) => url !== null));
+
+      return newUrls;
+    } catch (error) {
+      console.error("Error uploading files:", error);
+      return [];
+    }
+  };
+
   const onFormSubmit = async (data) => {
-    console.log(data);
-    const user = auth.currentUser;
-    const storageRef = ref(storage, `images/${user.uid}`);
+    try {
+      const uploadedUrls = await uploadFiles();
 
-    const imageUrls = fields
-      ? (
-          await Promise.all(
-            fields.map(async (file, index) => {
-              const fileData = file.files[0];
-              if (fileData) {
-                const fileRef = ref(
-                  storageRef,
-                  `${user.uid}_image_${index + 1}_${fileData.name}`
-                );
-                await uploadBytes(fileRef, fileData);
-                return getDownloadURL(fileRef);
-              }
-              return null;
-            })
-          )
-        ).filter((url) => url !== null)
-      : [];
+      const user = auth.currentUser;
+      const paymentDocRef = doc(db, "Payment", user.uid);
 
-    const userEmail = data.email;
-    const expPrice = data.price;
-    const fullName = data.fullname;
-    const userPhone = data.phone;
-    const unitPurpose = data.unitType;
-    const unitAddress = data.unitaddress;
-    const unit_desc = data.description;
-
-    const images = imageUrls;
-
-    await setDoc(doc(db, "Payment", user.uid), {
-      email: userEmail,
-      exp_price: expPrice,
-      fullname: fullName,
-      images: images,
-      phone: userPhone,
-      purpose: unitPurpose,
-      unit_address: unitAddress,
-      unit_desc: unit_desc,
-    });
+      await setDoc(paymentDocRef, {
+        email: data.email,
+        exp_price: data.price,
+        fullname: data.fullname,
+        images: uploadedUrls,
+        phone: data.phone,
+        purpose: data.unitType,
+        unit_address: data.unitaddress,
+        unit_desc: data.description,
+      });
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
   };
 
   return (
@@ -82,7 +82,7 @@ const AddForm = () => {
               <input
                 type="text"
                 {...register("fullname", { required: true })}
-                className="font-[Poppins] border-0 border-b-4 shadow border-beige rounded-md w-full py-3 px-3 text-gray-700 
+                className="font-[Poppins] border-0 border-b-4 shadow border-beige rounded-md w-full py-3 px-3 text-gray-700
                         placeholder-gray-400"
                 id="uname"
                 placeholder="Full Name"
@@ -99,7 +99,7 @@ const AddForm = () => {
                   required: true,
                   pattern: /^[^\s@]+@(gmail|yahoo|hotmail|outlook)\.com$/,
                 })}
-                className="font-[Poppins] border-0 border-b-4 shadow border-beige rounded-md w-full py-3 px-3 text-gray-700 
+                className="font-[Poppins] border-0 border-b-4 shadow border-beige rounded-md w-full py-3 px-3 text-gray-700
                                 placeholder-gray-400"
                 id="email"
                 placeholder="E-mail"
@@ -122,7 +122,7 @@ const AddForm = () => {
                   required: true,
                   pattern: /^(10|11|12|14|15|16|17|18|19)[0-9]{8}$/,
                 })}
-                className="font-[Poppins] border-0 border-b-4  w-full shadow border-beige rounded-e-md py-3 px-3 text-gray-700 
+                className="font-[Poppins] border-0 border-b-4  w-full shadow border-beige rounded-e-md py-3 px-3 text-gray-700
                                 placeholder-gray-400"
                 id="tel"
                 placeholder="Phone"
@@ -141,7 +141,7 @@ const AddForm = () => {
               <input
                 type="text"
                 {...register("unitaddress", { required: true })}
-                className=" font-[Poppins] border-0 border-b-4 shadow border-beige rounded-md w-full py-3 px-3 text-gray-700 
+                className=" font-[Poppins] border-0 border-b-4 shadow border-beige rounded-md w-full py-3 px-3 text-gray-700
                                 placeholder-gray-400"
                 id="address"
                 placeholder="Unit Address"
@@ -155,7 +155,7 @@ const AddForm = () => {
               <input
                 type="text"
                 {...register("description", { required: true })}
-                className="font-[Poppins] border-0 border-b-4 shadow border-beige rounded-md w-full py-3 px-3 text-gray-700 
+                className="font-[Poppins] border-0 border-b-4 shadow border-beige rounded-md w-full py-3 px-3 text-gray-700
                                 placeholder-gray-400"
                 id="desc"
                 placeholder="Unit Description"
@@ -169,7 +169,7 @@ const AddForm = () => {
               <input
                 type="text"
                 {...register("price", { required: true, pattern: /^[0-9]*$/ })}
-                className="font-[Poppins] border-0 border-b-4 shadow border-beige rounded-md w-full py-3 px-3 text-gray-700 
+                className="font-[Poppins] border-0 border-b-4 shadow border-beige rounded-md w-full py-3 px-3 text-gray-700
                                 placeholder-gray-400"
                 id="price"
                 placeholder="Expected Price"
@@ -204,7 +204,6 @@ const AddForm = () => {
                   )}
                 />
               </div>
-
               <div className=" my-3 flex items-center">
                 <label
                   htmlFor="files"
@@ -223,6 +222,12 @@ const AddForm = () => {
                           type="file"
                           id={`images${index}`}
                           multiple
+                          onChange={(event) => {
+                            const filesArray = Array.from(
+                              event.target.files
+                            ).slice(0, 5);
+                            setImageUploads([...filesArray]);
+                          }}
                           className="border-gray-300 focus:border-beige my-1 focus:ring rounded-md"
                         />
                       )}
@@ -256,3 +261,5 @@ const AddForm = () => {
 };
 
 export default AddForm;
+
+
