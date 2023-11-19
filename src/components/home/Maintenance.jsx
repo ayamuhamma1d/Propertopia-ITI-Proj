@@ -17,7 +17,7 @@ const Maintenance = (props) => {
     },
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 4, 
+      items: 4,
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
@@ -31,7 +31,9 @@ const Maintenance = (props) => {
   const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9];
   return (
     <div className="w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto mb-10 text-center">
-       <h5 className="font-bold text-3xl font-serif capitalize  text-center">Maintenance</h5>
+      <h5 className="font-bold text-3xl font-serif capitalize  text-center">
+        Maintenance
+      </h5>
       <Carousel
         className="mt-10"
         swipeable={true}
@@ -47,8 +49,8 @@ const Maintenance = (props) => {
         deviceType={props.deviceType}
         dotListClass="custom-dot-list-style"
         itemClass="carousel-item-padding-40-px"
-        autoPlay={true} 
-        autoPlaySpeed={500} 
+        autoPlay={true}
+        autoPlaySpeed={500}
       >
         {images.map((img, index) => (
           <div key={index}>

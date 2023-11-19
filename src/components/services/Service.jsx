@@ -1,6 +1,5 @@
 import React from "react";
-import photoo from "./../../assets/img/istockphoto-587782652-612x612.jpg";
-import maintenance from "./../../assets/img/main.jpg";
+import maintenance1 from "./../../assets/img/istockphoto-587782652-612x612.jpg";
 import model from "./../../assets/img/3d-rendering-exterior-modern-house-with-good-design.jpg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -13,13 +12,20 @@ import { faPhone } from "@fortawesome/free-solid-svg-icons";
 import logo from "../../assets/img/logo.png";
 import logo1 from "../../assets/img/19.jpeg";
 import style from "./service.module.css";
-import dphoto from '../../../src/assets/img/Maintenance1/1 (7).jpg';
+import maintenance2 from '../../../src/assets/img/Maintenance1/1 (7).jpg';
 import { Link } from "react-router-dom";
+import picone from "../../assets/img/hero-image.jpg";
+import pictwo from "../../assets/img/SiteImage-Landing-house-plansluxury-1.webp";
+import picthree from "../../assets/img/download-23.webp";
+import picfour from "../../assets/img/Lowcost.webp";
+
+
+
 
 const Service = () => {
   return (
     <>
-      <div className={`${style.parentt} w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto mb-16`}>
+      <div className={`${style.parentt} w-full  sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto mb-16`}>
         <Swiper
           spaceBetween={30}
           centeredSlides={true}
@@ -42,16 +48,16 @@ const Service = () => {
             <img src={logo} alt="" className="w-6/12  " />
           </SwiperSlide>
           <SwiperSlide>
-            <img src={logo1} alt="" className="w-6/12 m-auto " />
+            <img src={picthree} alt="" className="w-6/12 m-auto " />
           </SwiperSlide>
           <SwiperSlide>
-            <img src={logo} alt="" className="w-6/12 m-auto " />
+            <img src={picone} alt="" className="w-6/12 m-auto " />
           </SwiperSlide>
           <SwiperSlide>
-            <img src={logo} alt="" className="w-6/12 m-auto " />
+            <img src={pictwo} alt="" className="w-6/12 m-auto " />
           </SwiperSlide>
           <SwiperSlide>
-            <img src={logo} alt="" className="w-6/12 m-auto " />
+            <img src={picfour} alt="" className="w-6/12 m-auto " />
           </SwiperSlide>
         </Swiper>
       </div>
@@ -65,7 +71,7 @@ const Service = () => {
           <div>
             <img
               className={`${style.img}  max-w-full `}
-              src={photoo}
+              src={maintenance1}
               alt="1"
             />
           </div>
@@ -73,7 +79,7 @@ const Service = () => {
             <h5 className="mb-5 text-start  text-3xl  capitalize font-bold tracking-tight text-beige dark:text-white">
               Buy& sell
             </h5>
-            <p className=" font-normal text-base font-[Poppins]	 text-start text-gray-700 dark:text-gray-400">
+            <p className=" font-normal text-base  font-serif 	 text-start text-gray-700 dark:text-gray-400">
             Uncover Your Oasis: Immerse Yourself in a Visual Journey to Your Ideal Home. Unlock Unparalleled Properties, Tailored for Renting Flexibility or Forever Ownership. Your Dream Home Beckons—Dive In, Select, and Claim it as Yours. Elevate Your Living Experience with Every Click.
             </p>
           </div>
@@ -87,13 +93,13 @@ const Service = () => {
             <h5 className="mb-5 text-start text-3xl font-bold tracking-tight text-beige  dark:text-white capitalize ">
               Maintenance
             </h5>
-            <p className=" font-normal text-start font-[Poppins] text-gray-700 dark:text-gray-400">
+            <p className=" font-normal text-start  font-serif  text-gray-700 dark:text-gray-400">
             Revitalize Your Space: Elevate Living with Our Exclusive Maintenance Magic. From Top-Notch Upkeep to Seamless Repairs, Experience Unparalleled Enhancements for a Truly Worry-Free Lifestyle. Find Serenity in our Dedicated Maintenance Unit – Where Your Home Receives Meticulous Care, Redefining Comfort and Convenience.            </p>
           </div>
           <div className={style.photoOrder}>
             <img
               className={`${style.img} h-96 max-w-full `}
-              src={dphoto}
+              src={maintenance2}
               alt="1"
             />
           </div>
@@ -114,7 +120,7 @@ const Service = () => {
             <h5 className="mb-5 text-start  text-3xl font-bold tracking-tight text-beige dark:text-white">
               3D MODEL
             </h5>
-            <p className=" font-normal  font-[Poppins]	 text-start text-gray-700 dark:text-gray-400">
+            <p className=" font-normal   font-serif 	 text-start text-gray-700 dark:text-gray-400">
             Revolutionize Your Showcase: Step into the Future with Our State-of-the-Art 3D Services. Immerse Your Audience in Captivating Virtual Tours, Beyond Ordinary Images. Whether Selling or Renting, Elevate Your Listings and Dominate the Market with Our Exclusive 3D Offerings. Redefine the Art of Presentation.
             </p>
           </div>
@@ -124,7 +130,7 @@ const Service = () => {
       <div
         className={`${style.mrSection} w-full bg-zinc-50  p-4 text-center   rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700 `}
       >
-        <h3 className="text-xl mb-7 md:text-3xl font-bold  font-[Poppins] dark:text-white">
+        <h3 className="text-xl mb-7 md:text-3xl font-bold   font-serif  dark:text-white">
           Contact customer service
         </h3>
         <div className="items-center justify-center ">
