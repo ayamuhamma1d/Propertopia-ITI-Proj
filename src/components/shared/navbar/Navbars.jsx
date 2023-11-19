@@ -1,7 +1,6 @@
 import { auth } from "../../auth/firebase/Firebase";
 import { signOut } from "firebase/auth";
 import React, { useState } from "react";
-import { Avatar, Dropdown, Navbar } from "flowbite-react";
 import logo from "./../../../assets/img/propertpoia-01.png";
 import style from "./nav.module.css";
 import { NavLink, Link, useNavigate } from "react-router-dom";
@@ -15,7 +14,7 @@ function Navbars() {
   };
   const [userToken, setUserToken] = useState(null);
   const [userImage, setUserImage] = useState(null);
-   const navigate=useNavigate();
+  const navigate = useNavigate();
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
@@ -36,7 +35,7 @@ function Navbars() {
       await signOut(auth);
       setUserToken(null);
 
-      navigate("../../Home");    
+      navigate("../../Home");
     } catch (error) {
       console.error("Error signing out:", error);
     }
@@ -60,7 +59,7 @@ function Navbars() {
               {" "}
               <img
                 src={logo}
-                className=" h-20 "
+                className=" h-24"
                 alt="Propertopia Logo"
               />
             </Link>

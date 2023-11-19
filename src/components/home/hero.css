@@ -1,8 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css?family=Coiny');
-a {
-    text-decoration: none;
-}
+
 .text-start {
     display: flex !important;
     align-items: flex-start !important;

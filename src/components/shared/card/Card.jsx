@@ -121,23 +121,23 @@ const Card = ({
   return (
     <div className='w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto mt-10'>
       <div className="flex  gap-10 flex-wrap  justify-center items-center">
-        <div className="w-full max-w-sm font-[Poppins] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+        <div className="w-full max-w-sm font-serif  bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
           <div className='relative '>
             <Link to={`/details/${id}/${purpose}`}>
               <img src={image_url} alt="" />
             </Link>
             <div className={`absolute top-2 left-3 bg-black p-2`}>
-              <p className="text-white font-[Poppins]">For {purpose}</p>
+              <p className="text-white font-serif ">For {purpose}</p>
             </div>
           </div>
           <div className="px-5 pb-5">
             <div className="flex items-center justify-between mb-3 pt-3">
-              <Link className="font-medium capitalize font-[Poppins] ">
+              <Link className="font-medium capitalize font-serif  ">
                 {type_of_unit}
               </Link>
-              <span className="text-lg font-bold font-[Poppins]">${purpose === 'sale' ? price.toLocaleString() : pricePerDay.toLocaleString()}</span>
+              <span className="text-lg font-bold font-serif ">${purpose === 'sale' ? price.toLocaleString() : pricePerDay.toLocaleString()}</span>
             </div>
-            <div className='flex justify-between font-[Poppins]items-center border-b pb-2'>
+            <div className='flex justify-between font-serif items-center border-b pb-2'>
               <div>
                 <p>
                   <FontAwesomeIcon icon={faBed} style={{ color: "#000000" }} className='me-2' />
@@ -151,8 +151,8 @@ const Card = ({
                 </p>
               </div>
               <div>
-                <p className=' font-[Poppins]'>
-                  <FontAwesomeIcon icon={faHome} className='me-2 font-[Poppins]' />
+                <p className=' font-serif '>
+                  <FontAwesomeIcon icon={faHome} className='me-2 font-serif ' />
                   {area}m
                 </p>
               </div>
@@ -160,7 +160,7 @@ const Card = ({
             <div className="flex items-center justify-between mt-2.5 mb-5">
               <div>
                 <p className="">
-                  <FontAwesomeIcon className='pr-1 font-[Poppins]' icon={faMapMarkerAlt} />
+                  <FontAwesomeIcon className='pr-1 font-serif ' icon={faMapMarkerAlt} />
                   {location.split(' ').slice(0, 3).join(' ')}
                 </p>
               </div>
@@ -212,10 +212,10 @@ const Card = ({
               Please log in to add to your wishlist.
             </p>
             <div className="flex justify-center items-center mt-5">
-              <Link to="/login" className="bg-beige1 mr-5 font-[Poppins] px-6 py-2 rounded-md ">
+              <Link to="/login" className="bg-beige1 mr-5 font-serif  px-6 py-2 rounded-md ">
                 Log In
               </Link>
-              <button className="bg-red-800 mr-5 text-white font-[Poppins]  px-6 py-2 rounded-md " onClick={handleLoginPopupClose}>
+              <button className="bg-red-800 mr-5 text-white font-serif   px-6 py-2 rounded-md " onClick={handleLoginPopupClose}>
                 Close
               </button>
             </div>

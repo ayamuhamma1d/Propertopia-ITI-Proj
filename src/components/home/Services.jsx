@@ -10,7 +10,7 @@ const Services = () => {
     <>
       <section>
         <div className="w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto mb-10 text-center">
-          <h2 className="font-bold text-3xl font-[Poppins] mb-10">Services</h2>
+        <h5 className="font-bold text-3xl font-serif capitalize mt-10 text-center">Services</h5>
           <div className="flex flex-col gap-5 md:flex-row md:space-x-5 md:space-y-0 space-x-5">
             <div className="md:w-1/3 flex flex-col items-center  space-y-4 rounded-lg border border-slate-200">
               <img src={photosellrent} alt="1" className="" />
