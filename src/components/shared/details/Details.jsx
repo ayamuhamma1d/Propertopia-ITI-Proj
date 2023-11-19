@@ -28,6 +28,8 @@ import "react-multi-carousel/lib/styles.css";
 import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as regularHeart } from "@fortawesome/free-regular-svg-icons";
 import { useEffect } from "react";
+import Feedback from "../../shared/feedback/feedback";
+
 import { auth, db } from "../../auth/firebase/Firebase";
 import { deleteDoc, doc, getDoc, setDoc } from "firebase/firestore";
 const Details = () => {
@@ -369,6 +371,9 @@ const Details = () => {
   src={detailsData.map_iframe}
   className={`${style.height3d} w-full`}
 />
+
+<Feedback />
+
       </section>
     </>
   );
