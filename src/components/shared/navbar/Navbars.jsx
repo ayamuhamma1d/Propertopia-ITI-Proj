@@ -6,8 +6,10 @@ import style from "./nav.module.css";
 import { NavLink, Link, useNavigate } from "react-router-dom";
 import NavLinks from "./NavLinks";
 import { useEffect } from "react";
-function Navbars() {
+import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+function Navbars() {
   const dummyUserData = {
     photo:
       "https://cdn.vectorstock.com/i/preview-1x/08/19/gray-photo-placeholder-icon-design-ui-vector-35850819.jpg",
@@ -42,8 +44,8 @@ function Navbars() {
   };
   const [open, setOpen] = useState(false);
   const handelOpen = () => {
-    setOpen(!open)
-  }
+    setOpen(!open);
+  };
   return (
     <>
       <div
@@ -54,14 +56,12 @@ function Navbars() {
       </div>
       <nav className={`bg-white my-1 ${style.nav}`}>
         <div className="  flex item-center justify-between  w-full sm:max-w-full md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto ">
-          <div className={`z-50 lg:w-auto w-full flex justify-between items-center ${style.navsm}  `}>
+          <div
+            className={`z-50 lg:w-auto w-full flex justify-between items-center ${style.navsm}  `}
+          >
             <Link to=" ">
               {" "}
-              <img
-                src={logo}
-                className=" h-24"
-                alt="Propertopia Logo"
-              />
+              <img src={logo} className=" h-24" alt="Propertopia Logo" />
             </Link>
             <div
               className="text-4xl cursor-pointer lg:hidden"
@@ -82,7 +82,7 @@ function Navbars() {
             </li>
             <NavLinks />
           </ul>
-          <div className="  capitalize font-serif lg:block hidden items-center lg:flex ">
+          <div className="  capitalize font-serif lg:block hidden items-center lg:flex">
             <NavLink
               to="./signup"
               className={`${userToken ? "hidden" : "block"}`}
@@ -99,8 +99,9 @@ function Navbars() {
             <NavLink
               onClick={logOut}
               id="logout_btn"
-              className={`${style.btn} text-black ${userToken != null ? "block" : "hidden"
-                }`}
+              className={`${style.btn} text-black ${
+                userToken != null ? "block" : "hidden"
+              }`}
             >
               Log out
             </NavLink>
@@ -120,20 +121,38 @@ function Navbars() {
                 />
               )}
             </NavLink>
+
+            <NavLink className={` ${userToken != null ? "block" : "hidden"}`}>
+              <li style={{ color: "#bca37f", listStyle: "none" }}>
+                <Link className="ps-2" to={"/favorite"}>
+                  <FontAwesomeIcon icon={solidHeart} size="2x" />
+                </Link>
+              </li>
+            </NavLink>
           </div>
           {/* Mobile */}
           <ul
-            className={`lg:hidden absolute bg-white w-full h-fit pt-20  pl-4 duration-500 ${style.nav_sm} ${open ? "left-0" : "left-[-100%]"
-              }`} activeClassName="active"
+            className={`lg:hidden absolute bg-white w-full h-fit pt-20  pl-4 duration-500 ${
+              style.nav_sm
+            } ${open ? "left-0" : "left-[-100%]"}`}
+            activeClassName="active"
           >
             <li>
-              <Link to="./" className="py-4 px-2 inline-block" onClick={handelOpen}>
+              <Link
+                to="./"
+                className="py-4 px-2 inline-block"
+                onClick={handelOpen}
+              >
                 Home
               </Link>
             </li>
             <NavLinks setOpen={open} />
             <li>
-              <Link to="/profile" className="py-3 px-2 inline-block mb-5" onClick={handelOpen}>
+              <Link
+                to="/profile"
+                className="py-3 px-2 inline-block mb-5"
+                onClick={handelOpen}
+              >
                 Profile
               </Link>
             </li>

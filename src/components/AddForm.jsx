@@ -6,6 +6,7 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { Textarea } from "flowbite-react";
 import styles from "./editUserData/editUserData.module.css";
 import style from "./AddForm.module.css";
+import { Link } from "react-router-dom";
 
 const AddForm = () => {
   const [imageUploads, setImageUploads] = useState([]);
@@ -445,6 +446,7 @@ const AddForm = () => {
               {errorMessage && <p>{errorMessage}</p>}
             </div>
           </form>
+          <Link to="/UserUnit">View your units</Link>
         </div>
       </section>
     </>
