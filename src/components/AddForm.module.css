@@ -1,0 +1,23 @@
+@media screen and (min-width:320px) and (max-width:380px) {
+    .parag{
+        font-size: 12px !important;
+        max-width: 16rem;
+        line-height: 1.2rem !important;
+
+    }
+    form{
+        padding: 0 !important;
+        padding-top: 2rem !important;
+    }
+}
+
+@media screen and (min-width:380px) and (max-width:480px) {
+    .parag{
+        font-size: 14px !important;
+        max-width: 19rem;
+        line-height: 1.4rem !important;
+
+    }
+
+
+}
