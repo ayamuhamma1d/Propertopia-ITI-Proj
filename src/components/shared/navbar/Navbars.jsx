@@ -4,17 +4,18 @@ import React, { useState } from "react";
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
 import logo from "./../../../assets/img/propertpoia-01.png";
 import style from "./nav.module.css";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import NavLinks from "./NavLinks";
 import { useEffect } from "react";
 function Navbars() {
+
   const dummyUserData = {
     photo:
       "https://cdn.vectorstock.com/i/preview-1x/08/19/gray-photo-placeholder-icon-design-ui-vector-35850819.jpg",
   };
   const [userToken, setUserToken] = useState(null);
   const [userImage, setUserImage] = useState(null);
-
+   const navigate=useNavigate();
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
@@ -34,7 +35,8 @@ function Navbars() {
     try {
       await signOut(auth);
       setUserToken(null);
-      window.location.href = "../../Home";
+
+      navigate("../../Home");    
     } catch (error) {
       console.error("Error signing out:", error);
     }
@@ -59,7 +61,7 @@ function Navbars() {
               <img
                 src={logo}
                 className=" h-20 "
-                alt="Flowbite React Logo"
+                alt="Propertopia Logo"
               />
             </Link>
             <div
