@@ -1,17 +1,59 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm, useFieldArray, Controller } from "react-hook-form";
 import { auth, db, storage } from "./auth/firebase/Firebase";
-import { doc, setDoc } from "firebase/firestore";
+import { addDoc, collection, doc, getDocs, setDoc } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { Textarea } from "flowbite-react";
+import styles from "./editUserData/editUserData.module.css";
 
 const AddForm = () => {
   const [imageUploads, setImageUploads] = useState([]);
   const [urls, setUrls] = useState([]);
+  const [userName, setUserName] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+  const [userID, setUserID] = useState("");
+  const [userPhone, setUserPhone] = useState("");
+  const [units, setUnits] = useState([]); 
+  const [errorMessage, setErrorMessage] = useState("");
+
+  useEffect(() => {
+    const user = auth.currentUser;
+    if (user) {
+      setUserName(user.displayName);
+      setUserEmail(user.email);
+      setUserID(user.uid);
+    }
+  }, []);
+
+  const getCollectionData = async () => {
+    try {
+      const querySnapshot = await getDocs(collection(db, "users"));
+      const collectionData = querySnapshot.docs.map((doc) => {
+        const data = { ...doc.data() };
+        setUserPhone(data.phoneNumber);
+        const docId = doc.id;
+        return { docId, ...data };
+      });
+      return collectionData;
+    } catch (error) {
+      console.error("Error getting collection data: ", error);
+      throw error;
+    }
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await getCollectionData();
+    };
+
+    fetchData();
+  }, [userName]);
 
   const {
     register,
     handleSubmit,
     control,
+    setValue,
     formState: { errors },
   } = useForm();
 
@@ -43,21 +85,38 @@ const AddForm = () => {
 
   const onFormSubmit = async (data) => {
     try {
+      if (imageUploads.length > 5) {
+        setErrorMessage(
+          "You uploaded more than 5 images. Upload only 5 images."
+        );
+        return;
+      }
+
       const uploadedUrls = await uploadFiles();
 
       const user = auth.currentUser;
-      const paymentDocRef = doc(db, "Payment", user.uid);
+      const paymentCollectionRef = collection(db, "Payment");
 
-      await setDoc(paymentDocRef, {
-        email: data.email,
-        exp_price: data.price,
-        fullname: data.fullname,
+      const newPaymentDocRef = await addDoc(paymentCollectionRef, {
+        userID: userID,
+        fullname: userName,
+        price: data.price,
         images: uploadedUrls,
-        phone: data.phone,
-        purpose: data.unitType,
-        unit_address: data.unitaddress,
+        phone: userPhone,
+        purpose: data.purpose,
         unit_desc: data.description,
+        type_of_unit: data.type_of_unit,
+        Bathrooms: data.Bathrooms,
+        area: data.area,
+        bedrooms: data.bedrooms,
+        floor: data.floor,
+        location: data.location,
       });
+      setUnits((prevUnits) => [...prevUnits, newPaymentDocRef.id]);
+
+      reset();
+      setImageUploads([]);
+      remove();
     } catch (error) {
       console.error("Error submitting form:", error);
     }
@@ -70,9 +129,10 @@ const AddForm = () => {
           <h5 className="text-center font-bold text-xl md:text-3xl text-beige font-[Poppins] py-3">
             Add Units
           </h5>
-          <p className="text-slate-600 mx-auto text-xl text-center font-[Poppins]">
-            You can list your unit on our website for sale or lease. Just fill
-            out this form.
+          <p className="text-slate-600 mx-auto text-lg text-center font-[Poppins]">
+            Unleash the power of 3D allure! Our fee, dancing between 3% to 5%
+            per unit, covers stunning 3D models and targeted advertising for
+            your property's spotlight moment.
           </p>
           <form
             onSubmit={handleSubmit(onFormSubmit)}
@@ -81,58 +141,96 @@ const AddForm = () => {
             <div className="mb-5">
               <input
                 type="text"
-                {...register("fullname", { required: true })}
+                {...register("bedrooms", {
+                  required: true,
+                  pattern: /^[0-9]*$/,
+                })}
                 className="font-[Poppins] border-0 border-b-4 shadow border-beige rounded-md w-full py-3 px-3 text-gray-700
-                        placeholder-gray-400"
-                id="uname"
-                placeholder="Full Name"
+                                placeholder-gray-400"
+                id="bedrooms"
+                placeholder="Bedroom Count"
               />
-              {errors?.fullname?.type === "required" && (
-                <p className="form-text text-beige">This field is required</p>
+
+              {errors?.bedrooms?.type === "required" && (
+                <p className="form-text text-beige font-[Poppins]">
+                  This field is required
+                </p>
+              )}
+              {errors?.bedrooms?.type === "pattern" && (
+                <p className="form-text text-beige font-[Poppins]">
+                  Please enter numbers only
+                </p>
               )}
             </div>
-
             <div className="mb-5">
               <input
-                type="email"
-                {...register("email", {
+                type="text"
+                {...register("Bathrooms", {
                   required: true,
-                  pattern: /^[^\s@]+@(gmail|yahoo|hotmail|outlook)\.com$/,
+                  pattern: /^[0-9]*$/,
                 })}
                 className="font-[Poppins] border-0 border-b-4 shadow border-beige rounded-md w-full py-3 px-3 text-gray-700
                                 placeholder-gray-400"
-                id="email"
-                placeholder="E-mail"
+                id="Bathrooms"
+                placeholder="Bathroom count"
               />
-              {errors?.email?.type === "required" && (
-                <p className="form-text text-beige">This field is required</p>
+
+              {errors?.Bathrooms?.type === "required" && (
+                <p className="form-text text-beige font-[Poppins]">
+                  This field is required
+                </p>
               )}
-              {errors?.email?.type === "pattern" && (
-                <p className="form-text text-beige">Email is invalid</p>
+              {errors?.Bathrooms?.type === "pattern" && (
+                <p className="form-text text-beige font-[Poppins]">
+                  Please enter numbers only
+                </p>
               )}
             </div>
-
-            <div className="mb-5 flex   ">
-              <label className="bg-beige p-3 rounded-s-md  font-[Poppins] shadow text-white">
-                +20
-              </label>
+            <div className="mb-5">
               <input
-                type="tel"
-                {...register("phone", {
+                type="text"
+                {...register("floor", {
                   required: true,
-                  pattern: /^(10|11|12|14|15|16|17|18|19)[0-9]{8}$/,
+                  pattern: /^[0-9]*$/,
                 })}
-                className="font-[Poppins] border-0 border-b-4  w-full shadow border-beige rounded-e-md py-3 px-3 text-gray-700
+                className="font-[Poppins] border-0 border-b-4 shadow border-beige rounded-md w-full py-3 px-3 text-gray-700
                                 placeholder-gray-400"
-                id="tel"
-                placeholder="Phone"
+                id="floor"
+                placeholder="Floor"
               />
-              {errors?.phone?.type === "required" && (
-                <p className="form-text text-beige">This field is required</p>
+
+              {errors?.floor?.type === "required" && (
+                <p className="form-text text-beige font-[Poppins]">
+                  This field is required
+                </p>
               )}
-              {errors?.phone?.type === "pattern" && (
-                <p className="form-text text-beige">
-                  Enter a valid phone number
+              {errors?.floor?.type === "pattern" && (
+                <p className="form-text text-beige font-[Poppins]">
+                  Please enter numbers only
+                </p>
+              )}
+            </div>
+            <div className="mb-5">
+              <input
+                type="text"
+                {...register("area", {
+                  required: true,
+                  pattern: /^[0-9]*$/,
+                })}
+                className="font-[Poppins] border-0 border-b-4 shadow border-beige rounded-md w-full py-3 px-3 text-gray-700
+                                placeholder-gray-400"
+                id="area"
+                placeholder="Unit area in meter"
+              />
+
+              {errors?.area?.type === "required" && (
+                <p className="form-text text-beige font-[Poppins]">
+                  This field is required
+                </p>
+              )}
+              {errors?.area?.type === "pattern" && (
+                <p className="form-text text-beige font-[Poppins]">
+                  Please enter numbers only
                 </p>
               )}
             </div>
@@ -140,27 +238,13 @@ const AddForm = () => {
             <div className="mb-5">
               <input
                 type="text"
-                {...register("unitaddress", { required: true })}
+                {...register("location", { required: true })}
                 className=" font-[Poppins] border-0 border-b-4 shadow border-beige rounded-md w-full py-3 px-3 text-gray-700
                                 placeholder-gray-400"
-                id="address"
-                placeholder="Unit Address"
+                id="location"
+                placeholder="Unit Location"
               />
-              {errors?.unitaddress?.type === "required" && (
-                <p className="form-text text-beige">This field is required</p>
-              )}
-            </div>
-
-            <div className="mb-5">
-              <input
-                type="text"
-                {...register("description", { required: true })}
-                className="font-[Poppins] border-0 border-b-4 shadow border-beige rounded-md w-full py-3 px-3 text-gray-700
-                                placeholder-gray-400"
-                id="desc"
-                placeholder="Unit Description"
-              />
-              {errors?.description?.type === "required" && (
+              {errors?.location?.type === "required" && (
                 <p className="form-text text-beige">This field is required</p>
               )}
             </div>
@@ -172,7 +256,7 @@ const AddForm = () => {
                 className="font-[Poppins] border-0 border-b-4 shadow border-beige rounded-md w-full py-3 px-3 text-gray-700
                                 placeholder-gray-400"
                 id="price"
-                placeholder="Expected Price"
+                placeholder="Price (Sale) or Price/Day (Rent) "
               />
 
               {errors?.price?.type === "required" && (
@@ -186,11 +270,26 @@ const AddForm = () => {
                 </p>
               )}
             </div>
-
+            <div className="mb-5">
+              <Textarea
+                style={{ resize: "none" }}
+                type="text"
+                rows={5}
+                cols={20}
+                {...register("description", { required: true })}
+                className="font-[Poppins] border-0 border-b-4 shadow border-beige rounded-md w-full py-3 px-3 text-gray-700
+                                placeholder-gray-400"
+                id="description"
+                placeholder="Unit Description"
+              />
+              {errors?.description?.type === "required" && (
+                <p className="form-text text-beige">This field is required</p>
+              )}
+            </div>
             <div className=" mb-5">
               <div className=" me-5">
                 <Controller
-                  name="unitType"
+                  name="purpose"
                   control={control}
                   defaultValue="For Sell"
                   render={({ field }) => (
@@ -204,45 +303,75 @@ const AddForm = () => {
                   )}
                 />
               </div>
-              <div className=" my-3 flex items-center">
-                <label
-                  htmlFor="files"
-                  className="block text-gray-700 font-[Poppins] me-3"
-                >
-                  Upload your unit photos (Only 5 images)
-                </label>
+
+              <div className=" me-5 mt-4">
+                <Controller
+                  name="type_of_unit"
+                  control={control}
+                  defaultValue="villa"
+                  render={({ field }) => (
+                    <select
+                      {...field}
+                      className="appearance-none bg-white   border-0 border-b-2 border-0 border-b-4 shadow border-beige hover:border-beige py-3 rounded-md w-1/2 shadow leading-tight text-beige "
+                    >
+                      <option value="villa">Villa</option>
+                      <option value="apartment">Apartment</option>
+                      <option value="studio">Studio</option>
+                      <option value="duplex">Duplex</option>
+                    </select>
+                  )}
+                />
+              </div>
+              <div className="my-3">
                 {fields.map((file, index) => (
-                  <div key={file.id}>
-                    <Controller
-                      name={`files[${index}].files`}
-                      control={control}
-                      render={({ field }) => (
-                        <input
-                          {...field}
-                          type="file"
-                          id={`images${index}`}
-                          multiple
-                          onChange={(event) => {
-                            const filesArray = Array.from(
-                              event.target.files
-                            ).slice(0, 5);
-                            setImageUploads([...filesArray]);
-                          }}
-                          className="border-gray-300 focus:border-beige my-1 focus:ring rounded-md"
-                        />
-                      )}
-                    />
+                  <div key={file.id} className="flex items-center mb-2">
+                    <div className="relative">
+                      <Controller
+                        name={`files[${index}].files`}
+                        control={control}
+                        render={({ field }) => (
+                          <input
+                            {...field}
+                            type="file"
+                            id={`images${index}`}
+                            multiple
+                            onChange={(event) => {
+                              const filesArray = Array.from(
+                                event.target.files
+                              ).slice(0, 5);
+                              setImageUploads([...filesArray]);
+                            }}
+                            className="hidden"
+                          />
+                        )}
+                      />
+                      <label
+                        htmlFor={`images${index}`}
+                        className="cursor-pointer border border-gray-300 bg-white rounded-md px-4 py-2 inline-block"
+                      >
+                        Choose File
+                      </label>
+                    </div>
+                    <span className="mx-3">
+                      {imageUploads.length > 0
+                        ? `${imageUploads.length} images`
+                        : ""}
+                    </span>
                     <button
                       type="button"
-                      className="me-5"
+                      className="border border-gray-300 bg-white rounded-md px-4 py-2"
                       onClick={() => remove(index)}
                     >
                       Remove
                     </button>
                   </div>
                 ))}
-                <button type="button" onClick={() => append({ files: [] })}>
-                  +
+                <button
+                  type="button"
+                  onClick={() => append({ files: [] })}
+                  className="border border-gray-300 bg-white rounded-md px-4 py-2"
+                >
+                  Upload Images
                 </button>
               </div>
             </div>
@@ -253,6 +382,16 @@ const AddForm = () => {
             >
               Submit
             </button>
+            <div
+              className={` ${
+                styles.errorArea
+              } my-3 text-white font-bold p-2 text-center ${
+                errorMessage ? "block" : "hidden"
+              }`}
+              id="message_area"
+            >
+              {errorMessage && <p>{errorMessage}</p>}
+            </div>
           </form>
         </div>
       </section>
@@ -261,5 +400,3 @@ const AddForm = () => {
 };
 
 export default AddForm;
-
-
