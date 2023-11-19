@@ -99,7 +99,7 @@ const UnitForSale = () => {
   });
   
   const displayItems = searchInput || price || floorArea || dropDownFilter || bedrooms || location ? filteredData : currentItems //location added
-  const hasActiveFilters = !!dropDownFilter || !!price || !!floorArea || !!bedrooms;
+  const hasActiveFilters = !!dropDownFilter || !!price || !!floorArea || !!bedrooms ||!!location;
   const hasSearchInput = !!searchInput;
   const hasActiveFiltersOrSearch = hasActiveFilters || hasSearchInput;
 

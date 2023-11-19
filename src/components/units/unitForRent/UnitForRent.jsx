@@ -96,7 +96,7 @@ const UnitForRent = () => {
 
 
   const displayItems = searchText || price || floorArea || dropDownFilter || bedrooms || location ? filteredData : currentItems
-  const hasActiveFilters = !!dropDownFilter || !!price || !!floorArea || !!bedrooms;
+  const hasActiveFilters = !!dropDownFilter || !!price || !!floorArea || !!bedrooms ||!!location;
   const hasSearchInput = !!searchText;
   const hasActiveFiltersOrSearch = hasActiveFilters || hasSearchInput;
   
