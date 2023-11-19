@@ -19,3 +19,17 @@
     color   : #BCA37F;
     overflow: hidden;
   }
+  #boot_button {
+    background-color: #d2c4a7;
+    padding: 10px 14px;
+    outline: none;
+    margin-top: 20px;
+ 
+    
+}
+
+
+#boot_button #Link{
+    color: #fff;
+    text-decoration: none;
+    }

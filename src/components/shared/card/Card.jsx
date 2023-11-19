@@ -15,7 +15,6 @@ import {
   getDoc,
   setDoc,
 } from 'firebase/firestore';
-
 const Card = ({
   area,
   price,
@@ -78,6 +77,7 @@ const Card = ({
           type_of_unit: type_of_unit,
           bathrooms: bathrooms,
           rooms: rooms,
+          location: location
         };
         if (purpose === 'sale') {
           wishlistItem.price = price;
@@ -121,7 +121,7 @@ const Card = ({
   return (
     <div className='w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto mt-10'>
       <div className="flex  gap-10 flex-wrap  justify-center items-center">
-        <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+        <div className="w-full max-w-sm font-[Poppins] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
           <div className='relative '>
             <Link to={`/details/${id}/${purpose}`}>
               <img src={image_url} alt="" />
@@ -135,9 +135,9 @@ const Card = ({
               <Link className="font-medium capitalize font-[Poppins] ">
                 {type_of_unit}
               </Link>
-              <span className="text-xl font-bold font-[Poppins]">${purpose === 'sale' ? price.toLocaleString() : pricePerDay.toLocaleString()}</span>
+              <span className="text-lg font-bold font-[Poppins]">${purpose === 'sale' ? price.toLocaleString() : pricePerDay.toLocaleString()}</span>
             </div>
-            <div className='flex justify-between items-center border-b pb-2'>
+            <div className='flex justify-between font-[Poppins]items-center border-b pb-2'>
               <div>
                 <p>
                   <FontAwesomeIcon icon={faBed} style={{ color: "#000000" }} className='me-2' />
@@ -151,7 +151,7 @@ const Card = ({
                 </p>
               </div>
               <div>
-                <p  className=' font-[Poppins]'>
+                <p className=' font-[Poppins]'>
                   <FontAwesomeIcon icon={faHome} className='me-2 font-[Poppins]' />
                   {area}m
                 </p>
@@ -161,7 +161,7 @@ const Card = ({
               <div>
                 <p className="">
                   <FontAwesomeIcon className='pr-1 font-[Poppins]' icon={faMapMarkerAlt} />
-                  {location}
+                  {location.split(' ').slice(0, 3).join(' ')}
                 </p>
               </div>
               <div>
@@ -177,34 +177,52 @@ const Card = ({
                       <FontAwesomeIcon
                         icon={faShareAlt}
                         style={{ color: "#080808" }}
-                        className='pe-2'
+                        className='pe-2 cursor-pointer'
                       />
                     </Link>
                   </>
                 ) : (
-                  <p onClick={() => setShowLoginPopup(true)}>  <Link className='pr-3'>
-                  <FontAwesomeIcon
-                    icon={isWishlist ? solidHeart : regularHeart}
-                
-                  />
-                </Link></p>
+                  <div className='flex' >
+                    <p onClick={() => setShowLoginPopup(true)}>
+                      <Link className='pr-3'>
+                        <FontAwesomeIcon
+                          icon={isWishlist ? solidHeart : regularHeart}
+                        />
+                      </Link>
+                    </p>
+                    <Link onClick={handleShare}>
+                      <FontAwesomeIcon
+                        icon={faShareAlt}
+                        style={{ color: "#080808" }}
+                        className='pe-2 cursor-pointer'
+                      />
+                    </Link>
+
+                  </div>
                 )}
               </div>
             </div>
           </div>
         </div>
       </div>
-
       {showLoginPopup && (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
-          <div className="bg-white p-8 rounded-lg">
-            <p>Please log in to add to wishlist</p>
-            <button onClick={handleLoginPopupClose}>Close</button>
+        <div className={`fixed inset-0  bg-gray-600 bg-opacity-50 flex justify-center items-center`}>
+          <div className="bg-white p-8 rounded-lg max-w-md w-full">
+            <p className='font-[Poppins] mb-5 text-center '>
+              Please log in to add to your wishlist.
+            </p>
+            <div className="flex justify-center items-center mt-5">
+              <Link to="/login" className="bg-beige1 mr-5 font-[Poppins] px-6 py-2 rounded-md ">
+                Log In
+              </Link>
+              <button className="bg-red-800 mr-5 text-white font-[Poppins]  px-6 py-2 rounded-md " onClick={handleLoginPopupClose}>
+                Close
+              </button>
+            </div>
           </div>
         </div>
       )}
     </div>
   );
 };
-
 export default Card;

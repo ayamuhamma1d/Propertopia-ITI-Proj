@@ -50,7 +50,7 @@ const steps = [
   {
     id: "4",
     options: [
-      { value: 1, label: "sall", trigger: "5" },
+      { value: 1, label: "sell", trigger: "5" },
       { value: 2, label: "rent", trigger: "6" },
       { value: 3, label: "Add Unit", trigger: "7" },
       { value: 4, label: "maintenance", trigger: "8" },
@@ -225,7 +225,7 @@ const steps = [
   {
     id: 'need',
     options: [
-      { value: 'sall', label: 'sall', trigger: '17' },
+      { value: 'sell', label: 'sell', trigger: '17' },
       { value: 'rent', label: 'rent', trigger: '17' },
       { value: 'maintenance', label: 'maintenance', trigger: '17' },
       { value: '3D model', label: '3d', trigger: '17' },
