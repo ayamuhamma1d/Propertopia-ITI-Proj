@@ -24,7 +24,7 @@ const Filter = ({ onSearchInputChange }) => {
               onChange={(e) => onSearchInputChange(e.target.value)}
             />
           </div>
-          <div className="flex items-center justify-between mt-4">
+          <div className="flex items-center justify-between mt-4 font-serif">
             <p className="font-medium">Filters</p>
             <button className="px-4 py-2 bg-beige1 text-black hover:bg-beige hover:text-white text-sm font-medium rounded-md">
               Reset Filter

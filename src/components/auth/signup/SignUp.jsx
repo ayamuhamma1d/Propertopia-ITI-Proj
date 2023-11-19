@@ -45,7 +45,6 @@ const SignUp = () => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       const user = result.user;
-    
       window.location.href = "../../Home";
     } catch (error) {
       const errorCode = error.code;
@@ -99,7 +98,7 @@ const SignUp = () => {
         displayName: userName,
         phoneNumber: userPhone,
         email: userEmail,
-      });    
+      });
       navigate("../../Home");
     } catch (error) {
       const code = error?.code || "unknown";
@@ -128,9 +127,8 @@ const SignUp = () => {
             className={`flex ${style.parent_card} ${style_resp.parent_card}`}
           >
             <div
-              className={`col-span-2 basis-1/2 p-2 ${
-                (style.text_center, style_resp.header_text)
-              }`}
+              className={`col-span-2 basis-1/2 p-2 ${(style.text_center, style_resp.header_text)
+                }`}
             >
               <h3 className={`text-3xl font-bold mb-7 ${style_resp.site_name}`}>
                 Real estate
@@ -234,9 +232,8 @@ const SignUp = () => {
               Sign up
             </Button>
             <div
-              className={` bg-red-500 text-white font-bold p-2 text-center ${
-                errorMessage ? "block" : "hidden"
-              }`}
+              className={` bg-red-500 text-white font-bold p-2 text-center ${errorMessage ? "block" : "hidden"
+                }`}
               id="message_area"
             >
               {errorMessage && <p>{errorMessage}</p>}
