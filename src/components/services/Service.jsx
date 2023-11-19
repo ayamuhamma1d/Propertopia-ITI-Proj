@@ -14,6 +14,13 @@ import logo1 from "../../assets/img/19.jpeg";
 import style from "./service.module.css";
 import maintenance2 from '../../../src/assets/img/Maintenance1/1 (7).jpg';
 import { Link } from "react-router-dom";
+import picone from "../../assets/img/hero-image.jpg";
+import pictwo from "../../assets/img/SiteImage-Landing-house-plansluxury-1.webp";
+import picthree from "../../assets/img/download-23.webp";
+import picfour from "../../assets/img/Lowcost.webp";
+
+
+
 
 const Service = () => {
   return (
@@ -41,16 +48,16 @@ const Service = () => {
             <img src={logo} alt="" className="w-6/12  " />
           </SwiperSlide>
           <SwiperSlide>
-            <img src={logo1} alt="" className="w-6/12 m-auto " />
+            <img src={picthree} alt="" className="w-6/12 m-auto " />
           </SwiperSlide>
           <SwiperSlide>
-            <img src={logo} alt="" className="w-6/12 m-auto " />
+            <img src={picone} alt="" className="w-6/12 m-auto " />
           </SwiperSlide>
           <SwiperSlide>
-            <img src={logo} alt="" className="w-6/12 m-auto " />
+            <img src={pictwo} alt="" className="w-6/12 m-auto " />
           </SwiperSlide>
           <SwiperSlide>
-            <img src={logo} alt="" className="w-6/12 m-auto " />
+            <img src={picfour} alt="" className="w-6/12 m-auto " />
           </SwiperSlide>
         </Swiper>
       </div>
