@@ -4,6 +4,7 @@ import Maintenance from "./Maintenance";
 import Services from "./Services";
 import Hero from "./Hero";
 import Card from "../shared/card/Card";
+import Feedback from "../shared/feedback/feedback";
 import { data } from './../auth/firebase/Firebase' 
 import style from "./home.module.css"
 const Home = () => {
@@ -24,6 +25,7 @@ const Home = () => {
       <Services />
       <Maintenance />
       <Contact />
+      <Feedback />
     </>
   );
 };

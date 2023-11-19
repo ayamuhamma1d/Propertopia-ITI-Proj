@@ -13,7 +13,6 @@ function Contact() {
 
   const onSubmit = (data) => {
     console.log(data);
-    // Handle form submission logic here
   };
 
   return (
@@ -25,42 +24,31 @@ function Contact() {
               <div className="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-teal-accent-400">
               </div>
               <div className="max-w-xl mb-6">
-                <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold  tracking-tight text-white sm:text-4xl sm:leading-none">
-                  Let us handle
-                  <br className="hidden md:block" />
-                  your next{" "}
-                  <span className="inline-block text-deep-purple-accent-400">
-                    destination
-                  </span>
-                </h2>
-                <p className="my-3 flex text-gray-300 items-center ">
-                  <span>
-                    {" "}
-                    <FaMapMarkerAlt className="text-white" />
-                  </span>
-                  <span className="ms-3 font-[Poppins]">
-                    {" "}
-                    Jl. Pelajar Pejuang 123 Majalaya Bandung Indonesia
-                  </span>
-                </p>
+                <h6 className="max-w-lg mb-3 font-sans text-3xl font-bold  tracking-tight text-white sm:text-4xl sm:leading-none">
+                We are happy to have you
+                </h6>
+                <h6 className="max-w-lg mb-3 		 font-sans text-xl font-bold  tracking-tight text-white sm:text-2xl sm:leading-10 ">
+                You can share your opinion or any suggestions with us                  
+                </h6>
+                
                 <p className="my-3 flex text-gray-300 items-center font-[Poppins]">
                   <span>
                     {" "}
                     <ion-icon name="call"></ion-icon>
                   </span>
-                  <span className="ms-3"> 022-6545-2041</span>
+                  <span className="ms-3">+0123456789</span>
                 </p>
                 <p className="my-3 flex text-gray-300 items-center font-[Poppins]">
                   <span>
                     {" "}
                     <ion-icon name="mail-open"></ion-icon>
                   </span>
-                  <span className="ms-3">Aya676670@gmail.com</span>
+                  <span className="ms-3">service@gmail.com</span>
                 </p>
               </div>
             </div>
             <div className="flex items-center justify-center bg-white flex-col rounded-md">
-              <h2 className="text-4xl font-bold my-5 font-[Poppins] text-beige">Have a question..?</h2>
+              <h2 className="text-4xl font-bold my-5 font-[Poppins] text-beige">Your FeedBack</h2>
               <form className="flex max-w-md flex-col gap-4 w-full" onSubmit={handleSubmit(onSubmit)}>
                 <div>
                   <TextInput
@@ -78,7 +66,7 @@ function Contact() {
                   {errors.email && <p className="text-beige font-[Poppins]">{errors.email.message}</p>}
                 </div>
                 <div>
-                  <TextInput
+                  <textarea rows="4" className=" resize-none	 block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     id="large"
                     type="text"
                     sizing="lg"

@@ -44,4 +44,8 @@
     .navbar {
         display: none;
     }
+    .navsm{
+        padding: 0 15px;
+    }
+
 }
