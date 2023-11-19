@@ -17,6 +17,7 @@ import { Link } from "react-router-dom";
 import Form from "./components/shared/chatform/Form";
 import LoadingSpinner from "./Spinner/LoadingSpinner";
 import Wishlist from "./components/wishlist/Wishlist";
+import UserUnit from "./components/userUnit/UserUnit";
 const LazyRent = React.lazy(() =>
   import("./components/units/unitForRent/UnitForRent")
 );
@@ -430,6 +431,7 @@ function App() {
           <Route path="/resetPass" element={<ResetPass />}></Route>
           <Route path="/addUnit" element={<AddUnit />}></Route>
           <Route path="/favorite" element={<Wishlist />}></Route>
+          <Route path="/UserUnit" element={<UserUnit />}></Route>
           <Route path="*" element={<NotFoundPage />}></Route>
         </Routes>
         <div className="App">
