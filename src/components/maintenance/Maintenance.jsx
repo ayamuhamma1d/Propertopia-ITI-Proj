@@ -11,6 +11,7 @@ import { data } from "../auth/firebase/Firebase";
 import "./maintenance.css";
 
 const Maintenance = () => {
+
   return (
     <>
       <div className="bg-white">
@@ -33,10 +34,8 @@ const Maintenance = () => {
                 </div>
               </div>
               <p className="px-5 pb-3 text-start">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Consequuntur neque voluptas quam ipsam itaque fuga eos animi
-                quidem reprehenderit sequi omnis, enim corporis corrupti totam
-                fugit. Illum sunt magnam vero?
+                {item.description}
+                
               </p>
             </div>
             ))}
