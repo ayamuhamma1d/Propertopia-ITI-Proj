@@ -99,9 +99,8 @@ function Navbars() {
             <NavLink
               onClick={logOut}
               id="logout_btn"
-              className={`${style.btn} text-black ${
-                userToken != null ? "block" : "hidden"
-              }`}
+              className={`${style.btn} text-black ${userToken != null ? "block" : "hidden"
+                }`}
             >
               Log out
             </NavLink>
@@ -121,7 +120,6 @@ function Navbars() {
                 />
               )}
             </NavLink>
-
             <NavLink className={` ${userToken != null ? "block" : "hidden"}`}>
               <li style={{ color: "#bca37f", listStyle: "none" }}>
                 <Link className="ps-2" to={"/favorite"}>
@@ -132,9 +130,8 @@ function Navbars() {
           </div>
           {/* Mobile */}
           <ul
-            className={`lg:hidden absolute bg-white w-full h-fit pt-20  pl-4 duration-500 ${
-              style.nav_sm
-            } ${open ? "left-0" : "left-[-100%]"}`}
+            className={`lg:hidden absolute bg-white w-full h-fit pt-20  pl-4 duration-500 ${style.nav_sm
+              } ${open ? "left-0" : "left-[-100%]"}`}
             activeClassName="active"
           >
             <li>
