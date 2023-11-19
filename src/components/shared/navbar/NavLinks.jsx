@@ -71,8 +71,8 @@ const NavLinks = ({ setOpen }) => {
     }
   };
   const handelOpen = () => {
-    setOpen(true)
-  }
+    setOpen(true);
+  };
   return (
     <>
       {links.map((link, index) => (
@@ -90,9 +90,7 @@ const NavLinks = ({ setOpen }) => {
               {link.submenu && (
                 <span className="text-xl md:hidden inline">
                   <ion-icon
-                    name={
-                      heading === link.name ? "chevron-up" : "chevron-down"
-                    }
+                    name={heading === link.name ? "chevron-up" : "chevron-down"}
                   ></ion-icon>
                 </span>
               )}
@@ -136,12 +134,7 @@ const NavLinks = ({ setOpen }) => {
           </li>
           {/* mobile */}
           {link.submenu && (
-            <ul
-              className={`${
-                heading === link.name ? "lg:hidden" : "hidden"
-              }`}
-       
-            >
+            <ul className={`${heading === link.name ? "lg:hidden" : "hidden"}`}>
               {link.subLinks.map((subLink, subIndex) => (
                 <li
                   key={subIndex}

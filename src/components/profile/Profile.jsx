@@ -89,14 +89,12 @@ const Profile = () => {
       </Card>
       <div className={styles.profile_content}>
         {activeButton === "EditUserData" ? (
-          // <EditUserData user={dummyUserData} />
           <EditUserData />
         ) : activeButton === "ChangePass" ? (
           <ChangePassword />
         ) : activeButton === "Wishlist" ? (
           <Wishlist />
         ) : (
-          // <UserData user={dummyUserData} />
           <UserData />
         )}
       </div>
