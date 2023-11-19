@@ -15,7 +15,7 @@ const UnitForRent = () => {
   const [floorArea, setFloorArea] = useState("");
   const [bedrooms, setBedrooms] = useState("");
   const [searchText, setSearchText] = useState("");
-
+  const [location , setLocation] = useState("");
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
@@ -40,6 +40,7 @@ const UnitForRent = () => {
     setPrice(0);
     setFloorArea("");
     setBedrooms("");
+    setLocation("");
 
   };
 
@@ -62,6 +63,9 @@ const UnitForRent = () => {
     setSearchText(searchTextWithoutSpaces);
   };
 
+  const handleFilterLocation = (e) => {
+    setLocation(e.target.value);
+  };
 
 
 
@@ -80,22 +84,18 @@ const UnitForRent = () => {
         x.area <= parseInt(floorArea.split("-")[1], 10)) ||
       x.area === parseInt(floorArea, 10);
     const isBedroomsMatch = bedrooms === "" || (x.rooms && x.rooms === parseInt(bedrooms, 10));
-
-
-    // const isSearchMatch = searchText === "" ||
-    //   ['price', 'rooms', 'area', 'type_of_unit'].some(field =>
-    //     x[field] && x[field].toString().toLowerCase().includes(searchText.toLowerCase())
-    //   );
+    const typeLocation = x.region.includes(location ); 
+ 
 
     const isSearchMatch =
       x.type_of_unit.toLowerCase().includes(searchText.toLowerCase()) ||
       x.pricePerDay.toString().includes(searchText);
 
-    return isTypeMatch && isPriceMatch && isAreaMatch && isBedroomsMatch && isSearchMatch;
+    return isTypeMatch && isPriceMatch && isAreaMatch && isBedroomsMatch && isSearchMatch && typeLocation ;
   });
 
 
-  const displayItems = searchText || price || floorArea || dropDownFilter || bedrooms ? filteredData : currentItems
+  const displayItems = searchText || price || floorArea || dropDownFilter || bedrooms || location ? filteredData : currentItems
   const hasActiveFilters = !!dropDownFilter || !!price || !!floorArea || !!bedrooms;
   const hasSearchInput = !!searchText;
   const hasActiveFiltersOrSearch = hasActiveFilters || hasSearchInput;
@@ -175,6 +175,21 @@ const UnitForRent = () => {
                 <option value="4">4 bedrooms</option>
                 <option value="5">5 bedrooms</option>
               </select>
+
+              <select
+                onChange={handleFilterLocation}
+                value={location}
+                className="px-4 py-3 w-full rounded-md bg-beige1 text-black border-transparent focus:border-beige focus:bg-white focus:ring-0 text-sm"
+              >
+                <option value="">location </option>
+                <option value="Sheikh Zayed">Sheikh Zayed</option>
+                <option value="New Administrative Capital">New Administrative Capital</option>
+                <option value="North Coast">North Coast</option>
+                <option value="Marsa Alam">Marsa Alam</option>
+                <option value="Alexandria">Alexandria</option>
+                <option value="el Gouna">el Gouna</option>
+              </select>
+
             </div>
           </div>
         </div>

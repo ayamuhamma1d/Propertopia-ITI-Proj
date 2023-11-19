@@ -12,8 +12,10 @@ const UnitForSale = () => {
   const [price, setPrice] = useState(0);
   const [floorArea, setFloorArea] = useState("");
   const [bedrooms, setBedrooms] = useState("");
+
   //location state added 
-  // const [location , setLocation] = useState("");
+
+  const [location , setLocation] = useState("");
 
   const [searchInput, setSearchInput] = useState('');
 
@@ -33,10 +35,10 @@ const UnitForSale = () => {
     setDropDownFilter(e.target.value);
   };
 
-  //handleLocation added 
-  // const handleFilterLocation = (e) => {
-  //   setLocation(e.target.value);
-  // };
+  // handleLocation added 
+  const handleFilterLocation = (e) => {
+    setLocation(e.target.value);
+  };
 
 
 
@@ -45,9 +47,7 @@ const UnitForSale = () => {
     setPrice(selectedPrice);
   };
 
-  // const handleFilterPrice = (e) => {
-  //   setPrice(parseInt(e.target.value, 10) || 0);
-  // };
+
 
   const handleFilterFloorArea = (e) => {
     setFloorArea(e.target.value);
@@ -62,6 +62,7 @@ const UnitForSale = () => {
     setPrice(0);
     setFloorArea("");
     setBedrooms("");
+    setLocation("");
   };
 
   const handleSearchChange = (e) => {
@@ -80,7 +81,7 @@ const UnitForSale = () => {
     (price === 4000000 && x.price > 2000000 && x.price <= 4000000) ||
     (price === 10000000 && x.price > 4000000);
 
-    // const priceMatch = price === 0 || x.price <= price;
+   
     
     const floorAreaMatch =
       floorArea === "" ||
@@ -92,9 +93,9 @@ const UnitForSale = () => {
     const searchMatch =
       x.type_of_unit.toLowerCase().includes(searchInput.toLowerCase()) ||
       x.price.toString().includes(searchInput);
-      // const typeLocation = x.type_of_unit.includes(location ); //const typeLocation added 
-
-    return typeMatch && priceMatch && floorAreaMatch && bedroomsMatch && searchMatch //&& typeLocation;
+      const typeLocation = x.region.includes(location ); //const typeLocation added 
+    
+    return typeMatch && priceMatch && floorAreaMatch && bedroomsMatch && searchMatch && typeLocation;
   });
   
   const displayItems = searchInput || price || floorArea || dropDownFilter || bedrooms || location ? filteredData : currentItems //location added
@@ -179,17 +180,19 @@ const UnitForSale = () => {
                 <option value="4">4 bedrooms</option>
                 <option value="5">5 bedrooms</option>
               </select>
-              {/* <select
+              <select
                 onChange={handleFilterLocation}
                 value={location}
                 className="px-4 py-3 w-full rounded-md bg-beige1 text-black border-transparent focus:border-beige focus:bg-white focus:ring-0 text-sm"
               >
                 <option value="">location </option>
-                <option value="">Alexndria</option>
-                <option value="">Alexandria</option>
-                <option value="">Alexandria</option>
-                <option value="">Alexandria</option>
-              </select> */}
+                <option value="Sheikh Zayed">Sheikh Zayed</option>
+                <option value="New Administrative Capital">New Administrative Capital</option>
+                <option value="North Coast">North Coast</option>
+                <option value="Marsa Alam">Marsa Alam</option>
+                <option value="Alexandria">Alexandria</option>
+                <option value="el Gouna">el Gouna</option>
+              </select>
             </div>
           </div>
         </div>
