@@ -7,7 +7,8 @@ import { Textarea } from "flowbite-react";
 import styles from "./editUserData/editUserData.module.css";
 import style from "./AddForm.module.css";
 import { Link } from "react-router-dom";
-
+import { faArrowRight as arrowRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const AddForm = () => {
   const [imageUploads, setImageUploads] = useState([]);
   const [urls, setUrls] = useState([]);
@@ -446,7 +447,20 @@ const AddForm = () => {
               {errorMessage && <p>{errorMessage}</p>}
             </div>
           </form>
-          <Link to="/UserUnit">View your units</Link>
+
+          <div className="flex justify-end items-center">
+            <Link to="/UserUnit" className="text-beige  text-xl">
+              View your units
+            </Link>
+            <Link to="/UserUnit" className="ml-2 flex items-center">
+              <FontAwesomeIcon
+                size="1x"
+                style={{ color: "#bca37f" }}
+                className="ms-1"
+                icon={arrowRight}
+              />
+            </Link>
+          </div>
         </div>
       </section>
     </>
