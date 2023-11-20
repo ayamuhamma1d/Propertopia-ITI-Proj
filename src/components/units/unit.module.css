@@ -1,6 +1,4 @@
 .header {
-    text-transform: uppercase;
-    font-family: 'Gambetta', serif;
     letter-spacing:-1px;
     transition: 700ms ease;
     font-variation-settings: "wght" 311;

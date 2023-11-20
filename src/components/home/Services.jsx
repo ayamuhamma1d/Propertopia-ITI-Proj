@@ -15,7 +15,7 @@ const Services = () => {
       <div className="w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto mb-10 text-center">
       <h5 className="font-bold text-3xl font-serif capitalize mb-10 text-center">Services</h5>        <div className="flex  gap-10  justify-center items-center">
           <div className="flex  gap-10  justify-center items-center services_cards ">
-            <div className="w-full max-w-sm font-[Poppins] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <div className="w-full max-w-sm font-serif bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
               <div className="relative ">
                 <img src={photosellrent} alt="" />
               </div>
