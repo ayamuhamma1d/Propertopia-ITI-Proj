@@ -104,10 +104,10 @@ const UserUnit = () => {
                               <Link className="font-medium capitalize font-serif">
                                 {item.type_of_unit}
                               </Link>
-                              <span className="text-lg font-bold font-serif ">
-                                $
+                              <span className="text-lg font-bold font-serif "> 
+                                EGP
                                 {item.purpose === "For Sale"
-                                  ? item.price.toLocaleString()
+                                  ?  item.price.toLocaleString()
                                   : item.price.toLocaleString()}
                               </span>
                             </div>
