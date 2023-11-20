@@ -101,7 +101,7 @@ const Card = ({
         Rooms: ${rooms}
         Bathrooms: ${bathrooms}
         Area: ${area}m
-        Price: ${purpose === 'sale' ? '$' + price.toLocaleString() : '$' + pricePerDay.toLocaleString()}
+        Price: ${purpose === 'sale' ? 'EGP' + price.toLocaleString() : 'EGP' + pricePerDay.toLocaleString()}
       `;
       navigator
         .share({

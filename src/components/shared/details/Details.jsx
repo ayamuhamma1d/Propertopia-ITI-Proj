@@ -122,7 +122,7 @@ const Details = () => {
           Rooms: ${detailsData.rooms}
           Bathrooms: ${detailsData.bathrooms}
           Area: ${detailsData.area}m
-          Price: ${detailsData.purpose === 'sale' ? '$' + detailsData.price.toLocaleString() : '$' + detailsData.pricePerDay.toLocaleString()}
+          Price: ${detailsData.purpose === 'sale' ? 'EGP' + detailsData.price.toLocaleString() : 'EGP' + detailsData.pricePerDay.toLocaleString()}
         `;
 
         await navigator.share({
@@ -232,7 +232,7 @@ const Details = () => {
                     </span>
                   </div>
                   <h6 className=" text-xl text-slate-900 font-serif">
-                    <span className="font-bold text-xl text-beige font-serif">$ </span>{" "}
+                    <span className="font-bold text-xl text-beige font-serif">EGP </span>{" "}
                     {details.purpose == "sale"
                       ? detailsData.price.toLocaleString()
                       : detailsData.meter_price.toLocaleString()}
