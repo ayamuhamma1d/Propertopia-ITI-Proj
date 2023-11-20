@@ -5,7 +5,7 @@ import photosellrent from "../../../src/assets/img/Maintenance1/1 (12).jpg";
 import photo3d from "../../../src/assets/img/pngegg.png";
 import { Link } from "react-router-dom";
 const paragraph = [
-  "Uncover Your Oasis: Immerse Yourself in a Visual Journey to Your Ideal Home. Unlock Unparalleled Properties, Tailored for Renting", "Revitalize Your Space: Elevate Living with Our Exclusive Maintenance Magic. From Top-Notch Upkeep to Seamless Repairs .", " Revolutionize Your Showcase: Step into the Future with Our State-of-the-Art 3D Services. Immerse Your Audience in Captivating Virtual Tours "
+  "Uncover Your Oasis: Immerse Yourself in a Visual Journey to Your Ideal Home. Unlock Unparalleled Properties, Tailored for ", "Revitalize Your Space: Elevate Living with Our Exclusive Maintenance Magic. From Top-Notch Upkeep to Seamless Repairs .", " Revolutionize Your Showcase: Step into the Future with Our State-of-the-Art 3D Services. Immerse Your Audience in Captivating Virtual Tours "
 ]
 const Services = () => {
   return (
@@ -37,7 +37,7 @@ const Services = () => {
                 </div>
               </div>
             </div>
-            <div className="w-full max-w-sm font-[Poppins] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <div className="w-full max-w-sm font-serif bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
               <div className="relative ">
                 <img src={dphoto} alt="" />
               </div>
@@ -53,7 +53,7 @@ const Services = () => {
                   <div>
                     <Link
                       to="/service"
-                      className="inline-flex mb-5 hover:bg-beige hover:text-white items-center px-3 py-2 text-sm font-medium text-center text-black service__button__background__color"
+                      className="inline-flex mb-5 hover:bg-beige font-serif hover:text-white items-center px-3 py-2 text-sm font-medium text-center text-black service__button__background__color"
                     >
                       Read more
                     </Link>
@@ -61,21 +61,21 @@ const Services = () => {
                 </div>
               </div>
             </div>
-            <div className="w-full max-w-sm font-[Poppins] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <div className="w-full max-w-sm font-serif bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
               <div className="relative ">
                 <img src={photo3d} alt="" />
               </div>
               <div className="px-5 pb-5">
                 <div className="flex items-center justify-between mb-3 pt-3"></div>
                 <div>
-                  <h3 className="font-bold text-xl text-slate-900 font-serif capitalize">  3D MODEL</h3>
+                  <h3 className="font-bold text-xl text-slate-900 font-serif capitalize"> 3D MODEL</h3>
                   <p className="my-8  px-2 leading-5 text-sm font-serif  text-slate-700 services_paragraph">
                   {paragraph[2].split(' ').slice(0, 19).join(' ')}
                </p>
                   <div>
                     <Link
                       to="/service"
-                      className="inline-flex mb-5 hover:bg-beige hover:text-white items-center px-3 py-2 text-sm font-medium text-center text-black service__button__background__color"
+                      className="inline-flex mb-5 hover:bg-beige font-serif hover:text-white items-center px-3 py-2 text-sm font-medium text-center text-black service__button__background__color"
                     >
                       Read more
                     </Link>
