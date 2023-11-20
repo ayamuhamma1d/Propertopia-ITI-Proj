@@ -29,7 +29,6 @@ import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as regularHeart } from "@fortawesome/free-regular-svg-icons";
 import { useEffect } from "react";
 import Feedback from "../../shared/feedback/feedback";
-
 import { auth, db } from "../../auth/firebase/Firebase";
 import { deleteDoc, doc, getDoc, setDoc } from "firebase/firestore";
 const Details = () => {
@@ -113,25 +112,29 @@ const Details = () => {
       }
     }
   };
-  const handleShare = () => {
+  const handleShare = async () => {
     if (navigator.share) {
-      const propertyDetails = `
-        Property Details:
-        Type: ${type_of_unit}
-        Purpose: ${purpose}
-        Rooms: ${rooms}
-        Bathrooms: ${bathrooms}
-        Area: ${area}m
-        Price: ${purpose === 'sale' ? '$' + price.toLocaleString() : '$' + pricePerDay.toLocaleString()}
-      `;
-      navigator
-        .share({
+      try {
+        const propertyDetails = `
+          Property Details:
+          Type: ${detailsData.type_of_unit}
+          Purpose: ${detailsData.purpose}
+          Rooms: ${detailsData.rooms}
+          Bathrooms: ${detailsData.bathrooms}
+          Area: ${detailsData.area}m
+          Price: ${detailsData.purpose === 'sale' ? '$' + detailsData.price.toLocaleString() : '$' + detailsData.pricePerDay.toLocaleString()}
+        `;
+
+        await navigator.share({
           title: 'Check out this property',
           text: 'I found this amazing property and thought you might be interested!\n\n' + propertyDetails,
           url: window.location.href,
-        })
-        .then(() => console.log('Shared successfully'))
-        .catch((error) => console.error('Error sharing:', error));
+        });
+
+        console.log('Shared successfully');
+      } catch (error) {
+        console.error('Error sharing:', error);
+      }
     } else {
       console.log('Web Share API not supported');
     }
@@ -249,7 +252,11 @@ const Details = () => {
                       icon={faShareNodes}
                       style={{ color: "#080808" }}
                       className="pe-2"
-                      onClick={handleShare}
+                      onClick={() => {
+                      
+                          handleShare();
+                     
+                      }}
                     />
                   </Link>
                 </div>
@@ -360,16 +367,16 @@ const Details = () => {
           </div>
         </div>
         <h5 className="font-bold text-xl md:text-2xl text-slate-950 font-serif py-3 capitalize text-left ">
-             Location of unit
-            </h5>
+          Location of unit
+        </h5>
         <iframe
-  src={detailsData.map_iframe}
-  className={`${style.height3d} w-full mb-20`}
-/>
-<h5 className="font-bold text-xl md:text-2xl text-slate-950 font-serif py-3 capitalize  ">
-            Clients Feedback
-            </h5>
-<Feedback />
+          src={detailsData.map_iframe}
+          className={`${style.height3d} w-full mb-20`}
+        />
+        <h5 className="font-bold text-xl md:text-2xl text-slate-950 font-serif py-3 capitalize  ">
+          Clients Feedback
+        </h5>
+        <Feedback />
 
       </section>
     </>

@@ -80,7 +80,25 @@ function Navbars() {
                 Home{" "}
               </NavLink>
             </li>
+            <li>
+              <NavLink
+                to="/about"
+                className="py-3 px-2 inline-block hover:text-beige"
+                activeClassName="active"
+              >
+                About Us{" "}
+              </NavLink>
+            </li>
             <NavLinks />
+            <li>
+              <NavLink
+                to="/service"
+                className="py-3 px-2 inline-block hover:text-beige"
+                activeClassName="active"
+              >
+               Services
+              </NavLink>
+            </li>
           </ul>
           <div className="  capitalize font-serif lg:block hidden items-center lg:flex">
             <NavLink
@@ -143,11 +161,29 @@ function Navbars() {
                 Home
               </Link>
             </li>
-            <NavLinks add={setOpen} />
+            <li>
+              <Link
+                to="/about"
+                className="pb-3 pt-1 px-2 inline-block"
+                onClick={handelOpen}
+              >
+              About Us
+              </Link>
+            </li>
+            <NavLinks setOpen={setOpen} />
+            <li>
+              <Link
+                to="/service"
+                className="py-3 px-2 inline-block mb-5"
+                onClick={handelOpen}
+              >
+                Service
+              </Link>
+            </li>
             <li>
               <Link
                 to="/profile"
-                className="py-3 px-2 inline-block mb-5"
+                className="pb-3 px-2 inline-block mb-5"
                 onClick={handelOpen}
               >
                 Profile

@@ -4,22 +4,16 @@ import { auth } from "../../auth/firebase/Firebase";
 
 const NavLinks = ({ setOpen }) => {
   const [user, setUser] = useState(null);
-
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
       setUser(authUser);
     });
-
     return () => {
       unsubscribe();
     };
   }, []);
-
   const links = [
-    {
-      name: "About us",
-      path: "/about",
-    },
+
     {
       name: "Units",
       path: "/units",
@@ -55,10 +49,7 @@ const NavLinks = ({ setOpen }) => {
         },
       ],
     },
-    {
-      name: "Service",
-      path: "/service",
-    },
+
   ];
 
   const [heading, setHeading] = useState("");
