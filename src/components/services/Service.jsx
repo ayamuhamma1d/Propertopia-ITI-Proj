@@ -27,7 +27,7 @@ import picten from "../../assets/img/slider/10.jpg";
 const Service = () => {
   return (
     <>
-      <div className={`${style.parentt} `}>
+      <div className={`${style.parentt} mb-20 `}>
         <Swiper
           spaceBetween={30}
           centeredSlides={true}

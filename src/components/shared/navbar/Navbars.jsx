@@ -143,7 +143,7 @@ function Navbars() {
                 Home
               </Link>
             </li>
-            <NavLinks setOpen={open} />
+            <NavLinks add={setOpen} />
             <li>
               <Link
                 to="/profile"

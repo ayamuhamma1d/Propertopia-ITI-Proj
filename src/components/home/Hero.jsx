@@ -22,7 +22,7 @@ const Hero = () => {
           <div className="mt-10 flex items-center justify-center gap-x-6">
             <Link
               to="/units"
-              className=" Get_Started rounded-md font-[Poppins] px-5 py-3 bg-beige text-sm  text-black shadow-sm   hover:bg-beige1  "
+              className=" Get_Started rounded-md font-serif px-10 py-3 bg-beige text-lg  text-black shadow-sm   hover:bg-black   hover:text-white  "
             >
               Get Start
             </Link>

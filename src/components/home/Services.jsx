@@ -11,7 +11,7 @@ const Services = () => {
   return (
     <>
       <div className="w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto mb-10 text-center">
-      <h5 className="font-bold text-3xl font-serif capitalize mb-10 text-center">Services</h5>        <div className="flex  gap-10  justify-center items-center">
+        <h5 className="font-bold text-3xl font-serif capitalize mb-10 text-center">Services</h5>        <div className="flex  gap-10  justify-center items-center">
           <div className="flex  gap-10  justify-center items-center services_cards ">
             <div className="w-full max-w-sm font-serif bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
               <div className="relative ">
@@ -20,12 +20,12 @@ const Services = () => {
               <div className="px-5 pb-5">
                 <div className="flex items-center justify-between mb-3 pt-3"></div>
                 <div>
-                <h6 className="font-bold text-2xl text-slate-900 font-serif capitalize">
+                  <h6 className="font-bold text-2xl text-slate-900 font-serif capitalize">
                     Buy or rent
                   </h6>
                   <p className="my-8 px-4  leading-5 font-serif text-sm text-slate-700 services_paragraph">
-             {paragraph[0].split(' ').slice(0, 19).join(' ')}
-              </p>
+                    {paragraph[0].split(' ').slice(0, 19).join(' ')}
+                  </p>
                   <div>
                     <Link
                       to="/service"
@@ -44,12 +44,12 @@ const Services = () => {
               <div className="px-5 pb-5">
                 <div className="flex items-center justify-between mb-3 pt-3"></div>
                 <div>
-                <h6 className="font-bold text-2xl text-slate-900 font-serif capitalize">
+                  <h6 className="font-bold text-2xl text-slate-900 font-serif capitalize">
                     Maintenance
                   </h6>
                   <p className="my-8  px-2 leading-5 text-sm font-serif text-slate-700 services_paragraph">
-                  {paragraph[1].split(' ').slice(0, 19).join(' ')}
-              </p>
+                    {paragraph[1].split(' ').slice(0, 19).join(' ')}
+                  </p>
                   <div>
                     <Link
                       to="/service"
@@ -68,11 +68,11 @@ const Services = () => {
               <div className="px-5 pb-5">
                 <div className="flex items-center justify-between mb-3 pt-3"></div>
                 <div>
-                <h6 className="font-bold text-2xl text-slate-900 font-serif capitalize">
-3D Model</h6>
+                  <h6 className="font-bold text-2xl text-slate-900 font-serif capitalize">
+                    3D Model</h6>
                   <p className="my-8  px-2 leading-5 text-sm font-serif  text-slate-700 services_paragraph">
-                  {paragraph[2].split(' ').slice(0, 19).join(' ')}
-               </p>
+                    {paragraph[2].split(' ').slice(0, 19).join(' ')}
+                  </p>
                   <div>
                     <Link
                       to="/service"
