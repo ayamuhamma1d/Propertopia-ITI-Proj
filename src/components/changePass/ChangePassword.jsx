@@ -20,7 +20,6 @@ const ChangePassword = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [message, setMessage] = useState("");
   const [userEmail, setUserEmail] = useState("");
-
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
@@ -31,15 +30,12 @@ const ChangePassword = () => {
       unsubscribe();
     };
   }, [userEmail]);
-
   const getASecureRandomPassword = (data) => {
     return data.newPassword;
   };
-
   const promptForCredentials = (newPassword) => {
     return EmailAuthProvider.credential(userEmail, newPassword);
   };
-
   const onSubmit = async (data) => {
     try {
       const user = auth.currentUser;
@@ -47,7 +43,6 @@ const ChangePassword = () => {
       const credential = promptForCredentials(newPassword);
       await reauthenticateWithCredential(user, credential);
       await updatePassword(user, newPassword);
-
       window.location.href = "./Home";
     } catch (error) {
       console.error("Error changing password:", error);
@@ -58,7 +53,6 @@ const ChangePassword = () => {
       }
     }
   };
-
   const verifyByEmail = () => {
     sendPasswordResetEmail(auth, userEmail)
       .then(() => {
@@ -69,12 +63,10 @@ const ChangePassword = () => {
         const errorMessage = error.message;
       });
   };
-
   const passwordMatch = (value) => {
     const newPassword = watch("newPassword");
     return newPassword === value || "Passwords do not match";
   };
-
   const togglePasswordVisibility = (field) => {
     switch (field) {
       case "oldPassword":
@@ -90,18 +82,17 @@ const ChangePassword = () => {
         break;
     }
   };
-
   return (
-    <div className="w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto mb-10">
-      <h5 className="text-left mb-10 ms-2 text-2xl capitalize">
+    <div className="w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto mb-10  font-serif">
+      <h5 className="text-left mb-10 ms-2 text-2xl capitalize  font-serif">
         Change Your password
       </h5>
       <form className="gap-6">
         <div className="flex flex-col w-full">
-          <div className="flex items-center justify-center mb-5">
+          <div className="flex items-center justify-center mb-5  font-serif">
             <div
               onClick={() => togglePasswordVisibility("oldPassword")}
-              className="bg-beige py-3 rounded-s-2xl px-5 text-white"
+              className="bg-beige py-3 rounded-s-2xl px-5 text-white  font-serif"
             >
               {showOldPassword ? (
                 <FontAwesomeIcon icon={faEye} />
@@ -120,7 +111,7 @@ const ChangePassword = () => {
                     type={showOldPassword ? "text" : "password"}
                     placeholder="Old Password"
                     {...field}
-                    className="border-none w-full font-[Poppins] py-3 me-4 focus:border-beige bg-white shadow rounded-e-2xl"
+                    className="border-none w-full  font-serif py-3 me-4 focus:border-beige bg-white shadow rounded-e-2xl"
                   />
                   {errors.oldPassword && (
                     <p className="bg-beige1 border border-beige text-beige px-4 py-3 text-xs rounded relative">
@@ -153,7 +144,7 @@ const ChangePassword = () => {
                     type={showNewPassword ? "text" : "password"}
                     placeholder="New Password"
                     {...field}
-                    className="border-none w-full font-[Poppins] py-3 me-4 focus:border-beige bg-white shadow rounded-e-2xl"
+                    className="border-none w-full  font-serif py-3 me-4 focus:border-beige bg-white shadow rounded-e-2xl"
                   />
                   {errors.newPassword && (
                     <p className="bg-beige1 border border-beige text-beige px-4 py-3 text-xs rounded relative">
@@ -189,7 +180,7 @@ const ChangePassword = () => {
                     type={showConfirmPassword ? "text" : "password"}
                     placeholder="Confirm New Password"
                     {...field}
-                    className="border-none w-full font-[Poppins] py-3 me-4 focus:border-beige bg-white shadow rounded-e-2xl"
+                    className="border-none w-full  font-serif py-3 me-4 focus:border-beige bg-white shadow rounded-e-2xl"
                   />
                   {errors.confirmPassword && (
                     <p className="bg-beige1 border border-beige text-beige px-4 py-3 text-xs rounded relative">
@@ -205,14 +196,14 @@ const ChangePassword = () => {
           <button
             onClick={handleSubmit(onSubmit)}
             type="submit"
-            className={`${styles.confirm_btn} text-white bg-beige font-semibold py-2 px-4 rounded-3xl shadow-lg text-lg font-[Poppins] w-48 `}
+            className={`${styles.confirm_btn} text-white bg-beige  py-2 px-4 rounded-3xl shadow-lg text-lg  font-serif w-48 `}
           >
             Confirm
           </button>
           <button
             onClick={handleSubmit(verifyByEmail)}
             type="submit"
-            className={` text-white bg-beige font-semibold py-2 px-4 rounded-3xl shadow-lg text-lg font-[Poppins] w-48 `}
+            className={` text-white bg-beige  py-2 px-4 rounded-3xl shadow-lg text-lg  font-serif w-48  `}
           >
             Change via Email
           </button>

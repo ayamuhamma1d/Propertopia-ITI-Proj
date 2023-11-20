@@ -9,7 +9,6 @@ import { data } from './../auth/firebase/Firebase'
 import style from "./home.module.css"
 const Home = () => {
   const salesData = data[0];
-
   return (
     <>
       <Hero />
@@ -17,7 +16,6 @@ const Home = () => {
         <h5 className="font-bold text-3xl font-serif capitalize mt-10 pt-5 text-center">Units For Sale</h5>
       </div>
       <div className={` flex  justify-center items-center ${style.card}`}>
-
         {salesData.slice(0, 3).map(card => (
           <div key={card.id} className="mb-10">
             <Card
@@ -33,7 +31,6 @@ const Home = () => {
       </div>
       <Feedback />
       <Contact />
-
     </>
   );
 };

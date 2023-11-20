@@ -100,7 +100,7 @@ const ResetPass = () => {
           >
             <div>
               <div className="form_header flex flex-col ">
-                <h2 className={`mb-8 text-muted w-full mx-auto text-center  `}>
+                <h2 className={`mb-8 text-muted w-full mx-auto text-center  font-serif `}>
                   Enter you email to reset your password
                 </h2>
               </div>
@@ -127,7 +127,7 @@ const ResetPass = () => {
             </div>
 
             <div
-              className={` bg-red-500 text-white font-bold p-2 text-center ${
+              className={` bg-red-500 text-white font-bold p-2 text-center  font-serif${
                 errorMessage ? "block" : "hidden"
               }`}
               id="message_area"

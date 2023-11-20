@@ -357,7 +357,7 @@ const Details = () => {
             </div>
           </div>
 
-          <div className=" mx-auto my-5">
+          <div className=" mx-auto my-10 mb-20">
             <h3 className="font-bold text-xl md:text-2xl text-slate-950 font-[Poppins] py-3  ">
               3D
             </h3>
@@ -370,7 +370,7 @@ const Details = () => {
 
         <iframe
   src={detailsData.map_iframe}
-  className={`${style.height3d} w-full`}
+  className={`${style.height3d} w-full mb-10`}
 />
 
 <Feedback />
