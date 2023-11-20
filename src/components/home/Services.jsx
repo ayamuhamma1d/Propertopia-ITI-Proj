@@ -20,9 +20,9 @@ const Services = () => {
               <div className="px-5 pb-5">
                 <div className="flex items-center justify-between mb-3 pt-3"></div>
                 <div>
-                <h5 className="font-bold text-2xl text-slate-900 font-serif capitalize">
+                <h6 className="font-bold text-2xl text-slate-900 font-serif capitalize">
                     Buy or rent
-                  </h5>
+                  </h6>
                   <p className="my-8 px-4  leading-5 font-serif text-sm text-slate-700 services_paragraph">
              {paragraph[0].split(' ').slice(0, 19).join(' ')}
               </p>
@@ -44,9 +44,9 @@ const Services = () => {
               <div className="px-5 pb-5">
                 <div className="flex items-center justify-between mb-3 pt-3"></div>
                 <div>
-                <h5 className="font-bold text-2xl text-slate-900 font-serif capitalize">
+                <h6 className="font-bold text-2xl text-slate-900 font-serif capitalize">
                     Maintenance
-                  </h5>
+                  </h6>
                   <p className="my-8  px-2 leading-5 text-sm font-serif text-slate-700 services_paragraph">
                   {paragraph[1].split(' ').slice(0, 19).join(' ')}
               </p>
@@ -68,8 +68,8 @@ const Services = () => {
               <div className="px-5 pb-5">
                 <div className="flex items-center justify-between mb-3 pt-3"></div>
                 <div>
-                <h5 className="font-bold text-2xl text-slate-900 font-serif capitalize">
-3D Model</h5>
+                <h6 className="font-bold text-2xl text-slate-900 font-serif capitalize">
+3D Model</h6>
                   <p className="my-8  px-2 leading-5 text-sm font-serif  text-slate-700 services_paragraph">
                   {paragraph[2].split(' ').slice(0, 19).join(' ')}
                </p>
