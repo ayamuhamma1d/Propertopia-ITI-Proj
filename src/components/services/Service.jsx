@@ -23,7 +23,6 @@ import picseven from "../../assets/img/slider/7.jpg";
 import piceight from "../../assets/img/slider/8.jpg";
 import picnine from "../../assets/img/slider/9.jpg";
 import picten from "../../assets/img/slider/10.jpg";
-
 const Service = () => {
   return (
     <>
