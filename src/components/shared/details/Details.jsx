@@ -56,7 +56,6 @@ const Details = () => {
       unsubscribe();
     };
   }, [detailsData.id]);
-
   const checkWishlistItem = async (itemId) => {
     const user = auth.currentUser;
     if (user) {
@@ -67,17 +66,25 @@ const Details = () => {
       setIsWishlist(false);
     }
   };
-
   const addToWishlist = async (itemId) => {
     const user = auth.currentUser;
     if (user) {
       const customId = itemId.toString();
       const docRef = doc(db, user.uid, customId);
-      try {
-        if (isWishlist) {
+      if (isWishlist) {
+        try {
           await deleteDoc(docRef);
+          setIsWishlist(false);
           removeFromWishlist(customId);
-        } else {
+        } catch (error) {
+          return (
+            <p className="bg-beige1 border border-beige text-beige px-4 py-3 text-xs rounded relative font-[Poppins]">
+              {error}
+            </p>
+          );
+        }
+      } else {
+        try {
           const wishlistItem = {
             id: itemId,
             image_url: detailsData.image_url,
@@ -94,11 +101,15 @@ const Details = () => {
             wishlistItem.pricePerDay = detailsData.pricePerDay;
           }
           await setDoc(docRef, wishlistItem);
+          setIsWishlist(true);
+          console.log("Item added to wishlist");
+        } catch (error) {
+          return (
+            <p className="bg-beige1 border border-beige text-beige px-4 py-3 text-xs rounded relative font-[Poppins]">
+              {error}
+            </p>
+          );
         }
-        setIsWishlist(!isWishlist);
-        console.log("Item added/removed from wishlist successfully");
-      } catch (error) {
-        console.error("Error adding/removing from wishlist:", error);
       }
     }
   };
