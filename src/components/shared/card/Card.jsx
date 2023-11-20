@@ -136,7 +136,7 @@ const Card = ({
               <Link className="font-medium capitalize font-serif  ">
                 {type_of_unit}
               </Link>
-              <span className="text-lg font-bold font-serif ">${purpose === 'sale' ? price.toLocaleString() : pricePerDay.toLocaleString()}</span>
+              <span className="text-lg font-bold font-serif ">EGP {purpose === 'sale' ? price.toLocaleString() : pricePerDay.toLocaleString()}</span>
             </div>
             <div className='flex justify-between font-serif items-center border-b pb-2'>
               <div>
