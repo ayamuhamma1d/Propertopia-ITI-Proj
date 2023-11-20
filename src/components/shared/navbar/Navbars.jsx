@@ -99,7 +99,7 @@ function Navbars() {
             <NavLink
               onClick={logOut}
               id="logout_btn"
-              className={`${style.btn} text-black ${userToken != null ? "block" : "hidden"
+              className={`${style.btn} ${style.logout} text-black ${userToken != null ? "block" : "hidden"
                 }`}
             >
               Log out
