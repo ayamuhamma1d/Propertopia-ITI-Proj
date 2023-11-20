@@ -8,7 +8,7 @@ import "./feedback.css";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
-import { EffectCoverflow, Pagination } from "swiper/modules";
+import {Autoplay, EffectCoverflow, Pagination } from "swiper/modules";
 export default function App() {
   return (
     <>
@@ -17,6 +17,10 @@ export default function App() {
         grabCursor={true}
         centeredSlides={true} 
         slidesPerView={"auto"}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
         coverflowEffect={{
           rotate: 50,
           stretch: 0,
@@ -25,7 +29,7 @@ export default function App() {
           slideShadows: true,
         }}
         pagination={true}
-        modules={[EffectCoverflow, Pagination]}
+        modules={[Autoplay ,EffectCoverflow, Pagination]}
         className="mySwiper"
       >
         <SwiperSlide>
@@ -35,7 +39,7 @@ export default function App() {
                 <div>
                   <img
                     src={profile1}
-                    alt=""
+                    alt="profile"
                     className="object-cover w-12 h-12 rounded-full dark:bg-gray-500"
                   />
                 </div>

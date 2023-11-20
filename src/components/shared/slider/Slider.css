@@ -1,0 +1,23 @@
+.swiper-button-prev, .swiper-button-next {
+   
+    color:#eae0da ;
+}
+
+
+
+.shadow-md {
+    padding: 0px !important;
+}
+
+.slider_slide {
+    margin-top: 60px !important;
+}
+
+
+@media only screen and (max-width: 768px) {
+
+  .slider_small{
+    margin: auto !important;
+  }
+  
+}
