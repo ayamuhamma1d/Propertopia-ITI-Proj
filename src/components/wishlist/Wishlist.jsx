@@ -3,7 +3,7 @@ import { db } from "./../auth/firebase/Firebase";
 import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
 import { auth } from "../auth/firebase/Firebase";
 import Card from "../shared/card/Card";
-import style from './Wishlist.module.css'
+import style from "./Wishlist.module.css";
 
 const Wishlist = () => {
   const [wishlist, setWishlist] = useState([]);
@@ -56,7 +56,9 @@ const Wishlist = () => {
     <div className="w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto h-auto mb-10">
       {wishlist.length === 0 ? (
         <div className="flex justify-center align-center ">
-          <h2 className={`bg-beige1 border border-beige text-beige px-4 py-3  text-xl  rounded relative font-[Poppins] ${style.heading}`}>
+          <h2
+            className={`bg-beige1 border border-beige text-beige px-4 py-3  text-xl  rounded relative font-[Poppins] ${style.heading}`}
+          >
             There are no items in your favorites.
           </h2>
         </div>
