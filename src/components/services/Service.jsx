@@ -9,19 +9,25 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faPhone } from "@fortawesome/free-solid-svg-icons";
-import logo from "../../assets/img/logo.png";
-import logo1 from "../../assets/img/19.jpeg";
 import style from "./service.module.css";
+import "../maintenance/maintenance.css"
 import maintenance2 from '../../../src/assets/img/Maintenance1/1 (7).jpg';
 import { Link } from "react-router-dom";
-import picone from "../../assets/img/hero-image.jpg";
-import pictwo from "../../assets/img/SiteImage-Landing-house-plansluxury-1.webp";
-import picthree from "../../assets/img/download-23.webp";
-import picfour from "../../assets/img/Lowcost.webp";
+import picone from "../../assets/img/slider/1.jpg";
+import pictwo from "../../assets/img/slider/2.jpg";
+import picthree from "../../assets/img/slider/3.jpg";
+import picfour from "../../assets/img/slider/4.jpg";
+import picfive from "../../assets/img/slider/5.jpg";
+import picsix from "../../assets/img/slider/6.jpg";
+import picseven from "../../assets/img/slider/7.jpg";
+import piceight from "../../assets/img/slider/8.jpg";
+import picnine from "../../assets/img/slider/9.jpg";
+import picten from "../../assets/img/slider/10.jpg";
+
 const Service = () => {
   return (
     <>
-      <div className={`${style.parentt} w-full  sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto mb-16`}>
+      <div className={`${style.parentt} `}>
         <Swiper
           spaceBetween={30}
           centeredSlides={true}
@@ -36,24 +42,35 @@ const Service = () => {
           navigation={true}
           modules={[Autoplay, Pagination, Navigation]}
         >
-          <SwiperSlide className="flex justify-center items-center" >
-            <h2 className="text-start text-sm lg:text-2xl w-5/12		 ">
-              Explore a diverse collection of properties and find your perfect
-              match on our user-friendly real estate site.
-            </h2>
-            <img src={logo} alt="" className="w-6/12  " />
+          <SwiperSlide >
+          <img src={picthree} alt="" className={`w-6/12 m-auto ${style.services_slider_img}` }/>
           </SwiperSlide>
           <SwiperSlide>
-            <img src={picthree} alt="" className="w-6/12 m-auto " />
+            <img src={picone} alt="" className={`w-6/12 m-auto ${style.services_slider_img}` }/>
           </SwiperSlide>
           <SwiperSlide>
-            <img src={picone} alt="" className="w-6/12 m-auto " />
+            <img src={pictwo} alt="" className={`w-6/12 m-auto ${style.services_slider_img}` }/>
           </SwiperSlide>
           <SwiperSlide>
-            <img src={pictwo} alt="" className="w-6/12 m-auto " />
+            <img src={picfour} alt="" className={`w-6/12 m-auto ${style.services_slider_img}`}/>
           </SwiperSlide>
           <SwiperSlide>
-            <img src={picfour} alt="" className="w-6/12 m-auto " />
+            <img src={picfive} alt="" className={`w-6/12 m-auto ${style.services_slider_img}`}/>
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src={picsix} alt="" className={`w-6/12 m-auto ${style.services_slider_img}`}/>
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src={picseven} alt="" className={`w-6/12 m-auto ${style.services_slider_img}`}/>
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src={piceight} alt="" className={`w-6/12 m-auto ${style.services_slider_img}`}/>
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src={picnine} alt="" className={`w-6/12 m-auto ${style.services_slider_img}`}/>
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src={picten} alt="" className={`w-6/12 m-auto ${style.services_slider_img}`}/>
           </SwiperSlide>
         </Swiper>
       </div>
