@@ -1,16 +1,13 @@
 import React from 'react';
-
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   const handlePageClick = (pageNumber) => {
     if (pageNumber !== currentPage) {
       onPageChange(pageNumber);
     }
   };
-
   const renderPageNumbers = () => {
     const pageNumbers = [];
     const maxVisiblePages = 5;
-
     if (totalPages <= maxVisiblePages) {
       for (let i = 1; i <= totalPages; i++) {
         pageNumbers.push(i);
@@ -18,10 +15,8 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
     } else {
       const leftOffset = Math.floor(maxVisiblePages / 2);
       const rightOffset = totalPages - leftOffset;
-
       let startPage = currentPage - leftOffset;
       let endPage = currentPage + leftOffset;
-
       if (startPage <= 0) {
         startPage = 1;
         endPage = maxVisiblePages;
@@ -29,16 +24,14 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
         startPage = totalPages - maxVisiblePages + 1;
         endPage = totalPages;
       }
-
       for (let i = startPage; i <= endPage; i++) {
         pageNumbers.push(i);
       }
     }
-
     return pageNumbers.map((pageNumber) => (
       <div
         key={pageNumber}
-        className={`w-12 md:flex justify-center items-center ${
+        className={`w-12 flex justify-center items-center ${
           pageNumber === currentPage ? 'bg-beige text-white' : ''
         } cursor-pointer leading-5 transition duration-150 ease-in rounded-full`}
         onClick={() => handlePageClick(pageNumber)}
@@ -47,19 +40,16 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
       </div>
     ));
   };
-
   const handlePreviousClick = () => {
     if (currentPage > 1) {
       onPageChange(currentPage - 1);
     }
   };
-
   const handleNextClick = () => {
     if (currentPage < totalPages) {
       onPageChange(currentPage + 1);
     }
   };
-
   return (
     <div className="flex flex-col items-center my-14">
       <div className="flex text-gray-700">
@@ -108,5 +98,4 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
     </div>
   );
 };
-
 export default Pagination;

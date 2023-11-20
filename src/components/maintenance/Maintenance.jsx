@@ -14,11 +14,11 @@ const Maintenance = () => {
   return (
     <>
       <div className="bg-white">
-        <div className="mx-auto max-w-2xl px-4 pt-16 sm:px-6 sm:pt-16 lg:max-w-7xl lg:px-8 w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5">
-          <h2 className="text-1xl text-start text-gray-900  font-[Poppins] text-left text-3xl w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto header_maintenance">
-            Maintained
-          </h2>
-          <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-1 lg:grid-cols-2 xl:gap-x-8">
+        <div className="mx-auto max-w-2xl px-4 pt-16 sm:px-6 sm:pt-16 lg:px-8 w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5">
+          <h5 className=" text-start text-gray-900 capitalize  font-serif  text-3xl w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto">
+            Maintained Units
+          </h5>
+          <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 font-serif  sm:grid-cols-1 lg:grid-cols-2 xl:gap-x-8">
             {data[2].slice(0,6).map((item) => (
             <div className="after_before_bg bg-[#eae0da]">
               <div className=" p-4  gap-x-6 gap-y-10 xl:gap-x-8  ">
@@ -32,9 +32,8 @@ const Maintenance = () => {
                   </div>
                 </div>
               </div>
-              <p className="px-5 pb-3 text-start">
+              <p className="px-5 pb-3 text-start font-serif ">
                 {item.description}
-                
               </p>
             </div>
             ))}
@@ -42,18 +41,18 @@ const Maintenance = () => {
           <div className="maintained_Button  ">
             <button
               type="button"
-              className="rounded-md bg-[#eae0da] px-2.5 py-1.5 mt-16 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+              className="rounded-md bg-[#eae0da] font-serif px-2.5 py-3 border-0 hover:bg-beige hover:text-white mt-16 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 "
             >
-              <Link to="/maintenance/finishes" className="Link"> See more</Link>
+              <Link to="/maintenance/finishes" className="Link font-serif   px-2 py-9"> See more</Link>
             </button>
           </div>
         </div>
       </div>
       <div className="bg-white ">
-        <div className="mx-auto max-w-2xl px-4 pt-16 sm:px-6 sm:pt-16 lg:max-w-7xl lg:px-8 w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5">
-          <h2 className="text-3xl  text-start text-gray-900  text-gray-900  font-[Poppins] text-left text-3xl w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto header_maintenance">
+        <div className="mx-auto max-w-2xl px-4 pt-16 sm:px-6 sm:pt-16 lg:px-8 w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5">
+        <h5 className=" text-start text-gray-900 capitalize  font-serif  text-3xl w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto">
             3D Design
-          </h2>
+          </h5>
           <div className="mt-2 grid grid-cols-1 gap-x-1 gap-y-2 sm:grid-cols-1 lg:grid-cols-2 xl:gap-x-1">
             <div className="iframe_parent p-4">
               <iframe
@@ -116,7 +115,7 @@ const Maintenance = () => {
           <div className="maintained_Button ">
             <button
               type="button"
-              className="rounded-md mb-10 bg-[#eae0da] border-transparent px-2.5 py-1.5 mt-16 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+              className="rounded-md font-serif  bg-[#eae0da] px-2.5 py-3 border-0 hover:bg-beige hover:text-white mt-16 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 mb-10 "
             >
               <Link to="/maintenance/3d-max" className="Link"> See more</Link>
             </button>

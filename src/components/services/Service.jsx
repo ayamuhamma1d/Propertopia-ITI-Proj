@@ -18,10 +18,6 @@ import picone from "../../assets/img/hero-image.jpg";
 import pictwo from "../../assets/img/SiteImage-Landing-house-plansluxury-1.webp";
 import picthree from "../../assets/img/download-23.webp";
 import picfour from "../../assets/img/Lowcost.webp";
-
-
-
-
 const Service = () => {
   return (
     <>
@@ -61,8 +57,6 @@ const Service = () => {
           </SwiperSlide>
         </Swiper>
       </div>
-
-
       <div className="  mt-5 w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto">
         <div
           className={`${style.mrSection} mx-auto grid grid-cols-1 lg:grid-cols-2  items-center 
@@ -76,7 +70,7 @@ const Service = () => {
             />
           </div>
           <div className="p-4 w-11/12 m-auto ">
-            <h5 className="mb-5 text-start  text-3xl  capitalize font-bold tracking-tight text-beige dark:text-white">
+            <h5 className="mb-5 text-start  text-3xl font-serif  capitalize font-bold tracking-tight text-beige dark:text-white">
               Buy& sell
             </h5>
             <p className=" font-normal text-base  font-serif 	 text-start text-gray-700 dark:text-gray-400">
@@ -84,7 +78,6 @@ const Service = () => {
             </p>
           </div>
         </div>
-
         <div
           className={`${style.mrSection} "row  mx-auto grid grid-cols-1 lg:grid-cols-2  items-center bg-zinc-50    
           max-w-xl lg:max-w-full    mb-16`}
@@ -104,7 +97,6 @@ const Service = () => {
             />
           </div>
         </div>
-
         <div
           className={`${style.mrSection} mx-auto grid grid-cols-1 lg:grid-cols-2  items-center 
           max-w-xl lg:max-w-full	 dark:bg-gray-800 mb-16`}
@@ -117,7 +109,7 @@ const Service = () => {
             />
           </div>
           <div className="p-4  w-11/12 m-auto">
-            <h5 className="mb-5 text-start  text-3xl font-bold tracking-tight text-beige dark:text-white">
+            <h5 className="mb-5 text-start font-serif   text-3xl font-bold tracking-tight text-beige dark:text-white">
               3D MODEL
             </h5>
             <p className=" font-normal   font-serif 	 text-start text-gray-700 dark:text-gray-400">
@@ -125,7 +117,6 @@ const Service = () => {
             </p>
           </div>
         </div>
-
       </div>
       <div
         className={`${style.mrSection} w-full bg-zinc-50  p-4 text-center   rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700 `}
@@ -135,23 +126,21 @@ const Service = () => {
         </h3>
         <div className="items-center justify-center ">
           <Link
-
             className=" m-2 sm:w-sm w-auto bg-beige1  hover:bg-black py-4 hover:text-white text-black  inline-flex items-center justify-center px-6 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700"
           >
             <FontAwesomeIcon className="mr-3 w-7 " icon={faEnvelope} />
             <div>
-              <div className="-mt-1 font-sans text-sm font-semibold">
+              <div className="-mt-1 font-serif  text-sm font-semibold">
                 service@gmail.com
               </div>
             </div>
           </Link>
           <Link
-
             className=" m-2 sm:w-sm w-auto bg-beige1  hover:bg-black py-4  hover:text-white  text-black  inline-flex items-center justify-center px-6 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700"
           >
             <FontAwesomeIcon className="mr-3 w-7 " icon={faPhone} />
             <div>
-              <div className="-mt-1 font-sans text-sm font-semibold">
+              <div className="-mt-1 font-serif  text-sm font-semibold">
                 +0123456789
               </div>
             </div>
@@ -161,5 +150,4 @@ const Service = () => {
     </>
   );
 };
-
 export default Service;

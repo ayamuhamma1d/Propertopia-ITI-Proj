@@ -4,7 +4,6 @@ import Filter from "../../shared/filter/Filter";
 import Pagination from '../../shared/pagination/Pagination';
 import style from "./../unit.module.css";
 import { data } from './../../auth/firebase/Firebase' 
-
 const UnitForSale = () => {
   const salesData=data[0];
   const [currentPage, setCurrentPage] = useState(1);
@@ -12,51 +11,32 @@ const UnitForSale = () => {
   const [price, setPrice] = useState(0);
   const [floorArea, setFloorArea] = useState("");
   const [bedrooms, setBedrooms] = useState("");
-
-  //location state added 
-
   const [location , setLocation] = useState("");
-
   const [searchInput, setSearchInput] = useState('');
-
-
   const itemsPerPage = 9;
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const currentItems = salesData.slice(startIndex, endIndex);
-
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
     window.scrollTo(0, 0); 
   };
-
-
   const handleFilterChange = (e) => {
     setDropDownFilter(e.target.value);
   };
-
-  // handleLocation added 
   const handleFilterLocation = (e) => {
     setLocation(e.target.value);
   };
-
-
-
   const handleFilterPrice = (e) => {
     const selectedPrice = parseInt(e.target.value, 10) || 0;
     setPrice(selectedPrice);
   };
-
-
-
   const handleFilterFloorArea = (e) => {
     setFloorArea(e.target.value);
   };
-
   const handleFilterBedrooms = (e) => {
     setBedrooms(e.target.value);
   };
-
   const resetFilters = () => {
     setDropDownFilter("");
     setPrice(0);
@@ -64,25 +44,17 @@ const UnitForSale = () => {
     setBedrooms("");
     setLocation("");
   };
-
   const handleSearchChange = (e) => {
     const searchTextWithoutSpaces = e.target.value.trim(); 
     setSearchInput(searchTextWithoutSpaces);
   };
-
-
-
-  const filteredData = salesData.filter((x) => {
+    const filteredData = salesData.filter((x) => {
     const typeMatch = x.type_of_unit.includes(dropDownFilter);
-
     const priceMatch =
     price === 0 ||
     (price === 2000000 && x.price <= 2000000) ||
     (price === 4000000 && x.price > 2000000 && x.price <= 4000000) ||
     (price === 10000000 && x.price > 4000000);
-
-   
-    
     const floorAreaMatch =
       floorArea === "" ||
       (floorArea.includes("-") &&
@@ -93,8 +65,7 @@ const UnitForSale = () => {
     const searchMatch =
       x.type_of_unit.toLowerCase().includes(searchInput.toLowerCase()) ||
       x.price.toString().includes(searchInput);
-      const typeLocation = x.region.includes(location ); //const typeLocation added 
-    
+      const typeLocation = x.region.includes(location ); 
     return typeMatch && priceMatch && floorAreaMatch && bedroomsMatch && searchMatch && typeLocation;
   });
   
@@ -102,7 +73,6 @@ const UnitForSale = () => {
   const hasActiveFilters = !!dropDownFilter || !!price || !!floorArea || !!bedrooms ||!!location;
   const hasSearchInput = !!searchInput;
   const hasActiveFiltersOrSearch = hasActiveFilters || hasSearchInput;
-
   return (
     <div>
          <div className="flex justify-center items-center w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto  my-10 ">
@@ -124,13 +94,13 @@ const UnitForSale = () => {
               placeholder="Search by listing, location, bedroom number..."
               value={searchInput}
               onChange={handleSearchChange}
-              className="px-9 py-3 w-full rounded-md bg-transparent text-black border-beige1 focus:border-beige focus:bg-white focus:ring-0 text-sm "
+              className="px-9 py-3 w-full rounded-md bg-transparent font-serif text-black border-beige1 focus:border-beige focus:bg-white focus:ring-0 text-sm "
             />
 
           </div>
           <div className="flex items-center justify-between mt-4">
-            <p className="font-medium">Filters</p>
-            <button onClick={resetFilters} className="px-4 py-2 bg-beige1 text-black hover:bg-beige hover:text-white text-sm font-medium rounded-md">
+            <p className="font-medium font-serif">Filters</p>
+            <button onClick={resetFilters} className="px-4 py-2 font-serif bg-beige1 text-black hover:bg-beige hover:text-white text-sm font-medium rounded-md">
               Reset Filter
             </button>
           </div>
@@ -139,7 +109,7 @@ const UnitForSale = () => {
               <select
                 onChange={handleFilterChange}
                 value={dropDownFilter}
-                className="px-4 py-3 w-full rounded-md bg-beige1 text-black border-transparent focus:border-beige focus:bg-white focus:ring-0 text-sm"
+                className="px-4 py-3 w-full rounded-md font-serif bg-beige1 text-black border-transparent focus:border-beige focus:bg-white focus:ring-0 text-sm"
               >
                 <option value="">Home Type</option>
                 <option value="villa">Villa</option>
@@ -149,9 +119,8 @@ const UnitForSale = () => {
               </select>
               <select
                 onChange={handleFilterPrice}
-
                 value={price}
-                className="px-4 py-3 w-full rounded-md bg-beige1 border-transparent focus:border-beige focus:bg-white focus:ring-0 text-sm"
+                className="px-4 py-3 w-full rounded-md font-serif bg-beige1 border-transparent focus:border-beige focus:bg-white focus:ring-0 text-sm"
               >
                 <option value="0"> Price</option>
                 <option value="2000000">EGP up to 2000000</option>
@@ -161,7 +130,7 @@ const UnitForSale = () => {
               <select
                 onChange={handleFilterFloorArea}
                 value={floorArea}
-                className="px-4 py-3 w-full rounded-md bg-beige1 border-transparent focus:border-beige focus:bg-white focus:ring-0 text-sm"
+                className="px-4 py-3 w-full rounded-md font-serif bg-beige1 border-transparent focus:border-beige focus:bg-white focus:ring-0 text-sm"
               >
                 <option value="">Floor Area</option>
                 <option value="0-200"> up to 200 sq.ft</option>
@@ -171,7 +140,7 @@ const UnitForSale = () => {
               <select
                 onChange={handleFilterBedrooms}
                 value={bedrooms}
-                className="px-4 py-3 w-full rounded-md bg-beige1 border-transparent focus:border-beige focus:bg-white focus:ring-0 text-sm"
+                className="px-4 py-3 w-full rounded-md font-serif bg-beige1 border-transparent focus:border-beige focus:bg-white focus:ring-0 text-sm"
               >
                 <option value="">Bedrooms</option>
                 <option value="1">1 bedroom</option>
@@ -183,7 +152,7 @@ const UnitForSale = () => {
               <select
                 onChange={handleFilterLocation}
                 value={location}
-                className="px-4 py-3 w-full rounded-md bg-beige1 text-black border-transparent focus:border-beige focus:bg-white focus:ring-0 text-sm"
+                className="px-4 py-3 w-full rounded-md font-serif bg-beige1 text-black border-transparent focus:border-beige focus:bg-white focus:ring-0 text-sm"
               >
                 <option value="">location </option>
                 <option value="Sheikh Zayed">Sheikh Zayed</option>
@@ -197,7 +166,7 @@ const UnitForSale = () => {
           </div>
         </div>
       </div>
-      <div className={`${style.header} font-[Poppins] text-left text-3xl w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto`}> For Sale </div>
+      <div className={`${style.header}  font-serif text-left text-3xl w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto`}> For Sale </div>
       <div className=" flex flex-wrap justify-center">
         {displayItems.map(card => (
           <div key={card.id} className="">
@@ -211,8 +180,6 @@ const UnitForSale = () => {
         <Pagination currentPage={currentPage} totalPages={Math.ceil(salesData.length / itemsPerPage)} onPageChange={handlePageChange} />
       )}
     </div>
-
   );
 };
-
 export default UnitForSale;

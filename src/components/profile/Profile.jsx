@@ -22,18 +22,15 @@ const Profile = () => {
   const handleEditClickUserBtn = () => {
     setActiveButton("UserData");
   };
-
   const handleEditClickEditBtn = () => {
     setActiveButton("EditUserData");
   };
-
   const handleEditClickChangePassBtn = () => {
     setActiveButton("ChangePass");
   };
   const handleEditClickSaved = () => {
     setActiveButton("Wishlist");
   };
-
   return (
     <div className={`flex ${styles.profile}`}>
       <Card className= {`shadow-xl shadow-blue-gray-900/5 me-3  font-serif text-left text-3xl ${styles.links}`} >
@@ -101,5 +98,4 @@ const Profile = () => {
     </div>
   );
 };
-
 export default Profile;

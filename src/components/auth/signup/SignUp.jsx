@@ -16,14 +16,11 @@ import style from "../Auth.module.css";
 import style_resp from "./signup.module.css";
 import styleLogin from "../login/login.module.css";
 import { collection, doc, setDoc } from "firebase/firestore";
-
 const SignUp = () => {
   let userName, userEmail, userPass, userPhone;
   const [errorMessage, setErrorMessage] = useState("");
   const [errorCode, setErrorCode] = useState("");
-
   let userToken;
-
   const signInWithFacebook = async () => {
     try {
       const result = await signInWithPopup(auth, providerFb);
@@ -38,7 +35,6 @@ const SignUp = () => {
       const credential = FacebookAuthProvider.credentialFromError(error);
     }
   };
-
   const signInWithGoogle = async () => {
     try {
       const result = await signInWithPopup(auth, provider);
@@ -53,7 +49,6 @@ const SignUp = () => {
       const credential = GoogleAuthProvider.credentialFromError(error);
     }
   };
-
   const getFormData = (e) => {
     e.preventDefault();
     userName = document.getElementById("uname").value;
@@ -102,14 +97,12 @@ const SignUp = () => {
       console.log(error);
     }
   };
-
   useEffect(() => {
     const messageArea = document.getElementById("message_area");
     if (messageArea) {
       messageArea.classList.add("block");
     }
   }, []);
-
   return (
     <div className={`${style.container} ${style_resp.container} font-serif`}>
       <div className={`flex ${style.full_height} ${style_resp.full_height} font-serif`}>
@@ -142,7 +135,6 @@ const SignUp = () => {
             </div>
           </div>
         </div>
-
         <div className={`col-span-2 basis-1/2 flex flex-col `}>
           <div
             className={`flex w-1/2 mx-auto justify-around mt-4  ${styleLogin.parent_btns} font-serif`}

@@ -13,14 +13,12 @@ import { FcGoogle } from "react-icons/fc";
 import signImg from "../../../assets/img/login.jpg";
 import style from "../Auth.module.css";
 import styleLogin from "./login.module.css";
-
 const Login = () => {
   let userEmail, userPass;
   let userToken;
   const [signInWithGoogle] = useSignInWithGoogle(auth, provider);
   const [errorMessage, setErrorMessage] = useState("");
   const [errorCode, setErrorCode] = useState("");
-
   const signInWithFacebook = async () => {
     try {
       const result = await signInWithPopup(auth, providerFb);
@@ -222,5 +220,4 @@ const Login = () => {
     </div>
   );
 };
-
 export default Login;

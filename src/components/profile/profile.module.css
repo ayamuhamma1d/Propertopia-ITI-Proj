@@ -1,24 +1,17 @@
-
 .active_select {
   background-color: #bca37f;
   color: #fff;
 }
-
 .not_active_select {
   font-size: 1rem;
   color: #bca37f;
 }
-
 .profile_content {
   width: 100%;
-
-  
-
 }
 .links{
   width: 25%;
 }
-
 @media screen and (max-width: 967px) {
   .links{
     width: 100%;

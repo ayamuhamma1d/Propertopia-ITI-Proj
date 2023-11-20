@@ -4,11 +4,9 @@ import dphoto from "../../../src/assets/img/Maintenance1/1 (2).jpg";
 import photosellrent from "../../../src/assets/img/Maintenance1/1 (12).jpg";
 import photo3d from "../../../src/assets/img/pngegg.png";
 import { Link } from "react-router-dom";
-
 const paragraph = [
   "Uncover Your Oasis: Immerse Yourself in a Visual Journey to Your Ideal Home. Unlock Unparalleled Properties, Tailored for Renting", "Revitalize Your Space: Elevate Living with Our Exclusive Maintenance Magic. From Top-Notch Upkeep to Seamless Repairs .", " Revolutionize Your Showcase: Step into the Future with Our State-of-the-Art 3D Services. Immerse Your Audience in Captivating Virtual Tours "
 ]
-
 const Services = () => {
   return (
     <>
@@ -25,7 +23,6 @@ const Services = () => {
                 <h3 className="font-bold text-xl text-slate-900 font-serif capitalize">
                     Buy or rent
                   </h3>
-
                   <p className="my-8 px-4  leading-5 font-serif text-sm text-slate-700 services_paragraph">
              {paragraph[0].split(' ').slice(0, 19).join(' ')}
               </p>
@@ -53,7 +50,6 @@ const Services = () => {
                   <p className="my-8  px-2 leading-5 text-sm font-serif text-slate-700 services_paragraph">
                   {paragraph[1].split(' ').slice(0, 19).join(' ')}
               </p>
-
                   <div>
                     <Link
                       to="/service"
@@ -72,10 +68,9 @@ const Services = () => {
               <div className="px-5 pb-5">
                 <div className="flex items-center justify-between mb-3 pt-3"></div>
                 <div>
-                  <h3 className="font-bold text-xl text-slate-900 font-serif capitalize">3D</h3>
+                  <h3 className="font-bold text-xl text-slate-900 font-serif capitalize">  3D MODEL</h3>
                   <p className="my-8  px-2 leading-5 text-sm font-serif  text-slate-700 services_paragraph">
                   {paragraph[2].split(' ').slice(0, 19).join(' ')}
-
                </p>
                   <div>
                     <Link
@@ -94,6 +89,5 @@ const Services = () => {
     </>
   );
 };
-
 export default Services;
 

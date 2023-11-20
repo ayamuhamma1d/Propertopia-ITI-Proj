@@ -57,7 +57,7 @@ const Units = () => {
             </h2>
 
             <div
-              className={`flex  flex-wrap justify-center items-center ${style.card}`}
+              className={`flex   justify-center items-center ${style.card}`}
             >
               {lowerCaseSearchText.includes("sale")
                 ? filteredData.map((card) => (
@@ -76,7 +76,7 @@ const Units = () => {
 
         {lowerCaseSearchText.includes("sale") ||
         lowerCaseSearchText.includes("rent") ? null : (
-          <div className="card-see-more-button flex w-full sm:max-w-xl md.max-w-full lg:max-w-screen-xl md:px-5 mx-auto mt-10">
+          <div className={`${style.btn_see} flex w-full sm:max-w-xl md.max-w-full lg:max-w-screen-xl md:px-5 mx-auto mt-10`}>
             <Link
               to="unit-for-sale"
               className="btn-see-more mb-10 bg-black py-2 px-3 text-white"
@@ -104,13 +104,13 @@ const Units = () => {
         lowerCaseSearchText.includes("rent") ? null : (
           <div>
             <h2
-              className={`${style.header}  font-serif text-left text-3xl w-full sm:max-w-xl md.max-w-full lg:max-w-screen-xl md:px-5 mx-auto mt-10`}
+            className={`${style.header} font-serif capitalize text-left text-3xl w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto mt-10`}
             >
               Unit For Rent
             </h2>
             {filteredData.length > 0 && (
               <div
-                className={`flex  flex-wrap justify-center items-center ${style.card}`}
+                className={`flex   justify-center items-center ${style.card}`}
               >
             
                   {rentData.slice(3, 6).map((card) => (
@@ -126,10 +126,10 @@ const Units = () => {
 
         {lowerCaseSearchText.includes("sale") ||
         lowerCaseSearchText.includes("rent") ? null : (
-          <div className="card-see-more-button  font-serif flex w-full sm:max-w-xl md.max-w-full lg:max-w-screen-xl md:px-5 mx-auto mt-10 ">
+          <div className={`${style.btn_see}  font-serif flex  w-full sm:max-w-xl md.max-w-full lg:max-w-screen-xl md:px-5 mx-auto mt-10 `}>
             <Link
               to="unit-for-rent"
-              className={`btn-see-more mb-10  font-serif bg-black py-2 px-3 text-white`}
+              className={` mb-10  font-serif bg-black py-2 px-3 text-white`}
             >
               See More
             </Link>
