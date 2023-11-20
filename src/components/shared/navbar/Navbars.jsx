@@ -99,7 +99,7 @@ function Navbars() {
             <NavLink
               onClick={logOut}
               id="logout_btn"
-              className={`${style.btn} ${style.logout} text-black ${userToken != null ? "block" : "hidden"
+              className={`${style.btn} text-black ${userToken != null ? "block" : "hidden"
                 }`}
             >
               Log out
@@ -143,7 +143,7 @@ function Navbars() {
                 Home
               </Link>
             </li>
-            <NavLinks add={setOpen} />
+            <NavLinks setOpen={open} />
             <li>
               <Link
                 to="/profile"

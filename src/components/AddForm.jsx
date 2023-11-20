@@ -7,7 +7,8 @@ import { Textarea } from "flowbite-react";
 import styles from "./editUserData/editUserData.module.css";
 import style from "./AddForm.module.css";
 import { Link } from "react-router-dom";
-
+import { faArrowRight as arrowRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const AddForm = () => {
   const [imageUploads, setImageUploads] = useState([]);
   const [urls, setUrls] = useState([]);
@@ -148,11 +149,11 @@ const AddForm = () => {
     <>
       <section className="w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto">
         <div className="w-full lg:w-4/6 bg-beige1 shadow-2xl mx-auto p-5">
-          <h5 className="text-center font-bold text-xl md:text-3xl text-beige font-serif  py-3">
+          <h5 className="text-center font-bold text-xl md:text-3xl text-beige font-[Poppins] py-3">
             Add Units
           </h5>
           <p
-            className={`text-slate-600 mx-auto text-lg text-center font-serif  ${style.parag}`}
+            className={`text-slate-600 mx-auto text-lg text-center font-[Poppins] ${style.parag}`}
           >
             Unleash the power of 3D allure! Our fee, dancing between 3% to 5%
             per unit, covers stunning 3D models and targeted advertising for
@@ -169,19 +170,19 @@ const AddForm = () => {
                   required: true,
                   pattern: /^[0-9]*$/,
                 })}
-                className="font-serif  border-0 border-b-4 shadow border-beige rounded-md w-full py-3 px-3 text-gray-700
+                className="font-[Poppins] border-0 border-b-4 shadow border-beige rounded-md w-full py-3 px-3 text-gray-700
                                 placeholder-gray-400"
                 id="bedrooms"
                 placeholder="Bedroom Count"
               />
 
               {errors?.bedrooms?.type === "required" && (
-                <p className="form-text text-beige font-serif ">
+                <p className="form-text text-beige font-[Poppins]">
                   This field is required
                 </p>
               )}
               {errors?.bedrooms?.type === "pattern" && (
-                <p className="form-text text-beige font-serif ">
+                <p className="form-text text-beige font-[Poppins]">
                   Please enter numbers only
                 </p>
               )}
@@ -193,19 +194,19 @@ const AddForm = () => {
                   required: true,
                   pattern: /^[0-9]*$/,
                 })}
-                className="font-serif  border-0 border-b-4 shadow border-beige rounded-md w-full py-3 px-3 text-gray-700
+                className="font-[Poppins] border-0 border-b-4 shadow border-beige rounded-md w-full py-3 px-3 text-gray-700
                                 placeholder-gray-400"
                 id="Bathrooms"
                 placeholder="Bathroom count"
               />
 
               {errors?.Bathrooms?.type === "required" && (
-                <p className="form-text text-beige font-serif ">
+                <p className="form-text text-beige font-[Poppins]">
                   This field is required
                 </p>
               )}
               {errors?.Bathrooms?.type === "pattern" && (
-                <p className="form-text text-beige font-serif ">
+                <p className="form-text text-beige font-[Poppins]">
                   Please enter numbers only
                 </p>
               )}
@@ -217,19 +218,19 @@ const AddForm = () => {
                   required: true,
                   pattern: /^[0-9]*$/,
                 })}
-                className="font-serif  border-0 border-b-4 shadow border-beige rounded-md w-full py-3 px-3 text-gray-700
+                className="font-[Poppins] border-0 border-b-4 shadow border-beige rounded-md w-full py-3 px-3 text-gray-700
                                 placeholder-gray-400"
                 id="floor"
                 placeholder="Floor"
               />
 
               {errors?.floor?.type === "required" && (
-                <p className="form-text text-beige font-serif ">
+                <p className="form-text text-beige font-[Poppins]">
                   This field is required
                 </p>
               )}
               {errors?.floor?.type === "pattern" && (
-                <p className="form-text text-beige font-serif ">
+                <p className="form-text text-beige font-[Poppins]">
                   Please enter numbers only
                 </p>
               )}
@@ -241,19 +242,19 @@ const AddForm = () => {
                   required: true,
                   pattern: /^[0-9]*$/,
                 })}
-                className="font-serif  border-0 border-b-4 shadow border-beige rounded-md w-full py-3 px-3 text-gray-700
+                className="font-[Poppins] border-0 border-b-4 shadow border-beige rounded-md w-full py-3 px-3 text-gray-700
                                 placeholder-gray-400"
                 id="area"
                 placeholder="Unit area in meter"
               />
 
               {errors?.area?.type === "required" && (
-                <p className="form-text text-beige font-serif ">
+                <p className="form-text text-beige font-[Poppins]">
                   This field is required
                 </p>
               )}
               {errors?.area?.type === "pattern" && (
-                <p className="form-text text-beige font-serif ">
+                <p className="form-text text-beige font-[Poppins]">
                   Please enter numbers only
                 </p>
               )}
@@ -263,7 +264,7 @@ const AddForm = () => {
               <input
                 type="text"
                 {...register("location", { required: true })}
-                className=" font-serif  border-0 border-b-4 shadow border-beige rounded-md w-full py-3 px-3 text-gray-700
+                className=" font-[Poppins] border-0 border-b-4 shadow border-beige rounded-md w-full py-3 px-3 text-gray-700
                                 placeholder-gray-400"
                 id="location"
                 placeholder="Unit Location"
@@ -277,19 +278,19 @@ const AddForm = () => {
               <input
                 type="text"
                 {...register("price", { required: true, pattern: /^[0-9]*$/ })}
-                className="font-serif  border-0 border-b-4 shadow border-beige rounded-md w-full py-3 px-3 text-gray-700
+                className="font-[Poppins] border-0 border-b-4 shadow border-beige rounded-md w-full py-3 px-3 text-gray-700
                                 placeholder-gray-400"
                 id="price"
                 placeholder="Price (Sale) or Price/Day (Rent) "
               />
 
               {errors?.price?.type === "required" && (
-                <p className="form-text text-beige font-serif ">
+                <p className="form-text text-beige font-[Poppins]">
                   This field is required
                 </p>
               )}
               {errors?.price?.type === "pattern" && (
-                <p className="form-text text-beige font-serif ">
+                <p className="form-text text-beige font-[Poppins]">
                   Please enter numbers only
                 </p>
               )}
@@ -301,13 +302,13 @@ const AddForm = () => {
                 rows={5}
                 cols={20}
                 {...register("description", { required: true })}
-                className="font-serif  border-0 border-b-4 shadow border-beige rounded-md w-full py-3 px-3 text-gray-700
+                className="font-[Poppins] border-0 border-b-4 shadow border-beige rounded-md w-full py-3 px-3 text-gray-700
                                 placeholder-gray-400"
                 id="description"
                 placeholder="Unit Description"
               />
               {errors?.description?.type === "required" && (
-                <p className="form-text text-beige font-serif">This field is required</p>
+                <p className="form-text text-beige">This field is required</p>
               )}
             </div>
             <div className=" mb-5">
@@ -319,7 +320,7 @@ const AddForm = () => {
                   render={({ field }) => (
                     <select
                       {...field}
-                      className="appearance-none bg-white font-serif border-0 border-b-2 border-0 border-b-4 shadow border-beige hover:border-beige py-3 rounded-md w-1/2 shadow leading-tight text-beige "
+                      className="appearance-none bg-white  border-0 border-b-2 border-0 border-b-4 shadow border-beige hover:border-beige py-3 rounded-md w-1/2 shadow leading-tight text-beige "
                     >
                       <option value="For Sell">For Sell</option>
                       <option value="For Rent">For Rent</option>
@@ -336,7 +337,7 @@ const AddForm = () => {
                   render={({ field }) => (
                     <select
                       {...field}
-                      className="appearance-none bg-white font-serif  border-0 border-b-4  border-beige hover:border-beige py-3 rounded-md w-1/2 shadow leading-tight text-beige "
+                      className="appearance-none bg-white   border-0 border-b-2 border-0 border-b-4 shadow border-beige hover:border-beige py-3 rounded-md w-1/2 shadow leading-tight text-beige "
                     >
                       <option value="villa">Villa</option>
                       <option value="apartment">Apartment</option>
@@ -348,7 +349,7 @@ const AddForm = () => {
               </div>
               <div className="my-3">
                 {fields.map((file, index) => (
-                  <div key={file.id} className="flex items-center mb-2 font-serif">
+                  <div key={file.id} className="flex items-center mb-2">
                     <div className="relative">
                       <Controller
                         name={`files[${index}].files`}
@@ -372,7 +373,7 @@ const AddForm = () => {
                       />
                       <label
                         htmlFor={`images${index}`}
-                        className="cursor-pointer border font-serif border-gray-300 bg-beige text-white font-bold rounded-md px-4 py-2 inline-block"
+                        className="cursor-pointer border border-gray-300 bg-beige text-white font-bold rounded-md px-4 py-2 inline-block"
                       >
                         Choose File
                       </label>
@@ -384,7 +385,7 @@ const AddForm = () => {
                     </span>
                     <button
                       type="button"
-                      className="border border-gray-300  font-serif rounded-md px-4 py-2 bg-beige text-white font-bold"
+                      className="border border-gray-300  rounded-md px-4 py-2 bg-beige text-white font-bold"
                       onClick={() => remove(index)}
                     >
                       Remove
@@ -394,7 +395,7 @@ const AddForm = () => {
                 <button
                   type="button"
                   onClick={() => append({ files: [] })}
-                  className="border border-gray-300 font-serif rounded-md px-4 py-2 bg-beige text-white font-bold"
+                  className="border border-gray-300  rounded-md px-4 py-2 bg-beige text-white font-bold"
                 >
                   Upload Images
                 </button>
@@ -403,7 +404,7 @@ const AddForm = () => {
             <div className="mb-5">
               <label
                 htmlFor="document"
-                className="font-serif   font-bold text-lg block text-beige"
+                className="font-[Poppins]  font-bold text-lg block text-beige"
               >
                 Upload Document for Verification
               </label>
@@ -418,12 +419,12 @@ const AddForm = () => {
                   },
                 })}
                 accept=".pdf"
-                className="font-serif  bg-transparent rounded-md w-full py-2 px-3 text-gray-700"
+                className="font-[Poppins] bg-transparent rounded-md w-full py-2 px-3 text-gray-700"
                 id="document"
               />
 
               {errors?.document && (
-                <p className="form-text text-beige font-serif ">
+                <p className="form-text text-beige font-[Poppins]">
                   {errors.document.message}
                 </p>
               )}
@@ -431,7 +432,7 @@ const AddForm = () => {
 
             <button
               type="submit"
-              className="mt-3 w-full font-serif shadow-2xl text-white font-bold py-3 px-4 rounded bg-beige"
+              className="mt-3 w-full shadow-2xl text-white font-bold py-3 px-4 rounded bg-beige"
             >
               Submit
             </button>
@@ -446,7 +447,20 @@ const AddForm = () => {
               {errorMessage && <p>{errorMessage}</p>}
             </div>
           </form>
-          <Link to="/UserUnit">View your units</Link>
+
+          <div className="flex justify-end items-center">
+            <Link to="/UserUnit" className="text-beige  text-xl">
+              View your units
+            </Link>
+            <Link to="/UserUnit" className="ml-2 flex items-center">
+              <FontAwesomeIcon
+                size="1x"
+                style={{ color: "#bca37f" }}
+                className="ms-1"
+                icon={arrowRight}
+              />
+            </Link>
+          </div>
         </div>
       </section>
     </>

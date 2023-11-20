@@ -119,23 +119,23 @@ const UnitForRent = () => {
             <input
               type="text"
               placeholder="Search by listing, location, bedroom number..."
-              className="px-9 py-3 w-full font-serif rounded-md bg-transparent font-serif text-black border-beige1 focus:border-beige focus:bg-white focus:ring-0 text-sm "
+              className="px-9 py-3 w-full rounded-md bg-transparent text-black border-beige1 focus:border-beige focus:bg-white focus:ring-0 text-sm "
               value={searchText}
               onChange={handleSearchChange}
             />
           </div>
           <div className="flex items-center justify-between mt-4">
-            <p className="font-medium font-serif">Filters</p>
-            <button onClick={resetFilters} className="px-4 py-2 bg-beige1 font-serif text-black hover:bg-beige hover:text-white text-sm font-medium rounded-md">
+            <p className="font-medium">Filters</p>
+            <button onClick={resetFilters} className="px-4 py-2 bg-beige1 text-black hover:bg-beige hover:text-white text-sm font-medium rounded-md">
               Reset Filter
             </button>
           </div>
           <div>
-            <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 mt-4 font-serif">
+            <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
               <select
                 onChange={handleFilterChange}
                 value={dropDownFilter}
-                className="px-4 py-3 w-full rounded-md font-serif bg-beige1 text-black border-transparent focus:border-beige focus:bg-white focus:ring-0 text-sm"
+                className="px-4 py-3 w-full rounded-md bg-beige1 text-black border-transparent focus:border-beige focus:bg-white focus:ring-0 text-sm"
               >
                 <option value="">Home Type</option>
                 <option value="villa">Villa</option>
@@ -146,7 +146,7 @@ const UnitForRent = () => {
               <select
                 onChange={handleFilterPrice}
                 value={price.toString()}
-                className="px-4 py-3 w-full rounded-md font-serif bg-beige1 border-transparent focus:border-beige focus:bg-white focus:ring-0 text-sm"
+                className="px-4 py-3 w-full rounded-md bg-beige1 border-transparent focus:border-beige focus:bg-white focus:ring-0 text-sm"
               >
                 <option value="0"> Price</option>
                 <option value="5000">EGP up to 5000</option>
@@ -156,7 +156,7 @@ const UnitForRent = () => {
               <select
                 onChange={handleFilterFloorArea}
                 value={floorArea}
-                className="px-4 py-3 w-full rounded-md font-serif bg-beige1 border-transparent focus:border-beige focus:bg-white focus:ring-0 text-sm"
+                className="px-4 py-3 w-full rounded-md bg-beige1 border-transparent focus:border-beige focus:bg-white focus:ring-0 text-sm"
               >
                 <option value="">Floor Area</option>
                 <option value="0-200"> up to 200 sq.ft</option>
@@ -166,7 +166,7 @@ const UnitForRent = () => {
               <select
                 onChange={handleFilterBedrooms}
                 value={bedrooms}
-                className="px-4 py-3 w-full rounded-md font-serif bg-beige1 border-transparent focus:border-beige focus:bg-white focus:ring-0 text-sm"
+                className="px-4 py-3 w-full rounded-md bg-beige1 border-transparent focus:border-beige focus:bg-white focus:ring-0 text-sm"
               >
                 <option value="">Bedrooms</option>
                 <option value="1">1 bedroom</option>
@@ -179,9 +179,9 @@ const UnitForRent = () => {
               <select
                 onChange={handleFilterLocation}
                 value={location}
-                className="px-4 py-3 w-full rounded-md font-serif bg-beige1 text-black border-transparent focus:border-beige focus:bg-white focus:ring-0 text-sm"
+                className="px-4 py-3 w-full rounded-md bg-beige1 text-black border-transparent focus:border-beige focus:bg-white focus:ring-0 text-sm"
               >
-                <option value="" >location </option>
+                <option value="">location </option>
                 <option value="Sheikh Zayed">Sheikh Zayed</option>
                 <option value="New Administrative Capital">New Administrative Capital</option>
                 <option value="North Coast">North Coast</option>
@@ -196,7 +196,7 @@ const UnitForRent = () => {
       </div>
 
       <div
-        className={`${style.header} font-serif text-left text-3xl w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto`}
+        className={`${style.header} font-[Poppins] text-left text-3xl w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto`}
       >
         {" "}
         For Rent{" "}

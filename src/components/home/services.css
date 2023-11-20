@@ -1,21 +1,2 @@
-.service__button__background__color {
-    background-color: #EAE0DA
-}
-
-
-.img {
-    aspect-ratio: 3/2;
-}
-
-#serv_images{
-
-    width: 100% !important;
-    height: 300px !important;
-}
-@media screen and (max-width: 768px) {
-  
-    .services_cards{
-        flex-wrap: wrap !important;
-    }
-
-}
+.service__button__background__color{
+    background-color: #EAE0DA }

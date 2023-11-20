@@ -1,3 +1,4 @@
+
 .item{
     grid-column: 1 / span 2;
     display: flex;
@@ -13,54 +14,48 @@
 .video {
     margin-top: 0px !important;
 }
-
-.finesh_background {
-    background-color: var(--background);
-    display: flex;
-    justify-content: center;
+.Max_background {
+    display: grid;
     place-items: center;
-    height: 60vh;
 }
 
-.finesh_gallery {
+.Max_gallery {
     display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    max-width: 800px;
+    margin-bottom: 10px;
+    /* width: 80%; */
+     /* left: calc(50% - 330px); */
 }
 
-.finesh_card {
+.Max_card {
     position: relative;
     left: 0px;
-    width: 110px;
-    border-radius: 16px;
-    height: 200px;
+    width: 210px;
+    height: 226px;
+    border-radius: 8px;
+    transition: 1s ease-in-out;
     overflow: hidden;
-    background-color: var(--background);
-    transition: 1.4s ease-in-out;
     box-shadow: 0 5px 12px rgba(0, 0, 0, 0.5);
-    flex: 0.25;
 }
 
-.finesh_card img {
-    height: 200px;
-    transition: 1.4s ease-in-out;
-    width: 100%;
-
-
+.Max_card:not(:first-child) {
+    margin-left: -95px;
 }
-.finesh_card img:hover {
-    height: 360px;
-}
-.finesh_card:hover {
-    flex: 2;
+
+.Max_card:hover {
+    transform: translateY(-16px);
     font-weight: bold;
     cursor: pointer;
-    border-radius: 8px;
-    height: 360px;
-    width: 100px;
+}
 
+.Max_card:hover ~ .Max_card {
+    left: 85px;
+}
 
+.Max_card #max_photo {
+    width: 100%;
+    height: 220px;
+
+    border-radius: 4px;
 }
 
 .kitchen{
@@ -72,4 +67,3 @@
     height: 450px;
 
 }
-

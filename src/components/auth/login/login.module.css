@@ -2,9 +2,7 @@
     max-width: 20rem;
     color: #6b7280;
   }
-  .customButton:hover{
-    background-color: #BCA37F !important;
-  }
+  
   @media screen and (min-width:500px) and (max-width:767px)
   {
     .loginParag {

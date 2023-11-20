@@ -24,7 +24,7 @@ const Filter = ({ onSearchInputChange }) => {
               onChange={(e) => onSearchInputChange(e.target.value)}
             />
           </div>
-          <div className="flex items-center justify-between mt-4 font-serif">
+          <div className="flex items-center justify-between mt-4">
             <p className="font-medium">Filters</p>
             <button className="px-4 py-2 bg-beige1 text-black hover:bg-beige hover:text-white text-sm font-medium rounded-md">
               Reset Filter
@@ -32,8 +32,8 @@ const Filter = ({ onSearchInputChange }) => {
           </div>
           <div>
             <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
-              <select className="px-4 py-3 w-full rounded-md font-serif bg-beige1 text-black border-transparent focus:border-beige focus:bg-white focus:ring-0 text-sm">
-                <option value="" className='hover:bg-beige1 font-serif'>All Type</option>
+              <select className="px-4 py-3 w-full rounded-md bg-beige1 text-black border-transparent focus:border-beige focus:bg-white focus:ring-0 text-sm">
+                <option value="" className='hover:bg-beige1'>All Type</option>
                 <option value="for-rent">For Rent</option>
                 <option value="for-sale">For Sale</option>
               </select>
@@ -43,14 +43,14 @@ const Filter = ({ onSearchInputChange }) => {
                 <option value="partially-furnished">Flat</option>
                 <option value="not-furnished">Studio</option>
               </select>
-              <select className="px-4 py-3 w-full rounded-md font-serif bg-beige1 border-transparent focus:border-beige focus:bg-white focus:ring-0 text-sm">
+              <select className="px-4 py-3 w-full rounded-md bg-beige1 border-transparent focus:border-beige focus:bg-white focus:ring-0 text-sm">
                 <option value=""> Price</option>
                 <option value="1000">EGP 100000</option>
                 <option value="2000">EGP 20000</option>
                 <option value="3000">EGP 30000</option>
                 <option value="4000">EGP 40000</option>
               </select>
-              <select className="px-4 py-3 w-full rounded-md font-serif bg-beige1 border-transparent focus:border-beige focus:bg-white focus:ring-0 text-sm">
+              <select className="px-4 py-3 w-full rounded-md bg-beige1 border-transparent focus:border-beige focus:bg-white focus:ring-0 text-sm">
                 <option value="">Floor Area</option>
                 <option value="200">200 sq.ft</option>
                 <option value="400">400 sq.ft</option>
@@ -59,7 +59,7 @@ const Filter = ({ onSearchInputChange }) => {
                 <option value="1000 sq.ft">1000</option>
                 <option value="1200 sq.ft">1200</option>
               </select>
-              <select className="px-4 py-3 w-full rounded-md font-serif bg-beige1 border-transparent focus:border-beige focus:bg-white focus:ring-0 text-sm">
+              <select className="px-4 py-3 w-full rounded-md bg-beige1 border-transparent focus:border-beige focus:bg-white focus:ring-0 text-sm">
                 <option value="">Bedrooms</option>
                 <option value="1">1 bedroom</option>
                 <option value="2">2 bedrooms</option>

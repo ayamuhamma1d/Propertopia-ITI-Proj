@@ -28,8 +28,6 @@ import "react-multi-carousel/lib/styles.css";
 import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as regularHeart } from "@fortawesome/free-regular-svg-icons";
 import { useEffect } from "react";
-import Feedback from "../../shared/feedback/feedback";
-
 import { auth, db } from "../../auth/firebase/Firebase";
 import { deleteDoc, doc, getDoc, setDoc } from "firebase/firestore";
 const Details = () => {
@@ -78,7 +76,7 @@ const Details = () => {
           removeFromWishlist(customId);
         } catch (error) {
           return (
-            <p className="bg-beige1 border border-beige text-beige px-4 py-3 text-xs rounded relative font-serif">
+            <p className="bg-beige1 border border-beige text-beige px-4 py-3 text-xs rounded relative font-[Poppins]">
               {error}
             </p>
           );
@@ -93,7 +91,6 @@ const Details = () => {
             type_of_unit: detailsData.type_of_unit,
             bathrooms: detailsData.bathrooms,
             rooms: detailsData.rooms,
-            location: detailsData.location,
           };
           if (detailsData.purpose === "sale") {
             wishlistItem.price = detailsData.price;
@@ -105,7 +102,7 @@ const Details = () => {
           console.log("Item added to wishlist");
         } catch (error) {
           return (
-            <p className="bg-beige1 border border-beige text-beige px-4 py-3 text-xs rounded relative font-serif">
+            <p className="bg-beige1 border border-beige text-beige px-4 py-3 text-xs rounded relative font-[Poppins]">
               {error}
             </p>
           );
@@ -122,20 +119,28 @@ const Details = () => {
         Rooms: ${rooms}
         Bathrooms: ${bathrooms}
         Area: ${area}m
-        Price: ${purpose === 'sale' ? '$' + price.toLocaleString() : '$' + pricePerDay.toLocaleString()}
+        Price: ${
+          purpose === "sale"
+            ? "$" + price.toLocaleString()
+            : "$" + pricePerDay.toLocaleString()
+        }
       `;
+
       navigator
         .share({
-          title: 'Check out this property',
-          text: 'I found this amazing property and thought you might be interested!\n\n' + propertyDetails,
+          title: "Check out this property",
+          text:
+            "I found this amazing property and thought you might be interested!\n\n" +
+            propertyDetails,
           url: window.location.href,
         })
-        .then(() => console.log('Shared successfully'))
-        .catch((error) => console.error('Error sharing:', error));
+        .then(() => console.log("Shared successfully"))
+        .catch((error) => console.error("Error sharing:", error));
     } else {
-      console.log('Web Share API not supported');
+      console.log("Web Share API not supported");
     }
   };
+
   return (
     <>
       <section className="w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto my-10">
@@ -215,7 +220,7 @@ const Details = () => {
             <div>
               <div className="flex justify-between items-center">
                 <div className="">
-                  <h2 className="font-bold text-2xl md:text-3xl font-serif text-slate-950 font-serif py-3  capitalize">
+                  <h2 className="font-bold text-2xl md:text-3xl text-slate-950 font-[Poppins] py-3  capitalize">
                     {detailsData.type_of_unit}
                   </h2>
                   <div className="my-5">
@@ -223,20 +228,20 @@ const Details = () => {
                       className="me-3 text-beige"
                       icon={faLocationDot}
                     />
-                    <span className="text-md text-slate-700 font-serif">
+                    <span className="text-md text-slate-700">
                       {" "}
                       {detailsData.location}
                     </span>
                   </div>
-                  <h6 className=" text-xl text-slate-900 font-serif">
-                    <span className="font-bold text-xl text-beige font-serif">$ </span>{" "}
+                  <h6 className=" text-xl text-slate-900">
+                    <span className="font-bold text-xl text-beige">$ </span>{" "}
                     {details.purpose == "sale"
                       ? detailsData.price.toLocaleString()
                       : detailsData.meter_price.toLocaleString()}
                   </h6>
                 </div>
-                <div className="flex justify-between align-items-center py-5 font-serif">
-                  <Link className="p-3 cursor-pointer font-serif">
+                <div className="flex justify-between align-items-center py-5">
+                  <Link className="p-3 cursor-pointer">
                     <FontAwesomeIcon
                       icon={isWishlist ? solidHeart : regularHeart}
                       onClick={() => {
@@ -249,17 +254,17 @@ const Details = () => {
                       icon={faShareNodes}
                       style={{ color: "#080808" }}
                       className="pe-2"
-                      onClick={handleShare}
+                      onAbort={handleShare}
                     />
                   </Link>
                 </div>
               </div>
 
               <div>
-                <h2 className="font-bold text-xl text-beige pt-3 font-serif ">
+                <h2 className="font-bold text-xl text-beige pt-3 ">
                   Description :
                 </h2>
-                <p className=" mb-8 mt-2  text-slate-700 font-serif">
+                <p className=" mb-8 mt-2  text-slate-700">
                   {` For ${detailsData.purpose} : Experience comfort in this charming ${detailsData.rooms} -bedroom apartment located on the 
                   ${detailsData.floor} floor with a delightful view of the main street. This property offers ${detailsData.bathrooms} bathroom,
                    a generous size of ${detailsData.area} square meters, and the convenience of cash or installment payment options.
@@ -267,15 +272,15 @@ const Details = () => {
                    For inquiries and to schedule a viewing, contact us via WhatsApp or call.`}
                 </p>
               </div>
-              <div class="grid grid-cols-1 text-lg md:grid-cols-2 font-serif">
+              <div class="grid grid-cols-1 text-lg md:grid-cols-2 font-[Poppins]">
                 <ul>
-                  <li className="flex py-1 items-center font-serif">
+                  <li className="flex py-1 items-center ">
                     <FontAwesomeIcon
                       className={`${style.iconscolor} me-2 text-beige`}
                       icon={faCity}
                     />
-                    <span class="pe-2 font-serif">Type:</span>
-                    <span className="text-gray-600 capitalize">
+                    <span class="pe-2 ">Type:</span>
+                    <span className="text-gray-600">
                       {detailsData.type_of_unit}
                     </span>{" "}
                   </li>
@@ -284,23 +289,23 @@ const Details = () => {
                       className={`${style.iconscolor} me-2 text-beige`}
                       icon={faBed}
                     />
-                    <span class="pe-2 font-serif">Bedrooms:</span>
+                    <span class="pe-2 ">Bedrooms:</span>
                     <span className="text-gray-600">{detailsData.rooms}</span>
                   </li>
-                  <li className="flex py-1 items-center font-serif">
+                  <li className="flex py-1 items-center ">
                     <FontAwesomeIcon
                       className={`${style.iconscolor} me-2 text-beige`}
                       icon={faHouseCircleCheck}
                     />
-                    <span class="pe-2 font-serif">Purpose:</span>
+                    <span class="pe-2 ">Purpose:</span>
                     <span className="text-gray-600">{`For ${detailsData.purpose}`}</span>{" "}
                   </li>
-                  <li className="flex  py-1 ">
+                  <li className="flex  py-1">
                     <FontAwesomeIcon
                       className={`${style.iconscolor} me-2 text-beige`}
                       icon={faStreetView}
                     />
-                    <span class="pe-2 font-serif">View:</span>
+                    <span class="pe-2 ">View:</span>
                     <span className="text-gray-600">Main Street</span>
                   </li>
                 </ul>
@@ -311,7 +316,7 @@ const Details = () => {
                       className={`${style.iconscolor} me-2 text-beige`}
                       icon={faBath}
                     />
-                    <span class="pe-2 font-serif">Bathrooms: </span>
+                    <span class="pe-2 ">Bathrooms: </span>
                     <span className="text-gray-600">
                       {detailsData.bathrooms}
                     </span>
@@ -321,7 +326,7 @@ const Details = () => {
                       className={`${style.iconscolor} me-2 text-beige`}
                       icon={faMaximize}
                     />
-                    <span class="pe-2 font-serif">Property size: </span>
+                    <span class="pe-2 ">Property size: </span>
                     <span className="text-gray-600">{detailsData.area}</span>
                   </li>
                   <li className="flex py-1 items-center">
@@ -329,7 +334,7 @@ const Details = () => {
                       className={`${style.iconscolor} me-2 text-beige`}
                       icon={faTreeCity}
                     />
-                    <span class="pe-2 font-serif">Floor: </span>
+                    <span class="pe-2 ">Floor: </span>
                     {detailsData.type_of_unit == "villa" ? (
                       <span className="text-gray-600">0</span>
                     ) : (
@@ -349,28 +354,21 @@ const Details = () => {
             </div>
           </div>
 
-          <div className=" mx-auto my-10 mb-20">
-            <h5 className="font-bold text-xl md:text-2xl text-slate-950 font-serif py-3 capitalize text-left ">
-              3D Model
-            </h5>
+          <div className=" mx-auto my-5">
+            <h3 className="font-bold text-xl md:text-2xl text-slate-950 font-[Poppins] py-3  ">
+              3D
+            </h3>
             <iframe
               src={detailsData.iframe}
               className={`${style.height3d} w-full`}
             ></iframe>
           </div>
         </div>
-        <h5 className="font-bold text-xl md:text-2xl text-slate-950 font-serif py-3 capitalize text-left ">
-             Location of unit
-            </h5>
+
         <iframe
   src={detailsData.map_iframe}
-  className={`${style.height3d} w-full mb-20`}
+  className={`${style.height3d} w-full`}
 />
-<h5 className="font-bold text-xl md:text-2xl text-slate-950 font-serif py-3 capitalize  ">
-            Clients Feedback
-            </h5>
-<Feedback />
-
       </section>
     </>
   );

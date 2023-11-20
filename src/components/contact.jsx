@@ -23,7 +23,7 @@ function Contact() {
                 <h6 className="max-w-lg mb-3   font-bold font-serif  tracking-tight text-white sm:text-4xl text-3xl sm:leading-none">
                   Welcome to our community of creativity and innovation!
                 </h6>
-                <p className="max-w-lg mb-3 		font-serif  text-lg  tracking-tight text-gray-300  sm:leading-10 ">
+                <p className="max-w-lg mb-3 		font-serif  text-lg  tracking-tight text-gray-300 sm:text-2xl sm:leading-10 ">
                   You can share your opinion or any suggestions with us
                 </p>
 

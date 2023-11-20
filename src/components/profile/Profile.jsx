@@ -22,18 +22,21 @@ const Profile = () => {
   const handleEditClickUserBtn = () => {
     setActiveButton("UserData");
   };
+
   const handleEditClickEditBtn = () => {
     setActiveButton("EditUserData");
   };
+
   const handleEditClickChangePassBtn = () => {
     setActiveButton("ChangePass");
   };
   const handleEditClickSaved = () => {
     setActiveButton("Wishlist");
   };
+
   return (
     <div className={`flex ${styles.profile}`}>
-      <Card className= {`shadow-xl shadow-blue-gray-900/5 me-3  font-serif text-left text-3xl ${styles.links}`} >
+      <Card className= {`shadow-xl shadow-blue-gray-900/5 me-3  font-[Poppins] text-left text-3xl ${styles.links}`} >
         <div className="mb-2">
           <Typography variant="h5" color="blue-gray">
             <span className="text-base md:text-base lg:text-lg xl:text-xl ">
@@ -47,7 +50,7 @@ const Profile = () => {
               activeButton === "UserData"
                 ? styles.active_select
                 : styles.not_active_select
-            } font-serif`}
+            } font-[Poppins]`}
             onClick={handleEditClickUserBtn}
           >
             User Data
@@ -57,7 +60,7 @@ const Profile = () => {
               activeButton === "EditUserData"
                 ? styles.active_select
                 : styles.not_active_select
-            } font-serif`}
+            } font-[Poppins]`}
             onClick={handleEditClickEditBtn}
           >
             Edit User Data
@@ -67,7 +70,7 @@ const Profile = () => {
               activeButton === "ChangePass"
                 ? styles.active_select
                 : styles.not_active_select
-            } font-serif`}
+            } font-[Poppins]`}
             onClick={handleEditClickChangePassBtn}
           >
             Change Password
@@ -77,7 +80,7 @@ const Profile = () => {
               activeButton === "Wishlist"
                 ? styles.active_select
                 : styles.not_active_select
-            } font-serif`}
+            } font-[Poppins]`}
             onClick={handleEditClickSaved}
           >
             Favorite
@@ -98,4 +101,5 @@ const Profile = () => {
     </div>
   );
 };
+
 export default Profile;

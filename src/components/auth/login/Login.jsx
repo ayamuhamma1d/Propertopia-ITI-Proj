@@ -13,12 +13,14 @@ import { FcGoogle } from "react-icons/fc";
 import signImg from "../../../assets/img/login.jpg";
 import style from "../Auth.module.css";
 import styleLogin from "./login.module.css";
+
 const Login = () => {
   let userEmail, userPass;
   let userToken;
   const [signInWithGoogle] = useSignInWithGoogle(auth, provider);
   const [errorMessage, setErrorMessage] = useState("");
   const [errorCode, setErrorCode] = useState("");
+
   const signInWithFacebook = async () => {
     try {
       const result = await signInWithPopup(auth, providerFb);
@@ -95,9 +97,9 @@ const Login = () => {
   }, []);
 
   return (
-    <div className={`${style.container} ${styleLogin.customContainer} font-serif`}>
+    <div className={`${style.container} ${styleLogin.customContainer}`}>
       <div
-        className={`flex ${style.full_height} ${styleLogin.customFullHeight} font-serif`}
+        className={`flex ${style.full_height} ${styleLogin.customFullHeight}`}
       >
         <div
           className={`col-span-2 basis-1/2 ${style.bg_project} ${styleLogin.customBgProject} ${styleLogin.col_span_2} ps-5 py-12`}
@@ -110,15 +112,16 @@ const Login = () => {
                 (styleLogin.customTextCenter, styleLogin.header_text)
               }`}
             >
-              <h3 className="text-3xl font-bold mb-7">Illuminate Your Home Search with Unrivaled Brilliance.</h3>
-              <p className={`${style.sign_in_parag} ${styleLogin.loginParag} font-serif`}>
-              Discover the home of your dreams with confidence
+              <h3 className="text-3xl font-bold mb-7">Real estate</h3>
+              <p className={`${style.sign_in_parag} ${styleLogin.loginParag}`}>
+                Rumah Impian hadir untuk temukan rumah terbaik untukmu, untuk di
+                jual ataupun di sewa dengan sumber terpercaya.
               </p>
             </div>
             <div className="col-span-2 mt-3 basis-1/2">
               <img
                 src={signImg}
-                className={`${style.signin_img} ${styleLogin.customSigninImg} font-serif`}
+                className={`${style.signin_img} ${styleLogin.customSigninImg}`}
                 alt=""
                 srcSet=""
               />
@@ -128,11 +131,11 @@ const Login = () => {
         <div className={`col-span-2 basis-1/2  `}>
           <form
             onSubmit={handleSubmit}
-            className={`flex max-w-xl flex-col gap-4 ms-10 ${style.form} ${styleLogin.customForm} px-10 py-14 font-serif`}
+            className={`flex max-w-xl flex-col gap-4 ms-10 ${style.form} ${styleLogin.customForm} px-10 py-14`}
           >
             <div>
               <div className="form_header flex flex-col ">
-                <p className={`mb-8 text-muted w-full mx-auto text-center font-serif `}>
+                <p className={`mb-8 text-muted w-full mx-auto text-center `}>
                   A new way to experience real state in the infinite virtual
                   space.
                 </p>
@@ -162,15 +165,15 @@ const Login = () => {
             >
               <Button
                 type="submit"
-                className={`bg-white text-dark ${styleLogin.customButton} font-serif hover:bg-beige`}
+                className={`bg-white text-dark ${styleLogin.customButton} `}
               >
-                Log  in
+                Login
               </Button>
               <Button
                 type="submit"
                 className={`${style.signin_btn} ${styleLogin.customSigninBtn} `}
               >
-                <Link to="/signup">Sign up</Link>
+                <Link to="/signup">Signup</Link>
               </Button>{" "}
             </div>
             <div
@@ -220,4 +223,5 @@ const Login = () => {
     </div>
   );
 };
+
 export default Login;

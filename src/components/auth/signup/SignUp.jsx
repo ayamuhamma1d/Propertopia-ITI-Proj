@@ -16,11 +16,14 @@ import style from "../Auth.module.css";
 import style_resp from "./signup.module.css";
 import styleLogin from "../login/login.module.css";
 import { collection, doc, setDoc } from "firebase/firestore";
+
 const SignUp = () => {
   let userName, userEmail, userPass, userPhone;
   const [errorMessage, setErrorMessage] = useState("");
   const [errorCode, setErrorCode] = useState("");
+
   let userToken;
+
   const signInWithFacebook = async () => {
     try {
       const result = await signInWithPopup(auth, providerFb);
@@ -35,12 +38,14 @@ const SignUp = () => {
       const credential = FacebookAuthProvider.credentialFromError(error);
     }
   };
+
   const signInWithGoogle = async () => {
     try {
       const result = await signInWithPopup(auth, provider);
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       const user = result.user;
+    
       window.location.href = "../../Home";
     } catch (error) {
       const errorCode = error.code;
@@ -49,27 +54,34 @@ const SignUp = () => {
       const credential = GoogleAuthProvider.credentialFromError(error);
     }
   };
+
   const getFormData = (e) => {
     e.preventDefault();
     userName = document.getElementById("uname").value;
     userEmail = document.getElementById("email1").value;
     userPass = document.getElementById("password1").value;
     userPhone = document.getElementById("unumber").value;
+
     const emailPattern = /^[^\s@]+@(gmail|yahoo|hotmail)\.com$/;
     const phoneNumberPattern = /^01[1025]\d{8}$/;
+
     let isValid = true;
+
     if (!emailPattern.test(userEmail)) {
       setErrorMessage("Please enter a valid email address.");
       isValid = false;
     }
+
     if (!phoneNumberPattern.test(userPhone)) {
       setErrorMessage("Please enter a valid phone number");
       isValid = false;
     }
+
     if (isValid) {
       sendUser();
     }
   };
+
   const sendUser = async () => {
     try {
       const userCredential = await createUserWithEmailAndPassword(
@@ -78,6 +90,7 @@ const SignUp = () => {
         userPass
       );
       const user = userCredential.user;
+
       const currentUser = auth.currentUser;
       await updateProfile(currentUser, {
         displayName: userName,
@@ -86,7 +99,7 @@ const SignUp = () => {
         displayName: userName,
         phoneNumber: userPhone,
         email: userEmail,
-      });
+      });    
       navigate("../../Home");
     } catch (error) {
       const code = error?.code || "unknown";
@@ -97,32 +110,36 @@ const SignUp = () => {
       console.log(error);
     }
   };
+
   useEffect(() => {
     const messageArea = document.getElementById("message_area");
     if (messageArea) {
       messageArea.classList.add("block");
     }
   }, []);
+
   return (
-    <div className={`${style.container} ${style_resp.container} font-serif`}>
-      <div className={`flex ${style.full_height} ${style_resp.full_height} font-serif`}>
+    <div className={`${style.container} ${style_resp.container} `}>
+      <div className={`flex ${style.full_height} ${style_resp.full_height}`}>
         <div
-          className={`col-span-2 basis-1/2 ${style.bg_project} ps-5 py-20  ${style_resp.bg_project} font-serif`}
+          className={`col-span-2 basis-1/2 ${style.bg_project} ps-5 py-20  ${style_resp.bg_project}`}
         >
           <div
-            className={`flex ${style.parent_card} ${style_resp.parent_card} font-serif`}
+            className={`flex ${style.parent_card} ${style_resp.parent_card}`}
           >
             <div
-              className={`col-span-2 basis-1/2 p-2 ${(style.text_center, style_resp.header_text)
-                }`}
+              className={`col-span-2 basis-1/2 p-2 ${
+                (style.text_center, style_resp.header_text)
+              }`}
             >
-              <h3 className={`text-3xl font-bold mb-7 ${style_resp.site_name} font-serif`}>
-                Illuminate Your Home Search with Unrivaled Brilliance.
+              <h3 className={`text-3xl font-bold mb-7 ${style_resp.site_name}`}>
+                Real estate
               </h3>
               <p
-                className={`${(style.sign_in_parag, style_resp.sign_in_parag)} font-serif`}
+                className={`${(style.sign_in_parag, style_resp.sign_in_parag)}`}
               >
-                Discover the home of your dreams with confidence
+                Rumah Impian hadir untuk temukan rumah terbaik untukmu, untuk di
+                jual ataupun di sewa dengan sumber terpercaya.
               </p>
             </div>
             <div className="col-span-2 basis-1/2">
@@ -135,14 +152,15 @@ const SignUp = () => {
             </div>
           </div>
         </div>
+
         <div className={`col-span-2 basis-1/2 flex flex-col `}>
           <div
-            className={`flex w-1/2 mx-auto justify-around mt-4  ${styleLogin.parent_btns} font-serif`}
+            className={`flex w-1/2 mx-auto justify-around mt-4  ${styleLogin.parent_btns}`}
           >
             <Button
               onClick={signInWithGoogle}
               type="submit"
-              className={`${style.signin_btn} ${styleLogin.customSigninBtn}   mb-8  font-serif`}
+              className={`${style.signin_btn} ${styleLogin.customSigninBtn}   mb-8 me-2`}
             >
               <FcGoogle className="me-2" />
               Google
@@ -151,7 +169,7 @@ const SignUp = () => {
             <Button
               onClick={signInWithFacebook}
               type="submit"
-              className={`${style.signin_btn}  mb-8 me-5`}
+              className={`${style.signin_btn}  mb-8 `}
             >
               <BsFacebook className="me-2" />
               Facebook
@@ -159,7 +177,7 @@ const SignUp = () => {
           </div>
           <form
             onSubmit={getFormData}
-            className={` flex max-w-xl flex-col gap-4 ms-10 ${style.form} px-10   ${style_resp.form} font-serif`}
+            className={` flex max-w-xl flex-col gap-4 ms-10 ${style.form} px-10   ${style_resp.form}`}
           >
             <div>
               <div className="form_header flex flex-col items-center">
@@ -187,7 +205,7 @@ const SignUp = () => {
                 placeholder="robert.langster@gmail.com"
               />
             </div>
-            <div className="mb-1 block font-serif">
+            <div className="mb-1 block">
               <div className=" block">
                 <Label htmlFor="password1" value="Password" />
               </div>
@@ -216,8 +234,9 @@ const SignUp = () => {
               Sign up
             </Button>
             <div
-              className={` bg-red-500 text-white font-bold p-2 text-center ${errorMessage ? "block" : "hidden"
-                }`}
+              className={` bg-red-500 text-white font-bold p-2 text-center ${
+                errorMessage ? "block" : "hidden"
+              }`}
               id="message_area"
             >
               {errorMessage && <p>{errorMessage}</p>}

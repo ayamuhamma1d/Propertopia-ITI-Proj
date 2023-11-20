@@ -1,0 +1,11 @@
+.div_width{
+    width: 80%;
+    margin: auto;
+}
+@media screen and (min-width:320px) and (max-width:767px) {
+   
+    .flex_div {
+        flex-direction: column;
+        padding: 0px 0.5rem;
+    }
+}
