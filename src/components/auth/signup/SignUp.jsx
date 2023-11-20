@@ -60,27 +60,21 @@ const SignUp = () => {
     userEmail = document.getElementById("email1").value;
     userPass = document.getElementById("password1").value;
     userPhone = document.getElementById("unumber").value;
-
     const emailPattern = /^[^\s@]+@(gmail|yahoo|hotmail)\.com$/;
     const phoneNumberPattern = /^01[1025]\d{8}$/;
-
     let isValid = true;
-
     if (!emailPattern.test(userEmail)) {
       setErrorMessage("Please enter a valid email address.");
       isValid = false;
     }
-
     if (!phoneNumberPattern.test(userPhone)) {
       setErrorMessage("Please enter a valid phone number");
       isValid = false;
     }
-
     if (isValid) {
       sendUser();
     }
   };
-
   const sendUser = async () => {
     try {
       const userCredential = await createUserWithEmailAndPassword(
@@ -89,7 +83,6 @@ const SignUp = () => {
         userPass
       );
       const user = userCredential.user;
-
       const currentUser = auth.currentUser;
       await updateProfile(currentUser, {
         displayName: userName,
@@ -118,26 +111,25 @@ const SignUp = () => {
   }, []);
 
   return (
-    <div className={`${style.container} ${style_resp.container} `}>
-      <div className={`flex ${style.full_height} ${style_resp.full_height}`}>
+    <div className={`${style.container} ${style_resp.container} font-serif`}>
+      <div className={`flex ${style.full_height} ${style_resp.full_height} font-serif`}>
         <div
-          className={`col-span-2 basis-1/2 ${style.bg_project} ps-5 py-20  ${style_resp.bg_project}`}
+          className={`col-span-2 basis-1/2 ${style.bg_project} ps-5 py-20  ${style_resp.bg_project} font-serif`}
         >
           <div
-            className={`flex ${style.parent_card} ${style_resp.parent_card}`}
+            className={`flex ${style.parent_card} ${style_resp.parent_card} font-serif`}
           >
             <div
               className={`col-span-2 basis-1/2 p-2 ${(style.text_center, style_resp.header_text)
                 }`}
             >
-              <h3 className={`text-3xl font-bold mb-7 ${style_resp.site_name}`}>
-                Real estate
+              <h3 className={`text-3xl font-bold mb-7 ${style_resp.site_name} font-serif`}>
+                Illuminate Your Home Search with Unrivaled Brilliance.
               </h3>
               <p
-                className={`${(style.sign_in_parag, style_resp.sign_in_parag)}`}
+                className={`${(style.sign_in_parag, style_resp.sign_in_parag)} font-serif`}
               >
-                Rumah Impian hadir untuk temukan rumah terbaik untukmu, untuk di
-                jual ataupun di sewa dengan sumber terpercaya.
+                Discover the home of your dreams with confidence
               </p>
             </div>
             <div className="col-span-2 basis-1/2">
@@ -153,12 +145,12 @@ const SignUp = () => {
 
         <div className={`col-span-2 basis-1/2 flex flex-col `}>
           <div
-            className={`flex w-1/2 mx-auto justify-around mt-4  ${styleLogin.parent_btns}`}
+            className={`flex w-1/2 mx-auto justify-around mt-4  ${styleLogin.parent_btns} font-serif`}
           >
             <Button
               onClick={signInWithGoogle}
               type="submit"
-              className={`${style.signin_btn} ${styleLogin.customSigninBtn}   mb-8 me-2`}
+              className={`${style.signin_btn} ${styleLogin.customSigninBtn}   mb-8  font-serif`}
             >
               <FcGoogle className="me-2" />
               Google
@@ -167,7 +159,7 @@ const SignUp = () => {
             <Button
               onClick={signInWithFacebook}
               type="submit"
-              className={`${style.signin_btn}  mb-8 `}
+              className={`${style.signin_btn}  mb-8 me-5`}
             >
               <BsFacebook className="me-2" />
               Facebook
@@ -175,7 +167,7 @@ const SignUp = () => {
           </div>
           <form
             onSubmit={getFormData}
-            className={` flex max-w-xl flex-col gap-4 ms-10 ${style.form} px-10   ${style_resp.form}`}
+            className={` flex max-w-xl flex-col gap-4 ms-10 ${style.form} px-10   ${style_resp.form} font-serif`}
           >
             <div>
               <div className="form_header flex flex-col items-center">
@@ -203,7 +195,7 @@ const SignUp = () => {
                 placeholder="robert.langster@gmail.com"
               />
             </div>
-            <div className="mb-1 block">
+            <div className="mb-1 block font-serif">
               <div className=" block">
                 <Label htmlFor="password1" value="Password" />
               </div>

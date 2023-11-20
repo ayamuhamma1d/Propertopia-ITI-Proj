@@ -67,18 +67,18 @@ const ResetPass = () => {
         className={`flex ${style.full_height} ${styleLogin.customFullHeight}`}
       >
         <div
-          className={`col-span-2 basis-1/2 ${style.bg_project} ${styleLogin.customBgProject} ${styleLogin.col_span_2} ps-5 py-12`}
+          className={`col-span-2 basis-1/2  font-serif ${style.bg_project} ${styleLogin.customBgProject} ${styleLogin.col_span_2} ps-5 py-12  font-serif`}
         >
           <div
             className={`flex ${style.parent_card} ${styleLogin.customParentCard}`}
           >
             <div
-              className={`col-span-2 basis-1/2 p-2 ${style.text_center} ${
+              className={`col-span-2 basis-1/2 p-2  font-serif ${style.text_center} ${
                 (styleLogin.customTextCenter, styleLogin.header_text)
               }`}
             >
-              <h3 className="text-3xl font-bold mb-7">Real estate</h3>
-              <p className={`${style.sign_in_parag} ${styleLogin.loginParag}`}>
+              <h3 className="text-3xl font-bold mb-7  font-serif">Real estate</h3>
+              <p className={`${style.sign_in_parag} ${styleLogin.loginParag}  font-serif`}>
                 Rumah Impian hadir untuk temukan rumah terbaik untukmu, untuk di
                 jual ataupun di sewa dengan sumber terpercaya.
               </p>

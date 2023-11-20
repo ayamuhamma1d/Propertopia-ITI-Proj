@@ -97,9 +97,9 @@ const Login = () => {
   }, []);
 
   return (
-    <div className={`${style.container} ${styleLogin.customContainer}`}>
+    <div className={`${style.container} ${styleLogin.customContainer} font-serif`}>
       <div
-        className={`flex ${style.full_height} ${styleLogin.customFullHeight}`}
+        className={`flex ${style.full_height} ${styleLogin.customFullHeight} font-serif`}
       >
         <div
           className={`col-span-2 basis-1/2 ${style.bg_project} ${styleLogin.customBgProject} ${styleLogin.col_span_2} ps-5 py-12`}
@@ -112,16 +112,15 @@ const Login = () => {
                 (styleLogin.customTextCenter, styleLogin.header_text)
               }`}
             >
-              <h3 className="text-3xl font-bold mb-7">Real estate</h3>
-              <p className={`${style.sign_in_parag} ${styleLogin.loginParag}`}>
-                Rumah Impian hadir untuk temukan rumah terbaik untukmu, untuk di
-                jual ataupun di sewa dengan sumber terpercaya.
+              <h3 className="text-3xl font-bold mb-7">Illuminate Your Home Search with Unrivaled Brilliance.</h3>
+              <p className={`${style.sign_in_parag} ${styleLogin.loginParag} font-serif`}>
+              Discover the home of your dreams with confidence
               </p>
             </div>
             <div className="col-span-2 mt-3 basis-1/2">
               <img
                 src={signImg}
-                className={`${style.signin_img} ${styleLogin.customSigninImg}`}
+                className={`${style.signin_img} ${styleLogin.customSigninImg} font-serif`}
                 alt=""
                 srcSet=""
               />
@@ -131,11 +130,11 @@ const Login = () => {
         <div className={`col-span-2 basis-1/2  `}>
           <form
             onSubmit={handleSubmit}
-            className={`flex max-w-xl flex-col gap-4 ms-10 ${style.form} ${styleLogin.customForm} px-10 py-14`}
+            className={`flex max-w-xl flex-col gap-4 ms-10 ${style.form} ${styleLogin.customForm} px-10 py-14 font-serif`}
           >
             <div>
               <div className="form_header flex flex-col ">
-                <p className={`mb-8 text-muted w-full mx-auto text-center `}>
+                <p className={`mb-8 text-muted w-full mx-auto text-center font-serif `}>
                   A new way to experience real state in the infinite virtual
                   space.
                 </p>
@@ -165,15 +164,15 @@ const Login = () => {
             >
               <Button
                 type="submit"
-                className={`bg-white text-dark ${styleLogin.customButton} `}
+                className={`bg-white text-dark ${styleLogin.customButton} font-serif hover:bg-beige`}
               >
-                Login
+                Log  in
               </Button>
               <Button
                 type="submit"
                 className={`${style.signin_btn} ${styleLogin.customSigninBtn} `}
               >
-                <Link to="/signup">Signup</Link>
+                <Link to="/signup">Sign up</Link>
               </Button>{" "}
             </div>
             <div

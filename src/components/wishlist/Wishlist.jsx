@@ -24,13 +24,9 @@ const Wishlist = () => {
         const docId = doc.id;
         return { docId, ...data };
       });
-      setWishlist(collectionData);
+      setWishlist(collectionData); 
     } catch (error) {
-      return (
-        <p className="bg-beige1 border border-beige text-beige px-4 py-3 text-xs rounded relative font-[Poppins]">
-          {error}
-        </p>
-      );
+      return <p  className="bg-beige1 border border-beige text-beige px-4 py-3 text-xs rounded relative font-[Poppins]">{error}</p>
     }
   };
   useEffect(() => {
@@ -45,11 +41,7 @@ const Wishlist = () => {
         prevWishlist.filter((card) => card.docId !== docId)
       );
     } catch (error) {
-      return (
-        <p className="bg-beige1 border border-beige text-beige px-4 py-3 text-xs rounded relative font-[Poppins]">
-          {error}
-        </p>
-      );
+      return <p  className="bg-beige1 border border-beige text-beige px-4 py-3 text-xs rounded relative font-[Poppins]">{error}</p>
     }
   };
   return (
