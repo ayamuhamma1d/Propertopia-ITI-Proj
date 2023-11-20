@@ -155,13 +155,11 @@ const AddForm = () => {
           <p
             className={`text-slate-600 mx-auto text-lg text-center font-serif  ${style.parag}`}
           >
-            Unleash the power of 3D allure! Our fee, dancing between 3% to 5%
-            per unit, covers stunning 3D models and targeted advertising for
-            your property's spotlight moment.
+          Experience the enchantment of 3D allure! Whether you're selling or renting, our fee, ranging from 3% to 5% per unit, includes captivating 3D models and precision-targeted advertising to illuminate your property's spotlight moment.
           </p>
           <form
             onSubmit={handleSubmit(onFormSubmit)}
-            className={`rounded px-10 pt-6 pb-8 mb-4 ${style.form}`}
+            className={`rounded px-10 pt-6 pb-8 ${style.form}`}
           >
             <div className="mb-5">
               <input
@@ -449,12 +447,12 @@ const AddForm = () => {
           </form>
 
           <div className="flex justify-end items-center">
-            <Link to="/UserUnit" className="text-beige  text-xl">
+            <Link to="/UserUnit" className="text-beige  text-2xl font-bold">
               View your units
             </Link>
             <Link to="/UserUnit" className="ml-2 flex items-center">
               <FontAwesomeIcon
-                size="1x"
+                size="2x"
                 style={{ color: "#bca37f" }}
                 className="ms-1"
                 icon={arrowRight}

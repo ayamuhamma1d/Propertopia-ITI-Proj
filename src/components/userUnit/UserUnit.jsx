@@ -67,13 +67,17 @@ const UserUnit = () => {
       {data.length == 0 ? (
         <div className="flex justify-center align-center ">
           <h2
-            className={`bg-beige1 border border-beige text-beige px-4 py-3  text-xl  rounded relative  font-serif ${style2.heading}`}
+            className={`bg-beige1 border border-beige text-beige  py-3  text-2xl  rounded relative  font-serif ${style2.heading}`}
           >
             You haven't added any units yet
           </h2>
         </div>
       ) : (
         <>
+          <h2 class={`text-3xl m-5 text-slate-900 font-serif ${style.parag}`}>
+            We're currently verifying your information. Once complete, we'll
+            initiate the negotiation process .
+          </h2>
           <div className={`flex ${style.flex_div}`}>
             {data &&
               data.map(
@@ -149,13 +153,13 @@ const UserUnit = () => {
                                 </p>
                               </div>
                               <div>
-                              <button
-                                onClick={() => handleDelete(item.docId)}
-                                className="text-red-500 hover:text-red-700"
-                              >
-                                Delete
-                              </button>
-                            </div>
+                                <button
+                                  onClick={() => handleDelete(item.docId)}
+                                  className="text-red-500 hover:text-red-700"
+                                >
+                                  Delete
+                                </button>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -167,13 +171,13 @@ const UserUnit = () => {
           <div className="flex justify-start items-center w-3/4  m-auto my-8">
             <Link to="/addUnit" className="ml-2 flex items-center">
               <FontAwesomeIcon
-                size="1x"
+                size="2x"
                 style={{ color: "#bca37f" }}
                 className="me-1"
                 icon={arrowLeft}
               />
             </Link>
-            <Link to="/addUnit" className="text-beige text-xl">
+            <Link to="/addUnit" className="text-beige text-2xl">
               Add your unit
             </Link>
           </div>
