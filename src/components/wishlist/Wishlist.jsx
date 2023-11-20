@@ -24,13 +24,9 @@ const Wishlist = () => {
         const docId = doc.id;
         return { docId, ...data };
       });
-      setWishlist(collectionData);
+      setWishlist(collectionData); 
     } catch (error) {
-      return (
-        <p className="bg-beige1 border border-beige text-beige px-4 py-3 text-xs rounded relative font-[Poppins]">
-          {error}
-        </p>
-      );
+      return <p  className="bg-beige1 border border-beige text-beige px-4 py-3 text-xs rounded relative  font-serif">{error}</p>
     }
   };
   useEffect(() => {
@@ -45,20 +41,18 @@ const Wishlist = () => {
         prevWishlist.filter((card) => card.docId !== docId)
       );
     } catch (error) {
-      return (
-        <p className="bg-beige1 border border-beige text-beige px-4 py-3 text-xs rounded relative font-[Poppins]">
-          {error}
-        </p>
-      );
+      return <p  className="bg-beige1 border border-beige text-beige px-4 py-3 text-xs rounded relative  font-serif">{error}</p>
     }
   };
   return (
     <div className="w-full sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-5 mx-auto h-auto mb-10">
       {wishlist.length === 0 ? (
         <div className="flex justify-center align-center ">
+
           <h2
-            className={`bg-beige1 border border-beige text-beige px-4 py-3  text-xl  rounded relative font-[Poppins] ${style.heading}`}
-          >
+            className={`bg-beige1 border border-beige text-beige px-4 py-3  text-xl  rounded relative font-[Poppins] ${style.heading}`}></h2>
+       
+          <h2 className={`bg-beige1 border border-beige text-beige px-4 py-3  text-xl  rounded relative  font-serif ${style.heading}`}>
             There are no items in your favorites.
           </h2>
         </div>
@@ -74,5 +68,4 @@ const Wishlist = () => {
     </div>
   );
 };
-
 export default Wishlist;
