@@ -4,7 +4,8 @@ import React from 'react'
 import After1 from "../../../assets/img/Maintenancecomponent/after1.png";
 import Before1 from "../../../assets/img/Maintenancecomponent/before1.png";
 import { data } from "../../auth/firebase/Firebase";
-import video from "../../../assets/video/Modern Bedroom In A Luxury Villa Stock Video - Download Video Clip Now - Real Estate, Home Interior, Residential Building - iStock.mp4";
+import video1 from "../../../assets/video/Modern Bedroom In A Luxury Villa Stock Video - Download Video Clip Now - Real Estate, Home Interior, Residential Building - iStock.mp4";
+import video2 from "../../../assets/video/real.mp4";
 import "./finishes.css"
 
 const features = [
@@ -68,7 +69,7 @@ const Finishes = () => {
           <div className="grid grid-cols-2 grid-rows-2 gap-1 sm:gap-2 lg:gap-2  ">
             <div className="item">
               <video width="750" height="500" autoPlay controls muted>
-                <source src={video} type="video/mp4"  />
+                <source src={video2} type="video/mp4"  />
               </video>
             </div>
             <div className="item2">
@@ -126,7 +127,7 @@ const Finishes = () => {
           <div className="grid grid-cols-2 grid-rows-2 gap-1 sm:gap-2 lg:gap-2">
             <div className="item">
               <video width="750" height="500" controls autoPlay muted>
-                <source src={video} type="video/mp4"  />
+                <source src={video1} type="video/mp4"  />
               </video>
             </div>
             <div className="item2">
